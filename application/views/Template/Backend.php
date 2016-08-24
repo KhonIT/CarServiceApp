@@ -113,12 +113,60 @@
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/ie10-viewport-bug-workaround.js"></script>
 <script src="<?php echo base_url(); ?>Assets/js/Common.js"></script>
 <script type="text/javascript">
-	var base_url = "<?php echo base_url();?>";
-
+var bas_url = "<?php echo base_url();?>backend/";
+var base_url = "<?php echo base_url();?>";
+$('.logoutform').delegate('a.btnlogout', 'click', function() {
+	$.ajax({
+		url:  bas_url+'Employee/logout',
+		data: {},
+		type: "POST",
+		cache:false,
+		success: function (data) {
+			if(data = "true"){
+				$('#result_content').text(" ออกจากระบบเรียบร้อยแล้ว ");
+				window.setTimeout('location.reload()', 1000);
+			}
+		}
+	});
+});
 
 $(document).ready(function(){
 
- 
+	$.ajax({
+		url:  bas_url+'Employee/Get_Profile',
+		data: {},
+		type: "POST",
+		dataType: "json",
+		cache:false,
+		success: function (data) {
+
+			$("#User_Profile").text("");
+			$("#User_Profile").append(data.name+':'+data.l_name+'<span class="caret"></span>');
+
+		}
+	});
+
+	$.ajax({
+		url:  bas_url+'Permission/Get_Menu',
+		data: {},
+		type: "POST",
+		dataType: "json",
+		cache:false,
+		success: function (data) {
+
+			$("#menu_nav").text("");
+			$.each(data, function(idx, obj) {
+					if (obj.parent_menu=="0")
+					{
+						$("#menu_nav").append('<li class="dropdown" ><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'+obj.menu_name+'<span class="caret"></span></a><ul class="dropdown-menu" id="menu'+obj.menu_id+'"></ul></li>');
+					}else{
+						$("#menu"+obj.parent_menu_id).append('	<li><a href="'+bas_url+''+obj.link_url+'">'+obj.menu_name+'</a></li> ');
+
+					}
+			});
+		}
+	});
+
 
 });
 

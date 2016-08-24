@@ -18,13 +18,13 @@ class Login extends CI_Controller {
 	{
 		if(strlen($this->session->userdata('e_id'))> 0)
 		{
-			redirect('backend/Home');
+			redirect('Home');
 		}
 		else # If not Log in
 		{
 			$this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
 			$this->output->append_title('Login' );
-			$this->output->set_template('Blank'); 
+			$this->output->set_template('Blank');
 			$this->load->css('Assets/css/Login.css');
 			$this->load->js('Assets/js/Login.js');
 			$this->load->view('Content/Login_View');
@@ -46,4 +46,8 @@ class Login extends CI_Controller {
  			echo "false";
 		}
 	}
+
+	public function backend_dir(){
+		return $backend_dir;
+	} 
 }

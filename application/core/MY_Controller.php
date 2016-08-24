@@ -26,13 +26,10 @@ class  MY_Controller extends CI_Controller {
 			}
 			else # If Logged in
 			{
-					redirect('Login');
+				 redirect('Home');
 			}
 
-
 	}
-
-
 
 }
 

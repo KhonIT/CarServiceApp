@@ -13,7 +13,7 @@ $('.form-signin').delegate('button.btn-lg', 'click', function() {
 function Check_Login(){
 
 	$.ajax({
-		url:  bas_url+'backend/Login/check_auth',
+		url:  backen_url+'Login/check_auth',
 		data: {inputUsername:$("#inputUsername").val(),inputPassword:$("#inputPassword").val() },
 		type: "POST",
 		cache:false,

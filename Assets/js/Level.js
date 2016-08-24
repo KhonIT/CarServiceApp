@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 function Get_All_Level(){
 	$.ajax({
-		url: bas_url+'backend/Level/Get_All',
+		url: bas_url+'Level/Get_All',
 		data: {},
 		dataType: "json",
 		type: "POST",
@@ -34,7 +34,7 @@ function Get_All_Level(){
 
 $('#modal_level_add').delegate('span.level-add', 'click', function() {
 	$.ajax({
-		url:  bas_url+'backend/Level/Add',
+		url:  bas_url+'Level/Add',
 		data: {l_name:$('#tb_l_name_add').val(),l_parent_id:$('#dd_Level_add :selected').val()},
 		type: "POST",
 		cache:false,
@@ -51,7 +51,7 @@ $('#modal_level_add').delegate('span.level-add', 'click', function() {
 
 $('#modal_level_edit').delegate('button.close', 'click', function() {
 	$.ajax({
-		url: bas_url+'backend/Level/Get_All',
+		url: bas_url+'Level/Get_All',
 		data: {},
 		dataType: "json",
 		type: "POST",
@@ -69,7 +69,7 @@ $('#modal_level_edit').delegate('button.close', 'click', function() {
 
 $('#tbody_level').delegate('span.level-edit', 'click', function() {
 				$.ajax({
-					url: bas_url+'backend/Level/Get_By_ID',
+					url: bas_url+'Level/Get_By_ID',
 					data: {l_id:$.trim(event.target.id)},
 					cache:false,
 					type: "POST",
@@ -91,7 +91,7 @@ $('#tbody_level').delegate('span.level-edit', 'click', function() {
 $('#tbody_level').delegate('span.permission-edit', 'click', function() {
 	var l_id = $.trim(event.target.id);
 	$.ajax({
-		url: bas_url+'backend/Permission/Get_By_ID',
+		url: bas_url+'Permission/Get_By_ID',
 		data: {l_id:l_id},
 		cache:false,
 		dataType: "json",
@@ -138,7 +138,7 @@ $('#tbody_permission').delegate('span.permission-save', 'click', function() {
 	var jsonpost = JSON.stringify(jsonObj)
 	//alert(jsonpost);
 	$.ajax({
-		url:  bas_url+'backend/Permission/Edit',
+		url:  bas_url+'Permission/Edit',
 		data: {'jsonObj': jsonpost},
 		type: "POST",
 		cache:false,
@@ -153,7 +153,7 @@ $('#tbody_permission').delegate('span.permission-save', 'click', function() {
 
 $('#modal_level_edit').delegate('span.level-edit-save', 'click', function() {
 	$.ajax({
-		url:  bas_url+'backend/Level/Edit',
+		url:  bas_url+'Level/Edit',
 		data: {l_id:$("#tb_l_id_edit").val(),l_name:$("#tb_l_name_edit").val(),l_parent_id:$('#dd_Level_edit :selected').val()},
 		type: "POST",
 		cache:false,
@@ -173,7 +173,7 @@ $('#tbody_level').delegate('span.level-remove', 'click', function() {
 	var r = confirm("ยืนยันการลบข้อมูล รายการนี้ ?");
 	if (r == true) {
 		$.ajax({
-			  url:  bas_url+'backend/Level/Delete',
+			  url:  bas_url+'Level/Delete',
 			  data: {l_id:$.trim(event.target.id)},
 			   type: "post",
 			  cache:false,

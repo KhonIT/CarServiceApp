@@ -12,7 +12,7 @@ $(document).ready(function(){
 
 function Get_All_menu(){
 	$.ajax({
-		url: bas_url+'backend/Menu/Get_All',
+		url: bas_url+'Menu/Get_All',
 		data: {},
 		dataType: "json",
 		type: "POST",
@@ -31,7 +31,7 @@ function Get_All_menu(){
 
 function Get_parent_Menu(menu_id){
  $.ajax({
-		url: bas_url+'backend/Menu/Get_All',
+		url: bas_url+'Menu/Get_All',
 		data: {},
 		dataType: "json",
 		type: "POST",
@@ -54,7 +54,7 @@ function Get_parent_Menu(menu_id){
 }
 function Get_Menu_Detail(menu_id){
 				$.ajax({
-					url: bas_url+'backend/Menu/Get_By_ID',
+					url: bas_url+'Menu/Get_By_ID',
 					data: {menu_id:menu_id},
 					cache:false,
 					type: "POST",
@@ -76,7 +76,7 @@ $('#tbody_menu').delegate('span.menu-edit', 'click', function() {
 
 $('#modal_menu').delegate('span.menu-save', 'click', function() {
 	$.ajax({
-		url:  bas_url+'backend/Menu/Edit',
+		url:  bas_url+'Menu/Edit',
 		data: {menu_id:$("#tb_menu_id").val(),menu_name:$('#tb_menu_name').val(),link_url:$('#tb_link_url').val(),parent_menu_id:$('#dd_parent_menu :selected').val()},
 		type: "POST",
 		cache:false,
@@ -98,7 +98,7 @@ $('#tbody_menu').delegate('span.menu-remove', 'click', function() {
 	var r = confirm("ยืนยันการลบข้อมูล รายการนี้ ?");
 	if (r == true) {
 		$.ajax({
-			  url:  bas_url+'backend/Menu/Delete',
+			  url:  bas_url+'Menu/Delete',
 			  data: {menu_id:$.trim(event.target.id)},
 			   type: "post",
 			  cache:false,

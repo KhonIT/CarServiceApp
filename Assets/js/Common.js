@@ -1,6 +1,6 @@
 function ajaxindicatorstart(text) {
-    if (jQuery('body').find('#resultLoading').attr('id') != 'resultLoading') { 
-        jQuery('body').append('<div id="resultLoading" style="display:none"><div><img src="'+bas_url+'Assets/Images/logo.png"><div>' + text + '</div></div><div class="bg"></div></div>');
+    if (jQuery('body').find('#resultLoading').attr('id') != 'resultLoading') {
+        jQuery('body').append('<div id="resultLoading" style="display:none"><div><img src="'+base_url+'Assets/Images/logo.png"><div>' + text + '</div></div><div class="bg"></div></div>');
     }
 
     jQuery('#resultLoading').css({
@@ -53,9 +53,8 @@ function ajaxindicatorstop() {
 
 
 // Ajax activity indicator bound to ajax start/stop document events
-$(document).ajaxStart(function () { 
-    ajaxindicatorstart('Loading data...'); 
+$(document).ajaxStart(function () {
+    ajaxindicatorstart('Loading data...');
 }).ajaxStop(function () {
-    ajaxindicatorstop(); 
+    ajaxindicatorstop();
 });
-

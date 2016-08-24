@@ -4,8 +4,8 @@ class Home extends MY_Controller {
 
 	function __construct()
 	{
-		parent::__construct(); 
-   
+		parent::__construct();
+
 		$this->_init();
 	}
 
@@ -15,10 +15,10 @@ class Home extends MY_Controller {
 	}
 
 	public function index()
-	{ 
-		$this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net'); 
+	{
+		$this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
 		$this->output->set_template('Main');
-		$this->load->view('Content/Home_View'); 
-	}    
-        
+		$this->load->view('Content/Home_View');
+	}
+
 }
