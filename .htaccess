@@ -1,7 +1,0 @@
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L]
-
-RewriteCond %{HTTP_HOST} ^vtcarservice.net$
-RewriteRule (.*) http://www.vtcarservice.net/$1 [R=301,L]
