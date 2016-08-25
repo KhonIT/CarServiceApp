@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if (IE 9)]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-US"> <!--<![endif]-->
+<head>
 		<title><?php echo $title; ?></title>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- Meta Tags -->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="ศูนย์เคลือบสี เคลือบแก้ว เชียงใหม่ ด้วยสุดยอดนวัตกรรมหนึ่งเดียวเพื่อการปกป้องสีรถอย่างสมบูรณ์แบบ">
+		<meta name="keywords" content="เคลือบแก้ว เชียงใหม่, Glass Coating เชียงใหม่, เคลือบสีรถยนต์เชียงใหม่, ขัดลบรอยขนแมว, ล้าง-ฟื้นฟูรถทุกรูปแบบในเชียงใหม่, ศูนย์ประดับยนต์ครบวงจร เชียงใหม่">
 		<meta name="author" content="www.VTCarService.net">
 			<?php
 				if(!empty($meta))
@@ -13,11 +21,52 @@
 								?><meta name="<?php echo $name; ?>" content="<?php echo is_array($content) ? implode(", ", $content) : $content; ?>" /><?php
 				 }
 		   ?>
+			 <!-- Mobile Specifics -->
+	 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 		<meta name="HandheldFriendly" content="true"/>
+	 		<meta name="MobileOptimized" content="320"/>
+			<!-- Mobile Internet Explorer ClearType Technology -->
+			<!--[if IEMobile]>  <meta http-equiv="cleartype" content="on">  <![endif]-->
 
-			<link rel="shortcut icon" href="<?php echo base_url(); ?>Assets/Images/fav-icon-vtcar.png">
-			<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
-			<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
-			<link href="<?php echo base_url(); ?>Assets/css/Admin.css" rel="stylesheet">
+
+			<!-- Bootstrap -->
+			<link href="_include/css/bootstrap.min.css" rel="stylesheet">
+
+			<!-- Main Style -->
+			<link href="_include/css/main.css" rel="stylesheet">
+
+			<!-- Supersized -->
+			<link href="_include/css/supersized.css" rel="stylesheet">
+			<link href="_include/css/supersized.shutter.css" rel="stylesheet">
+
+			<!-- FancyBox -->
+			<link href="_include/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+
+			<!-- Font Icons -->
+			<link href="_include/css/fonts.css" rel="stylesheet">
+
+			<!-- Shortcodes -->
+			<link href="_include/css/shortcodes.css" rel="stylesheet">
+
+			<!-- Responsive -->
+			<link href="_include/css/bootstrap-responsive.min.css" rel="stylesheet">
+			<link href="_include/css/responsive.css" rel="stylesheet">
+
+			<!-- Supersized -->
+			<link href="_include/css/supersized.css" rel="stylesheet">
+			<link href="_include/css/supersized.shutter.css" rel="stylesheet">
+
+			<!-- Google Font -->
+			<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
+
+			<!-- Fav Icon -->
+			<link rel="shortcut icon" href="<?php echo base_url();?>Assets/Images/fav-icon-vtcar.png">
+			<link rel="apple-touch-icon" href="#">
+			<link rel="apple-touch-icon" sizes="114x114" href="#">
+			<link rel="apple-touch-icon" sizes="72x72" href="#">
+			<link rel="apple-touch-icon" sizes="144x144" href="#">
+
+
 			<?php
 					 foreach($css as $file){
 							echo "\n\t\t";
@@ -112,13 +161,16 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/ie10-viewport-bug-workaround.js"></script>
 <script src="<?php echo base_url(); ?>Assets/js/Common.js"></script>
+<!-- Modernizr -->
+<script src="_include/js/modernizr.js"></script>
+
 <script type="text/javascript">
 	var base_url = "<?php echo base_url();?>";
 
 
 $(document).ready(function(){
 
- 
+
 
 });
 
