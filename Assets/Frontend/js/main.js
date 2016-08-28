@@ -77,10 +77,10 @@ VTCAR.slider = function(){
 		thumb_links				:	0,			// Individual thumb links for each slide
 		thumbnail_navigation    :   0,			// Thumbnail navigation
 		slides 					:  	[			// Slideshow Images
-											{image : '_include/img/slider-images/image01.jpg', title : '<div class="slide-content">Vt Car Clean & Detailing </div>', thumb : '', url : ''},
-											{image : '_include/img/slider-images/image02.jpg', title : '<div class="slide-content">Vt Car Clean & Detailing </div>', thumb : '', url : ''},
-											{image : '_include/img/slider-images/image03.jpg', title : '<div class="slide-content">Vt Car Clean & Detailing </div>', thumb : '', url : ''},
-											{image : '_include/img/slider-images/image04.jpg', title : '<div class="slide-content">Vt Car Clean & Detailing </div>', thumb : '', url : ''}  
+											{image : base_url+'Assets/Images/slider-images/image01.jpg', title : '<div class="slide-content">Vt Car Clean & Detailing </div>', thumb : '', url : ''},
+											{image : base_url+'Assets/Images/slider-images/image02.jpg', title : '<div class="slide-content">Vt Car Clean & Detailing </div>', thumb : '', url : ''},
+											{image : base_url+'Assets/Images/slider-images/image03.jpg', title : '<div class="slide-content">Vt Car Clean & Detailing </div>', thumb : '', url : ''},
+											{image : base_url+'Assets/Images/slider-images/image04.jpg', title : '<div class="slide-content">Vt Car Clean & Detailing </div>', thumb : '', url : ''}  
 									],
 									
 		// Theme Options			   
@@ -394,7 +394,6 @@ VTCAR.toolTip = function(){
     $('a[data-toggle=tooltip]').tooltip();
 }
 
-
 /* ==================================================
 	Init
 ================================================== */
@@ -402,23 +401,7 @@ VTCAR.toolTip = function(){
 VTCAR.slider();
 
 $(document).ready(function(){
-	/*Modernizr.load([
-	{
-		test: Modernizr.placeholder,
-		nope: '_include/js/placeholder.js', 
-		complete : function() {
-				if (!Modernizr.placeholder) {
-						Placeholders.init({
-						live: true,
-						hideOnFocus: false,
-						className: "yourClass",
-						textColor: "#999"
-						});    
-				}
-		}
-	}
-	]);
-	*/
+
 	// Preload the page with jPreLoader
 	$('body').jpreLoader({
 		splashID: "#jSplash",
