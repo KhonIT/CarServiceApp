@@ -108,7 +108,7 @@
 <!-- End Js Frontend-->
 
 <script type="text/javascript">
-	var base_url = "<?php echo base_url();?>";  
+	var base_url = "<?php echo base_url();?>";     
 </script>
 
 <!-- Js Frontend -->
@@ -122,16 +122,7 @@
 <script src="<?php echo base_url(); ?>Assets/Frontend/js/plugins.js"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
 <script src="<?php echo base_url(); ?>Assets/Frontend/js/main.js"></script> <!-- Default JS -->
 <!-- End Js Frontend-->
-
-<script type="text/javascript"> 
-
-$(document).ready(function(){
-
-
-
-});
-
-</script>
+ 
 <?php
 	 foreach($js as $file){
 			echo "\n\t\t";
