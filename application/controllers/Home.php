@@ -20,4 +20,25 @@ class Home extends CI_Controller {
 		$this->output->set_template('Frontend');
 		$this->load->view('Content/Home_View');
 	}
+
+    public function Get_Slider()
+    {
+        $this->output->unset_template();
+ 
+		for($i = 1;$i <5; $i++){
+
+
+				$data_arr[] = array(
+						'image'=>$this->config->base_url().'Assets/Images/slider-images/image0'.$i.'.jpg',
+						'title'=>'<div class="slide-content">Vt Car Clean & Detailing </div>' 
+				);
+		}
+		
+
+        if($data_arr)
+        {
+           echo json_encode ($data_arr) ;
+        }
+    }
+	
 }
