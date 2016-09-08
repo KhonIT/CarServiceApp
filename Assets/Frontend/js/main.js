@@ -84,7 +84,7 @@ Slider Options
 						new_window				:	1,			// Image links open in new window/tab
 						pause_hover             :   0,			// Pause slideshow on hover
 						keyboard_nav            :   1,			// Keyboard navigation on/off
-						performance				:	1,			// 0-Normal, 1-Hybrid speed/quality, 2-Optimizes image quality, 3-Optimizes transition speed // (Only works for Firefox/IE, not Webkit)
+						performance				:	2,			// 0-Normal, 1-Hybrid speed/quality, 2-Optimizes image quality, 3-Optimizes transition speed // (Only works for Firefox/IE, not Webkit)
 						image_protect			:	1,			// Disables image dragging and right click with Javascript
 																
 						// Size & Position						   
@@ -94,7 +94,7 @@ Slider Options
 						horizontal_center       :   1,			// Horizontally center background
 						fit_always				:	1,			// Image will never exceed browser width or height (Ignores min. dimensions)
 						fit_portrait         	:   1,			// Portrait images will not exceed browser height
-						fit_landscape			:   0,			// Landscape images will not exceed browser width
+						fit_landscape			:   1,			// Landscape images will not exceed browser width
 																
 						// Components							
 						slide_links				:	'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
