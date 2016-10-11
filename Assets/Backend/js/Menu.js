@@ -7,9 +7,7 @@ $(document).ready(function(){
 		$('#tb_link_url').val("");
 		$("#modal_menu").modal();
 	});
-});
-
-
+}); 
 function Get_All_menu(){
 	$.ajax({
 		url: backend_url+'Menu/Get_All',
