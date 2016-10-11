@@ -16,7 +16,7 @@ class Level extends MY_Controller {
 
      public function index()
     {
-        $this->load->js('Assets/js/Level.js');
+        $this->load->js('Assets/Backend/js/Level.js');
         $this->load->view('Content/Level_View');
     }
 

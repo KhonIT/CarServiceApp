@@ -56,20 +56,13 @@
 			<!-- Google Font -->
 			<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
 
-			<!-- Fav Icon -->
-			<link rel="shortcut icon" href="<?php echo base_url();?>Assets/Images/fav-icon-vtcar.png">
-			<link rel="apple-touch-icon" href="#">
-			<link rel="apple-touch-icon" sizes="114x114" href="#">
-			<link rel="apple-touch-icon" sizes="72x72" href="#">
-			<link rel="apple-touch-icon" sizes="144x144" href="#">
-
-
-			<?php
-					 foreach($css as $file){
-							echo "\n\t\t";
-							?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php
-					 } echo "\n\t";
-			?>
+<!-- Fav Icon -->
+<link rel="shortcut icon" href="<?php echo base_url();?>Assets/Images/fav-icon-vtcar.png">
+<link rel="apple-touch-icon" href="#">
+<link rel="apple-touch-icon" sizes="114x114" href="#">
+<link rel="apple-touch-icon" sizes="72x72" href="#">
+<link rel="apple-touch-icon" sizes="144x144" href="#"> 
+<?php  foreach($css as $file){  ?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php	 }  ?>
 			<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 			<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -121,13 +114,6 @@
 <script src="<?php echo base_url(); ?>Assets/Frontend/js/jquery.tweet.js"></script> <!-- Tweet -->
 <script src="<?php echo base_url(); ?>Assets/Frontend/js/plugins.js"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
 <script src="<?php echo base_url(); ?>Assets/Frontend/js/main.js"></script> <!-- Default JS -->
-<!-- End Js Frontend-->
- 
-<?php
-	 foreach($js as $file){
-			echo "\n\t\t";
-			?><script src="<?php echo $file; ?>"></script><?php
-		 } echo "\n\t";
- ?>
+<?php  foreach($js as $file){ ?><script src="<?php echo $file; ?>"></script><?php } ?>
 </body>
 </html>

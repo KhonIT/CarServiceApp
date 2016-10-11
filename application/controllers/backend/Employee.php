@@ -16,7 +16,7 @@ class Employee extends MY_Controller {
     {
 		$this->output->set_template('Backend');
 		$this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
-        $this->load->js('Assets/js/Employee.js');
+        $this->load->js('Assets/Backend/js/Employee.js');
         $this->load->view('Content/Employee_View');
     }
 

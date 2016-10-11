@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 function Get_All_Level(){
 	$.ajax({
-		url: bas_url+'Level/Get_All',
+		url: backend_url+'Level/Get_All',
 		data: {},
 		dataType: "json",
 		type: "POST",
@@ -31,7 +31,7 @@ function Get_All_Level(){
 
 function Get_All_Employee(){
 	$.ajax({
-		url: bas_url+'Employee/Get_All',
+		url: backend_url+'Employee/Get_All',
 		data: {},
 		dataType: "json",
 		type: "POST",
@@ -59,7 +59,7 @@ function Get_All_Employee(){
 
 $('#modal_data').delegate('span.data-save', 'click', function() {
 	$.ajax({
-		url:  bas_url+'Employee/Edit',
+		url:  backend_url+'Employee/Edit',
 		data: {e_id:$("#tb_e_id").val(),name:$("#tb_name").val(),e_nickname:$("#tb_e_nickname").val(),e_username:$("#tb_e_username").val(),e_password:$("#tb_e_password").val(),l_id:$('#dd_Level :selected').val()},
 		type: "POST",
 		cache:false,
@@ -81,7 +81,7 @@ $('#modal_data').delegate('span.data-save', 'click', function() {
 $('#tbody_data').delegate('span.data-edit', 'click', function() {
 
 	$.ajax({
-		url: bas_url+'Employee/Get_By_ID',
+		url: backend_url+'Employee/Get_By_ID',
 		data: {e_id:$.trim(event.target.id)},
 		cache:false,
 		type: "POST",
@@ -103,7 +103,7 @@ $('#tbody_data').delegate('span.data-remove', 'click', function() {
 	var r = confirm("ยืนยันการลบข้อมูล รายการนี้ ?");
 	if (r == true) {
 		$.ajax({
-			  url:  bas_url+'Employee/Delete',
+			  url:  backend_url+'Employee/Delete',
 			  data: {e_id:$.trim(event.target.id)},
 			   type: "post",
 			  cache:false,

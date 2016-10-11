@@ -20,15 +20,10 @@ class  MY_Controller extends CI_Controller {
 			$this->session->set_userdata('className',  $className );
 
 
-			if(strlen($this->session->userdata('e_id'))> 0)
+			if(strlen($this->session->userdata('e_id'))> 0)# If Logged in
 			{
-				 $this->user_profile = $this->Employee_Model->Get_By_ID($this->session->userdata('e_id'));
-			}
-			else # If Logged in
-			{
-				 redirect('Home');
-			}
-
+				 $this->user_profile = $this->Employee_Model->Get_By_ID($this->session->userdata('e_id')); 
+			} 
 	}
 
 }

@@ -175,11 +175,6 @@ $(document).ready(function(){
 });
 
 </script>
-<?php
-	 foreach($js as $file){
-			echo "\n\t\t";
-			?><script src="<?php echo $file; ?>"></script><?php
-		 } echo "\n\t";
- ?>
+<?php  foreach($js as $file){ ?><script src="<?php echo $file; ?>"></script><?php } ?>
 </body>
 </html>

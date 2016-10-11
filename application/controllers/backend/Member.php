@@ -17,7 +17,7 @@ class Member extends MY_Controller {
     {
 		 $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
 		$this->output->set_template('Backend');
-        $this->load->js('Assets/js/Member.js');
+        $this->load->js('Assets/Backend/js/Member.js');
         $this->load->view('Content/Member_View');
     }
 

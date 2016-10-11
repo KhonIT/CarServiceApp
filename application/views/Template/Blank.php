@@ -14,15 +14,10 @@
 				 }
 		   ?>
 
-			<link rel="shortcut icon" href="<?php echo base_url(); ?>Assets/Images/fav-icon-vtcar.png">
-			<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
-			<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
-			<?php
-					 foreach($css as $file){
-							echo "\n\t\t";
-							?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php
-					 } echo "\n\t";
-			?>
+<link rel="shortcut icon" href="<?php echo base_url(); ?>Assets/Images/fav-icon-vtcar.png">
+<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
+<?php  foreach($css as $file){  ?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php	 }  ?>
 			<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 			<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -34,22 +29,17 @@
        <!-- content -->
         <?php echo $output;?>
         <!--/.content-->
-<div   align='center' > <span id="result_js" ></span></div>
+
 <script src="<?php echo base_url(); ?>Assets/js/jquery-1.11.3.min.js"></script>
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/holder.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/ie10-viewport-bug-workaround.js"></script>
-<script src="<?php echo base_url(); ?>Assets/js/Common.js"></script>
 <script type="text/javascript">
-	var bas_url = "<?php echo base_url();?>";
-	var backen_url = "<?php echo base_url();?>backend/";
+	var base_url = "<?php echo base_url();?>";
+	var backend_url = "<?php echo base_url();?>Backend/";
 </script>
-  <?php
-		 foreach($js as $file){
-				echo "\n\t\t";
-				?><script src="<?php echo $file; ?>"></script><?php
-		 } echo "\n\t";
-  ?>
+<script src="<?php echo base_url(); ?>Assets/Backend/js/Common.js"></script>
+  <?php  foreach($js as $file){ ?><script src="<?php echo $file; ?>"></script><?php } ?>
 </body>
 </html>

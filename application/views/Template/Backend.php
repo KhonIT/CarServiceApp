@@ -14,16 +14,11 @@
 				 }
 		   ?>
 
-			<link rel="shortcut icon" href="<?php echo base_url(); ?>Assets/Images/fav-icon-vtcar.png">
-			<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
-			<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
-			<link href="<?php echo base_url(); ?>Assets/css/Admin.css" rel="stylesheet">
-			<?php
-					 foreach($css as $file){
-							echo "\n\t\t";
-							?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php
-					 } echo "\n\t";
-			?>
+<link rel="shortcut icon" href="<?php echo base_url(); ?>Assets/Images/fav-icon-vtcar.png">
+<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>Assets/Backend/css/Admin.css" rel="stylesheet">
+<?php  foreach($css as $file){  ?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php	 }  ?>
 			<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 			<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -110,14 +105,17 @@
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/holder.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/ie10-viewport-bug-workaround.js"></script>
-<script src="<?php echo base_url(); ?>Assets/js/Common.js"></script>
+<script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/ie10-viewport-bug-workaround.js"></script> 
 <script type="text/javascript">
-var bas_url = "<?php echo base_url();?>backend/";
+
 var base_url = "<?php echo base_url();?>";
+var backend_url = "<?php echo base_url();?>Backend/";
+</script>
+<script src="<?php echo base_url(); ?>Assets/Backend/js/Common.js"></script>
+<script type="text/javascript"> 
 $('.logoutform').delegate('a.btnlogout', 'click', function() {
 	$.ajax({
-		url:  bas_url+'Employee/logout',
+		url:  backend_url+'Employee/logout',
 		data: {},
 		type: "POST",
 		cache:false,
@@ -133,7 +131,7 @@ $('.logoutform').delegate('a.btnlogout', 'click', function() {
 $(document).ready(function(){
 
 	$.ajax({
-		url:  bas_url+'Employee/Get_Profile',
+		url:  backend_url+'Employee/Get_Profile',
 		data: {},
 		type: "POST",
 		dataType: "json",
@@ -147,7 +145,7 @@ $(document).ready(function(){
 	});
 
 	$.ajax({
-		url:  bas_url+'Permission/Get_Menu',
+		url:  backend_url+'Permission/Get_Menu',
 		data: {},
 		type: "POST",
 		dataType: "json",
@@ -160,7 +158,7 @@ $(document).ready(function(){
 					{
 						$("#menu_nav").append('<li class="dropdown" ><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'+obj.menu_name+'<span class="caret"></span></a><ul class="dropdown-menu" id="menu'+obj.menu_id+'"></ul></li>');
 					}else{
-						$("#menu"+obj.parent_menu_id).append('	<li><a href="'+bas_url+''+obj.link_url+'">'+obj.menu_name+'</a></li> ');
+						$("#menu"+obj.parent_menu_id).append('	<li><a href="'+backend_url+''+obj.link_url+'">'+obj.menu_name+'</a></li> ');
 
 					}
 			});
@@ -171,11 +169,6 @@ $(document).ready(function(){
 });
 
 </script>
-<?php
-	 foreach($js as $file){
-			echo "\n\t\t";
-			?><script src="<?php echo $file; ?>"></script><?php
-		 } echo "\n\t";
- ?>
+  <?php  foreach($js as $file){ ?><script src="<?php echo $file; ?>"></script><?php } ?>
 </body>
 </html>

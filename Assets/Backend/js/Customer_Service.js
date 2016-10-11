@@ -11,7 +11,7 @@ $(document).ready(function(){
  
 function Get_All_service(){
 	$.ajax({
-		url: bas_url+'Customer_Service/Get_All',
+		url: backend_url+'Customer_Service/Get_All',
 		data: {},
 		dataType: "json",
 		type: "POST", 
@@ -30,7 +30,7 @@ function Get_All_service(){
  
  $('#tbody_list').delegate('span.detail-data', 'click', function() {
 	 $.ajax({
-		url: bas_url+'Customer_Service/Get_OrdersDetails_By_ID', 
+		url: backend_url+'Customer_Service/Get_OrdersDetails_By_ID', 
 		data: { id:$.trim(event.target.id)},
 		cache:false, 
 		type: "POST",
@@ -53,7 +53,7 @@ function Get_All_service(){
  
 $('#tbody_list').delegate('span.edit-data', 'click', function() {		
 							$.ajax({
-					url: bas_url+'Customer_Service/Get_By_ID', 
+					url: backend_url+'Customer_Service/Get_By_ID', 
 					data: { id:$.trim(event.target.id)},
 					cache:false, 
 					type: "POST",
@@ -70,7 +70,7 @@ $('#tbody_list').delegate('span.edit-data', 'click', function() {
 
 $('#modal_popup').delegate('span.save-data', 'click', function() {		
 	$.ajax({
-		url:  bas_url+'Customer_Service/Edit',
+		url:  backend_url+'Customer_Service/Edit',
 		data: {id:$("#tb_id").val(),name:$('#tb_name').val(),price:$('#tb_price').val()},
 		type: "POST",
 		cache:false, 
@@ -93,7 +93,7 @@ $('#tbody_list').delegate('span.remove-data', 'click', function() {
 	var r = confirm("ยืนยันการลบข้อมูล รายการนี้ ?");
 	if (r == true) {
 		$.ajax({
-			  url:  bas_url+'Customer_Service/Delete',
+			  url:  backend_url+'Customer_Service/Delete',
 			  data: {id:$.trim(event.target.id)},                      
 			   type: "post",
 			  cache:false, 
