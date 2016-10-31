@@ -1,7 +1,7 @@
   <div class="container" >   
            <div   align='center' >
-              <img src="<?php echo base_url(); ?>Assets/Images/logo.png"/>
-            </div>
+              <img src="<?php echo base_url(); ?>Assets/Images/logo&sloganNobg.png" />
+            </div> 
       <div class="form-signin" align='center' style>
       	
 		<form id="login-form" action="#">
