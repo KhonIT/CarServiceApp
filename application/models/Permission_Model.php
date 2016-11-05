@@ -54,7 +54,7 @@ class Permission_Model extends CI_Model{
         ) is_show 
 , ifnull((select is_edit FROM permission p where m.menu_id = p.menu_id and l.l_id = p.l_id  ), 0 ) is_edit
 , ifnull((select permission_id FROM permission p where m.menu_id = p.menu_id and l.l_id = p.l_id   ), 0 ) permission_id 
-from level l , menu m where m.is_show = 1    and l.l_id in( select l_id from employees where e_id = ?) ORDER by m.menu_id';
+from level l , menu m where m.is_show = 1    and l.l_id in( select l_id from employees where e_id = ?) ORDER by m.parent_menu_id,m.menu_id';
 		  $query = $this->db->query($sql, array($e_id));
 		  log_message('debug', sprintf('Found %b row with employee id %s', $query->num_rows(), $e_id));
 		  return $query->result();
