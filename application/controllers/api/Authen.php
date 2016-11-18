@@ -14,7 +14,7 @@ class Authen extends CI_Controller
     function index( )
     {  
 		$this->output->unset_template();
-		$result = $this->Employee_Model->Check_Login($this->input->post('username_txt'),  $this->input->post('password')); 
+		$result = $this->Employee_Model->Check_Login($this->input->post('username'),  $this->input->post('password')); 
 		if($result === TRUE)
 		{  
 			echo "true";

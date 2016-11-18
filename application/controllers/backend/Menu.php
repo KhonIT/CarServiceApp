@@ -14,8 +14,8 @@ class Menu extends MY_Controller {
 
      public function index()
     {
-		$this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
-		$this->output->set_template('Backend');
+        $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
+        $this->output->set_template('Backend');
         $this->load->js('Assets/Backend/js/Menu.js');
         $this->load->view('Content/Menu_View');
     }
@@ -47,23 +47,23 @@ class Menu extends MY_Controller {
     {
         $this->output->unset_template();
         $Menu_arr = array(
-        		'menu_name'=>$this->input->post('menu_name'),
-				'parent_menu_id'=>$this->input->post('parent_menu_id'),
-				'link_url'=>$this->input->post('link_url'),
-            	'update_by' =>  $this->user_profile['name'],
-            	'update_date' => date('Y-m-d H:i:s')
+          'menu_name'=>$this->input->post('menu_name'),
+          'parent_menu_id'=>$this->input->post('parent_menu_id'),
+          'link_url'=>$this->input->post('link_url'),
+          'modify_by' =>  $this->user_profile['e_id'],
+          'modify_date' => date('Y-m-d H:i:s')
         );
         if($this->input->post('menu_id') =="0"){
-			$result =  $this->Menu_Model->Insert($Menu_arr);
-		}else{
-			$result =  $this->Menu_Model->Update($Menu_arr,$this->input->post('menu_id'));
-		}
+          $result =  $this->Menu_Model->Insert($Menu_arr);
+        }else{
+          $result =  $this->Menu_Model->Update($Menu_arr,$this->input->post('menu_id'));
+        }
         if($result)
         {
-            echo "true";
+          echo "true";
         } else{
-		 echo "false";
-		}
+          echo "false";
+        }
     }
 
 
@@ -73,10 +73,10 @@ class Menu extends MY_Controller {
 
         $Menu_arr = array(
             'is_show'=>0,
-            'update_by' => $this->user_profile['name'],
-            'update_date' => date('Y-m-d H:i:s')
+            'modify_by' => $this->user_profile['e_id'],
+            'modify_date' => date('Y-m-d H:i:s')
         );
-        $Menu =  $this->Menu_Model->Update($Menu_arr,$this->input->post('p_id'));
+        $Menu =  $this->Menu_Model->Update($Menu_arr,$this->input->post('menu_id'));
 
         if($Menu)
         {

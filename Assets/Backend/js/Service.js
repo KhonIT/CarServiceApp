@@ -71,7 +71,7 @@ $('#tbody_list').delegate('span.remove-data', 'click', function() {
 	if (r == true) {
 		$.ajax({
 			  url:  backend_url+'Services/Delete',
-			  data: {id:$.trim(event.target.id)},
+			  data: {service_id:$.trim(event.target.id)},
 			   type: "post",
 			  cache:false,
 			  success: function (data)

@@ -75,8 +75,8 @@ class Employee extends MY_Controller {
 					'contact'=>$this->input->post('contact'),
 					'current_salary'=>$this->input->post('current_salary'),
 					*/
-					'update_by' => $this->user_profile['name'],
-					'modified_date' => date('Y-m-d H:i:s')
+					'modify_by' => $this->user_profile['e_id'],
+					'modify_date' => date('Y-m-d H:i:s')
         );
         if($this->input->post('e_id')=='0'){
         	//$arr['e_password'] = random_string('alnum', 8);
@@ -97,8 +97,8 @@ class Employee extends MY_Controller {
 
         $data_arr = array(
             'is_show'=>0,
-            'update_by' => $this->user_profile['name'],
-            'modified_date' => date('Y-m-d H:i:s')
+            'modify_by' => $this->user_profile['e_id'],
+            'modify_date' => date('Y-m-d H:i:s')
         );
         $result =  $this->Employee_Model->Update($data_arr,$this->input->post('e_id'));
 

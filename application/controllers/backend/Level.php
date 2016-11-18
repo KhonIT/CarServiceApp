@@ -10,7 +10,7 @@ class Level extends MY_Controller {
     private function _init()
     {
         $this->load->model('Level_Model');
-        $this->output->set_template('Backend');  
+        $this->output->set_template('Backend');
 
     }
 
@@ -51,10 +51,10 @@ class Level extends MY_Controller {
         $this->output->unset_template();
 
         $Level_arr = array(
-                'l_name'=>$this->input->post('l_name'),
+            'l_name'=>$this->input->post('l_name'),
         		'l_parent_id'=>$this->input->post('l_parent_id'),
-        		'update_by' => $this->user_profile['name'],
-        		'update_date' => date('Y-m-d H:i:s')
+        		'modify_by' => $this->user_profile['e_id'],
+        		'modify_date' => date('Y-m-d H:i:s')
         );
 
         $Level =  $this->Level_Model->Insert($Level_arr);
@@ -72,8 +72,8 @@ class Level extends MY_Controller {
         $Level_arr = array(
             'l_name'=>$this->input->post('l_name'),
         	'l_parent_id'=>$this->input->post('l_parent_id'),
-            'update_by' => $this->user_profile['name'],
-            'update_date' => date('Y-m-d H:i:s')
+            'modify_by' => $this->user_profile['e_id'],
+            'modify_date' => date('Y-m-d H:i:s')
         );
 
         $Level =  $this->Level_Model->Update($Level_arr,$this->input->post('l_id'));
@@ -84,15 +84,14 @@ class Level extends MY_Controller {
         }
     }
 
-
     public function Delete()
     {
         $this->output->unset_template();
 
         $Level_arr = array(
             'is_show'=>0,
-            'update_by' => $this->user_profile['name'],
-            'update_date' => date('Y-m-d H:i:s')
+            'modify_by' => $this->user_profile['e_id'],
+            'modify_date' => date('Y-m-d H:i:s')
         );
         $Level =  $this->Level_Model->Update($Level_arr,$this->input->post('l_id'));
 
