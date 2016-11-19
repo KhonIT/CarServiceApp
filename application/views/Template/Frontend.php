@@ -96,6 +96,7 @@
 
 <!-- Js  -->
 <script src="<?php echo base_url(); ?>Assets/js/jquery-1.11.3.min.js"></script>
+<script src="<?php echo base_url(); ?>Assets/js/angular.min.js"></script>
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/holder.min.js"></script>
 <!-- End Js Frontend-->

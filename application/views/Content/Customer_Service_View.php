@@ -109,7 +109,7 @@
           </td>
         </tr>
 				<tr>
-					<td>ประเภทของผู้ใช้:</td>
+					<td>สถานะการชำระเงิน:</td>
 					<td>
 						<select   id='dd_pay_status' >
                 <option value='0' selected="selected">ยังไม่ได้ชำระเงิน</option>

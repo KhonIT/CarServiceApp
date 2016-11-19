@@ -37,11 +37,10 @@ class Permission extends MY_Controller {
         	  echo json_encode ($Permission) ;
         }
     }
+
     public function Get_Menu()
     {
         $result =  $this->Permission_Model->Get_Menu($this->session->userdata('e_id'));
-
-
         if($result)
         {
         	  echo json_encode ($result) ;
@@ -52,11 +51,7 @@ class Permission extends MY_Controller {
     public function Edit()
     {
     	$json_array = json_decode($this->input->post('jsonObj'), true);
-
-
     	 foreach($json_array  as $key=>$val){
-
-
     	 	$Permission_arr = array(
     	 			'l_id'=>$val['l_id'],
     	 			'menu_id'=>$val['menu_id'],
@@ -64,13 +59,11 @@ class Permission extends MY_Controller {
     	 			'modify_by' => $this->user_profile['e_id'],
     	 			'modify_date' => date('Y-m-d H:i:s')
     	 	);
-
     		 if( $val['permission_id']=='0'){
     		 	$Permission =  $this->Permission_Model->Insert($Permission_arr);
     		 }else{
     		 	$Permission =  $this->Permission_Model->Update($Permission_arr,$val['permission_id']);
     		 }
-
     	}
             echo "true";
 

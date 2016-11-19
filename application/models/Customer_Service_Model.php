@@ -93,17 +93,17 @@ class Customer_Service_Model extends CI_Model{
 	 }
 
 	 public function Get_Report_Daily(){
-			$sql = 'select DATE(o.created_date)as name,sum(total) as total from orders o group by DATE(o.created_date) order by  DATE(o.created_date) asc ';
+			$sql = 'select left(TIME(o.created_date),2) as time_name,YEAR(o.created_date) as  year,MONTH(o.created_date)as month ,left(DATE(o.created_date),2) as day_no,sum(total) as total from orders o where o.is_show =1   group by DATE(o.created_date), left(TIME(o.created_date),2)  order by left(TIME(o.created_date),2),  DATE(o.created_date) asc ';
 			$query = $this->db->query($sql);
 			return $query->result();
 	 }
 	 public function Get_Report_Monthly(){
-			$sql = 'select MONTH(o.created_date)as month,YEAR(o.created_date) as year ,sum(total) as total from orders o group by MONTH(o.created_date) ,YEAR(o.created_date) order by YEAR(o.created_date) asc,MONTH(o.created_date) asc';
+			$sql = 'select MONTH(o.created_date)as month,YEAR(o.created_date) as year ,sum(total) as total from orders o where o.is_show =1  group by MONTH(o.created_date) ,YEAR(o.created_date) order by YEAR(o.created_date) asc,MONTH(o.created_date) asc';
 			$query = $this->db->query($sql);
 			return $query->result();
 	 }
 	 public function Get_Report_Annualy(){
-			$sql = 'select  YEAR(o.created_date) as name,sum(total) as total from orders o group by YEAR(o.created_date)  order by YEAR(o.created_date) asc ';
+			$sql = 'select  YEAR(o.created_date) as name,sum(total) as total from orders o where o.is_show =1  group by YEAR(o.created_date)  order by YEAR(o.created_date) asc ';
 			$query = $this->db->query($sql);
 			return $query->result();
 	 }
