@@ -97,6 +97,9 @@ class Customer extends MY_Controller {
     public function Delete()
     {
 
+      $data=json_decode(file_get_contents("php://input"));
+    $id=$data->id;
+
         $this->output->unset_template();
 
         $data_arr = array(
@@ -104,11 +107,11 @@ class Customer extends MY_Controller {
             'modify_by' => $this->user_profile['e_id'],
             'modify_date' => date('Y-m-d H:i:s')
         );
-        $result =  $this->Customer_Model->Update($data_arr,$this->input->post('id'));
+       $result =  $this->Customer_Model->Update($data_arr,$id);
 
         if($result)
         {
-               echo "true";
+                echo "true";
         }
     }
 }
