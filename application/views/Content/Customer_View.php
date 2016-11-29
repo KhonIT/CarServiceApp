@@ -1,7 +1,9 @@
+<div ng-app="App"  >
+  <div ng-controller="customerController" >
     <div class="col-sm-1 "> </div>
     <div class="col-sm-10 " ng-app="App">
 
-<div class="panel panel-default" ng-controller="customerController" >
+<div class="panel panel-default" >
   <div class="panel-heading text-center" ><h3 class="sub-header">รายชื่อลูกค้า</h3> </div>
   <div class="panel-body">
 
@@ -21,15 +23,13 @@
                      <p>Search String : {{search}}</p>
                     </div>
                     -->
-   <span class="add-data u icon">เพิ่ม</span>
-   <span class="add-data glyphicon glyphicon-plus icon"></span>
+   <span class="add-data u icon" ng-click="inscus();">เพิ่ม</span>
+   <span class="add-data glyphicon glyphicon-plus icon" ng-click="inscus();"></span>
 	 </div>
-  </div>
 
+      <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
   <!-- Table -->
-      <div class=" table-responsive   table-bordered table-hover"  >
-
-        <table  class="table table-striped">
+        <table  class="table  table-responsive   table-strip table-hover">
           <tr class="text-center">
             <th>ลำดับที่</th>
             <th ng-click="sort('cus_name')">ชื่อ</th>
@@ -73,37 +73,39 @@
           <tr>
               <td>ชื่อ :</td>
               <td>
-                  <input type="text" name="tb_cus_name" id="tb_cus_name"   />
-                  <input type="text" name="tb_id" id="tb_id" style="display: none;"   />
+                  <input type="text" name="tb_cus_name" id="tb_cus_name"  ng-model="cus_name"  />
+                  <input type="text" name="tb_id" id="tb_id" style="display: none;" ng-model="cus_id"   />
               </td>
           </tr>
           <tr>
             <td> เบอร์โทร:</td>
-            <td><input type="tel" name="tb_cus_tel" id="tb_cus_tel"  /></td>
+            <td><input type="tel" name="tb_cus_tel" id="tb_cus_tel" ng-model="cus_tel" /></td>
           </tr>
           <tr>
             <td> ทะเบียนรถ:</td>
-            <td><input type="text" name="tb_cus_car_number" id="tb_cus_car_regis_number"  /></td>
+            <td><input type="text" name="tb_cus_car_number" id="tb_cus_car_regis_number" ng-model="cus_car_regis_number"   /></td>
           </tr>
           <tr>
               <td> ยี่ห้อ:</td>
-              <td><input type="text" name="tb_cus_car_brand" id="tb_cus_car_brand"   /></td>
+              <td><input type="text" name="tb_cus_car_brand" id="tb_cus_car_brand"  ng-model="cus_car_brand"  /></td>
           </tr>
           <tr>
               <td> รุ่น:</td>
-              <td><input type="text" name="tb_cus_car_model" id="tb_cus_car_model"   /></td>
+              <td><input type="text" name="tb_cus_car_model" id="tb_cus_car_model"  ng-model="cus_car_model" /></td>
           </tr>
           <tr>
               <td> สี</td>
-              <td><input type="text" name="tb_cus_car_color" id="tb_cus_car_color"   /></td>
+              <td><input type="text" name="tb_cus_car_color" id="tb_cus_car_color"  ng-model="cus_car_color" /></td>
           </tr>
           <tr>
             <td colspan='2' class="text-center">
-              <span  class="glyphicon glyphicon-floppy-save save-data icon"></span>
+              <span  class="glyphicon glyphicon-floppy-save save-data icon" ng-click="savecus();"></span>
             </td>
           </tr>
         </table>
 			</div>
 		</div>
 	</div>
+</div>
+</div>
 </div>
