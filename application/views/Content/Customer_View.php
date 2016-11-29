@@ -15,7 +15,7 @@
                         <input type ='text' class="form-control" placeholder="ระบุชื่อหรือนามสกุล เพื่อค้นหา" ng-model="search" />
              					</div>
              				</form>
-                  <!--  <div align="left"  class="alert alert-info">
+                  <!-- For Debug  <div align="left"  class="alert alert-info">
                      <p>Sort key: {{sortKey}}</p>
                      <p>Reverse: {{reverse}}</p>
                      <p>Search String : {{search}}</p>
@@ -27,7 +27,7 @@
   </div>
 
   <!-- Table -->
-      <div class="table-responsive text-center"  >
+      <div class=" table-responsive   table-bordered table-hover"  >
 
         <table  class="table table-striped">
           <tr class="text-center">
