@@ -11,7 +11,7 @@ app.controller('loginController', function($scope, $http, $timeout) {
     $scope.msg="";
 
 
-    $scope.check_auth = function() { 
+    $scope.check_auth = function() {
         	if(( $scope.username.length> 0)&& ($scope.password.length > 0) ) {
             $http.post(backend_url + 'Login/check_auth', { username: $scope.username, password: $scope.password})
             .success(function(response) {

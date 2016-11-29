@@ -106,14 +106,14 @@
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/holder.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/ie10-viewport-bug-workaround.js"></script> 
+<script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/ie10-viewport-bug-workaround.js"></script>
 <script type="text/javascript">
 
 var base_url = "<?php echo base_url();?>";
 var backend_url = "<?php echo base_url();?>Backend/";
 </script>
 <script src="<?php echo base_url(); ?>Assets/Backend/js/Common.js"></script>
-<script type="text/javascript"> 
+<script type="text/javascript">
 $('.logoutform').delegate('a.btnlogout', 'click', function() {
 	$.ajax({
 		url:  backend_url+'Employee/logout',
@@ -154,14 +154,28 @@ $(document).ready(function(){
 		success: function (data) {
 
 			$("#menu_nav").text("");
+			var count = 1;
 			$.each(data, function(idx, obj) {
+
 					if (obj.parent_menu=="0")
 					{
 						$("#menu_nav").append('<li class="dropdown" ><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'+obj.menu_name+'<span class="caret"></span></a><ul class="dropdown-menu" id="menu'+obj.menu_id+'"></ul></li>');
+						count ++;
 					}else{
-						$("#menu"+obj.parent_menu_id).append('	<li><a href="'+backend_url+''+obj.link_url+'">'+obj.menu_name+'</a></li> ');
-
+						if (obj.is_edit=="1"){
+							$("#menu"+obj.parent_menu_id).append('	<li><a href="'+backend_url+''+obj.link_url+'">'+obj.menu_name+'</a></li> ');
+						}
 					}
+			});
+			$.each(data, function(idx, obj) {
+				if (obj.parent_menu=="0")
+				{
+					//degug console.log(obj.menu_id+':#menu'+obj.menu_id+' li');
+					//degug console.log($("#menu"+obj.menu_id+" li").children().length==0);
+						 if($("#menu"+obj.menu_id+" li").children().length==0){
+							 $("#menu"+obj.menu_id).parent('li').addClass("hidden");
+						 }
+				}
 			});
 		}
 	});

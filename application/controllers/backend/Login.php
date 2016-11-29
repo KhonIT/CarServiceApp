@@ -26,7 +26,7 @@ class Login extends CI_Controller {
 			$this->output->append_title('ระบบหลังร้าน' );
 			$this->output->set_template('Blank');
 			$this->load->css('Assets/Backend/css/Login.css');
-			$this->load->js('Assets/Backend/js/Login.js');
+			$this->load->js('Assets/Backend/js/cont/Login.js');
 			$this->load->view('Content/Login_View');
 		}
 
@@ -34,15 +34,16 @@ class Login extends CI_Controller {
       public function check_auth()
 	{
 		$this->output->unset_template();
-		$result = $this->Employee_Model->Check_Login($this->input->post('inputUsername'),  $this->input->post('inputPassword'));
 
-		if($result === TRUE)
+		$data=json_decode(file_get_contents("php://input"));
+
+		$result = $this->Employee_Model->Check_Login($data->password, $data->password);
+
+		if($result)
 		{
-			echo "true";
-		}
-		else
-		{ 
- 			echo "false";
-		}
-	} 
+			 echo json_encode (true) ;
+		}else{
+			 echo json_encode (false) ;
+		} 	
+	}
 }
