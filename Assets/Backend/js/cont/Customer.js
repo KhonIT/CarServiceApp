@@ -88,7 +88,7 @@ app.controller('customerController', function($scope, $http, $timeout) {
               $('#modal_data').modal('toggle');
               if (angular.equals(data, "true")  ){
                   $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
-                  $scope.displaymsginfo();
+                  $scope.displaymsgsuccess();
                   $scope.displayData();
               }else{
                 $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
@@ -100,11 +100,7 @@ app.controller('customerController', function($scope, $http, $timeout) {
             })
     }
 
-    $scope.sort = function(keyname) {
-        $scope.sortKey = keyname; //set the sortKey to the param passed
-        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-    }
-    $scope.displaymsginfo = function(){
+    $scope.displaymsgsuccess = function(){
       $('#msgbox').addClass( "alert-success" ).removeClass( "alert-warning hidden");
       $timeout(function() {
            $('#msgbox').addClass( "hidden" )
