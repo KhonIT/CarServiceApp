@@ -18,7 +18,7 @@ app.controller('customerController', function($scope, $http, $timeout) {
     });
 
 
-    $scope.displayData = function() {
+    $scope.getData = function() {
         $http.get(backend_url + 'Customer/Get_All').success(function(response) {
             $scope.customers = response; //ajax request to fetch data into $scope.data
         }).error(function(err) {
@@ -38,7 +38,7 @@ app.controller('customerController', function($scope, $http, $timeout) {
                     if (angular.equals(data, "true")  ){
                         $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
                         $scope.displaymsginfo();
-                        $scope.displayData();
+                        $scope.getData();
                     }else{
                       $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
                       $scope.displaymsgwarning();
@@ -89,7 +89,7 @@ app.controller('customerController', function($scope, $http, $timeout) {
               if (angular.equals(data, "true")  ){
                   $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
                   $scope.displaymsgsuccess();
-                  $scope.displayData();
+                  $scope.getData();
               }else{
                 $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
                 $scope.displaymsgwarning();
