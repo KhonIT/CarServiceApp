@@ -140,7 +140,7 @@ $(document).ready(function(){
 		success: function (data) {
 
 			$("#User_Profile").text("");
-			$("#User_Profile").append(data.name+':'+data.l_name+'<span class="caret"></span>');
+			$("#User_Profile").append(data.emp_name+':'+data.l_name+'<span class="caret"></span>');
 
 		}
 	});
