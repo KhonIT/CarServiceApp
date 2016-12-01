@@ -50,7 +50,7 @@ class Menu extends MY_Controller {
           'menu_name'=>$this->input->post('menu_name'),
           'parent_menu_id'=>$this->input->post('parent_menu_id'),
           'link_url'=>$this->input->post('link_url'),
-          'modify_by' =>  $this->user_profile['e_id'],
+          'modify_by' =>  $this->user_profile['emp_id'],
           'modify_date' => date('Y-m-d H:i:s')
         );
         if($this->input->post('menu_id') =="0"){
@@ -73,7 +73,7 @@ class Menu extends MY_Controller {
 
         $Menu_arr = array(
             'is_show'=>0,
-            'modify_by' => $this->user_profile['e_id'],
+            'modify_by' => $this->user_profile['emp_id'],
             'modify_date' => date('Y-m-d H:i:s')
         );
         $Menu =  $this->Menu_Model->Update($Menu_arr,$this->input->post('menu_id'));

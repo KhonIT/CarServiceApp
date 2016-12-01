@@ -49,7 +49,7 @@ class Services extends MY_Controller {
         $Menu_arr = array(
           'service_name'=>$this->input->post('name'),
           'price'=>$this->input->post('price'),
-          'modify_by' =>  $this->user_profile['e_id'],
+          'modify_by' =>  $this->user_profile['emp_id'],
           'modify_date' => date('Y-m-d H:i:s')
         );
         if($this->input->post('id') =="0"){
@@ -72,7 +72,7 @@ class Services extends MY_Controller {
 
         $Menu_arr = array(
             'is_show'=>0,
-            'modify_by' => $this->user_profile['e_id'],
+            'modify_by' => $this->user_profile['emp_id'],
             'modify_date' => date('Y-m-d H:i:s')
         );
         $Menu =  $this->Service_Model->Update($Menu_arr,$this->input->post('service_id'));

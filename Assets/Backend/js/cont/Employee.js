@@ -95,8 +95,7 @@ app.controller('employeeController', function($scope, $http, $timeout) {
 
         $http.post(backend_url + 'Employee/Get_By_ID', { 'id': id })
             .success(function(data) {
-              console.log(data);
-                $scope.emp_id = data.e_id;
+                $scope.emp_id = data.emp_id;
                 $scope.emp_st_name =  data.emp_st_name;
                 $scope.emp_name =  data.emp_name;
                 $scope.emp_nickname = data.emp_nickname;
@@ -135,7 +134,8 @@ app.controller('employeeController', function($scope, $http, $timeout) {
             emp_nationality: $scope.emp_nationality,
             emp_current_salary: $scope.emp_current_salary,
             emp_username: $scope.emp_username,
-            emp_password: $scope.emp_password
+            emp_password: $scope.emp_password,
+            emp_l_id:$('#dd_Level :selected').val()
           }).success(function(data) {
 
               $('#modal_data').modal('toggle');

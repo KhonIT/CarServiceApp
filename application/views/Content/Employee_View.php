@@ -9,7 +9,7 @@
         <form class="form-inline text-right">
           <div class="form-group">
             <label >Search</label>
-            <input type ='text' class="form-control" placeholder="ระบุชื่อหรือนามสกุล เพื่อค้นหา" ng-model="search" />
+            <input type ='text' class="form-control" placeholder="ค้นหา" ng-model="search" />
           </div>
         </form>
 
@@ -20,6 +20,7 @@
 
 		  <!-- Table -->
 		      <div class="table-responsive" align="center">
+                  <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
 		            <table  class="table-striped"  >
 		                <thead>
 		                    <tr >
@@ -100,7 +101,7 @@
 				</tr>
 				<tr>
 					<td>บันทึก:</td>
-					 <td><span  class="glyphicon glyphicon-floppy-save data-save icon"></span></td>
+					 <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="saveemp()"></span></td>
 				</tr>
 			</table>
 		</div>

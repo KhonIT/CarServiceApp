@@ -79,7 +79,7 @@ class Employee_Model extends CI_Model{
 	 public function Check_Login($e_username, $e_password)
 	{
 
-		  $sql = 'select  e_id from employees e   where e.is_show = 1 and e.e_username = ? and e.e_password = ?';
+		  $sql = 'select  e_id as emp_id from employees e   where e.is_show = 1 and e.e_username = ? and e.e_password = ?';
 
 		$query = $this->db->query($sql, array($e_username,$e_password));
 
@@ -87,7 +87,7 @@ class Employee_Model extends CI_Model{
 	 	{
 			 foreach ($query->result() as $row)
 		   {
-				$this->session->set_userdata('e_id', $row->e_id);
+				$this->session->set_userdata('emp_id', $row->emp_id);
 		   }
 	 			return TRUE;
 	 	}

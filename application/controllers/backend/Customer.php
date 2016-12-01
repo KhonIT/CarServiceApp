@@ -40,19 +40,6 @@ class Customer extends MY_Controller {
     	{
     		echo json_encode ($result) ;
     	}
-    } 
-
-
-    public function Customer_Search()
-    {
-        $this->output->unset_template();
-
-        $result =  $this->Customer_Model->Cus_Search($this->input->post('cus_tel'),$this->input->post('cus_car_regis_number'));
-
-        if($result)
-        {
-            echo json_encode ($result) ;
-        }
     }
 
 
@@ -67,7 +54,7 @@ class Customer extends MY_Controller {
           'cus_car_brand'=>$data->cus_car_brand,
           'cus_car_model'=>$data->cus_car_model,
           'cus_car_color'=>$data->cus_car_color,
-          'modify_by' =>$this->user_profile['e_id'],
+          'modify_by' =>$this->user_profile['emp_id'],
           'modify_date' => date('Y-m-d H:i:s')
         );
         if($data->id=="0"){
@@ -89,7 +76,7 @@ class Customer extends MY_Controller {
         $id=$data->id;
         $data_arr = array(
             'is_show'=>0,
-            'modify_by' => $this->user_profile['e_id'],
+            'modify_by' => $this->user_profile['emp_id'],
             'modify_date' => date('Y-m-d H:i:s')
         );
         $result =  $this->Customer_Model->Update($data_arr,$id);

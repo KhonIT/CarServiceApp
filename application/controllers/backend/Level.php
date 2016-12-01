@@ -53,7 +53,7 @@ class Level extends MY_Controller {
         $Level_arr = array(
             'l_name'=>$this->input->post('l_name'),
         		'l_parent_id'=>$this->input->post('l_parent_id'),
-        		'modify_by' => $this->user_profile['e_id'],
+        		'modify_by' => $this->user_profile['emp_id'],
         		'modify_date' => date('Y-m-d H:i:s')
         );
 
@@ -72,7 +72,7 @@ class Level extends MY_Controller {
         $Level_arr = array(
             'l_name'=>$this->input->post('l_name'),
         	'l_parent_id'=>$this->input->post('l_parent_id'),
-            'modify_by' => $this->user_profile['e_id'],
+            'modify_by' => $this->user_profile['emp_id'],
             'modify_date' => date('Y-m-d H:i:s')
         );
 
@@ -90,7 +90,7 @@ class Level extends MY_Controller {
 
         $Level_arr = array(
             'is_show'=>0,
-            'modify_by' => $this->user_profile['e_id'],
+            'modify_by' => $this->user_profile['emp_id'],
             'modify_date' => date('Y-m-d H:i:s')
         );
         $Level =  $this->Level_Model->Update($Level_arr,$this->input->post('l_id'));

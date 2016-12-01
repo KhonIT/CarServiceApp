@@ -40,7 +40,7 @@ class Permission extends MY_Controller {
 
     public function Get_Menu()
     {
-        $result =  $this->Permission_Model->Get_Menu($this->session->userdata('e_id'));
+        $result =  $this->Permission_Model->Get_Menu($this->session->userdata('emp_id'));
         if($result)
         {
         	  echo json_encode ($result) ;
@@ -56,7 +56,7 @@ class Permission extends MY_Controller {
     	 			'l_id'=>$val['l_id'],
     	 			'menu_id'=>$val['menu_id'],
     	 			'is_edit'=>($val['is_edit']  == 'true' ? 1 : 0),
-    	 			'modify_by' => $this->user_profile['e_id'],
+    	 			'modify_by' => $this->user_profile['emp_id'],
     	 			'modify_date' => date('Y-m-d H:i:s')
     	 	);
     		 if( $val['permission_id']=='0'){

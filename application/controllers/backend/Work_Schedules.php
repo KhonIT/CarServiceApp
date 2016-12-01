@@ -61,7 +61,7 @@ class Work_Schedules extends MY_Controller {
         $data_arr = array(
         		'service_name'=>$this->input->post('name'),
 				'price'=>$this->input->post('price'),
-            	'modify_by' =>  $this->user_profile['e_id'],
+            	'modify_by' =>  $this->user_profile['emp_id'],
             	'modify_date' => date('Y-m-d H:i:s')
         );
         if($this->input->post('id') =="0"){
@@ -85,7 +85,7 @@ class Work_Schedules extends MY_Controller {
 
         $data_arr = array(
             'is_show'=>0,
-            'modify_by' => $this->user_profile['e_id'],
+            'modify_by' => $this->user_profile['emp_id'],
             'modify_date' => date('Y-m-d H:i:s')
         );
         $result =  $this->Work_Schedules_Model->Update($data_arr,$this->input->post('id'));

@@ -14,7 +14,7 @@
              				<form class="form-inline">
              					<div class="form-group">
              						<label >Search</label>
-                        <input type ='text' class="form-control" placeholder="ระบุชื่อหรือนามสกุล เพื่อค้นหา" ng-model="search" />
+                        <input type ='text' class="form-control" placeholder="ค้นหา" ng-model="search" />
              					</div>
              				</form>
                   <!-- For Debug  <div align="left"  class="alert alert-info">

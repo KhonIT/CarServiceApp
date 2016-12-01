@@ -16,7 +16,7 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		if(strlen($this->session->userdata('e_id'))> 0)
+		if(strlen($this->session->userdata('emp_id'))> 0)
 		{
 			redirect('/BackEnd/Home');
 		}
@@ -37,13 +37,13 @@ class Login extends CI_Controller {
 
 		$data=json_decode(file_get_contents("php://input"));
 
-		$result = $this->Employee_Model->Check_Login($data->password, $data->password);
+		$result = $this->Employee_Model->Check_Login($data->username, $data->password);
 
 		if($result)
 		{
 			 echo json_encode (true) ;
 		}else{
 			 echo json_encode (false) ;
-		} 	
+		}
 	}
 }

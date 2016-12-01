@@ -89,8 +89,8 @@ class Customer_Service extends MY_Controller {
               'cus_id'=>$this->input->post('cus_id'),
               'pay_status'=>$this->input->post('pay_status'),
               'total'=>$this->input->post('total'),
-              'emp_id'=>$this->user_profile['e_id'],
-              'modify_by' =>  $this->user_profile['e_id'],
+              'emp_id'=>$this->user_profile['emp_id'],
+              'modify_by' =>  $this->user_profile['emp_id'],
               'modify_date' => date('Y-m-d H:i:s')
           );
     			$result =  $this->Customer_Service_Model->Insert($data_arr);
@@ -101,7 +101,7 @@ class Customer_Service extends MY_Controller {
               'comment'=>$this->input->post('comment'),
               'total'=>$this->input->post('total'),
               'pay_status'=>$this->input->post('pay_status'),
-              'modify_by' =>  $this->user_profile['e_id'],
+              'modify_by' =>  $this->user_profile['emp_id'],
               'modify_date' => date('Y-m-d H:i:s')
           );
     			$result =  $this->Customer_Service_Model->Update($data_arr,$this->input->post('id'));
@@ -122,7 +122,7 @@ class Customer_Service extends MY_Controller {
 
         $data_arr = array(
             'is_show'=>0,
-            'modify_by' => $this->user_profile['e_id'],
+            'modify_by' => $this->user_profile['emp_id'],
             'modify_date' => date('Y-m-d H:i:s')
         );
         $result =  $this->Customer_Service_Model->Update($data_arr,$this->input->post('id'));
@@ -146,7 +146,7 @@ class Customer_Service extends MY_Controller {
              'service_id'=>$val['service_id'],
              'price'=>$val['price'],
              'is_show'=>$is_show,
-             'modify_by' => $this->user_profile['e_id'],
+             'modify_by' => $this->user_profile['emp_id'],
              'modify_date' => date('Y-m-d H:i:s')
          );
 

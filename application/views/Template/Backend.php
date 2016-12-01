@@ -38,43 +38,8 @@
           </div>
           <div class="navbar-collapse collapse">
            <ul class="nav navbar-nav " id="menu_nav">
-			 <li class="dropdown">
-			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  ลูกค้า<span class="caret"></span></a>
-			  <ul class="dropdown-menu">
-				<li role="separator" class="divider"></li>
-				<li><a href="<?php echo base_url(); ?>customer_service">ประวัติการใช้บริการ</a></li>
-				<li><a href="<?php echo base_url(); ?>service">รับรถ</a></li>
-				<li role="separator" class="divider"></li>
-			  </ul>
-			</li>
-			<li class="dropdown">
-			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  พนักงาน<span class="caret"></span></a>
-			  <ul class="dropdown-menu">
-				<li role="separator" class="divider"></li>
-				<li><a href="<?php echo base_url(); ?>#">ลงเวลางาน</a></li>
-				<li role="separator" class="divider"></li>
-			  </ul>
-			</li>
-			<li class="dropdown">
-			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  รายงาน<span class="caret"></span></a>
-			  <ul class="dropdown-menu">
-				<li role="separator" class="divider"></li>
-				<li><a href="<?php echo base_url(); ?>#">การบริการ</a></li>
-				<li><a href="<?php echo base_url(); ?>#">การลงเวลาพนักงาน</a></li>
-				<li role="separator" class="divider"></li>
-			  </ul>
-			</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ตั้งค่า <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li role="separator" class="divider"></li>
-							<li><a href="<?php echo base_url(); ?>Employee">จัดการข้อมูลพนักงาน</a></li>
-							<li><a href="<?php echo base_url(); ?>Level">จัดการสิทธิ์การใช้งาน</a></li>
-							<li><a href="<?php echo base_url(); ?>Menu">จัดการเมนู</a></li>
-							<li><a href="<?php echo base_url(); ?>Service/Setup">การบริการ</a></li>
-							<li role="separator" class="divider"></li>
-						</ul>
-				</li>
+			         <!-- menu_nav -->
+ 
           </ul>
 
 			<div class="navbar-form navbar-right">
