@@ -28,8 +28,8 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
     $scope.iconlogo_click = function(iconname) {
       $scope.cus_car_brand =  iconname;
     }
-    $scope.iconlogo_click = function(iconname) {
-      $('#modal_data_cus_search').modal('toggle');
+    $scope.cuslist = function() { 
+      $('#modal_data_cus_search').modal();
     }
 
     $scope.savecusservice = function() {
@@ -66,15 +66,20 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
       $timeout(function() {
            $('#msgbox').addClass( "hidden" )
         }, 1500); // delay 1500 ms
-    } 
-    $scope.choosecus = function(cus_id,cus_name,cus_tel,cus_car_regis_number,cus_car_brand,cus_car_model,cus_car_color){
-      $scope.cus_id = cus_id;
-      $scope.cus_name =  cus_name;
-      $scope.cus_tel = cus_tel;
-      $scope.cus_car_regis_number =  cus_car_regis_number;
-      $scope.cus_car_brand =  cus_car_brand;
-      $scope.cus_car_model =  cus_car_model;
-      $scope.cus_car_color = cus_car_color;
-      $('#modal_data_cus_search').modal('toggle');
+    }
+    $scope.choosecus = function(cusid){
+      $http.post(backend_url + 'Customer/Get_By_ID', { 'id': cusid })
+          .success(function(data) {
+              $scope.cus_id = data.id;
+              $scope.cus_name =  data.cus_name;
+              $scope.cus_tel =  data.cus_tel;
+              $scope.cus_car_regis_number =  data.cus_car_regis_number;
+              $scope.cus_car_brand =  data.cus_car_brand;
+              $scope.cus_car_model =  data.cus_car_model;
+              $scope.cus_car_color =  data.cus_car_color;
+            $('#modal_data_cus_search').modal('toggle');
+          }).error(function(err) {
+              console.log(err);
+          })
     }
 });
