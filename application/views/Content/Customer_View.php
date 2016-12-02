@@ -88,9 +88,8 @@
               <td> ยี่ห้อ:</td>
               <td  style="width:500px;"  class="text-left">
 
-                   <img ng-repeat="logo in logos" ng-src="<?php echo base_url(); ?>Assets/Images/iconlogo/{{logo.img}}" style="margin:5px;"   alt="{{logo.name}}" ng-click="iconlogo_click(logo.name)" />
-
- <p>
+                   <img ng-repeat="logo in logos" ng-src="<?php echo base_url(); ?>Assets/Images/iconlogo/{{logo.img}}" style="margin:5px;" class="icon" alt="{{logo.name}}" ng-click="iconlogo_click(logo.name)" />
+ 
                <p>  อื่นๆ : <input type="text" name="tb_cus_car_brand" id="tb_cus_car_brand"  ng-model="cus_car_brand"  /></p></td>
           </tr>
           <tr>

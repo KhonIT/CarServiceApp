@@ -114,7 +114,7 @@ $('#modal_data').delegate('span.data-save', 'click', function() {
 	var  jsonObj = [];
 	var sum = parseFloat("0.00");
 	$('input:checkbox[id^="service_"]').each(function(){
-						data = {}
+						data = [];
 						data["order_id"] = $("#tb_id").val();
 						data["order_detail_id"] =  $(this).attr('id').replace("service_", "");;
 						data["service_id"] = $(this).val();
@@ -127,8 +127,7 @@ $('#modal_data').delegate('span.data-save', 'click', function() {
 
 	});
 	$('#tb_total').val(sum);
-	var jsonpost = JSON.stringify(jsonObj)
-alert(jsonpost);
+	var jsonpost = JSON.stringify(jsonObj);
 	$.ajax({
 		url:  backend_url+'Customer_Service/OrderDetailEdit',
 		data: {'jsonObj': jsonpost},
