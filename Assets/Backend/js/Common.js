@@ -56,9 +56,4 @@ $(document).ajaxStart(function () {
     ajaxindicatorstart('Loading data...');
 }).ajaxStop(function () {
     ajaxindicatorstop();
-});
-
-
-
-
-var app = angular.module('AppAngular', []);
+}); 

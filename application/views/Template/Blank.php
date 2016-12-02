@@ -39,6 +39,7 @@
 <script type="text/javascript">
 	var base_url = "<?php echo base_url();?>";
 	var backend_url = "<?php echo base_url();?>Backend/";
+	var app = angular.module('AppAngular', []);
 </script>
 <script src="<?php echo base_url(); ?>Assets/Backend/js/Common.js"></script>
   <?php  foreach($js as $file){ ?><script src="<?php echo $file; ?>"></script><?php } ?>

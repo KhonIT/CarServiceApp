@@ -110,6 +110,7 @@
 
 var base_url = "<?php echo base_url();?>";
 var backend_url = "<?php echo base_url();?>Backend/";
+var app = angular.module('AppAngular', []);
 
 </script>
 <script src="<?php echo base_url(); ?>Assets/Backend/js/Common.js"></script>

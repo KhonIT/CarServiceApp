@@ -113,4 +113,9 @@ $("#m
         }, 1500); // delay 1500 ms
     }
 
+
+    $scope.choosecus = function(){ 
+    }
+
+
 });
