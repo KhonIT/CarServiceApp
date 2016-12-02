@@ -10,17 +10,34 @@
 <!-- Table -->
       <table  class="table  table-responsive   table-strip table-hover">
         <tr>
-          <td> ข้อมูล ลูกค้า </td>
-          <td>
-            <span class='data-search-cus icon glyphicon glyphicon-search'  ng-click="addcus()">ค้นหา</span>
-            <p class="text-left">{{cus_name}}</p>
-            <p class="text-left">{{cus_tel}}</td>
-            <p class="text-left">{{cus_car_regis_number}}</p>
-            <p class="text-left">{{cus_car_brand}}</p>
-            <p class="text-left">{{cus_car_model}}</p>
-            <p class="text-left">{{cus_car_color}}</p>
+          <td colspan="2">
+            <span class='data-search-cus icon glyphicon glyphicon-search'  ng-click="cuslist();">ค้นหาข้อมูลลูกค้า</span>
           </td>
         </tr>
+        <tr>
+          <td>ชื่อ :</td>
+          <td>{{cus_name}}</td>
+        <tr>
+        <tr>
+          <td>เบอร์โทร</td>
+          <td>{{cus_tel}}</td>
+        <tr>
+        <tr>
+          <td> ทะเบียนรถ:</td>
+          <td>{{cus_car_regis_number}}</td>
+        <tr>
+        <tr>
+          <td>ยี่ห้อ:</td>
+          <td>{{cus_car_brand}}</td>
+        <tr>
+        <tr>
+          <td>รุ่น:</td>
+          <td>{{cus_car_model}}</td>
+        <tr>
+        <tr>
+          <td>ส</td>
+          <td>{{cus_car_color}}</td>
+        <tr>
         <tr>
           <td>รายละเอียดการบริการ</td>
           <td>
@@ -119,7 +136,14 @@
   			<div class='modal-header'  align="center">
   				<button type='button' class='close' data-dismiss='modal'>&times;</button>
   				<h4><span class='glyphicon '></span>ข้อมูลลูกค้า</h4>
-          <span class='data-add-cus icon glyphicon glyphicon-plus' ng-click="addcus()">เพิ่ม</span>
+
+          <form class="form-inline">
+            <div class="form-group">
+              <label >ค้นหา</label>
+              <input type ='text' class="form-control" placeholder="ค้นหา" ng-model="search" />
+                <span class='data-add-cus icon glyphicon glyphicon-plus ' ng-click="addcus()">เพิ่ม</span>
+            </div>
+          </form>
   			</div>
   			<div class='modal-body'  align="center"   >
           <table class="table-modal " >
