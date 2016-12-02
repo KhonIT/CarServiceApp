@@ -1,4 +1,4 @@
-  <div class="container" ng-app="App" >
+  <div class="container" ng-app="AppAngular" >
            <div   align='center' >
               <img src="<?php echo base_url(); ?>Assets/Images/logo&sloganNobg.png" />
             </div>

@@ -20,6 +20,32 @@ class Customer extends MY_Controller {
         $this->load->view('Content/Customer_View');
     }
 
+    public function Get_Logo()
+    {
+        $this->output->unset_template();
+
+        $this->load->helper('directory'); //load directory helper
+        $dir = APPPATH. "Assets\Images\iconlogo";
+        $dir = str_replace('\application','',$dir);
+
+        $map = directory_map($dir);
+        $data= array();
+        foreach ($map as $key => $value) {
+
+          $name = explode('.', $value);
+           $data_arr = array(
+               'name'=>$name[1],
+               'img'=>$value
+           );
+               $data[] = $data_arr;
+        }
+
+        if($map)
+        {
+          echo json_encode ($data) ;
+        }
+    }
+
     public function Get_All()
     {
         $this->output->unset_template();

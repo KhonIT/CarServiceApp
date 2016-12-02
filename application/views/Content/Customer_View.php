@@ -1,7 +1,6 @@
-<div ng-app="App"  >
   <div ng-controller="customerController" >
     <div class="col-sm-1 "> </div>
-    <div class="col-sm-10 " ng-app="App">
+    <div class="col-sm-10 ">
 
 <div class="panel panel-default" >
   <div class="panel-heading text-center" ><h3 class="sub-header">รายชื่อลูกค้า</h3> </div>
@@ -68,7 +67,7 @@
 				<button type='button' class='close' data-dismiss='modal'>&times;</button>
 				<h4><span class='glyphicon '></span>ข้อมูลรายละเอียดลูกค้า</h4>
 			</div>
-			<div class='modal-body text-center'   >
+			<div class='modal-body  '   >
         <table class="table-modal " >
           <tr>
               <td>ชื่อ :</td>
@@ -87,7 +86,12 @@
           </tr>
           <tr>
               <td> ยี่ห้อ:</td>
-              <td><input type="text" name="tb_cus_car_brand" id="tb_cus_car_brand"  ng-model="cus_car_brand"  /></td>
+              <td  style="width:500px;"  class="text-left">
+
+                   <img ng-repeat="logo in logos" ng-src="<?php echo base_url(); ?>Assets/Images/iconlogo/{{logo.img}}" style="margin:5px;"   alt="{{logo.name}}" ng-click="iconlogo_click(logo.name)" />
+
+ <p>
+               <p>  อื่นๆ : <input type="text" name="tb_cus_car_brand" id="tb_cus_car_brand"  ng-model="cus_car_brand"  /></p></td>
           </tr>
           <tr>
               <td> รุ่น:</td>
@@ -106,6 +110,5 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 </div>

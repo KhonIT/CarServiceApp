@@ -1,4 +1,3 @@
-var app = angular.module('App', []);
 app.controller('employeeController', function($scope, $http, $timeout) {
 
     $scope.employees = []; //declare an empty array
@@ -54,14 +53,14 @@ app.controller('employeeController', function($scope, $http, $timeout) {
         if (r == true) {
             $http.post(backend_url + 'Employee/Delete', { 'id': id })
                 .success(function(data) {
-                    if (angular.equals(data, "true")  ){
-                        $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
-                        $scope.displaymsginfo();
-                        $scope.getData();
-                    }else{
-                      $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
-                      $scope.displaymsgwarning();
-                    }
+                  if (angular.equals(data, "true")  ){
+                      $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
+                      $scope.displaymsgsuccess();
+                      $scope.getData();
+                  }else{
+                    $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
+                    $scope.displaymsgwarning();
+                  }
 
                 }).error(function(err) {
                     console.log(err);

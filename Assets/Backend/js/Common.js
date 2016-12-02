@@ -1,7 +1,7 @@
 function ajaxindicatorstart(text) {
     if (jQuery('body').find('#resultLoading').attr('id') != 'resultLoading') {
         jQuery('body').append('<div id="resultLoading" style="display:none"><div><img src="'+base_url+'Assets/Images/logo.png"><div>' + text + '</div></div><div class="bg"></div></div>');
-    } 
+    }
     jQuery('#resultLoading').css({
         'width': '100%',
         'height': '100%',
@@ -57,3 +57,8 @@ $(document).ajaxStart(function () {
 }).ajaxStop(function () {
     ajaxindicatorstop();
 });
+
+
+
+
+var app = angular.module('AppAngular', []);

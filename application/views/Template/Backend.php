@@ -24,7 +24,7 @@
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 			<![endif]-->
 		</head>
-<body>
+<body ng-app="AppAngular">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
@@ -39,7 +39,7 @@
           <div class="navbar-collapse collapse">
            <ul class="nav navbar-nav " id="menu_nav">
 			         <!-- menu_nav -->
- 
+
           </ul>
 
 			<div class="navbar-form navbar-right">
@@ -48,7 +48,8 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="User_Profile">  </a>
 						<ul class=" dropdown-menu">
 							<li role="separator" class="divider"></li>
-							<li  class="logoutform"> <a href="#"  class=" btnlogout ">ออกจากระบบ</a></li>
+							<li  class="editempform"> <a href="#"  class="editemp">แก้ไขข้อมูลรหัสผ่าน</a></li>
+							<li  class="logoutform"> <a href="#"  class="btnlogout ">ออกจากระบบ</a></li>
 							<li role="separator" class="divider"></li>
 						</ul>
 					</li>
@@ -59,13 +60,46 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12  main">
-	<div   align='center' > <span id="result_content" ></span></div>
-       <!-- content -->
-        <?php echo $output;?>
-        <!--/.content-->
+						<div   align='center' > <span id="result_content" ></span></div>
+						<!-- content -->
+						<?php echo $output;?>
+						<!--/.content-->
         </div>
       </div>
     </div>
+		<div class='modal fade' id='modal_data_editemp' role='dialog'    >
+			<div class='modal-dialog' >
+			<div  class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal'>&times;</button>
+					<h4><span class='glyphicon '></span>ข้อมูลผู้ใช้</h4>
+				</div>
+				<div class='modal-body' align='center'    >
+					<table class="table-modal"   ng-controller="empController">
+						<tr>
+							<td colspan="2">ชื่อ :{{empname}}</td>
+						</tr>
+						<tr>
+							<td colspan="2"> ชื่อเล่น: {{empnickname}}</td>
+						<tr>
+							<td colspan="2"> ชื่อผู้ใช้:{{empusername}}</td>
+						</tr>
+						<tr>
+							<td> แก้ไขรหัสผ่าน</td>
+							<td>
+								<input type="text" name="tb_e_password" id="tb_e_password"   ng-model="emppassword"/>
+							</td>
+						</tr>
+
+						<tr>
+							<td>บันทึก:</td>
+							 <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="saveemp()"></span></td>
+						</tr>
+					</table>
+				</div>
+				</div>
+			</div>
+		</div>
 <script src="<?php echo base_url(); ?>Assets/js/jquery-1.11.3.min.js"></script>
 <script src="<?php echo base_url(); ?>Assets/js/angular.min.js"></script>
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -76,9 +110,59 @@
 
 var base_url = "<?php echo base_url();?>";
 var backend_url = "<?php echo base_url();?>Backend/";
+
 </script>
 <script src="<?php echo base_url(); ?>Assets/Backend/js/Common.js"></script>
 <script type="text/javascript">
+
+app.controller('empController', function($scope, $http, $timeout) {
+		//declare empty
+		$scope.empname =  "";
+		$scope.empnickname = "";
+		$scope.empusername =  "";
+		$scope.emppassword =  "";
+
+		$http.get(backend_url + 'Employee/Get_Emp').success(function(data) {
+			$scope.empname =  data.emp_name;
+			$scope.empnickname = data.emp_nickname;
+			$scope.empusername =  data.emp_username;
+			$scope.emppassword =  data.emp_password;
+		}).error(function(err) {
+				console.log(err);
+		});
+
+		    $scope.getDataEmp = function() {
+		        $http.get(backend_url + 'Employee/Get_Emp').success(function(data) {
+							$scope.empname =  data.emp_name;
+							$scope.empnickname = data.emp_nickname;
+							$scope.empusername =  data.emp_username;
+							$scope.emppassword =  data.emp_password;
+		        }).error(function(err) {
+		            console.log(err);
+		        })
+		    }
+		$scope.saveemp = function() {
+       //for-debug
+       //console.log($scope.emp_id+':'+$scope.emp_name);
+        $http.post(backend_url + 'Employee/Edit_Emp', {
+            emp_password: $scope.emppassword
+          }).success(function(data) {
+
+              $('#modal_data_editemp').modal('toggle');
+              if (angular.equals(data, "true")  ){
+                alert("บันทึ่กขึ้อมูลเรียบร้อย");
+                 $scope.getDataEmp();
+              }else{
+								alert("บันทึ่กขึ้อมูลไม่สำเร็จ");
+              }
+
+            }).error(function(err) {
+                console.log(err);
+            })
+    }
+
+});
+
 $('.logoutform').delegate('a.btnlogout', 'click', function() {
 	$.ajax({
 		url:  backend_url+'Employee/logout',
@@ -92,6 +176,10 @@ $('.logoutform').delegate('a.btnlogout', 'click', function() {
 			}
 		}
 	});
+});
+
+$('.editempform').delegate('a.editemp', 'click', function() {
+    $("#modal_data_editemp").modal();
 });
 
 $(document).ready(function(){

@@ -82,11 +82,11 @@ class Employee extends MY_Controller {
         }else{
         	$result =  $this->Employee_Model->Update($arr,$data->id);
         }
-		if($result){
-			echo json_encode(true);
-		}else{
-			echo json_encode(false);
-		}
+  		if($result){
+  			echo json_encode(true);
+  		}else{
+  			echo json_encode(false);
+  		}
     }
 
     public function Delete()
@@ -98,13 +98,42 @@ class Employee extends MY_Controller {
             'modify_by' => $this->user_profile['emp_id'],
             'modify_date' => date('Y-m-d H:i:s')
         );
-        $result =  $this->Employee_Model->Update($data_arr,$data->e_id);
+        $result =  $this->Employee_Model->Update($data_arr,$data->id);
 
         if($result)
         {
            echo "true";
         }
     }
+
+
+    public function Get_Emp()
+    {
+        $this->output->unset_template();
+        $result =  $this->Employee_Model->Get_By_ID($this->user_profile['emp_id']);
+        if($result)
+        {
+        	echo json_encode ($result) ;
+        }
+    }
+    public function Edit_Emp()
+    {
+        $this->output->unset_template();
+        $data=json_decode(file_get_contents("php://input"));
+        $arr = array(
+          'e_password'=>$data->emp_password,
+          'modify_by' => $this->user_profile['emp_id'],
+          'modify_date' => date('Y-m-d H:i:s')
+        );
+          $result =  $this->Employee_Model->Update($arr,$this->user_profile['emp_id']);
+    if($result){
+      echo json_encode(true);
+    }else{
+      echo json_encode(false);
+    }
+    }
+
+
 
 	public function logout()
 	{

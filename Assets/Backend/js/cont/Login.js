@@ -1,7 +1,3 @@
-var app = angular.module('App', []);
-
-
-
 app.controller('loginController', function($scope, $http, $timeout) {
 
     $scope.customers = []; //declare an empty array

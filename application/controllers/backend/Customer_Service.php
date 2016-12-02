@@ -28,6 +28,16 @@ class Customer_Service extends MY_Controller {
        $this->load->view('Content/Customer_Service_View');
    }
 
+   public function Add()
+  {
+      $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
+      $this->output->set_template('Backend');
+      $this->load->js('Assets/Backend/js/cont/CustomerService.js');
+      $this->load->view('Content/Customer_Service_Add');
+  }
+
+
+   
 
    public function Get_All_Payed()
    {
@@ -152,7 +162,7 @@ class Customer_Service extends MY_Controller {
 
          if( $val['order_detail_id']=='0' && $val['is_show']  == 'true'){
           $Permission =  $this->Customer_Service_Model->Insert_Order_Detail($Data_arr);
-        }else    if( $val['order_detail_id']!='0'){ 
+        }else    if( $val['order_detail_id']!='0'){
           $Permission =  $this->Customer_Service_Model->Update_Order_Detail($Data_arr,$val['order_detail_id']);
          }
 

@@ -1,7 +1,7 @@
-var app = angular.module('App', []);
 app.controller('customerController', function($scope, $http, $timeout) {
 
     $scope.customers = []; //declare an empty array
+    $scope.logos = []; //declare an empty array
     //declare empty
     $scope.cus_id = "";
     $scope.cus_name =  "";
@@ -16,7 +16,6 @@ app.controller('customerController', function($scope, $http, $timeout) {
     }).error(function(err) {
         console.log(err);
     });
-
 
     $scope.getData = function() {
         $http.get(backend_url + 'Customer/Get_All').success(function(response) {
@@ -112,5 +111,13 @@ app.controller('customerController', function($scope, $http, $timeout) {
            $('#msgbox').addClass( "hidden" )
         }, 1500); // delay 1500 ms
     }
+    $http.get(backend_url + 'Customer/Get_Logo').success(function(response) {
+        $scope.logos = response; //ajax request to fetch data into $scope.data
+    }).error(function(err) {
+        console.log(err);
+    });
 
+    $scope.iconlogo_click = function(iconname) {
+                $scope.cus_car_brand =  iconname;
+    }
 });
