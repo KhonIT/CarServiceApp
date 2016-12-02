@@ -6,7 +6,6 @@
 <div class="panel-heading text-center" ><h3 class="sub-header">รับรถ</h3> </div>
 <div class="panel-body">
 
-    <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
 <!-- Table -->
       <table  class="table  table-responsive   table-strip table-hover">
         <tr>
@@ -39,44 +38,41 @@
           <td>{{cus_car_color}}</td>
         <tr>
         <tr>
-          <td>รายละเอียดการบริการ</td>
+          <td><span class=' icon glyphicon glyphicon-list'  ng-click="servicelist();">รายละเอียดการบริการ</span> </td>
           <td>
-            <table class="table-modal" id='table_order_detail'>
+            <table  >
+              <tr  ng-repeat="service in services ">
+                <td class="text-center">{{$index + 1}}</td>
+                <td class="text-left">{{service.name}}</td>
+                <td class="text-left">{{service.price}}</td>
+              </tr>
             </table>
           </td>
         </tr>
 
         <tr>
           <td> ราคารวม</td>
-          <td> <input type="number" name="tb_total" id="tb_total"   /></td>
+          <td> {{total_price | currency:""}} บาท</td>
         </tr>
         <tr>
           <td>หมายเหตุ :</td>
           <td>
-            <input type="text" name="tb_comment" id="tb_comment"   />
-          </td>
-        </tr>
-        <tr>
-          <td>สถานะการชำระเงิน:</td>
-          <td>
-            <select   id='dd_pay_status' >
-                <option value='0' selected="selected">ยังไม่ได้ชำระเงิน</option>
-                <option value='1'>ชำระเงินแล้ว</option>
-            </select>
+            <input type="text" name="tb_comment" id="tb_comment" ng-model="comment"   />
           </td>
         </tr>
         <tr>
           <td>บันทึก:</td>
-           <td><span  class="glyphicon glyphicon-floppy-save data-save icon"></span></td>
+           <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="savecusservice();"> </span></td>
         </tr>
       </table>
+                <div  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
     </div>
 </div>
 </div>
 <div class="col-sm-1 "> </div>
 
 
-  <div class='modal fade' id='modal_data' role='dialog'>
+  <div class='modal fade' id='modal_data_add_cus' role='dialog'>
   	<div class='modal-dialog'>
   		<div  class='modal-content'>
   			<div class='modal-header text-center'  >
@@ -146,6 +142,7 @@
           </form>
   			</div>
   			<div class='modal-body'  align="center"   >
+          <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msgcus}}</p>  </div>
           <table class="table-modal " >
   					       <thead>
                      <tr class="text-center">
@@ -177,6 +174,40 @@
   			</div>
   		</div>
   	</div>
+  </div>
+
+
+  <div class='modal fade' id='modal_data_service_detail' role='dialog'>
+    <div class='modal-dialog'>
+      <div  class='modal-content'>
+        <div class='modal-header'  align="center">
+          <button type='button' class='close' data-dismiss='modal'>&times;</button>
+          <h4><span class='glyphicon '></span>ข้อมูลการบริการ</h4>
+        </div>
+        <div class='modal-body'  align="center"   >
+
+          <table class="table-modal " >
+            <tbody id='tbody_list'>
+              <tr   ng-repeat="serall in service_all ">
+                <td class="text-center">{{$index + 1}}</td>
+
+                <td class="text-left"> <label class="icon"><input type="checkbox" id="service_detail" value="{{''+serall.service_id}}"  /> {{serall.service_name}}</label></td>
+
+                <td class="text-left"><input type="number"  id="{{'price-'+serall.service_id}}"  value="{{serall.price}}"   />
+                            <input type="text" id="{{'name-'+serall.service_id}}" style="display: none;" value="{{serall.service_name}}"   /></td>
+              </tr>
+
+              <tr>
+                <td colspan='3' class="text-center">
+                  <span  class="glyphicon glyphicon-floppy-save save-data icon" style="font-size:50px;" ng-click="saveservice();"></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>

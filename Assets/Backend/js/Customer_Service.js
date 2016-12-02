@@ -133,9 +133,7 @@ $('#modal_data').delegate('span.data-save', 'click', function() {
 		data: {'jsonObj': jsonpost},
 		type: "POST",
 		cache:false,
-		success: function (data) {
-
-
+		success: function (data) { 
 				$.ajax({
 					url:  backend_url+'Customer_Service/Edit',
 					data: {id:$("#tb_id").val(),cus_id:	$("#tb_cus_id").val(),book_no:$('#tb_book_no').val(),number:$('#tb_number').val(),comment:$('#tb_comment').val(),total:$('#tb_total').val(),pay_status:$('#dd_pay_status :selected').val()},

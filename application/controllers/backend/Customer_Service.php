@@ -37,7 +37,7 @@ class Customer_Service extends MY_Controller {
   }
 
 
-   
+
 
    public function Get_All_Payed()
    {
@@ -125,6 +125,47 @@ class Customer_Service extends MY_Controller {
     }
 
 
+
+    public function AddService()
+    {
+        $this->output->unset_template();
+        $data=json_decode(file_get_contents("php://input"));
+
+          $data_arr = array(
+            'cus_id'=>$data->cus_id,
+            'total'=>$data->total_price,
+            'comment'=>$data->comment,
+            'pay_status'=>'0',
+            'modify_by' =>  $this->user_profile['emp_id'],
+            'modify_date' => date('Y-m-d H:i:s')
+          );
+          $order_id =  $this->Customer_Service_Model->Insert($data_arr);
+
+        if($order_id)
+        {
+          $json_array = json_decode($data->services, true);
+           foreach($json_array  as $key=>$val){
+            $is_show =$val['is_show']  == 'true' ? 1 : 0;
+             $Data_arr = array(
+                 'order_id'=>$order_id,
+                 'service_id'=>$val['service_id'],
+                 'price'=>$val['price'],
+                 'is_show'=>'1',
+                 'modify_by' => $this->user_profile['emp_id'],
+                 'modify_date' => date('Y-m-d H:i:s')
+             );
+              $result =  $this->Customer_Service_Model->Insert_Order_Detail($Data_arr);
+              if($result)
+              {
+                 echo json_encode (true) ;
+              }else{
+                 echo json_encode (false) ;
+              }
+            }
+        }
+
+    }
+
     public function Delete()
     {
 
@@ -147,8 +188,6 @@ class Customer_Service extends MY_Controller {
     public function OrderDetailEdit()
     {
       $json_array = json_decode($this->input->post('jsonObj'), true);
-
-
        foreach($json_array  as $key=>$val){
         $is_show =$val['is_show']  == 'true' ? 1 : 0;
          $Data_arr = array(

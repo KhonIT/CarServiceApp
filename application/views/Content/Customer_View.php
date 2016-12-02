@@ -1,15 +1,10 @@
   <div ng-controller="customerController" >
     <div class="col-sm-1 "> </div>
     <div class="col-sm-10 ">
-
 <div class="panel panel-default" >
   <div class="panel-heading text-center" ><h3 class="sub-header">รายชื่อลูกค้า</h3> </div>
   <div class="panel-body">
-
      <div align="right" class="green "   >
-
-
-
              				<form class="form-inline">
              					<div class="form-group">
              						<label >Search</label>
@@ -25,8 +20,7 @@
    <span class="add-data u icon" ng-click="inscus();">เพิ่ม</span>
    <span class="add-data glyphicon glyphicon-plus icon" ng-click="inscus();"></span>
 	 </div>
-
-      <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
+         <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
   <!-- Table -->
         <table  class="table  table-responsive   table-strip table-hover">
           <tr class="text-center">
@@ -89,7 +83,7 @@
               <td  style="width:500px;"  class="text-left">
 
                    <img ng-repeat="logo in logos" ng-src="<?php echo base_url(); ?>Assets/Images/iconlogo/{{logo.img}}" style="margin:5px;" class="icon" alt="{{logo.name}}" ng-click="iconlogo_click(logo.name)" />
- 
+
                <p>  อื่นๆ : <input type="text" name="tb_cus_car_brand" id="tb_cus_car_brand"  ng-model="cus_car_brand"  /></p></td>
           </tr>
           <tr>

@@ -49,7 +49,6 @@ class Customer extends MY_Controller {
     public function Get_All()
     {
         $this->output->unset_template();
-
         $result =  $this->Customer_Model->Get_All();
 
         if($result)
@@ -60,7 +59,7 @@ class Customer extends MY_Controller {
     public function Get_By_ID()
     {
     	$this->output->unset_template();
-        $data=json_decode(file_get_contents("php://input"));
+      $data=json_decode(file_get_contents("php://input"));
     	$result =  $this->Customer_Model->Get_By_ID($data->id);
     	if($result)
     	{
