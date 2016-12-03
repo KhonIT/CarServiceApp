@@ -1,6 +1,4 @@
-app.controller('loginController', function($scope, $http, $timeout) {
-
-    $scope.customers = []; //declare an empty array
+app.controller('loginController', function($scope, $http, $timeout) { 
     //declare empty
     $scope.username = "";
     $scope.password =  "";

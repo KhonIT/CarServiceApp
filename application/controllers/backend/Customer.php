@@ -67,6 +67,16 @@ class Customer extends MY_Controller {
     	}
     }
 
+    public function GetCus_By_ID()
+    {
+    	$this->output->unset_template();
+    	$result =  $this->Customer_Model->Get_By_ID($this->input->post('id'));
+    	if($result)
+    	{
+    		echo json_encode ($result) ;
+    	}
+    }
+
 
     public function Edit()
     {

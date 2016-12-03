@@ -16,29 +16,29 @@
         <tr>
           <td>ชื่อ :</td>
           <td>{{cus_name}}</td>
-        <tr>
+        </tr>
         <tr>
           <td>เบอร์โทร</td>
           <td>{{cus_tel}}</td>
-        <tr>
+        </tr>
         <tr>
           <td> ทะเบียนรถ:</td>
           <td>{{cus_car_regis_number}}</td>
-        <tr>
+        </tr>
         <tr>
           <td>ยี่ห้อ:</td>
           <td>{{cus_car_brand}}</td>
-        <tr>
+        </tr>
         <tr>
           <td>รุ่น:</td>
           <td>{{cus_car_model}}</td>
+        </tr>
         <tr>
-        <tr>
-          <td>ส</td>
+          <td>สี</td>
           <td>{{cus_car_color}}</td>
+        </tr>
         <tr>
-        <tr>
-          <td><span class=' icon glyphicon glyphicon-list'  ng-click="servicelist();">รายละเอียดการบริการ</span> </td>
+          <td>รายละเอียดการบริการ  <span class=' icon glyphicon glyphicon-list'  ng-click="servicelist();">เพิ่มคลิก</span> </td>
           <td>
             <table  >
               <tr  ng-repeat="service in services ">

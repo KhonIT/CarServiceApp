@@ -2,13 +2,10 @@
     <div class="col-sm-10 ">
 
 <div class="panel panel-default">
-  <div class="panel-heading" align="center"><h3 class="sub-header">ประวัติการใช้บริการ</h3> </div>
+  <div class="panel-heading" align="center"><h3 class="sub-header">การใช้บริการ</h3> </div>
   <div class="panel-body">
-     <div align="right" class="green "   >
-    <span class="add-data u icon">เพิ่ม</span>
-    <span class="glyphicon glyphicon-plus  add-data icon"></span>
-	 </div>
-  </div>
+
+
 
       <div class="table-responsive" align="center">
             <table  class="table_head table-striped"  >
@@ -32,7 +29,7 @@
 </div>
 
     </div>
-    <div class="col-sm-2 "> </div>
+    <div class="col-sm-1 "> </div>
 
 <div class='modal fade' id='modal_popup_detail_order' role='dialog'>
 	<div class='modal-dialog'>

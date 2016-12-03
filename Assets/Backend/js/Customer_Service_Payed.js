@@ -48,7 +48,7 @@ function Get_All_service(){
 				$("#tbody_list").text("");
 				var i = 1;
 				$.each(data, function(idx, obj) {
-					$("#tbody_list").append('<tr><td>'+i+'</td><td>'+obj.cus_name+'</td><td>'+obj.cus_tel+'</td><td>'+obj.cus_car_regis_number+'-'+obj.cus_car_brand+'-'+obj.cus_car_model+'-'+obj.cus_car_color+'</td><td>'+obj.created_date+'</td><td align="center"><span class="glyphicon glyphicon-option-horizontal edit-data icon " id='+obj.id+'></span></td><td align="center"><span class=" glyphicon glyphicon-remove remove-data icon " id='+obj.id+'></span></td></tr>');
+					$("#tbody_list").append('<tr><td>'+i+'</td><td>'+obj.cus_name+'</td><td>'+obj.cus_tel+'</td><td>'+obj.cus_car_regis_number+'-'+obj.cus_car_brand+'-'+obj.cus_car_model+'-'+obj.cus_car_color+'</td><td>'+obj.created_date+'</td><td align="center"><span class="glyphicon glyphicon-option-horizontal edit-data icon " id='+obj.id+'></span></td><td align="center"><a href="'+backend_url+'Customer_Service/PrintReceived?order_id='+obj.id+'" class="glyphicon glyphicon-print  icon " target="_blank"  ></a></td><td align="center"><span class=" glyphicon glyphicon-remove remove-data icon " id='+obj.id+'></span></td></tr>');
 						i++;
 					});
 			}
@@ -128,7 +128,6 @@ $('#modal_data').delegate('span.data-save', 'click', function() {
 	});
 	$('#tb_total').val(sum);
 	var jsonpost = JSON.stringify(jsonObj)
-alert(jsonpost);
 	$.ajax({
 		url:  backend_url+'Customer_Service/OrderDetailEdit',
 		data: {'jsonObj': jsonpost},

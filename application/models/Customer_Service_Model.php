@@ -71,12 +71,17 @@ class Customer_Service_Model extends CI_Model{
 
 	 public function Get_OrdersDetails_By_ID($id){
 		  $sql = ' select   '.$id.'  as order_id,s.service_id,s.service_name,s.price as service_price , ifnull((select o.order_detail_id FROM order_details o where s.service_id = o.service_id and o.is_show ="1" and order_id = '.$id.'  ), 0 ) order_detail_id, ifnull((select o.price FROM order_details o where s.service_id = o.service_id and o.is_show ="1" and order_id = '.$id.'  ), 0 ) price from  service s  where s.is_show = 1';
-
 			$query = $this->db->query($sql, array($id));
 		  log_message('debug', sprintf('Found %b row with service ID %s', $query->num_rows(), $id));
 		  return $query->result();
 	 }
 
+	 public function Get_OrdersDetails_Print($id){
+		  $sql = ' select   s.service_name,o.price as service_price   from  order_details o left join  service s  on  s.service_id = o.service_id where s.is_show = 1 and order_id = ?';
+			$query = $this->db->query($sql, array($id));
+		  log_message('debug', sprintf('Found %b row with service ID %s', $query->num_rows(), $id));
+		  return $query->result();
+	 }
 
 
 	 public function Get_By_ID($id){

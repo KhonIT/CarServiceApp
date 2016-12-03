@@ -17,7 +17,7 @@ class Customer_Service extends MY_Controller {
         $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
         $this->output->set_template('Backend');
         $this->load->js('Assets/Backend/js/Customer_Service.js');
-        $this->load->view('Content/Customer_Service_View');
+        $this->load->view('Content/Customer_Service_Unpay_View');
     }
 
     public function Payed()
@@ -37,6 +37,14 @@ class Customer_Service extends MY_Controller {
   }
 
 
+  public function PrintReceived()
+  {
+    $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
+    $this->output->set_template('Blank');
+    $this->load->js('Assets/Backend/js/cont/PrintService.js');
+    $this->load->view('Content/Print_Service_View');
+
+  }
 
 
    public function Get_All_Payed()
@@ -187,27 +195,31 @@ class Customer_Service extends MY_Controller {
 
     public function OrderDetailEdit()
     {
+            $this->output->unset_template();
       $json_array = json_decode($this->input->post('jsonObj'), true);
+
        foreach($json_array  as $key=>$val){
-        $is_show =$val['is_show']  == 'true' ? 1 : 0;
+          $isshow = 0;
+        if ($val['is_show'] == "true" ){$isshow =1;}
          $Data_arr = array(
              'order_id'=>$val['order_id'],
              'service_id'=>$val['service_id'],
              'price'=>$val['price'],
-             'is_show'=>$is_show,
+             'is_show'=>$isshow,
              'modify_by' => $this->user_profile['emp_id'],
              'modify_date' => date('Y-m-d H:i:s')
          );
 
-         if( $val['order_detail_id']=='0' && $val['is_show']  == 'true'){
-          $Permission =  $this->Customer_Service_Model->Insert_Order_Detail($Data_arr);
-        }else    if( $val['order_detail_id']!='0'){
-          $Permission =  $this->Customer_Service_Model->Update_Order_Detail($Data_arr,$val['order_detail_id']);
-         }
+         if( $val['order_detail_id']=='0' && $val['is_show'] == "true"  ){
+           $this->Customer_Service_Model->Insert_Order_Detail($Data_arr);
+          }else    if( $val['order_detail_id']!='0'  ){
+            $this->Customer_Service_Model->Update_Order_Detail($Data_arr,$val['order_detail_id']);
+        }
 
       }
-            echo "true";
-
+          echo "true";
     }
+
+
 
 }

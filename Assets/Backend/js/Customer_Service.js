@@ -36,6 +36,9 @@ $(document).ready(function(){
 
 });
 
+
+
+
 function Get_All_service(){
 	$.ajax({
 		url: backend_url+'Customer_Service/Get_All_UnPay',
@@ -48,12 +51,22 @@ function Get_All_service(){
 				$("#tbody_list").text("");
 				var i = 1;
 				$.each(data, function(idx, obj) {
-					$("#tbody_list").append('<tr><td>'+i+'</td><td>'+obj.cus_name+'</td><td>'+obj.cus_tel+'</td><td>'+obj.cus_car_regis_number+'-'+obj.cus_car_brand+'-'+obj.cus_car_model+'-'+obj.cus_car_color+'</td><td>'+obj.created_date+'</td><td align="center"><span class="glyphicon glyphicon-option-horizontal edit-data icon " id='+obj.id+'></span></td><td align="center"><span class=" glyphicon glyphicon-remove remove-data icon " id='+obj.id+'></span></td></tr>');
+					$("#tbody_list").append('<tr><td>'+i+'</td><td>'+obj.cus_name+'</td><td>'+obj.cus_tel+'</td><td>'+obj.cus_car_regis_number+'-'+obj.cus_car_brand+'-'+obj.cus_car_model+'-'+obj.cus_car_color+'</td><td>'+obj.created_date+'</td><td align="center"><span class="glyphicon glyphicon-option-horizontal edit-data icon " id='+obj.id+'></span></td><td align="center"><span class="glyphicon glyphicon-print  icon " target="_blank" onclick="return confirm_print('+obj.id+')"  ></span></td><td align="center"><span class=" glyphicon glyphicon-remove remove-data icon " id='+obj.id+'></span></td></tr>');
 						i++;
 					});
 			}
 	});
 }
+
+
+function confirm_print(id){ 
+	var r = confirm("ยืนยันการชำระเงิน รายการนี้ ?");
+	if (r=== true){
+			window.location.replace(backend_url+'Customer_Service/PrintReceived?order_id='+id);
+	}
+	return r;
+}
+
 
 
 
@@ -94,9 +107,9 @@ $('#tbody_list').delegate('span.edit-data', 'click', function() {
 									var html ="";
 							 		$.each(result, function(idx, obj) {
 										if(obj.order_detail_id != "0"){
-											html= '<tr><td align="center">'+i+'</td><td   ><input type="checkbox" id="service_'+obj.order_detail_id+'" checked="checked" value="'+obj.service_id+'"  /> '+obj.service_name+' : <input type="number" id="price-'+obj.service_id+'" value="'+obj.price+'"   /> </td> </tr>';
+											html= '<tr><td align="center">'+i+'</td><td   ><label  style="cursor: pointer;"><input type="checkbox" id="service_'+obj.order_detail_id+'" checked="checked" value="'+obj.service_id+'"  /> '+obj.service_name+' </label>: <input type="number" id="price-'+obj.service_id+'" value="'+obj.price+'"   /> </td> </tr>';
 										}else{
-											html= '<tr><td align="center">'+i+'</td><td  "><input type="checkbox" id="service_'+obj.order_detail_id+'" value="'+obj.service_id+'"   />'+obj.service_name+' : <input type="number" id="price-'+obj.service_id+'" value="'+obj.service_price+'"   /> </td> </tr>';
+											html= '<tr><td align="center">'+i+'</td><td  "><label style="cursor: pointer;"><input type="checkbox" id="service_'+obj.order_detail_id+'" value="'+obj.service_id+'"   />'+obj.service_name+'</label>: <input type="number" id="price-'+obj.service_id+'" value="'+obj.service_price+'"   /> </td> </tr>';
 										}
 									 $("#table_order_detail").append(html);
 							 			sum+= parseFloat(obj.price);
@@ -114,11 +127,15 @@ $('#modal_data').delegate('span.data-save', 'click', function() {
 	var  jsonObj = [];
 	var sum = parseFloat("0.00");
 	$('input:checkbox[id^="service_"]').each(function(){
-						data = [];
+						data = {}
 						data["order_id"] = $("#tb_id").val();
 						data["order_detail_id"] =  $(this).attr('id').replace("service_", "");;
 						data["service_id"] = $(this).val();
-						data["is_show"] = $(this).prop("checked");
+						if ($(this).prop("checked")) {
+							data["is_show"] = "true";
+						}else{
+							data["is_show"] = "false";
+						}
 						data["price"] = $("#price-"+$(this).val()).val();
 						if($(this).prop("checked")){
 								sum+= parseFloat($("#price-"+$(this).val()).val());
@@ -128,12 +145,13 @@ $('#modal_data').delegate('span.data-save', 'click', function() {
 	});
 	$('#tb_total').val(sum);
 	var jsonpost = JSON.stringify(jsonObj);
+		console.log(jsonObj);
 	$.ajax({
 		url:  backend_url+'Customer_Service/OrderDetailEdit',
 		data: {'jsonObj': jsonpost},
 		type: "POST",
 		cache:false,
-		success: function (data) { 
+		success: function (data) {
 				$.ajax({
 					url:  backend_url+'Customer_Service/Edit',
 					data: {id:$("#tb_id").val(),cus_id:	$("#tb_cus_id").val(),book_no:$('#tb_book_no').val(),number:$('#tb_number').val(),comment:$('#tb_comment').val(),total:$('#tb_total').val(),pay_status:$('#dd_pay_status :selected').val()},
@@ -152,15 +170,14 @@ $('#modal_data').delegate('span.data-save', 'click', function() {
 							$('#tb_total').val("");
 							$('#dd_pay_status').val("0");
 							$('#modal_data').modal('toggle');
-
-								Get_All_service();
+							Get_All_service();
 							}
 						}
 				});
 		}
 	});
-
 });
+
 
 $('#tbody_list').delegate('span.remove-data', 'click', function() {
 	var r = confirm("ยืนยันการลบข้อมูล รายการนี้ ?");
@@ -178,9 +195,13 @@ $('#tbody_list').delegate('span.remove-data', 'click', function() {
 	}
 });
 
+
+
+
+
 $('#modal_data').delegate('span.data-edit-cus', 'click', function() {
 			$.ajax({
-					url: backend_url+'Customer/Get_By_ID',
+					url: backend_url+'Customer/GetCus_By_ID',
 					data: {id:$.trim(event.target.id)},
 					cache:false,
 					type: "POST",
