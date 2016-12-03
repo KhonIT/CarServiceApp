@@ -125,7 +125,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
               if (angular.equals(data, "true")  ){
                   $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
 
-                  $scope.displaymsgsuccess(); 
+                  $scope.displaymsgsuccess();
                    //clear
                   $scope.customers = [];
                   $scope.services = [];
