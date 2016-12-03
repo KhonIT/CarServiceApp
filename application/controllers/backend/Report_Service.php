@@ -24,8 +24,8 @@ class Report_Service extends MY_Controller {
 
     public function daily()
    {
-     $this->output->unset_template();
-     $result =  $this->Customer_Service_Model->Get_Report_Daily();
+       $this->output->unset_template();
+     $result =  $this->Customer_Service_Model->Get_Report_Daily($this->input->post('year'),$this->input->post('month'),   $this->input->post('service_id'));
      if($result)
      {
         echo json_encode ($result) ;
@@ -34,7 +34,7 @@ class Report_Service extends MY_Controller {
    public function monthly()
   {
         $this->output->unset_template();
-       $result =  $this->Customer_Service_Model->Get_Report_Monthly();
+       $result =  $this->Customer_Service_Model->Get_Report_Monthly(  $this->input->post('service_id'));
        if($result)
        {
           echo json_encode ($result) ;
@@ -43,11 +43,30 @@ class Report_Service extends MY_Controller {
   public function annualy()
  {
    $this->output->unset_template();
-  $result =  $this->Customer_Service_Model->Get_Report_Annualy();
+  $result =  $this->Customer_Service_Model->Get_Report_Annualy(   $this->input->post('service_id'));
   if($result)
   {
      echo json_encode ($result) ;
   }
  }
+
+   public function Get_Year()
+  {
+    $this->output->unset_template();
+   $result =  $this->Customer_Service_Model->Get_Year();
+   if($result)
+   {
+      echo json_encode ($result) ;
+   }
+  }
+  public function Get_Month()
+  {
+   $this->output->unset_template();
+  $result =  $this->Customer_Service_Model->Get_Month($this->input->post('year'));
+  if($result)
+  {
+     echo json_encode ($result) ;
+  }
+  }
 
 }

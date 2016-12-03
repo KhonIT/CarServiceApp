@@ -97,19 +97,59 @@ class Customer_Service_Model extends CI_Model{
 		  return $query->result();
 	 }
 
-	 public function Get_Report_Daily(){
-			$sql = 'select left(TIME(o.created_date),2) as time_name,YEAR(o.created_date) as  year,MONTH(o.created_date)as month ,left(DATE(o.created_date),2) as day_no,sum(total) as total from orders o where o.is_show =1   group by DATE(o.created_date), left(TIME(o.created_date),2)  order by left(TIME(o.created_date),2),  DATE(o.created_date) asc ';
+	 public function Get_Report_Daily($year,$mounth,$service_id){
+
+			$sql = 'select left(TIME(o.created_date),2) as time_name,YEAR(o.created_date) as  year';
+			$sql .= ' ,MONTH(o.created_date)as month ,left(DATE(o.created_date),2) as day_no,sum(total) as total ';
+						$sql .= ' , CONCAT_WS(\'-\',  left(DATE(o.created_date),2),MONTH(o.created_date),YEAR(o.created_date),left(TIME(o.created_date),2) )  as name ';
+			$sql .= ' from orders o  where o.is_show =1    ';
+if($year!= '0' ){
+				$sql .= ' and YEAR(o.created_date) = \''.$year.'\'';
+}
+if($mounth!= '0' ){
+	$sql .= ' and MONTH(o.created_date) =\''.$mounth.'\'';
+
+}
+if($service_id!= '0' ){
+	$sql .= ' and o.order_id in (select order_id from order_details od  where od.service_id = \''.$service_id.'\')';
+}
+
+			$sql .= ' group by DATE(o.created_date), left(TIME(o.created_date),2)  ';
+			$sql .= ' order by left(TIME(o.created_date),2),  DATE(o.created_date) asc ';
+
 			$query = $this->db->query($sql);
 			return $query->result();
 	 }
-	 public function Get_Report_Monthly(){
-			$sql = 'select MONTH(o.created_date)as month,YEAR(o.created_date) as year ,sum(total) as total from orders o where o.is_show =1  group by MONTH(o.created_date) ,YEAR(o.created_date) order by YEAR(o.created_date) asc,MONTH(o.created_date) asc';
+	 public function Get_Report_Monthly($service_id){
+			$sql = 'select MONTH(o.created_date)as month,YEAR(o.created_date) as year ,sum(total) as total from orders o where o.is_show =1  ';
+
+			if($service_id!= '0' ){
+				$sql .= ' and o.order_id in (select order_id from order_details od  where od.service_id = \''.$service_id.'\')';
+			}
+			$sql .= ' group by MONTH(o.created_date) ,YEAR(o.created_date) order by YEAR(o.created_date) asc,MONTH(o.created_date) asc';
 			$query = $this->db->query($sql);
 			return $query->result();
 	 }
-	 public function Get_Report_Annualy(){
-			$sql = 'select  YEAR(o.created_date) as name,sum(total) as total from orders o where o.is_show =1  group by YEAR(o.created_date)  order by YEAR(o.created_date) asc ';
+	 public function Get_Report_Annualy($service_id){
+			$sql = 'select  YEAR(o.created_date) as name,sum(total) as total from orders o where o.is_show =1  ';
+
+
+			if($service_id!= '0' ){
+				$sql .= ' and o.order_id in (select order_id from order_details od  where od.service_id = \''.$service_id.'\')';
+			}
+				$sql .= ' group by YEAR(o.created_date)  order by YEAR(o.created_date) asc ';
 			$query = $this->db->query($sql);
+			return $query->result();
+	 }
+
+	 public function Get_Year(){
+			$sql = 'select  YEAR(o.created_date) as year from orders o where o.is_show =1  group by YEAR(o.created_date)  order by YEAR(o.created_date) asc ';
+			$query = $this->db->query($sql);
+			return $query->result();
+	 }
+	 public function Get_Month($year){
+			$sql = 'select  MONTH(o.created_date)as month from orders o where o.is_show =1 and YEAR(o.created_date) = ?  group by  YEAR(o.created_date),MONTH(o.created_date)   order by MONTH(o.created_date) asc ';
+			$query = $this->db->query($sql, array($year));
 			return $query->result();
 	 }
 }

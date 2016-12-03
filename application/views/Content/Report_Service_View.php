@@ -11,10 +11,33 @@
             </ul>
 
   <div class=" col-md-12 tab-content">
+      <div id="daily"  class="tab-pane fade in active"  align="center">
+        <table class="table-modal " >
+          <tr>
+              <td colspan="2" class="text-center">เลือกข้อมูลที่ต้องการออกรายงาน  </td>
+          </tr>
+          <tr>
+            <td> ปี:</td>
+            <td> <select   id='dd_year_daily' > </select> 	</td>
+          </tr>
+          <tr>
+            <td> เดือน:</td>
+            <td> <select   id='dd_month_daily' > </select> 	</td>
+          </tr>
+          <tr>
+              <td> การบริการ : </td>
+              <td><select   id='dd_service_daily' > </select></td>
+          </tr>
 
-      <div id="daily"  class="tab-pane fade in active">
-        <div  id="linechart_daily"  >  </div>
+          <tr>
+            <td colspan='2' class="text-center">
+              <span  class="glyphicon glyphicon-paste daily-preview-data icon" ></span>
+            </td>
+          </tr>
+        </table>
+        <div  id="linechart_dairy" style="width: 900px; height: 500px">  </div>
         <div class="table-responsive" align="center">
+
               <table  class="table_head table-striped"  >
                   <thead  >
                         <tr>
@@ -30,8 +53,23 @@
           </div>
       </div>
       <div id="monthly" class="tab-pane fade" align="center">
+        <table class="table-modal " >
+          <tr>
+              <td colspan="2" class="text-center">เลือกข้อมูลที่ต้องการออกรายงาน  </td>
+          </tr>
+          <tr>
+              <td> การบริการ </td>
+              <td><select   id='dd_service_monthly' > </select></td>
+          </tr>
+          <tr>
+            <td colspan='2' class="text-center">
+              <span  class="glyphicon glyphicon-paste monthly-preview-data icon" ></span>
+            </td>
+          </tr>
+        </table>
         <div  id="linechart_monthly"  style="width: 900px; height: 500px">  </div>
         <div class="table-responsive" >
+
               <table  class="table_head table-striped"  >
                   <thead  >
                         <tr>
@@ -47,8 +85,23 @@
           </div>
       </div>
       <div id="annualy" class="tab-pane fade" align="center" >
+        <table class="table-modal " >
+          <tr>
+              <td colspan="2" class="text-center">เลือกข้อมูลที่ต้องการออกรายงาน  </td>
+          </tr>
+          <tr>
+              <td> การบริการ </td>
+              <td><select   id='dd_service_annualy' > </select></td>
+          </tr>
+          <tr>
+            <td colspan='2' class="text-center">
+              <span  class="glyphicon glyphicon-paste annualy-preview-data icon" ></span>
+            </td>
+          </tr>
+        </table>
         <div  id="linechart_annualy" style="width: 900px; height: 500px; ">  </div>
         <div class="table-responsive" >
+
               <table  class="table_head table-striped"  >
                   <thead  >
                         <tr>
