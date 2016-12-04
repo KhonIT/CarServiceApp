@@ -37,6 +37,7 @@ class Print_Service extends MY_Controller {
           echo json_encode ($result) ;
         }
       }
+      
       public function ChangePay()
         {
           $this->output->unset_template();

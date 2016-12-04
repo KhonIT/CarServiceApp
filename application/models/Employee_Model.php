@@ -72,9 +72,45 @@ class Employee_Model extends CI_Model{
 		  $query = $this->db->query($sql);
 		  return $query->result();
 	 }
+	 public function Cal_Salary(){
+		 $boolean = false;
+		  $sql = 'INSERT INTO salary_slip (e_id,salary,creadated_date) SELECT e.e_id,e.current_salary,now() FROM employees e WHERE e.is_show =1  and e_id not in (1,2,3) and concat(month(now()),e_id) not in (select  concat(month(creadated_date),e_id) from  salary_slip  GROUP by  month(creadated_date) )';
 
+			if($this->db->query($sql))	 {	 $boolean = true;}
+		  return $boolean;
+	 }
 
+	 public function Del_Salary($slip_id){
+		 try {
 
+			 return   $this->db->delete('salary_slip', array('slip_id' => $slip_id));
+
+		 } catch (Exception $e) {
+			 throw new Exception($e->getMessage());
+		 }
+	 }
+
+	 public function Get_Salary_Byid($slip_id){
+		  $sql = 'select s.slip_id,CONCAT(e.st_name, e.name) As  emp_name ,e.tel as tel,s.salary as salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employees e  on e.e_id = s.e_id left join level l on l.l_id = e.l_id where s.slip_id =? ';
+		  $query = $this->db->query($sql,array($slip_id));
+		  return $query->row_array();
+	 }
+
+	 public function Get_Salary(){
+			$sql = 'select s.slip_id,CONCAT(e.st_name, e.name) As  emp_name ,e.tel ,s.salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employees e  on e.e_id = s.e_id left join level l on l.l_id = e.l_id where month(s.creadated_date) = month(now()) ';
+			$query = $this->db->query($sql);
+			return $query->result();
+	 }
+	 public function Get_Month_Salary(){
+			$sql = 'select  MONTH(s.creadated_date)as month from salary_slip s   group by   MONTH(s.creadated_date)   order by MONTH(s.creadated_date) asc  ';
+			$query = $this->db->query($sql);
+			return $query->result();
+	 }
+	 	 public function Get_Salary_Month($month){
+	 			$sql = 'select s.slip_id,CONCAT(e.st_name, e.name) As  emp_name ,e.tel ,s.salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employees e  on e.e_id = s.e_id left join level l on l.l_id = e.l_id where month(s.creadated_date) = ? ';
+	 			$query = $this->db->query($sql,array($month));
+	 			return $query->result();
+	 	 }
 
 	 public function Check_Login($e_username, $e_password)
 	{
@@ -96,7 +132,6 @@ class Employee_Model extends CI_Model{
 	 		return FALSE;
 	 	}
 	 }
-
 
 
 

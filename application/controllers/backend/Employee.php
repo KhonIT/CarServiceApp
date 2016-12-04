@@ -29,12 +29,62 @@ class Employee extends MY_Controller {
         	echo json_encode ($result) ;
         }
     }
+
+    public function Salary()
+    {
+      $this->output->set_template('Backend');
+      $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
+      $this->load->js('Assets/Backend/js/cont/Salary.js');
+      $this->load->view('Content/Salary_View');
+    }
+    public function Cal_Salary()
+    {
+     $this->output->unset_template();
+      $result =  $this->Employee_Model->Cal_Salary();
+      if($result){
+        echo json_encode(true);
+      }else{
+        echo json_encode(false);
+      }
+    }
+
+
+    public function Get_Salary_Byid()
+    {
+     $this->output->unset_template();
+             $data=json_decode(file_get_contents("php://input"));
+      $result =  $this->Employee_Model->Get_Salary_Byid($data->id);
+      if($result){
+        echo json_encode($result);
+      } 
+    }
+
+    public function Del_Salary()
+    {
+        $this->output->unset_template();
+        $data=json_decode(file_get_contents("php://input"));
+        $result =  $this->Employee_Model->Del_Salary($data->id);
+        if($result)
+        {
+          echo json_encode ($result) ;
+        }
+    }
+
+    public function Get_Salary()
+    {
+        $this->output->unset_template();
+        $result =  $this->Employee_Model->Get_Salary();
+        if($result)
+        {
+          echo json_encode ($result) ;
+        }
+    }
+
     public function Get_By_ID()
     {
         $this->output->unset_template();
         $data=json_decode(file_get_contents("php://input"));
         $result =  $this->Employee_Model->Get_By_ID($data->id);
-
         if($result)
         {
         	echo json_encode ($result) ;
