@@ -35,10 +35,13 @@ $('#salary').delegate('span.salary-preview-data', 'click', function() {
 				 $('#linechart_salary').empty();
 			       $("#tbody_list_salary").text("");
       var i = 1;
+      var summary = 0;
       $.each(result, function(idx, obj) {
-        $("#tbody_list_salary").append('<tr><td>'+i+'</td><td>'+obj.emp_name+'</td><td>'+obj.salary+'</td><td class="text-center"> <a href="'+backend_url+'Report_Salary/PrintSalary?slip_id='+obj.slip_id+'" class="glyphicon glyphicon-print  icon " target="_blank"  ></a></td></tr>');
+        $("#tbody_list_salary").append('<tr><td>'+i+'</td><td>'+obj.emp_name+'</td><td  class="text-center ">'+obj.salary+'</td><td class="text-center"> <a href="'+backend_url+'Report_Salary/PrintSalary?slip_id='+obj.slip_id+'" class="glyphicon glyphicon-print  icon " target="_blank"  ></a></td></tr>');
           i++;
+          summary += parseFloat(obj.salary);
         });
+          $("#tbody_list_salary").append('<tr><td colspan="2" class="text-right "><strong>รวม</strong></td><td colspan="2" class="text-left">'+summary+'</td></tr>');
         var options = {
          hAxis: {
            title: 'datename (dd-mm-yyy)'

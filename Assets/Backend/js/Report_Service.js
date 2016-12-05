@@ -97,10 +97,13 @@ $( "#dd_year_daily" ).change(function() {
 				 $('#linechart_dairy').empty();
 			       $("#tbody_list_daily").text("");
       var i = 1;
+        var summary = 0;
       $.each(result, function(idx, obj) {
         $("#tbody_list_daily").append('<tr><td>'+i+'</td><td>'+obj.name+'</td><td>'+obj.total+'</td></tr>');
           i++;
+              summary += parseFloat(obj.total);
         });
+            $("#tbody_list_daily").append('<tr><td colspan="2" class="text-right "><strong>รวม</strong></td><td  class="text-left">'+summary.toFixed(2)+'</td></tr>');
         var options = {
          hAxis: {
            title: 'datename (dd-mm-yyy-hh)'
@@ -137,14 +140,19 @@ height: 500
 							 $("#tbody_list_monthly").text("");
 							 $("#tbody_list_monthly").text("");
 							var i = 1;
-							var data = new google.visualization.DataTable();
-							data.addColumn('string', 'name');
-							data.addColumn('number', 'Amount');
+
+                var summary = 0;
+
 							$.each(result, function(idx, obj) {
 								$("#tbody_list_monthly").append('<tr><td>'+i+'</td><td>'+obj.month+'-'+obj.year+'</td><td>'+obj.total+'</td></tr>');
-									i++;
+									i++;summary += parseFloat(obj.total);
 								});
-											 $.each(result, function(k, v) {
+                  $("#tbody_list_monthly").append('<tr><td colspan="2" class="text-right "><strong>รวม</strong></td><td  class="text-left">'+summary.toFixed(2)+'</td></tr>');
+			var data = new google.visualization.DataTable();
+                  data.addColumn('string', 'name');
+                  data.addColumn('number', 'Amount');
+
+                			 $.each(result, function(k, v) {
 						 	 data.addRow([ v.month, parseFloat(v.total)]);
 								 });
 								 var options = {
@@ -173,14 +181,19 @@ height: 500
 	 			{
 	 				$("#tbody_list_annualy").text("");
 	 				var i = 1;
-	 				var data = new google.visualization.DataTable();
-	 				data.addColumn('string', 'name');
-	 				data.addColumn('number', 'Amount');
+
+            var summary = 0;
 	 				$.each(result, function(idx, obj) {
 	 					$("#tbody_list_annualy").append('<tr><td>'+i+'</td><td>'+obj.name+'</td><td>'+obj.total+'</td></tr>');
-	 						i++;
+	 						i++;				i++;summary += parseFloat(obj.total);
 	 					});
-	 								 var options = {
+              $("#tbody_list_annualy").append('<tr><td colspan="2" class="text-right "><strong>รวม</strong></td><td  class="text-left">'+summary.toFixed(2)+'</td></tr>');
+
+
+              var data = new google.visualization.DataTable();
+              data.addColumn('string', 'name');
+              data.addColumn('number', 'Amount');
+                	 var options = {
 	 									 hAxis: {
 	 										 title: 'Year'
 	 									 },
