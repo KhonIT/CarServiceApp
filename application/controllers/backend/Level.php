@@ -10,94 +10,84 @@ class Level extends MY_Controller {
     private function _init()
     {
         $this->load->model('Level_Model');
-        $this->output->set_template('Backend');
 
     }
 
      public function index()
-    {
-        $this->load->js('Assets/Backend/js/Level.js');
-        $this->load->view('Content/Level_View');
-    }
+     {
+       $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
+       $this->output->set_template('Backend');
+       $this->load->js('Assets/Backend/js/cont/Level.js');
+       $this->load->view('Content/Level_View');
+     }
 
     public function Get_All()
     {
         $this->output->unset_template();
 
-        $Level =  $this->Level_Model->Get_All();
+        $result =  $this->Level_Model->Get_All();
 
-        if($Level)
+        if($result)
         {
-           echo json_encode ($Level) ;
+           echo json_encode ($result) ;
         }
     }
 
     public function Get_By_ID()
     {
-    	$this->output->unset_template();
+      $this->output->unset_template();
+      $data=json_decode(file_get_contents("php://input"));
 
-    	$Level =  $this->Level_Model->Get_By_ID($this->input->post('l_id'));
+    	$result =  $this->Level_Model->Get_By_ID($data->id);
 
-    	if($Level)
+    	if($result)
     	{
-    		echo json_encode ($Level) ;
+    		echo json_encode ($result) ;
     	}
-    }
-
-
-
-    public function Add()
-    {
-        $this->output->unset_template();
-
-        $Level_arr = array(
-            'l_name'=>$this->input->post('l_name'),
-        		'l_parent_id'=>$this->input->post('l_parent_id'),
-        		'modify_by' => $this->user_profile['emp_id'],
-        		'modify_date' => date('Y-m-d H:i:s')
-        );
-
-        $Level =  $this->Level_Model->Insert($Level_arr);
-
-        if($Level)
-        {
-                echo "true";
-        }
     }
 
 
     public function Edit()
     {
-        $this->output->unset_template();
-        $Level_arr = array(
-            'l_name'=>$this->input->post('l_name'),
-        	'l_parent_id'=>$this->input->post('l_parent_id'),
-            'modify_by' => $this->user_profile['emp_id'],
-            'modify_date' => date('Y-m-d H:i:s')
+      $this->output->unset_template();
+      $data=json_decode(file_get_contents("php://input"));
+        $data_arr = array(
+          'l_name'=>$data->l_name,
+          'l_parent_id'=>$data->l_parent_id,
+          'modify_by' => $this->user_profile['emp_id'],
+          'modify_date' => date('Y-m-d H:i:s')
         );
 
-        $Level =  $this->Level_Model->Update($Level_arr,$this->input->post('l_id'));
+        if($data->id=="0"){
+          $result =  $this->Level_Model->Insert($Level_arr);
+        }else{
+          $result =  $this->Level_Model->Update($data_arr,$data->id);
+        }
 
-        if($Level)
+        if($result)
         {
-            echo "true";
+           echo json_encode (true) ;
+        }else{
+           echo json_encode (false) ;
         }
     }
 
     public function Delete()
     {
         $this->output->unset_template();
-
-        $Level_arr = array(
+        $data=json_decode(file_get_contents("php://input"));
+        $data_arr = array(
             'is_show'=>0,
             'modify_by' => $this->user_profile['emp_id'],
             'modify_date' => date('Y-m-d H:i:s')
         );
-        $Level =  $this->Level_Model->Update($Level_arr,$this->input->post('l_id'));
+        $result =  $this->Level_Model->Update($data_arr,$data->id);
 
-        if($Level)
+        if($result)
         {
-               echo "true";
+           echo json_encode (true) ;
+        }else{
+           echo json_encode (false) ;
         }
     }
 

@@ -14,10 +14,10 @@ class Customer extends MY_Controller {
 
      public function index()
     {
-        $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
-        $this->output->set_template('Backend');
-        $this->load->js('Assets/Backend/js/cont/Customer.js');
-        $this->load->view('Content/Customer_View');
+      $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
+      $this->output->set_template('Backend');
+      $this->load->js('Assets/Backend/js/cont/Customer.js');
+      $this->load->view('Content/Customer_View');
     }
 
     public function Get_Logo()
@@ -56,6 +56,7 @@ class Customer extends MY_Controller {
            echo json_encode ($result) ;
         }
     }
+    
     public function Get_By_ID()
     {
     	$this->output->unset_template();
@@ -67,15 +68,6 @@ class Customer extends MY_Controller {
     	}
     }
 
-    public function GetCus_By_ID()
-    {
-    	$this->output->unset_template();
-    	$result =  $this->Customer_Model->Get_By_ID($this->input->post('id'));
-    	if($result)
-    	{
-    		echo json_encode ($result) ;
-    	}
-    }
 
 
     public function Edit()
