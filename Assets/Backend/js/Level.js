@@ -59,7 +59,6 @@ $('#modal_level_edit').delegate('button.close', 'click', function() {
 		success: function (data)
 			{
 				$("#dd_Level_edit").find('option').remove().end();
-
 				$.each(data, function(idx, obj) {
 						$("#dd_Level_edit").append('<option value='+obj.l_id+'>'+obj.l_name+'</option>');
 				});
@@ -108,7 +107,7 @@ $('#tbody_level').delegate('span.permission-edit', 'click', function() {
 					html+= '<td>'+obj.parent_menu+':'+obj.menu_name+' </td>';
 					if(obj.is_edit == "1"){
 						html+= '<td id="'+obj.permission_id+'" align="center" ><input type="checkbox" id="menuid_'+obj.menu_id+'" checked="checked" value="'+obj.menu_id+'" " /> </td></tr>';
-					}else{ 
+					}else{
 						html+= '<td id="'+obj.permission_id+'" align="center"><input type="checkbox" id="menuid_'+obj.menu_id+'" value="'+obj.menu_id+'"  " /> </td></tr>';
 					}
 					i++;

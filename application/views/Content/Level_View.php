@@ -90,7 +90,14 @@
 		                    </tr>
 		                </thead>
 		                <tbody id='tbody_permission'>
-
+                      <tr ng-repeat="obj in permission" >
+                        <td class="text-center">{{$index + 1}}</td>
+                        <td class="text-left"> {{obj.l_name}} </td>
+                        <td class="text-left"> {{obj.parent_menu+':'+obj.menu_name}}</td>
+                        <td  ng-if="obj.is_edit == 1" id='{{obj.permission_id}}' align="center" ><input type="checkbox" id="{{'menuid_'+obj.menu_id}}"   checked= "checked " value="{{obj.menu_id}}" /> </td>
+                        <td  ng-if="obj.is_edit != 1" id='{{obj.permission_id}}' align="center" ><input type="checkbox" id="{{'menuid_'+obj.menu_id}}"    value="{{obj.menu_id}}" /> </td>
+                      </tr>
+                      <tr><td align="center" colspan="4"><span class="glyphicon glyphicon-floppy-save icon " ng-click="savepermission();"   ></span></td></tr>
 		                </tbody>
 				</table>
 			</div>

@@ -117,7 +117,6 @@ height: 500
                  data.addColumn('string', 'name');
    							data.addColumn('number', 'Amount');
                  $.each(result, function(k, v) {
-                   console.log(k+'-'+v.name+'-'+v.total);
                    data.addRow([ v.name, parseFloat(v.total)]);
            });
                  var chart = new google.visualization.LineChart(document.getElementById('linechart_dairy'));

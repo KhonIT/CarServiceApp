@@ -20,37 +20,39 @@ class Permission extends MY_Controller {
 
     public function Get_All()
     {
-        $Permission =  $this->Permission_Model->Get_All();
-
-        if($Permission)
+        $this->output->unset_template();
+        $result =  $this->Permission_Model->Get_All();
+        if($result)
         {
-        	echo json_encode ($Permission) ;
+        	echo json_encode ($result) ;
         }
     }
 
     public function Get_By_ID()
     {
-        $Permission =  $this->Permission_Model->Get_By_ID($this->input->POST('l_id'));
+      $this->output->unset_template();
+      $data=json_decode(file_get_contents("php://input"));
+        $result =  $this->Permission_Model->Get_By_ID($data->id);
 
-        if($Permission)
-        {
-        	  echo json_encode ($Permission) ;
-        }
-    }
-
-    public function Get_Menu()
-    {
-        $result =  $this->Permission_Model->Get_Menu($this->session->userdata('emp_id'));
         if($result)
         {
         	  echo json_encode ($result) ;
         }
     }
 
+    public function Get_Menu()
+    {
+      $this->output->unset_template();
+      $result =  $this->Permission_Model->Get_Menu($this->session->userdata('emp_id'));
+      if($result){echo json_encode ($result);}
+    }
+
 
     public function Edit()
     {
-    	$json_array = json_decode($this->input->post('jsonObj'), true);
+      $this->output->unset_template();
+      $data=json_decode(file_get_contents("php://input"));
+    	$json_array = json_decode($data->jsonObj, true);
     	 foreach($json_array  as $key=>$val){
     	 	$Permission_arr = array(
     	 			'l_id'=>$val['l_id'],
@@ -60,12 +62,17 @@ class Permission extends MY_Controller {
     	 			'modify_date' => date('Y-m-d H:i:s')
     	 	);
     		 if( $val['permission_id']=='0'){
-    		 	$Permission =  $this->Permission_Model->Insert($Permission_arr);
+    		 	$result =  $this->Permission_Model->Insert($Permission_arr);
     		 }else{
-    		 	$Permission =  $this->Permission_Model->Update($Permission_arr,$val['permission_id']);
+    		 	$result =  $this->Permission_Model->Update($Permission_arr,$val['permission_id']);
     		 }
     	}
-            echo "true";
+      if($result)
+      {
+         echo json_encode (true) ;
+      }else{
+         echo json_encode (false) ;
+      }
 
     }
 
