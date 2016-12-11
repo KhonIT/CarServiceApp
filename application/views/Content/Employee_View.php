@@ -1,4 +1,3 @@
-<div   >
     <div ng-controller="employeeController" >
     <div class="col-sm-1 "> </div>
     <div class="col-sm-10 ">
@@ -107,6 +106,5 @@
 		</div>
 		</div>
 	</div>
-</div>
 </div>
 </div>

@@ -52,11 +52,11 @@ class Employee extends MY_Controller {
     public function Get_Salary_Byid()
     {
      $this->output->unset_template();
-             $data=json_decode(file_get_contents("php://input"));
+     $data=json_decode(file_get_contents("php://input"));
       $result =  $this->Employee_Model->Get_Salary_Byid($data->id);
       if($result){
         echo json_encode($result);
-      } 
+      }
     }
 
     public function Del_Salary()
