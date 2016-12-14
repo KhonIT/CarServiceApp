@@ -1,4 +1,4 @@
-app.controller('employeeController', function($scope, $http, $timeout) {
+app.controller('employeeController', function($scope, $http, $timeout,Upload) {
 
     $scope.employees = []; //declare an empty array
     //declare empty
@@ -164,5 +164,16 @@ app.controller('employeeController', function($scope, $http, $timeout) {
            $('#msgbox').addClass( "hidden" )
         }, 1500); // delay 1500 ms
     }
+    $scope.picFile  = "";
+    $scope.isImage = function(ext) {
+      if(ext) {
+        return ext == "jpg" || ext == "jpeg"|| ext == "gif" || ext=="png"
+      }
+    }
+ 
+         $scope.onChange = function (files) {
+           if(files[0] == undefined) return;
+           $scope.fileExt = files[0].name.split(".").pop()
+         }
 
 });

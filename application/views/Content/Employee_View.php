@@ -99,6 +99,16 @@
 					</td>
 				</tr>
 				<tr>
+          <tr>
+            <td> รูปภาพ1</td>
+            <td>
+              <div class="input-box">
+              <input type="file" id="file" class="input-text" ngf-change="onChange($files)" ngf-select ng-model="picFile" name="attachement" accept="image/*" capture="camera"/>
+              </div>
+              <img ng-show="isImage(fileExt)" ngf-src="picFile[0]" class="thumb">
+
+            </td>
+          </tr>
 					<td>บันทึก:</td>
 					 <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="saveemp()"></span></td>
 				</tr>
