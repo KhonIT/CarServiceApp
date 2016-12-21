@@ -1,4 +1,4 @@
-app.controller('employeeController', function($scope, $http, $timeout,Upload) {
+app.controller('employeeController', function($scope, $http, $timeout) {
 
     $scope.employees = []; //declare an empty array
     //declare empty
@@ -170,7 +170,7 @@ app.controller('employeeController', function($scope, $http, $timeout,Upload) {
         return ext == "jpg" || ext == "jpeg"|| ext == "gif" || ext=="png"
       }
     }
- 
+
          $scope.onChange = function (files) {
            if(files[0] == undefined) return;
            $scope.fileExt = files[0].name.split(".").pop()

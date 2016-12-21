@@ -57,7 +57,6 @@ class Employee_Model extends CI_Model{
 			,e.status as emp_status
 			,e.contact as emp_contact
 			,e.e_username as emp_username
-			,e.e_password as emp_password
 			,e.current_salary as emp_current_salary
 			,l.l_id as emp_l_id
 			,l.l_name from employees e left join level l on l.l_id = e.l_id  where e.is_show = 1 and e.e_id = ?';
@@ -68,14 +67,13 @@ class Employee_Model extends CI_Model{
 	 }
 
 	 public function Get_All(){
-		  $sql = 'select e.e_id,CONCAT(e.st_name, e.name) As  name,e.nickname,l.l_id,l.l_name from employees e left join level l on l.l_id = e.l_id  where e.is_show = 1 and e_id not in (1,2,3)';
-		  $query = $this->db->query($sql);
-		  return $query->result();
+		  $sql = 'select e.e_id as emp_id,CONCAT(e.st_name, e.name) As  name,e.nickname,l.l_name from employees e left join level l on l.l_id = e.l_id  where e.is_show = 1 and e_id not in (1,2,3)';
+		 $query = $this->db->query($sql);
+		return $query->result();
 	 }
 	 public function Cal_Salary(){
-		 $boolean = false;
+		  $boolean = false;
 		  $sql = 'INSERT INTO salary_slip (e_id,salary,creadated_date) SELECT e.e_id,e.current_salary,now() FROM employees e WHERE e.is_show =1  and e_id not in (1,2,3) and concat(month(now()),e_id) not in (select  concat(month(creadated_date),e_id) from  salary_slip  GROUP by  month(creadated_date) )';
-
 			if($this->db->query($sql))	 {	 $boolean = true;}
 		  return $boolean;
 	 }

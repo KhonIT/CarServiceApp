@@ -1,8 +1,8 @@
-	<?php defined('BASEPATH') OR exit('No direct script access allowed'); 
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 class Authen extends CI_Controller
 {
 	function __construct()
-    { 
+    {
       	$this->_init();
 	}
 
@@ -10,20 +10,20 @@ class Authen extends CI_Controller
 	{
 		$this->load->model('Employee_Model');
 	}
-	
+
     function index( )
-    {  
+    {
 		$this->output->unset_template();
-		$result = $this->Employee_Model->Check_Login($this->input->post('username'),  $this->input->post('password')); 
+		$result = $this->Employee_Model->Check_Login($this->input->post('username'),  $this->input->post('password'));
 		if($result === TRUE)
-		{  
+		{
 			echo "true";
 		}
 		else
-		{  
+		{
  			echo "false";
-		} 
+		}
     }
-    
-   
+
+
 }

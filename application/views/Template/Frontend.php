@@ -3,8 +3,10 @@
 <!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
 <!--[if (IE 9)]><html class="no-js ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en-US"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en-US"> <!--<![endif]-->
 <head>
+	<? header('Access-Control-Allow-Origin:  base_url()>";'); ?>
 		<title><?php echo $title; ?></title>
 		<!-- Meta Tags -->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -16,8 +18,8 @@
 			 <!-- Mobile Specifics -->
 	 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	 		<meta name="HandheldFriendly" content="true"/>
-	 		<meta name="MobileOptimized" content="320"/> 
-		
+	 		<meta name="MobileOptimized" content="320"/>
+
 			<?php
 				if(!empty($meta))
 						foreach($meta as $name=>$content){
@@ -61,18 +63,18 @@
 <link rel="apple-touch-icon" href="#">
 <link rel="apple-touch-icon" sizes="114x114" href="#">
 <link rel="apple-touch-icon" sizes="72x72" href="#">
-<link rel="apple-touch-icon" sizes="144x144" href="#"> 
+<link rel="apple-touch-icon" sizes="144x144" href="#">
 <?php  foreach($css as $file){  ?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php	 }  ?>
 			<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 			<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 			<![endif]-->
 		</head>
-<body> 
+<body>
        <!-- content -->
         <?php echo $output;?>
         <!--/.content-->
-      
+
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/ie10-viewport-bug-workaround.js"></script>
@@ -102,7 +104,7 @@
 <!-- End Js Frontend-->
 
 <script type="text/javascript">
-	var base_url = "<?php echo base_url();?>";     
+	var base_url = "<?php echo base_url();?>";
 </script>
 
 <!-- Js Frontend -->

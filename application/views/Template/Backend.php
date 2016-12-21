@@ -88,24 +88,7 @@
 
 			});
 
-			$('.logoutform').delegate('a.btnlogout', 'click', function() {
-				$.ajax({
-					url:  backend_url+'Employee/logout',
-					data: {},
-					type: "POST",
-					cache:false,
-					success: function (data) {
-						if(data = "true"){
-							$('#result_content').text(" ออกจากระบบเรียบร้อยแล้ว ");
-							window.setTimeout('location.reload()', 1000);
-						}
-					}
-				});
-			});
 
-			$('.editempform').delegate('a.editemp', 'click', function() {
-			    $("#modal_data_editemp").modal();
-			});
 
 			$(document).ready(function(){
 
@@ -158,7 +141,25 @@
 					}
 				});
 
+				$('.logoutform').delegate('a.btnlogout', 'click', function() {
 
+					$.ajax({
+						url:  backend_url+'Employee/logout',
+						data: {},
+						type: "POST",
+						cache:false,
+						success: function (data) {
+							if(data = "true"){
+								$('#result_content').text(" ออกจากระบบเรียบร้อยแล้ว ");
+								window.setTimeout('location.reload()', 1000);
+							}
+						}
+					});
+				});
+
+				$('.editempform').delegate('a.editemp', 'click', function() {
+						$("#modal_data_editemp").modal();
+				});
 			});
 
 			</script>

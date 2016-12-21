@@ -1,4 +1,4 @@
-    <div ng-controller="serviceController" >
+    <div ng-controller="serviceController" id="top-panel">
     <div class="col-sm-1 "> </div>
     <div class="col-sm-10 ">
 
@@ -17,15 +17,21 @@
                           <tr >
                               <th>ลำดับที่</th>
                               <th>การบริการ</th>
-                              <th>แก้ไข</th>
+                              <th>ราคา</th>
+                              <th>บันทึก</th>
                               <th>ลบ</th>
                           </tr>
                       </thead>
                       <tbody id='tbody_list'>
                       <tr  ng-repeat="obj in services" >
                         <td class="text-center">{{$index + 1}}</td>
-                        <td class="text-left">{{obj.service_name}}</td>
-                        <td align="center"><span class="glyphicon glyphicon-option-horizontal edit-data icon " ng-click="edit(obj.service_id);"></span></td>
+                        <td class="text-left">
+	                           <input type="text" name="tb_name_{{''+obj.service_id}}" id="tb_name_{{''+obj.service_id}}"  ng-model="obj.service_name"  />
+                        </td>
+                        <td class="text-left">
+                             <input type="text" name="tb_price_{{''+obj.service_id}}" id="tb_price_{{''+obj.service_id}}"  ng-model="obj.price"  />
+                        </td>
+                        <td align="center"><span class="glyphicon glyphicon-floppy-save icon " ng-click="save(obj.service_id);"></span></td>
                         <td align="center"><span class=" glyphicon glyphicon-remove remove-data icon " ng-click="del(obj.service_id);"></span></td></tr>
                       </tbody>
                   </table>

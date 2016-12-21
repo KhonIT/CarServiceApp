@@ -1,4 +1,4 @@
-app.controller('serviceController', function($scope, $http, $timeout) {
+app.controller('serviceController', function($scope, $http, $timeout,$location,$anchorScroll) {
 
     $scope.services = []; //declare an empty array
     $scope.service_id = "";
@@ -39,15 +39,12 @@ app.controller('serviceController', function($scope, $http, $timeout) {
             })
     }
 
-    $scope.save = function() {
+    $scope.save = function(id) {
        //for-debug
        //console.log($scope.emp_id+':'+$scope.emp_name);
-        $http.post(backend_url + 'Services/Edit', {
-            id: $scope.service_id,
-            service_name: $scope.service_name,
-            price: $scope.price
-          }).success(function(data) {
-              $('#modal_data').modal('toggle');
+    var param  ={};
+    if (id == "0"){param = {id: id,service_name: $scope.service_name, price: $scope.price};}else{param = {id: id,service_name: 	$("#tb_name_"+id).val(), price: 	$("#tb_price_"+id).val()};} 
+        $http.post(backend_url + 'Services/Edit',param).success(function(data) {
               if (angular.equals(data, "true")  ){
                   $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
                   $scope.displaymsgsuccess();
@@ -85,12 +82,16 @@ app.controller('serviceController', function($scope, $http, $timeout) {
 
 
     $scope.displaymsgsuccess = function(){
+      $location.hash('top-panel');
+       $anchorScroll();
       $('#msgbox').addClass( "alert-success" ).removeClass( "alert-warning hidden");
       $timeout(function() {
            $('#msgbox').addClass( "hidden" )
         }, 1500); // delay 1500 ms
     }
     $scope.displaymsgwarning = function(){
+      $location.hash('top-panel');
+       $anchorScroll();
       $('#msgbox').addClass( "alert-warning" ).removeClass( "alert-success hidden" );
       $timeout(function() {
            $('#msgbox').addClass( "hidden" )

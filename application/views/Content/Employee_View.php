@@ -37,10 +37,9 @@
                         <td class="text-left">{{emp.name}}</td>
                         <td class="text-left">{{emp.nickname}}</td>
                         <td class="text-left">{{emp.l_name}}</td>
-                        <td class=" text-center"><span class="glyphicon glyphicon-option-horizontal edit-data icon " ng-click="editemp(emp.e_id);"></span></td>
-                        <td class=" text-center"><span class="glyphicon glyphicon-remove remove-data icon " ng-click="delemp(emp.e_id);"></span></td>
+                        <td class=" text-center"><span class="glyphicon glyphicon-option-horizontal edit-data icon " ng-click="editemp(emp.emp_id);"></span></td>
+                        <td class=" text-center"><span class="glyphicon glyphicon-remove remove-data icon " ng-click="delemp(emp.emp_id);"></span></td>
                       </tr>
-
 
 		                </tbody>
 		            </table>
@@ -106,7 +105,6 @@
               <input type="file" id="file" class="input-text" ngf-change="onChange($files)" ngf-select ng-model="picFile" name="attachement" accept="image/*" capture="camera"/>
               </div>
               <img ng-show="isImage(fileExt)" ngf-src="picFile[0]" class="thumb">
-
             </td>
           </tr>
 					<td>บันทึก:</td>
