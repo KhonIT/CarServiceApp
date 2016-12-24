@@ -42,8 +42,7 @@ class Customer_Service extends MY_Controller {
     $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
     $this->output->set_template('Blank');
     $this->load->js('Assets/Backend/js/cont/PrintService.js');
-    $this->load->view('Content/Print_Service_View');
-
+    $this->load->view('Content/Print_Service_View'); 
   }
 
 

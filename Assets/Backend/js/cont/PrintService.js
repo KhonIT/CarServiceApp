@@ -18,10 +18,11 @@ app.controller('printController', function($scope, $http) {
     if (document.URL.indexOf("=")> 0 ){
         var idarr = document.URL.split("=");
         $scope.order_id = idarr[1];
+
         $http.post(backend_url + 'Print_Service/Get_By_ID', { 'id': $scope.order_id })
         .success(function(data) {
-          $scope.book_no = data.book_no;
-          $scope.number =  data.number;
+            $scope.book_no = data.book_no;
+            $scope.number =  data.number;
             $scope.cus_name = data.cus_name;
             $scope.cus_tel = data.cus_tel ;
             $scope.cus_car_regis_number = data.cus_car_regis_number;
@@ -31,7 +32,7 @@ app.controller('printController', function($scope, $http) {
             $scope.total_price =  data.total;
             $scope.date = new Date();
         }).error(function(err) {
-            console.log(err);
+          console.log("Error:"+err);
         });
         $http.post(backend_url + 'Print_Service/Get_OrdersDetails_Print', { 'id': $scope.order_id })
         .success(function(response) {
@@ -41,13 +42,9 @@ app.controller('printController', function($scope, $http) {
       });
       $http.post(backend_url + 'Print_Service/ChangePay', { 'id': $scope.order_id })
       .success(function(response) {
-               console.log(response);
+        //  console.log("ChangePay:"+response) ;
       }).error(function(err) {
           console.log(err);
     });
-
     }
-
-
-
 });
