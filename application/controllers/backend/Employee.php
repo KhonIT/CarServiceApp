@@ -139,6 +139,44 @@ class Employee extends MY_Controller {
   		}
     }
 
+    public function Upload_Image()
+{
+	$this->output->unset_template();
+
+	$file_element_name = 'file_image';
+
+	$config['upload_path'] =  FCPATH.'Assets/Backend/Upload/ImageEmp/';
+	$config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|PNG|GIF|JPEG';
+	$config['max_size'] = 1024 * 5;
+	$config['encrypt_name'] = false;
+	$config['overwrite'] = false;
+	$this->load->library('upload', $config);
+
+	if ($this->upload->do_upload($file_element_name))
+	{
+		//Image Resizing
+		$config['source_image'] = $this->upload->upload_path.$this->upload->file_name;
+		$config['maintain_ratio'] = FALSE;
+		$config['width'] = 200;
+		$config['height'] = 200;
+
+		$this->load->library('image_lib', $config);
+		$this->image_lib->resize();
+			$data = $this->upload->data();
+
+			$status = $data['file_name'];
+	}
+	else
+	{
+	  	$status =  $this->upload->display_errors();
+		//	$status = "error";
+
+	}
+        @unlink($_FILES[$file_element_name]);
+
+  	echo $status;
+}
+
     public function Delete()
     {
         $this->output->unset_template();

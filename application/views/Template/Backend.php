@@ -43,7 +43,6 @@
 			</script>
 			<script src="<?php echo base_url(); ?>Assets/Backend/js/Common.js"></script>
 			<script type="text/javascript">
-
 			app.controller('empController', function($scope, $http, $timeout) {
 					//declare empty
 					$scope.empname =  "";
@@ -89,7 +88,6 @@
 			                console.log(err);
 			            })
 			    }
-
 			});
 
 
@@ -164,6 +162,33 @@
 				$('.editempform').delegate('a.editemp', 'click', function() {
 						$("#modal_data_editemp").modal();
 				});
+
+				$('#modal_data_editemp').delegate('#upload_image', 'click', function() {
+
+					var fd = new FormData();
+	     var file_data = $('#file_image')[0].files; // for multiple files
+	     for(var i = 0;i<file_data.length;i++){
+	         fd.append("file_image", file_data[i]);
+	     }
+					$.ajax({
+							url: 	backend_url + 'Employee/Upload_Image',
+							type: 'POST',
+							data: fd,
+							async: false,
+							mimeType: "multipart/form-data",
+							contentType: false,
+							cache: false,
+							processData: false,
+							success: function(data){
+								if(data!='error'){
+									console.log(data);
+								} else{
+									console.log(data);
+								}
+							}
+					});
+
+				});
 			});
 
 			</script>
@@ -193,7 +218,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="User_Profile">  </a>
 						<ul class=" dropdown-menu">
 							<li role="separator" class="divider"></li>
-							<li  class="editempform"> <a href="#"  class="editemp">แก้ไขข้อมูลรหัสผ่าน</a></li>
+							<li  class="editempform"> <a href="#"  class="editemp">แก้ไขข้อมูล</a></li>
 							<li  class="logoutform"> <a href="#"  class="btnlogout ">ออกจากระบบ</a></li>
 							<li role="separator" class="divider"></li>
 						</ul>
@@ -235,6 +260,16 @@
 								<input type="text" name="tb_e_password" id="tb_e_password"   ng-model="emppassword"/>
 							</td>
 						</tr>
+						<tr>
+							<td> Upload</td>
+							<td>
+								<input type="file" id="file_image" name="file_image"  accept="image/*" />
+
+								<input type="button" id="upload_image"   class="btn btn-success btn-xs"  value="Upload" />
+
+							</td>
+						</tr>
+
 
 						<tr>
 							<td>บันทึก:</td>
