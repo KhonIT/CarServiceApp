@@ -6,7 +6,7 @@
 <!--[if gt IE 8]><!-->
 <html lang="en-US"> <!--<![endif]-->
 <head>
-	<? header('Access-Control-Allow-Origin:  base_url()>";'); ?>
+		
 		<title><?php echo $title; ?></title>
 		<!-- Meta Tags -->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
