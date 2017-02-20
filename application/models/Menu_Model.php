@@ -38,7 +38,6 @@ class Menu_Model extends CI_Model{
 		   	throw new Exception($e->getMessage());
 		  }
 	 }
-
 	 public function Get_By_ID($menu_id){
 		  $sql = 'select menu_id,menu_name,link_url,parent_menu_id from menu where is_show = 1 and menu_id = ?';
 		  $query = $this->db->query($sql, array($menu_id));
@@ -50,5 +49,4 @@ class Menu_Model extends CI_Model{
 		  $query = $this->db->query($sql);
 		  return $query->result();
 	 }  
-
 }
