@@ -41,16 +41,11 @@ class Permission_Model extends CI_Model{
 	 } 
 	  
 	 public function Get_Menu($e_id){
-		  $sql = 'select m.menu_id
-		  , m.menu_name  
-, CASE ifnull((select is_edit FROM permission p where m.menu_id = p.menu_id and l.l_id = p.l_id ), 0 ) WHEN "0" THEN "#" WHEN "1" THEN m.link_url ELSE "#" END as link_url
-		  ,m.parent_menu_id 
+		  $sql = 'select m.menu_id, m.menu_name  
+, CASE ifnull((select is_edit FROM permission p where m.menu_id = p.menu_id and l.l_id = p.l_id ), 0 ) WHEN "0" THEN "#" WHEN "1" THEN m.link_url ELSE "#" END as link_url,m.parent_menu_id 
 , ifnull((select menu_name from menu m1  where  m.parent_menu_id = m1.menu_id), 0 )as parent_menu
-
-
-, ifnull((select is_edit FROM permission p where m.menu_id = p.menu_id and l.l_id = p.l_id  ),
-        
-         ifnull((select menu_name from menu m1  where  m.parent_menu_id = m1.menu_id),1 )
+, ifnull((select is_edit FROM permission p where m.menu_id = p.menu_id and l.l_id = p.l_id  )
+, ifnull((select menu_name from menu m1  where  m.parent_menu_id = m1.menu_id),1 )
         ) is_show 
 , ifnull((select is_edit FROM permission p where m.menu_id = p.menu_id and l.l_id = p.l_id  ), 0 ) is_edit
 , ifnull((select permission_id FROM permission p where m.menu_id = p.menu_id and l.l_id = p.l_id   ), 0 ) permission_id 
