@@ -32,8 +32,7 @@ function Get_parent_Menu(menu_id){
 		url: backend_url+'Menu/Get_All',
 		data: {},
 		dataType: "json",
-		type: "POST",
-
+		type: "POST", 
 		dataFilter: function (data) { return data; },
 		success: function (data)
 			{
@@ -69,7 +68,7 @@ function Get_Menu_Detail(menu_id){
 }
 
 $('#tbody_menu').delegate('span.menu-edit', 'click', function() {
-					Get_parent_Menu($.trim(event.target.id));
+	 	Get_parent_Menu($.trim(event.target.id));
 });
 
 $('#modal_menu').delegate('span.menu-save', 'click', function() {
