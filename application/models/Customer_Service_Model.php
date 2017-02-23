@@ -70,14 +70,14 @@ class Customer_Service_Model extends CI_Model{
 
 
 	 public function Get_OrdersDetails_By_ID($id){
-		  $sql = ' select   '.$id.'  as order_id,s.service_id,s.service_name,s.price as service_price , ifnull((select o.order_detail_id FROM order_details o where s.service_id = o.service_id and o.is_show ="1" and order_id = '.$id.'  ), 0 ) order_detail_id, ifnull((select o.price FROM order_details o where s.service_id = o.service_id and o.is_show ="1" and order_id = '.$id.'  ), 0 ) price from  service s  where s.is_show = 1';
+		  $sql = ' select   '.$id.'  as order_id,s.service_id,s.service_name,s.price as service_price , ifnull((select o.order_detail_id FROM order_details o where s.service_id = o.service_id and o.is_deleted = 0 and order_id = '.$id.'  ), 0 ) order_detail_id, ifnull((select o.price FROM order_details o where s.service_id = o.service_id and o.is_deleted = 0 and order_id = '.$id.'  ), 0 ) price from  service s  where s.is_deleted = 0';
 			$query = $this->db->query($sql, array($id));
 		  log_message('debug', sprintf('Found %b row with service ID %s', $query->num_rows(), $id));
 		  return $query->result();
 	 }
 
 	 public function Get_OrdersDetails_Print($id){
-		  $sql = ' select   s.service_name,o.price as service_price   from  order_details o left join  service s  on  s.service_id = o.service_id where s.is_show = 1 and order_id = ?';
+		  $sql = ' select   s.service_name,o.price as service_price   from  order_details o left join  service s  on  s.service_id = o.service_id where s.is_deleted = 0 and order_id = ?';
 			$query = $this->db->query($sql, array($id));
 		  log_message('debug', sprintf('Found %b row with service ID %s', $query->num_rows(), $id));
 		  return $query->result();
@@ -85,14 +85,14 @@ class Customer_Service_Model extends CI_Model{
 
 
 	 public function Get_By_ID($id){
-		  $sql = 'select  o.order_id as id,o.book_no,o.number,c.cus_tel,c.cus_name,c.cus_car_regis_number,c.cus_car_brand,c.cus_car_model,c.cus_car_color,c.cus_id,comment,total,pay_status,emp_id,created_date from orders o left join customers c on c.cus_id = o.cus_id where o.is_show = 1 and order_id = ?';
+		  $sql = 'select  o.order_id as id,o.book_no,o.number,c.cus_tel,c.cus_name,c.cus_car_regis_number,c.cus_car_brand,c.cus_car_model,c.cus_car_color,c.cus_id,comment,total,pay_status,emp_id,created_date from orders o left join customers c on c.cus_id = o.cus_id where o.is_deleted = 0 and order_id = ?';
 		  $query = $this->db->query($sql, array($id));
 		  log_message('debug', sprintf('Found %b row with service ID %s', $query->num_rows(), $id));
 		  return $query->row_array();// return one row
 	 }
 
 	 public function Get_All($pay_status){
-		  $sql = 'select  o.order_id as id,o.book_no,o.number,c.cus_tel,c.cus_name,c.cus_car_regis_number,c.cus_car_brand,c.cus_car_model,c.cus_car_color,c.cus_id,comment,total,pay_status,emp_id,created_date from orders o left join customers c on c.cus_id = o.cus_id where o.is_show = 1 and o.pay_status = '.$pay_status.' order by created_date desc  limit 1000 offset 0 ';
+		  $sql = 'select  o.order_id as id,o.book_no,o.number,c.cus_tel,c.cus_name,c.cus_car_regis_number,c.cus_car_brand,c.cus_car_model,c.cus_car_color,c.cus_id,comment,total,pay_status,emp_id,created_date from orders o left join customers c on c.cus_id = o.cus_id where o.is_deleted = 0 and o.pay_status = '.$pay_status.' order by created_date desc  limit 1000 offset 0 ';
 		  $query = $this->db->query($sql);
 		  return $query->result();
 	 }
@@ -102,7 +102,7 @@ class Customer_Service_Model extends CI_Model{
 			$sql = 'select left(TIME(o.created_date),2) as time_name,YEAR(o.created_date) as  year';
 			$sql .= ' ,MONTH(o.created_date)as month ,left(DATE(o.created_date),2) as day_no,sum(total) as total ';
 						$sql .= ' , CONCAT_WS(\'-\',  left(DATE(o.created_date),2),MONTH(o.created_date),YEAR(o.created_date),left(TIME(o.created_date),2) )  as name ';
-			$sql .= ' from orders o  where o.is_show =1    ';
+			$sql .= ' from orders o  where o.is_deleted = 0    ';
 if($year!= '0' ){
 				$sql .= ' and YEAR(o.created_date) = \''.$year.'\'';
 }
@@ -121,7 +121,7 @@ if($service_id!= '0' ){
 			return $query->result();
 	 }
 	 public function Get_Report_Monthly($service_id){
-			$sql = 'select MONTH(o.created_date)as month,YEAR(o.created_date) as year ,sum(total) as total from orders o where o.is_show =1  ';
+			$sql = 'select MONTH(o.created_date)as month,YEAR(o.created_date) as year ,sum(total) as total from orders o where o.is_deleted = 0  ';
 
 			if($service_id!= '0' ){
 				$sql .= ' and o.order_id in (select order_id from order_details od  where od.service_id = \''.$service_id.'\')';
@@ -131,7 +131,7 @@ if($service_id!= '0' ){
 			return $query->result();
 	 }
 	 public function Get_Report_Annualy($service_id){
-			$sql = 'select  YEAR(o.created_date) as name,sum(total) as total from orders o where o.is_show =1  ';
+			$sql = 'select  YEAR(o.created_date) as name,sum(total) as total from orders o where o.is_deleted = 0  ';
 
 
 			if($service_id!= '0' ){
@@ -143,12 +143,12 @@ if($service_id!= '0' ){
 	 }
 
 	 public function Get_Year(){
-			$sql = 'select  YEAR(o.created_date) as year from orders o where o.is_show =1  group by YEAR(o.created_date)  order by YEAR(o.created_date) asc ';
+			$sql = 'select  YEAR(o.created_date) as year from orders o where o.is_deleted = 0  group by YEAR(o.created_date)  order by YEAR(o.created_date) asc ';
 			$query = $this->db->query($sql);
 			return $query->result();
 	 }
 	 public function Get_Month($year){
-			$sql = 'select  MONTH(o.created_date)as month from orders o where o.is_show =1 and YEAR(o.created_date) = ?  group by  YEAR(o.created_date),MONTH(o.created_date)   order by MONTH(o.created_date) asc ';
+			$sql = 'select  MONTH(o.created_date)as month from orders o where o.is_deleted = 0 and YEAR(o.created_date) = ?  group by  YEAR(o.created_date),MONTH(o.created_date)   order by MONTH(o.created_date) asc ';
 			$query = $this->db->query($sql, array($year));
 			return $query->result();
 	 }

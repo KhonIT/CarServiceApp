@@ -51,7 +51,7 @@
 					$scope.emppassword =  "";
 
 					$http.get(backend_url + 'Employee/Get_Emp').success(function(data) {
-						$scope.empname =  data.emp_name;
+						$scope.empname =  data.emp_fname+' '+data.emp_lname;
 						$scope.empnickname = data.emp_nickname;
 						$scope.empusername =  data.emp_username;
 						$scope.emppassword =  data.emp_password;
@@ -61,7 +61,7 @@
 
 					    $scope.getDataEmp = function() {
 					        $http.get(backend_url + 'Employee/Get_Emp').success(function(data) {
-										$scope.empname =  data.emp_name;
+										$scope.empname =  data.emp_fname+' '+data.emp_lname;
 										$scope.empnickname = data.emp_nickname;
 										$scope.empusername =  data.emp_username;
 										$scope.emppassword =  data.emp_password;
@@ -103,7 +103,7 @@
 					success: function (data) {
 
 						$("#User_Profile").text("");
-						$("#User_Profile").append(data.emp_name+':'+data.l_name+'<span class="caret"></span>');
+						$("#User_Profile").append('คุณ'+data.emp_fname+' '+data.emp_lname+':'+data.l_name+'<span class="caret"></span>');
 
 					}
 				});

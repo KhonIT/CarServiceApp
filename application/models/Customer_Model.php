@@ -38,7 +38,7 @@ class Customer_Model extends CI_Model{
 		  }
 	 }
 	 public function Get_By_ID($id){
-		  $sql = 'select  cus_id as id ,cus_tel,cus_name,cus_car_regis_number,cus_car_brand,cus_car_model,cus_car_color  from customers where is_show = 1 and cus_id = ?';
+		  $sql = 'select  cus_id as id ,cus_tel,cus_name,cus_car_regis_number,cus_car_brand,cus_car_model,cus_car_color  from customers where is_deleted = 0 and cus_id = ?';
 		  $query = $this->db->query($sql, array($id));
 		  log_message('debug', sprintf('Found %b row with service ID %s', $query->num_rows(), $id));
 		  return $query->row_array();// return one row
@@ -47,7 +47,7 @@ class Customer_Model extends CI_Model{
 
 	 public function Cus_Search($cus_tel,$cus_car_regis_number){
 
-		  $sql = 'select  cus_id as id ,cus_tel,cus_name,cus_car_regis_number,cus_car_brand,cus_car_model,cus_car_color  from customers where is_show = 1 ' ;
+		  $sql = 'select  cus_id as id ,cus_tel,cus_name,cus_car_regis_number,cus_car_brand,cus_car_model,cus_car_color  from customers where is_deleted = 0 ' ;
 
 
 if($cus_tel!= ""){
@@ -63,7 +63,7 @@ if($cus_tel!= ""){
 	 }
 
 	 public function Get_All(){
-		  $sql = 'select  cus_id as id ,cus_tel,cus_name,cus_car_regis_number,cus_car_brand,cus_car_model,cus_car_color  from customers where is_show = 1 order by cus_id desc limit 100 offset 0 ';
+		  $sql = 'select  cus_id as id ,cus_tel,cus_name,cus_car_regis_number,cus_car_brand,cus_car_model,cus_car_color  from customers where is_deleted = 0 order by cus_id desc limit 100 offset 0 ';
 		  $query = $this->db->query($sql);
 		  return $query->result();
 	 }

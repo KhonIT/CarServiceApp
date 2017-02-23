@@ -43,14 +43,14 @@ class Level_Model extends CI_Model{
 
 
 	 public function Get_By_ID($l_id){
-		  $sql = "select l.l_id,l.l_name,IFNULL(lp.l_id,'-')as l_parent_id,IFNULL(lp.l_name,'-')as l_parent_name from level l left join level lp on l.l_parent_id = lp.l_id where l.is_show = 1 and l.l_id = ?";
+		  $sql = "select l.l_id,l.l_name,IFNULL(lp.l_id,'-')as l_parent_id,IFNULL(lp.l_name,'-')as l_parent_name from level l left join level lp on l.l_parent_id = lp.l_id where l.is_deleted = 0 and l.l_id = ?";
 		  $query = $this->db->query($sql, array($l_id));
 		  log_message('debug', sprintf('Found %b row with level ID %s', $query->num_rows(), $l_id));
 		  return $query->row_array();// return one row
 	 }
 
 	 public function Get_All(){
-		  $sql = "select l.l_id,l.l_name,IFNULL(lp.l_id,'-')as l_parent_id,IFNULL(lp.l_name,'-')as l_parent_name from level l left join level lp on l.l_parent_id = lp.l_id where l.is_show = 1";
+		  $sql = "select l.l_id,l.l_name,IFNULL(lp.l_id,'-')as l_parent_id,IFNULL(lp.l_name,'-')as l_parent_name from level l left join level lp on l.l_parent_id = lp.l_id where l.is_deleted = 0";
 		  $query = $this->db->query($sql);
 		  return $query->result();
 	 }

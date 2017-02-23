@@ -11,7 +11,7 @@ class Employee_Model extends CI_Model{
 		   throw new Exception('employee Data is null.');
 		  }
 		  try {
-		   $this->db->insert('employees', $data);
+		   $this->db->insert('employee', $data);
 		   	return $this->db->insert_id();
 		  } catch (Exception $e) {
 		   	throw new Exception($e->getMessage());
@@ -21,8 +21,8 @@ class Employee_Model extends CI_Model{
 	 public function Update($data = null, $id){
 
 		  if ($data == null){
-		   	log_message('error', 'Update => employees Data is null.');
-		   	throw new Exception('employees Data is null.');
+		   	log_message('error', 'Update => employee Data is null.');
+		   	throw new Exception('employee Data is null.');
 		  }
 
 
@@ -33,7 +33,7 @@ class Employee_Model extends CI_Model{
 
 		  try {
 
-		   	return $this->db->update('employees', $data, array('e_id' => $id));
+		   	return $this->db->update('employee', $data, array('e_id' => $id));
 
 		  } catch (Exception $e) {
 		   	throw new Exception($e->getMessage());
@@ -42,24 +42,25 @@ class Employee_Model extends CI_Model{
 
 	 public function Get_By_ID($id){
 		  $sql = 'select
-			e.e_id as emp_id
-			,e.st_name as emp_st_name
-			,e.name as emp_name
-			,e.nickname as emp_nickname
-			,e.tel as emp_tel
-			,e.passport as emp_passport
-			,e.address as emp_address
-			,e.date_start_work as emp_date_start_work
-			,e.picture as emp_picture
-			,e.old_work as emp_old_work
-			,e.degree as emp_degree
-			,e.nationality as emp_nationality
-			,e.status as emp_status
-			,e.contact as emp_contact
-			,e.e_username as emp_username
-			,e.current_salary as emp_current_salary
+			e.emp_id as emp_id
+			,e.emp_st_name as emp_st_name
+			,e.emp_fname as emp_fname
+			,e.emp_lname as emp_lname
+			,e.emp_nickname as emp_nickname
+			,e.emp_tel as emp_tel
+			,e.emp_ssn as emp_passport
+			,e.emp_address as emp_address
+			,e.emp_date_start_work as emp_date_start_work
+			,e.emp_picture as emp_picture
+			,e.emp_old_work as emp_old_work
+			,e.emp_degree as emp_degree
+			,e.emp_nationality as emp_nationality
+			,e.emp_status as emp_status
+			,e.emp_contact as emp_contact 
+			,e.emp_current_salary as emp_current_salary
 			,l.l_id as emp_l_id
-			,l.l_name from employees e left join level l on l.l_id = e.l_id  where e.is_show = 1 and e.e_id = ?';
+			,l.l_name from employee e left join level l on l.l_id = e.l_id  where e.is_deleted = 0 and e.emp_id = ?';
+ 
 
 		  $query = $this->db->query($sql, array($id));
 		  log_message('debug', sprintf('Found %b row with employee ID %s', $query->num_rows(), $id));
@@ -67,13 +68,13 @@ class Employee_Model extends CI_Model{
 	 }
 
 	 public function Get_All(){
-		  $sql = 'select e.e_id as emp_id,CONCAT(e.st_name, e.name) As  name,e.nickname,l.l_name from employees e left join level l on l.l_id = e.l_id  where e.is_show = 1 and e_id not in (1,2,3)';
+		  $sql = 'select e.e_id as emp_id,CONCAT(e.st_name, e.name) As  name,e.nickname,l.l_name from employee e left join level l on l.l_id = e.l_id  where e.is_deleted = 0 and e_id not in (1,2,3)';
 		 $query = $this->db->query($sql);
 		return $query->result();
 	 }
 	 public function Cal_Salary(){
 		  $boolean = false;
-		  $sql = 'INSERT INTO salary_slip (e_id,salary,creadated_date) SELECT e.e_id,e.current_salary,now() FROM employees e WHERE e.is_show =1  and e_id not in (1,2,3) and concat(month(now()),e_id) not in (select  concat(month(creadated_date),e_id) from  salary_slip  GROUP by  month(creadated_date) )';
+		  $sql = 'INSERT INTO salary_slip (e_id,salary,creadated_date) SELECT e.e_id,e.current_salary,now() FROM employee e WHERE e.is_deleted = 0  and e_id not in (1,2,3) and concat(month(now()),e_id) not in (select  concat(month(creadated_date),e_id) from  salary_slip  GROUP by  month(creadated_date) )';
 			if($this->db->query($sql))	 {	 $boolean = true;}
 		  return $boolean;
 	 }
@@ -89,13 +90,13 @@ class Employee_Model extends CI_Model{
 	 }
 
 	 public function Get_Salary_Byid($slip_id){
-		  $sql = 'select s.slip_id,CONCAT(e.st_name, e.name) As  emp_name ,e.tel as tel,s.salary as salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employees e  on e.e_id = s.e_id left join level l on l.l_id = e.l_id where s.slip_id =? ';
+		  $sql = 'select s.slip_id,CONCAT(e.st_name, e.name) As  emp_name ,e.tel as tel,s.salary as salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employee e  on e.e_id = s.e_id left join level l on l.l_id = e.l_id where s.slip_id =? ';
 		  $query = $this->db->query($sql,array($slip_id));
 		  return $query->row_array();
 	 }
 
 	 public function Get_Salary(){
-			$sql = 'select s.slip_id,CONCAT(e.st_name, e.name) As  emp_name ,e.tel ,s.salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employees e  on e.e_id = s.e_id left join level l on l.l_id = e.l_id where month(s.creadated_date) = month(now()) ';
+			$sql = 'select s.slip_id,CONCAT(e.st_name, e.name) As  emp_name ,e.tel ,s.salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employee e  on e.e_id = s.e_id left join level l on l.l_id = e.l_id where month(s.creadated_date) = month(now()) ';
 			$query = $this->db->query($sql);
 			return $query->result();
 	 }
@@ -104,16 +105,16 @@ class Employee_Model extends CI_Model{
 			$query = $this->db->query($sql);
 			return $query->result();
 	 }
-	 	 public function Get_Salary_Month($month){
-	 			$sql = 'select s.slip_id,CONCAT(e.st_name, e.name) As  emp_name ,e.tel ,s.salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employees e  on e.e_id = s.e_id left join level l on l.l_id = e.l_id where month(s.creadated_date) = ? ';
-	 			$query = $this->db->query($sql,array($month));
-	 			return $query->result();
-	 	 }
+	public function Get_Salary_Month($month){
+		$sql = 'select s.slip_id,CONCAT(e.st_name, e.name) As  emp_name ,e.tel ,s.salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employee e  on e.e_id = s.e_id left join level l on l.l_id = e.l_id where month(s.creadated_date) = ? ';
+		$query = $this->db->query($sql,array($month));
+		return $query->result();
+	}
 
 	 public function Check_Login($e_username, $e_password)
 	{
 
-		  $sql = 'select  e_id as emp_id from employees e   where e.is_show = 1 and e.e_username = ? and e.e_password = ?';
+		  $sql = 'select  emp_id  from employee e   where e.is_deleted = 0 and e.emp_username = ? and e.emp_password = ?';
 
 		$query = $this->db->query($sql, array($e_username,$e_password));
 
