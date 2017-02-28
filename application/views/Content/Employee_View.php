@@ -23,24 +23,23 @@
 		            <table  class="table-striped"  >
 		                <thead>
 		                    <tr >
-		                        <th>ลำดับที่</th>
-		                        <th>ชื่อ</th>
-                            <th>ชื่อเล่น</th>
-		                        <th>ประเภทของผู้ใช้</th>
-		                        <th>แก้ไข</th>
-		                        <th>ลบ</th>
+					<th>#</th>
+					<th>ชื่อ - นามสกุล</th>
+					<th>ชื่อเล่น</th>
+					<th>ตำแหน่ง</th>
+					<th>แก้ไข</th>
+					<th>ลบ</th>
 		                    </tr>
 		                </thead>
 		                <tbody id='tbody_data'>
-                      <tr class="tbody_list" ng-repeat="emp in employees |orderBy:sortKey:reverse|filter:search">
-                        <td class="text-center">{{$index + 1}}</td>
-                        <td class="text-left">{{emp.name}}</td>
-                        <td class="text-left">{{emp.nickname}}</td>
-                        <td class="text-left">{{emp.l_name}}</td>
-                        <td class=" text-center"><span class="glyphicon glyphicon-option-horizontal edit-data icon " ng-click="editemp(emp.emp_id);"></span></td>
-                        <td class=" text-center"><span class="glyphicon glyphicon-remove remove-data icon " ng-click="delemp(emp.emp_id);"></span></td>
-                      </tr>
-
+						<tr class="tbody_list" ng-repeat="emp in employees |orderBy:sortKey:reverse|filter:search">
+							<td class="text-center">{{$index + 1}}</td>
+							<td class="text-left">{{emp.name}}</td>
+							<td class="text-left">{{emp.nickname}}</td>
+							<td class="text-left">{{emp.l_name}}</td>
+							<td class=" text-center"><span class="glyphicon glyphicon-option-horizontal edit-data icon " ng-click="editemp(emp.emp_id);"></span></td>
+							<td class=" text-center"><span class="glyphicon glyphicon-remove remove-data icon " ng-click="delemp(emp.emp_id);"></span></td>
+						</tr> 
 		                </tbody>
 		            </table>
 		        </div>

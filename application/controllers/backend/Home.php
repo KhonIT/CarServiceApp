@@ -19,6 +19,7 @@ class Home extends MY_Controller {
 		 
 			$this->output->set_template('Backend'); 
 			$this->output->set_common_meta('VTCar Service','www.VTCarService.net','www.VTCarService.net');
+			$this->load->js('Assets/Backend/js/cont/Home.js');
 			$this->load->view('Content/Backend_View');
  
 	}

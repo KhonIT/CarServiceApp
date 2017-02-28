@@ -19,12 +19,97 @@
 <link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>Assets/Backend/css/Admin.css" rel="stylesheet">
 <?php  foreach($css as $file){  ?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php	 }  ?>
-			<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-			<!--[if lt IE 9]>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-			<![endif]-->
+</head>
+<body ng-app="AppAngular">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">VTCar Service</a>
+          </div>
+          <div class="navbar-collapse collapse">
+           <ul class="nav navbar-nav " id="menu_nav">
+			         <!-- menu_nav -->
 
-			<script src="<?php echo base_url(); ?>Assets/js/jquery-1.11.3.min.js"></script>
+          </ul>
+
+			<div class="navbar-form navbar-right">
+				<ul class="nav navbar-nav  ">
+					<li class=" dropdown ">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="User_Profile">  </a>
+						<ul class=" dropdown-menu">
+							<li role="separator" class="divider"></li>
+							<li  class="editempform"> <a href="#"  class="editemp">แก้ไขข้อมูล</a></li>
+							<li  class="logoutform"> <a href="#"  class="btnlogout ">ออกจากระบบ</a></li>
+							<li role="separator" class="divider"></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+        </div>
+	</nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12  main">
+						<div   align='center' > <span id="result_content" ></span></div>
+						<!-- content -->
+						<?php echo $output;?>
+						<!--/.content-->
+        </div>
+      </div>
+    </div>
+		<div class='modal fade' id='modal_data_editemp' role='dialog'    >
+			<div class='modal-dialog' >
+			<div  class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal'>&times;</button>
+					<h4><span class='glyphicon '></span>ข้อมูลผู้ใช้</h4>
+				</div>
+				<div class='modal-body' align='center'    >
+					<table class="table-modal"   ng-controller="empController">
+						<tr>
+							<td colspan="2">ชื่อ :{{empname}}</td>
+						</tr>
+						<tr>
+							<td colspan="2"> ชื่อเล่น: {{empnickname}}</td>
+						<tr>
+							<td colspan="2"> ชื่อผู้ใช้:{{empusername}}</td>
+						</tr>
+						<tr>
+							<td> แก้ไขรหัสผ่าน</td>
+							<td>
+								<input type="text" name="tb_e_password" id="tb_e_password"   ng-model="emppassword"/>
+							</td>
+						</tr>
+						<tr>
+							<td> Upload</td>
+							<td>
+								<input type="file" id="file_image" name="file_image"  accept="image/*" />
+								<input type="button" id="upload_image"   class="btn btn-success btn-xs"  value="Upload" />
+
+							</td>
+						</tr> 
+						<tr>
+							<td>บันทึก:</td>
+							 <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="saveemp()"></span></td>
+						</tr>
+					</table>
+				</div>
+				</div>
+			</div>
+		</div>
+
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> 
+<script src="<?php echo base_url(); ?>Assets/js/jquery-1.11.3.min.js"></script>
 			<script src="<?php echo base_url(); ?>Assets/js/angular.min.js"></script>
 			<script src="<?php echo base_url(); ?>Assets/js/angular-route.min.js"></script>
 
@@ -193,92 +278,5 @@
 
 			</script>
 			  <?php  foreach($js as $file){ ?><script src="<?php echo $file; ?>"></script><?php } ?>
-</head>
-<body ng-app="AppAngular">
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">VTCar Service</a>
-          </div>
-          <div class="navbar-collapse collapse">
-           <ul class="nav navbar-nav " id="menu_nav">
-			         <!-- menu_nav -->
-
-          </ul>
-
-			<div class="navbar-form navbar-right">
-				<ul class="nav navbar-nav  ">
-					<li class=" dropdown ">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="User_Profile">  </a>
-						<ul class=" dropdown-menu">
-							<li role="separator" class="divider"></li>
-							<li  class="editempform"> <a href="#"  class="editemp">แก้ไขข้อมูล</a></li>
-							<li  class="logoutform"> <a href="#"  class="btnlogout ">ออกจากระบบ</a></li>
-							<li role="separator" class="divider"></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-        </div>
-	</nav>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12  main">
-						<div   align='center' > <span id="result_content" ></span></div>
-						<!-- content -->
-						<?php echo $output;?>
-						<!--/.content-->
-        </div>
-      </div>
-    </div>
-		<div class='modal fade' id='modal_data_editemp' role='dialog'    >
-			<div class='modal-dialog' >
-			<div  class='modal-content'>
-				<div class='modal-header'>
-					<button type='button' class='close' data-dismiss='modal'>&times;</button>
-					<h4><span class='glyphicon '></span>ข้อมูลผู้ใช้</h4>
-				</div>
-				<div class='modal-body' align='center'    >
-					<table class="table-modal"   ng-controller="empController">
-						<tr>
-							<td colspan="2">ชื่อ :{{empname}}</td>
-						</tr>
-						<tr>
-							<td colspan="2"> ชื่อเล่น: {{empnickname}}</td>
-						<tr>
-							<td colspan="2"> ชื่อผู้ใช้:{{empusername}}</td>
-						</tr>
-						<tr>
-							<td> แก้ไขรหัสผ่าน</td>
-							<td>
-								<input type="text" name="tb_e_password" id="tb_e_password"   ng-model="emppassword"/>
-							</td>
-						</tr>
-						<tr>
-							<td> Upload</td>
-							<td>
-								<input type="file" id="file_image" name="file_image"  accept="image/*" />
-
-								<input type="button" id="upload_image"   class="btn btn-success btn-xs"  value="Upload" />
-
-							</td>
-						</tr>
-
-
-						<tr>
-							<td>บันทึก:</td>
-							 <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="saveemp()"></span></td>
-						</tr>
-					</table>
-				</div>
-				</div>
-			</div>
-		</div>
 </body>
 </html>

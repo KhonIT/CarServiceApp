@@ -18,9 +18,26 @@ body {
 
 .icon {
    cursor:pointer;
-   font-size: 2em;
-   
+   font-size: 2em; 
 }
+
+.icon-home  {
+   cursor:pointer;
+   font-size: 4em;  
+
+}
+.icon-home-div  {
+   padding:10px;
+}
+
+.icon-home-div:hover  {
+	border:2px;
+	color:gray;
+	background:black;
+}
+ 
+
+
 
 .green {
     color: green;

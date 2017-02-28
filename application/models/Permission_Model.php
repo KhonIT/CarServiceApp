@@ -1,22 +1,20 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Permission_Model extends CI_Model{
-	 public function __construct(){
+	public function __construct(){
 	  	$this->load->database();
-	 }
- 
-  
-	 public function Insert($permission_data = null){ 
-	 		if ($permission_data == null){
-		   log_message('error', 'Insert => permission Data is null.');
-		   throw new Exception('permission Data is null.');
-		  }
-		  try {
-		   $this->db->insert('permission', $permission_data); 
-		   	return $this->db->insert_id();
-		  } catch (Exception $e) {
-		   	throw new Exception($e->getMessage());
-		  }
-	 } 
+	} 
+	public function Insert($permission_data = null){ 
+		if ($permission_data == null){
+	   log_message('error', 'Insert => permission Data is null.');
+	   throw new Exception('permission Data is null.');
+	  }
+	  try {
+	   $this->db->insert('permission', $permission_data); 
+		return $this->db->insert_id();
+	  } catch (Exception $e) {
+		throw new Exception($e->getMessage());
+	  }
+	} 
  
 	 public function Update($permission_data = null, $permission_id){
 	 
@@ -50,6 +48,16 @@ class Permission_Model extends CI_Model{
 , ifnull((select is_edit FROM permission p where m.menu_id = p.menu_id and l.l_id = p.l_id  ), 0 ) is_edit
 , ifnull((select permission_id FROM permission p where m.menu_id = p.menu_id and l.l_id = p.l_id   ), 0 ) permission_id 
 from level l , menu m where m.is_deleted = 0    and l.l_id in( select l_id from employee where emp_id = ?) ORDER by m.parent_menu_id,m.menu_id';
+		  $query = $this->db->query($sql, array($id));
+		  log_message('debug', sprintf('Found %b row with employee id %s', $query->num_rows(), $id));
+		  return $query->result();
+	 }
+	 
+	 public function Get_Menu_Home($id){
+		  $sql = ' select  m.menu_name ,m.menu_css from menu m 
+		  left join permission p on m.menu_id = p.menu_id 
+		  where m.is_deleted = 0 and m.is_shortcut = 1   and p.l_id in( select l_id from employee where emp_id = ?)and p.is_deleted = 0';
+ 
 		  $query = $this->db->query($sql, array($id));
 		  log_message('debug', sprintf('Found %b row with employee id %s', $query->num_rows(), $id));
 		  return $query->result();

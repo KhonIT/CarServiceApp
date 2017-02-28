@@ -106,12 +106,12 @@ class Employee extends MY_Controller {
         $this->output->unset_template();
         $data=json_decode(file_get_contents("php://input"));
         $arr = array(
-					'name'=>$data->emp_name,
-					'nickname'=>$data->emp_nickname,
-          'current_salary'=>$data->emp_current_salary,
-					'e_username'=>$data->emp_username,
-					'e_password'=>$data->emp_password,
-					'l_id'=>$data->emp_l_id,
+			'name'=>$data->emp_name,
+			'nickname'=>$data->emp_nickname,
+			'current_salary'=>$data->emp_current_salary,
+			'e_username'=>$data->emp_username,
+			'e_password'=>$data->emp_password,
+			'l_id'=>$data->emp_l_id,
           /*
           'tel'=>$data->emp_tel,
           'date_start_work'=>$data->emp_startwork,
@@ -123,8 +123,8 @@ class Employee extends MY_Controller {
           'contact'=>$data->emp_contact,
 
           */
-					'modify_by' => $this->user_profile['emp_id'],
-					'modify_date' => date('Y-m-d H:i:s')
+			'modify_by' => $this->user_profile['emp_id'],
+			'modify_date' => date('Y-m-d H:i:s')
         );
         if($data->id=='0'){
         	//$arr['e_password'] = random_string('alnum', 8);
