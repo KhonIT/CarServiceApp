@@ -56,7 +56,7 @@ class Customer extends MY_Controller {
            echo json_encode ($result) ;
         }
     }
-    
+
     public function Get_By_ID()
     {
     	$this->output->unset_template();
@@ -102,9 +102,7 @@ class Customer extends MY_Controller {
         $data=json_decode(file_get_contents("php://input"));
         $id=$data->id;
         $data_arr = array(
-            'is_show'=>0,
-            'modify_by' => $this->user_profile['emp_id'],
-            'modify_date' => date('Y-m-d H:i:s')
+            'is_deleted'=>1
         );
         $result =  $this->Customer_Model->Update($data_arr,$id);
 

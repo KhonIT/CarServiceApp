@@ -42,7 +42,7 @@ class Customer_Service extends MY_Controller {
     $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
     $this->output->set_template('Blank');
     $this->load->js('Assets/Backend/js/cont/PrintService.js');
-    $this->load->view('Content/Print_Service_View'); 
+    $this->load->view('Content/Print_Service_View');
   }
 
 
@@ -179,9 +179,7 @@ class Customer_Service extends MY_Controller {
         $this->output->unset_template();
 
         $data_arr = array(
-            'is_show'=>0,
-            'modify_by' => $this->user_profile['emp_id'],
-            'modify_date' => date('Y-m-d H:i:s')
+            'is_deleted'=>1
         );
         $result =  $this->Customer_Service_Model->Update($data_arr,$this->input->post('id'));
 

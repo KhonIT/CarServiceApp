@@ -93,7 +93,7 @@
 								<input type="button" id="upload_image"   class="btn btn-success btn-xs"  value="Upload" />
 
 							</td>
-						</tr> 
+						</tr>
 						<tr>
 							<td>บันทึก:</td>
 							 <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="saveemp()"></span></td>
@@ -108,7 +108,7 @@
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]--> 
+<![endif]-->
 <script src="<?php echo base_url(); ?>Assets/js/jquery-1.11.3.min.js"></script>
 			<script src="<?php echo base_url(); ?>Assets/js/angular.min.js"></script>
 			<script src="<?php echo base_url(); ?>Assets/js/angular-route.min.js"></script>
@@ -211,7 +211,7 @@
 									count ++;
 								}else{
 									if (obj.is_edit=="1"){
-										$("#menu"+obj.parent_menu_id).append('	<li><a href="'+backend_url+''+obj.link_url+'">'+obj.menu_name+'</a></li> ');
+										$("#menu"+obj.parent_menu_id).append('	<li><a href="'+backend_url+''+obj.menu_link_url+'">'+obj.menu_name+'</a></li> ');
 									}
 								}
 						});

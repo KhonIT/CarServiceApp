@@ -46,17 +46,14 @@ class Permission extends MY_Controller {
       $result =  $this->Permission_Model->Get_Menu($this->session->userdata('emp_id'));
       if($result){echo json_encode ($result);}
     }
-	
+
 	public function Get_Menu_Home()
-    { 
+    {
       $this->output->unset_template();
       $result =  $this->Permission_Model->Get_Menu_Home($this->session->userdata('emp_id'));
       if($result){echo json_encode ($result);}
     }
-	
-	
-
-
+	 
     public function Edit()
     {
       $this->output->unset_template();

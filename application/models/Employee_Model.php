@@ -33,7 +33,7 @@ class Employee_Model extends CI_Model{
 
 		  try {
 
-		   	return $this->db->update('employee', $data, array('e_id' => $id));
+		   	return $this->db->update('employee', $data, array('emp_id' => $id));
 
 		  } catch (Exception $e) {
 		   	throw new Exception($e->getMessage());
@@ -56,11 +56,11 @@ class Employee_Model extends CI_Model{
 			,e.emp_degree as emp_degree
 			,e.emp_nationality as emp_nationality
 			,e.emp_status as emp_status
-			,e.emp_contact as emp_contact 
+			,e.emp_contact as emp_contact
 			,e.emp_current_salary as emp_current_salary
 			,l.l_id as emp_l_id
 			,l.l_name from employee e left join level l on l.l_id = e.l_id  where e.is_deleted = 0 and e.emp_id = ?';
- 
+
 
 		  $query = $this->db->query($sql, array($id));
 		  log_message('debug', sprintf('Found %b row with employee ID %s', $query->num_rows(), $id));
@@ -68,13 +68,13 @@ class Employee_Model extends CI_Model{
 	 }
 
 	 public function Get_All(){
-		  $sql = 'select e.e_id as emp_id,CONCAT(e.st_name, e.name) As  name,e.nickname,l.l_name from employee e left join level l on l.l_id = e.l_id  where e.is_deleted = 0 and e_id not in (1,2,3)';
+		  $sql = 'select e.emp_id as emp_id,CONCAT(e.emp_st_name,e.emp_fname,"  ",e.emp_lname) As  name,e.emp_nickname,l.l_name from employee e left join level l on l.l_id = e.l_id  where e.is_deleted = 0 and emp_id not in (1,2,3)';
 		 $query = $this->db->query($sql);
 		return $query->result();
 	 }
 	 public function Cal_Salary(){
 		  $boolean = false;
-		  $sql = 'INSERT INTO salary_slip (e_id,salary,creadated_date) SELECT e.e_id,e.current_salary,now() FROM employee e WHERE e.is_deleted = 0  and e_id not in (1,2,3) and concat(month(now()),e_id) not in (select  concat(month(creadated_date),e_id) from  salary_slip  GROUP by  month(creadated_date) )';
+		  $sql = 'INSERT INTO salary_slip (emp_id,salary,creadated_date) SELECT e.emp_id,e.current_salary,now() FROM employee e WHERE e.is_deleted = 0  and emp_id not in (1,2,3) and concat(month(now()),emp_id) not in (select  concat(month(creadated_date),emp_id) from  salary_slip  GROUP by  month(creadated_date) )';
 			if($this->db->query($sql))	 {	 $boolean = true;}
 		  return $boolean;
 	 }
@@ -90,13 +90,13 @@ class Employee_Model extends CI_Model{
 	 }
 
 	 public function Get_Salary_Byid($slip_id){
-		  $sql = 'select s.slip_id,CONCAT(e.st_name, e.name) As  emp_name ,e.tel as tel,s.salary as salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employee e  on e.e_id = s.e_id left join level l on l.l_id = e.l_id where s.slip_id =? ';
+		  $sql = 'select s.slip_id,CONCAT(e.emp_st_name,e.emp_fname,"  ",e.emp_lname) As  emp_name ,e.tel as tel,s.salary as salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employee e  on e.emp_id = s.emp_id left join level l on l.l_id = e.l_id where s.slip_id =? ';
 		  $query = $this->db->query($sql,array($slip_id));
 		  return $query->row_array();
 	 }
 
 	 public function Get_Salary(){
-			$sql = 'select s.slip_id,CONCAT(e.st_name, e.name) As  emp_name ,e.tel ,s.salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employee e  on e.e_id = s.e_id left join level l on l.l_id = e.l_id where month(s.creadated_date) = month(now()) ';
+			$sql = 'select s.slip_id,CONCAT(e.emp_st_name,e.emp_fname,"  ",e.emp_lname) As  emp_name ,e.tel ,s.salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employee e  on e.emp_id = s.emp_id left join level l on l.l_id = e.l_id where month(s.creadated_date) = month(now()) ';
 			$query = $this->db->query($sql);
 			return $query->result();
 	 }
@@ -106,7 +106,7 @@ class Employee_Model extends CI_Model{
 			return $query->result();
 	 }
 	public function Get_Salary_Month($month){
-		$sql = 'select s.slip_id,CONCAT(e.st_name, e.name) As  emp_name ,e.tel ,s.salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employee e  on e.e_id = s.e_id left join level l on l.l_id = e.l_id where month(s.creadated_date) = ? ';
+		$sql = 'select s.slip_id,CONCAT(e.emp_st_name,e.emp_fname,"  ",e.emp_lname) As  emp_name ,e.tel ,s.salary,month(s.creadated_date) as salary_month,l.l_name from salary_slip s left join employee e  on e.emp_id = s.emp_id left join level l on l.l_id = e.l_id where month(s.creadated_date) = ? ';
 		$query = $this->db->query($sql,array($month));
 		return $query->result();
 	}

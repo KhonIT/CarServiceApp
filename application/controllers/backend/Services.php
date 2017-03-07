@@ -74,9 +74,7 @@ class Services extends MY_Controller {
       $data=json_decode(file_get_contents("php://input"));
 
         $Menu_arr = array(
-            'is_show'=>0,
-            'modify_by' => $this->user_profile['emp_id'],
-            'modify_date' => date('Y-m-d H:i:s')
+            'is_deleted'=>1
         );
         $Menu =  $this->Service_Model->Update($Menu_arr,$data->id);
 

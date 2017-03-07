@@ -182,9 +182,7 @@ class Employee extends MY_Controller {
         $this->output->unset_template();
         $data=json_decode(file_get_contents("php://input"));
         $data_arr = array(
-            'is_show'=>0,
-            'modify_by' => $this->user_profile['emp_id'],
-            'modify_date' => date('Y-m-d H:i:s')
+            'is_deleted'=>1
         );
         $result =  $this->Employee_Model->Update($data_arr,$data->id);
 

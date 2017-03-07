@@ -72,9 +72,7 @@ class Menu extends MY_Controller {
         $this->output->unset_template();
 
         $Menu_arr = array(
-            'is_show'=>0,
-            'modify_by' => $this->user_profile['emp_id'],
-            'modify_date' => date('Y-m-d H:i:s')
+            'is_deleted'=>1
         );
         $Menu =  $this->Menu_Model->Update($Menu_arr,$this->input->post('menu_id'));
 
