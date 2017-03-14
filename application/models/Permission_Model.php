@@ -56,7 +56,7 @@ from level l , menu m where m.is_deleted = 0    and l.l_id in( select l_id from 
 	 public function Get_Menu_Home($id){
 		  $sql = ' select  m.menu_name ,m.menu_css,m.menu_link_url from menu m 
 		  left join permission p on m.menu_id = p.menu_id
-		  where m.is_deleted = 0 and m.is_shortcut = 1   and p.l_id in( select l_id from employee where emp_id = ?)and p.is_deleted = 0';
+		  where m.is_deleted = 0 and m.is_shortcut = 1   and p.l_id in( select l_id from employee where emp_id = ?) ';
 
 		  $query = $this->db->query($sql, array($id));
 		  log_message('debug', sprintf('Found %b row with employee id %s', $query->num_rows(), $id));
