@@ -30,7 +30,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">VTCar Service</a>
+            <a class="navbar-brand" href="<?php echo base_url();?>Backend/Home">VTCar Service</a>
           </div>
           <div class="navbar-collapse collapse">
            <ul class="nav navbar-nav " id="menu_nav">

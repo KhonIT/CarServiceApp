@@ -40,13 +40,13 @@ class Menu_Model extends CI_Model{
 	 }
 	 public function Get_By_ID($menu_id){
 		 
-		  $sql = 'SELECT menu_id, menu_name, menu_link_url, parent_menu_id, is_deleted, menu_icon, is_shortcut FROM menu WHERE is_deleted = 0 AND menu_id = ?';
+		  $sql = 'SELECT menu_id, menu_name, menu_link_url, parent_menu_id, is_deleted, menu_css, is_shortcut FROM menu WHERE is_deleted = 0 AND menu_id = ?';
 		  $query = $this->db->query($sql, array($menu_id));
 		  log_message('debug', sprintf('Found %b row with menu ID %s', $query->num_rows(), $menu_id));
 		  return $query->row_array();// return one row
 	 } 
 	 public function Get_All(){
-		  $sql = 'SELECT menu_id, menu_name, menu_link_url, parent_menu_id, is_deleted, menu_icon, is_shortcut FROM menu WHERE is_deleted = 0';
+		  $sql = 'SELECT menu_id, menu_name, menu_link_url, parent_menu_id, is_deleted, menu_css, is_shortcut FROM menu WHERE is_deleted = 0';
 		  $query = $this->db->query($sql);
 		  return $query->result();
 	 }  
