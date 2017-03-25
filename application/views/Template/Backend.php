@@ -15,9 +15,11 @@
 		   ?>
 
 <link rel="shortcut icon" href="<?php echo base_url(); ?>Assets/Images/fav-icon-vtcar.png">
+
 <link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>Assets/Backend/css/Admin.css" rel="stylesheet">
+
 <?php  foreach($css as $file){  ?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php	 }  ?>
 </head>
 <body ng-app="AppAngular">
@@ -35,22 +37,18 @@
           <div class="navbar-collapse collapse">
            <ul class="nav navbar-nav " id="menu_nav">
 			         <!-- menu_nav -->
-
-          </ul>
-
-			<div class="navbar-form navbar-right">
-				<ul class="nav navbar-nav  ">
-					<li class=" dropdown ">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="User_Profile">  </a>
-						<ul class=" dropdown-menu">
-							<li role="separator" class="divider"></li>
-							<li  class="editempform"> <a href="#"  class="editemp">แก้ไขข้อมูล</a></li>
-							<li  class="logoutform"> <a href="#"  class="btnlogout ">ออกจากระบบ</a></li>
-							<li role="separator" class="divider"></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
+          </ul> 
+			<ul class="nav navbar-nav  navbar-right">
+				<li class=" dropdown ">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="User_Profile">  </a>
+					<ul class=" dropdown-menu">
+						<li role="separator" class="divider"></li>
+						<li  class="editempform"> <a href="#"  class="editemp">แก้ไขข้อมูล</a></li>
+						<li  class="logoutform"> <a href="#"  class="btnlogout ">ออกจากระบบ</a></li>
+						<li role="separator" class="divider"></li>
+					</ul>
+				</li>
+			</ul> 
         </div>
 	</nav>
     <div class="container-fluid">
@@ -211,7 +209,7 @@
 									count ++;
 								}else{
 									if (obj.is_edit=="1"){
-										$("#menu"+obj.parent_menu_id).append('	<li><a href="'+backend_url+''+obj.menu_link_url+'">'+obj.menu_name+'</a></li> ');
+										$("#menu"+obj.parent_menu_id).append('	<li class="menu-bg" ><a href="'+backend_url+''+obj.menu_link_url+'">'+obj.menu_name+'</a></li> ');
 									}
 								}
 						});

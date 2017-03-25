@@ -1,7 +1,9 @@
 
 body {
   margin-top: 70px;
-  font-size: inherit;
+  font-size: inherit; 
+  color:#fff;
+  background-color:#333
 }  
 .navbar-fixed-top {
   border: 0;
@@ -17,17 +19,38 @@ body {
    font-size: 4em;   
 }
 .icon-home-div  {
-   padding:10px;
+   padding:10px; 
+    border:2px solid #ffffff;
+    box-shadow: 0 0 10px  #ffffff;
+	border-radius:15px;
+	   margin:0px; 
 }
 
-.icon-home-div:hover  {
-	border:2px;
-	color:gray;
-	background:#eee;
+.icon-home-div:hover  { 
+	color:white;
+	background:#000	;
 } 
+
 a{
     font-size:16px;
+	color: white;
 }
+ 
+
+/* visited link */
+a:visited {
+    color: white;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;  
+}
+
+/* selected link */
+a:active {
+    color: white;
+} 
 
 a.icon-home-a:hover {
     color: white;
@@ -35,7 +58,7 @@ a.icon-home-a:hover {
 
 /* selected link */
 a.icon-home-a:link ,a.icon-home-a:visited  ,a.icon-home-a:active  {
-    color: gray;
+    color: white;
 }
 
 .green {
@@ -79,4 +102,5 @@ input[type="text"],input[type="password"]  {
     outline: none;
 	letter-spacing:1px;
     text-align: center; 
-} 
+}  
+nav ul li.menu-bg a:hover {color: black;  }

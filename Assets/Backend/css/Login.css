@@ -19,6 +19,11 @@ body {
         border-radius:15px;
 } 
  
+ #inputUsername:focus ,#inputPassword:focus{  
+	outline: none !important;
+    border:4px solid #ffffff;
+    box-shadow: 0 0 10px  #ffffff;
+} 
  
 input[type="text"],input[type="password"]  {
     width: 100%;
@@ -73,5 +78,7 @@ input.sign-in {
       border-radius:15px;
 }
 input.sign-in:hover { 
-	background-color:rgba(0,0,0,30);
+	outline: none !important;
+    border:4px solid #ffffff;
+    box-shadow: 0 0 10px  #ffffff;
 }
