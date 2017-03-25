@@ -1,38 +1,77 @@
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #eee;
+  background-color: #333;
 }
 
 .form-signin {
-  max-width: 330px;
-  padding: 15px;
+  max-width: 330px; 
   margin: 0 auto;
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
-}
-.form-signin .checkbox {
-  font-weight: normal;
-}
-.form-signin .form-control {
   position: relative;
   height: auto;
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 20px;
+  font-size: 20px;  
+  background:rgba(0,0,0,0.5);
+
+        border-radius:15px;
+} 
+ 
+ 
+input[type="text"],input[type="password"]  {
+    width: 100%;
+    margin-top: 10px; 
+        margin-bottom: 10px;
+    padding: 10px; 
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0);
+    font-weight: normal;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom: 5px solid #ffffff;
+    font-family: 'Muli', sans-serif; 
+    outline: none;
+	letter-spacing:1px;
+    text-align: center; 
+} 
+input::-webkit-input-placeholder {
+color:#fff!important;
 }
-.form-signin .form-control:focus {
-  z-index: 2;
+ 
+input:-moz-placeholder { /* Firefox 18- */
+color:#fff!important;  
 }
-.form-signin input[type="text"] {
-  margin-bottom: -1px;
-  border-radius: 20px; 
+ 
+input::-moz-placeholder {  /* Firefox 19+ */
+color:#fff!important;  
 }
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-radius: 20px; 
+ 
+input:-ms-input-placeholder {  
+color:#fff!important;  
+} 
+
+input.sign-in {
+    width: 100%;
+    height: 80px;
+    font-size: 20px;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+	background-color:rgba(0,0,0,0.5);
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    border: none;
+    outline: none;
+    cursor: pointer;
+      border-radius:15px;
+}
+input.sign-in:hover { 
+	background-color:rgba(0,0,0,30);
 }

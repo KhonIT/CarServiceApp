@@ -17,7 +17,7 @@ app.controller('loginController', function($scope, $http, $timeout) {
                    location.reload();
                     }, 1500); // delay 1500 ms
               }else{
-                $scope.msg ="ผิดพลาด กรุณาตรวจสอบการเช้าสู่ระบบอีกครั้ง";
+                $scope.msg ="ผิดพลาด กรุณาตรวจสอบการเข้าสู่ระบบอีกครั้ง";
                 $scope.displaymsgwarning();
               }
             }).error(function(err) {
