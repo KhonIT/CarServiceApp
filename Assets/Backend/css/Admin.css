@@ -1,16 +1,8 @@
-/*
- * Base structure
- */
 
-/* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 80px;
+  margin-top: 70px;
   font-size: inherit;
 }  
-/*
- * Top navigation
- * Hide default border to remove 1px line.
- */
 .navbar-fixed-top {
   border: 0;
 } 
@@ -55,6 +47,7 @@ a.icon-home-a:link ,a.icon-home-a:visited  ,a.icon-home-a:active  {
  
 td,th{
  padding: 5px;
+ white-space:nowrap; 
 }
 
 input {
@@ -65,4 +58,8 @@ input {
 
 .u{
 text-decoration: underline;
+} 
+
+.tbody_list{
+   font-size: 1.5em; 
 } 

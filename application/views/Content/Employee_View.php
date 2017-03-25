@@ -32,12 +32,12 @@
 		                    </tr>
 		                </thead>
 		                <tbody id='tbody_data'>
-						<tr class="tbody_list" ng-repeat="emp in employees |orderBy:sortKey:reverse|filter:search">
+						<tr class="tbody_list" ng-repeat="emp in employees |orderBy:sortKey:reverse|filter:search"  >
 							<td class="text-center">{{$index + 1}}</td>
-							<td class="text-left">{{emp.name}}</td>
-							<td class="text-left">{{emp.emp_nickname}}</td>
-							<td class="text-left">{{emp.l_name}}</td>
-							<td class=" text-center"><span class="glyphicon glyphicon-option-horizontal edit-data icon " ng-click="editemp(emp.emp_id);"></span></td>
+							<td class="text-left"   >{{emp.name}}</td>
+							<td class="text-left"  >{{emp.emp_nickname}}</td>
+							<td class="text-left"   >{{emp.l_name}}</td>
+							<td class=" text-center" ><span class="glyphicon glyphicon-option-horizontal edit-data icon " ng-click="editemp(emp.emp_id);"></span></td>
 							<td class=" text-center"><span class="glyphicon glyphicon-remove remove-data icon " ng-click="delemp(emp.emp_id);"></span></td>
 						</tr>
 		                </tbody>
