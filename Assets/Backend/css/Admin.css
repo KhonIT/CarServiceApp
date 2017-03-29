@@ -12,8 +12,13 @@ body {
 .icon {
    cursor:pointer;
    font-size: 2em; 
+      padding: 5px;
 }
-
+.icon:hover {
+   color:white;
+       box-shadow: 0 0 10px  #ffffff;
+    	border-radius:15px;
+}
 .icon-home  {
    cursor:pointer;
    font-size: 4em;   
@@ -67,6 +72,9 @@ a.icon-home-a:link ,a.icon-home-a:visited  ,a.icon-home-a:active  {
 .white {
     color: white;
 }
+.darkgray {
+    color: darkgray;
+}
  
 td,th{
  padding: 5px;
@@ -107,7 +115,8 @@ nav ul li.menu-bg a:hover {color: black;  }
 
 
 .panel-heading{
-  background-color:#1b1b1b;
+    background-image: linear-gradient(to bottom, #3c3c3c 0%, #222 100%);
+      background-color:#3c3c3c;
 } 
 .panel-body{
   background-color:#333;

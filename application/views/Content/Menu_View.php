@@ -1,12 +1,13 @@
     <div class="col-sm-1 "> </div>
     <div class="col-sm-10 ">
 
-<div class="panel   ">
+<div class="panel  panel-inverse ">
   <div class="panel-heading" align="center"><h3 class="sub-header">รายชื่อเมนู</h3> </div>
   <div class="panel-body">
-     <div align="right" class="green "  id="icon_add_menu" >
-		<span class=" menu-add u icon">เพิ่ม</span>
-		<span class="glyphicon glyphicon-plus  menu-add icon"></span>
+     <div align="right" class="darkgray "  id="icon_add_menu" >
+
+		<span class="glyphicon glyphicon-plus  menu-add icon">เพิ่ม</span>
+			 
 	 </div> 
   </div> 
   <!-- Table -->
