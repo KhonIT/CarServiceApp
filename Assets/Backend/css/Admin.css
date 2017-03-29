@@ -104,3 +104,16 @@ input[type="text"],input[type="password"]  {
     text-align: center; 
 }  
 nav ul li.menu-bg a:hover {color: black;  }
+
+
+.panel-heading{
+  background-color:#1b1b1b;
+} 
+.panel-body{
+  background-color:#333;
+} 
+.table th {
+    text-align: center;
+}
+
+ 

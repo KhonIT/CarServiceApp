@@ -20,7 +20,7 @@ function Get_All_menu(){
 				$("#tbody_menu").text("");
 				var i = 1;
 				$.each(data, function(idx, obj) {
-					$("#tbody_menu").append('<tr><td>'+i+'</td><td>'+obj.menu_name+'</td><td align="center"><span class="glyphicon glyphicon-option-horizontal menu-edit icon " id='+obj.menu_id+'></span></td><td align="center"><span class=" glyphicon glyphicon-remove menu-remove icon " id='+obj.menu_id+'></span></td></tr>');
+					$("#tbody_menu").append('<tr><td class="text-center">'+i+'</td><td>'+obj.menu_name+'</td><td align="center"><span class="glyphicon glyphicon-option-horizontal menu-edit icon " id='+obj.menu_id+'></span></td><td align="center"><span class=" glyphicon glyphicon-remove menu-remove icon " id='+obj.menu_id+'></span></td></tr>');
 						i++;
 					});
 			}

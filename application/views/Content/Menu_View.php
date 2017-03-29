@@ -1,21 +1,20 @@
     <div class="col-sm-1 "> </div>
     <div class="col-sm-10 ">
 
-<div class="panel panel-default">
+<div class="panel   ">
   <div class="panel-heading" align="center"><h3 class="sub-header">รายชื่อเมนู</h3> </div>
   <div class="panel-body">
      <div align="right" class="green "  id="icon_add_menu" >
 		<span class=" menu-add u icon">เพิ่ม</span>
 		<span class="glyphicon glyphicon-plus  menu-add icon"></span>
-	 </div>
-  </div>
-
+	 </div> 
+  </div> 
   <!-- Table -->
-      <div class="table-responsive" align="center">
-            <table  class="table_menu table-striped"  >
+      <div class=" panel-body table-responsive" align="center">
+            <table  class="table_menu table table-inverse"  >
                 <thead>
                     <tr >
-                        <th>ลำดับที่</th>
+                        <th>#</th>
                         <th>ชื่อเมนู</th>
                         <th>แก้ไข</th>
                         <th>ลบ</th>
@@ -25,7 +24,7 @@
 
                 </tbody>
             </table>
-        </div>
+    </div>
 </div>
 
     </div>
