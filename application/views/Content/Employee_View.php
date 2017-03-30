@@ -2,34 +2,26 @@
     <div ng-controller="employeeController" >
     <div class="col-sm-1 "> </div>
     <div class="col-sm-10 ">
-		<div class="panel panel-default">
+		<div class="panel panel-inverse">
 		  <div class="panel-heading" align="center"><h3 class="sub-header">รายชื่อพนักงาน</h3> </div>
 		  <div class="panel-body">
-
-        <form class="form-inline text-right">
-          <div class="form-group">
-            <label >Search</label>
-            <input type ='text' class="form-control" placeholder="ค้นหา" ng-model="search" />
-          </div>
-        </form>
-
-		     <div  class="green text-right "  id="icon_add_employee"  >
-				<span class="employee-add u icon" ng-click="insemp();">เพิ่ม</span>
-				<span class="glyphicon glyphicon-plus  employee-add icon" ng-click="insemp();"></span>
-		  </div>
-
-		  <!-- Table -->
-		      <div class="table-responsive" align="center">
+        <div  class="  darkgray text-right "  id="icon_add_employee"  >
+          <label for="searchtxt" class="sr-only">ค้นหา</label>
+          <input type ='text' class="inputtxt" id="searchtxt" placeholder="ค้นหา" ng-model="search" />
+          <span class="glyphicon glyphicon-plus  employee-add icon" ng-click="insemp();">เพิ่ม</span>
+        </div>
+      </div>
+		  <div class="panel-body panel-body table-responsive" align="center">
                   <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
-		            <table  class="table-striped"  >
+		            <table  class="table table-inverse"  >
 		                <thead>
 		                    <tr >
-					<th>#</th>
-					<th>ชื่อ - นามสกุล</th>
-					<th>ชื่อเล่น</th>
-					<th>ตำแหน่ง</th>
-					<th>แก้ไข</th>
-					<th>ลบ</th>
+													<th  class=" text-center">#</th>
+													<th>ชื่อ - นามสกุล</th>
+													<th>ชื่อเล่น</th>
+													<th>ตำแหน่ง</th>
+													<th class=" text-center">แก้ไข</th>
+													<th class=" text-center">ลบ</th>
 		                    </tr>
 		                </thead>
 		                <tbody id='tbody_data'>
@@ -38,12 +30,11 @@
 							<td class="text-left"   >{{emp.name}}</td>
 							<td class="text-left"  >{{emp.emp_nickname}}</td>
 							<td class="text-left"   >{{emp.l_name}}</td>
-							<td class=" text-center" ><span class="glyphicon glyphicon-option-horizontal edit-data icon " ng-click="editemp(emp.emp_id);"></span></td>
-							<td class=" text-center"><span class="glyphicon glyphicon-remove remove-data icon " ng-click="delemp(emp.emp_id);"></span></td>
+							<td class=" text-center" ><span class="glyphicon glyphicon-wrench edit-data icon " ng-click="editemp(emp.emp_id);"></span></td>
+							<td class=" text-center"><span class="glyphicon glyphicon-remove-sign remove-data icon " ng-click="delemp(emp.emp_id);"></span></td>
 						</tr>
 		                </tbody>
 		            </table>
-		        </div>
 			</div>
 		</div>
 	</div>

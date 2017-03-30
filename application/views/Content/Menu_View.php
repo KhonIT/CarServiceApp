@@ -1,24 +1,21 @@
-    <div class="col-sm-1 "> </div>
-    <div class="col-sm-10 ">
-
+<div class="col-sm-1 "> </div>
+<div class="col-sm-10 ">
 <div class="panel  panel-inverse ">
   <div class="panel-heading" align="center"><h3 class="sub-header">รายชื่อเมนู</h3> </div>
   <div class="panel-body">
-     <div align="right" class="darkgray "  id="icon_add_menu" >
-
+     <div class="darkgray text-right"  id="icon_add_menu" >
 		<span class="glyphicon glyphicon-plus  menu-add icon">เพิ่ม</span>
-			 
-	 </div> 
-  </div> 
+	 </div>
+  </div>
   <!-- Table -->
       <div class=" panel-body table-responsive" align="center">
-            <table  class="table_menu table table-inverse"  >
+            <table  class=" table table-inverse "  >
                 <thead>
                     <tr >
-                        <th>#</th>
+                        <th class=" text-center">#</th>
                         <th>ชื่อเมนู</th>
-                        <th>แก้ไข</th>
-                        <th>ลบ</th>
+                        <th class=" text-center">แก้ไข</th>
+                        <th class=" text-center">ลบ</th>
                     </tr>
                 </thead>
                 <tbody id='tbody_menu'>
