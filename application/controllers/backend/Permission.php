@@ -63,9 +63,7 @@ class Permission extends MY_Controller {
     	 	$Permission_arr = array(
     	 			'l_id'=>$val['l_id'],
     	 			'menu_id'=>$val['menu_id'],
-    	 			'is_edit'=>($val['is_edit']  == 'true' ? 1 : 0),
-    	 			'modify_by' => $this->user_profile['emp_id'],
-    	 			'modify_date' => date('Y-m-d H:i:s')
+    	 			'is_edit'=>($val['is_edit']  == 'true' ? 1 : 0), 
     	 	);
     		 if( $val['permission_id']=='0'){
     		 	$result =  $this->Permission_Model->Insert($Permission_arr);

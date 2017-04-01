@@ -15,8 +15,8 @@
 		   ?>
 
 <link rel="shortcut icon" href="<?php echo base_url(); ?>Assets/Images/fav-icon-vtcar.png">
-<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap-theme.css" rel="stylesheet">
 <?php  foreach($css as $file){  ?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php	 }  ?>
 			<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 			<!--[if lt IE 9]>

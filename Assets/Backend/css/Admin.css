@@ -5,6 +5,11 @@ body {
   color:#fff;
   background-color:#333
 }
+
+.modal-inverse { 
+  color:#fff;
+  background-color:#333
+}
 .navbar-fixed-top {
   border: 0;
 }
@@ -83,7 +88,7 @@ nav ul li.menu-bg a:hover {color: black;  }
    border:2px solid #ffffff;
    box-shadow: 0 0 10px  #ffffff;
 }
-input[type="text"],input[type="password"]  {
+input[type="text"],input[type="password"]{
    margin-top: 10px;
    margin-bottom: 10px;
    padding: 10px;
@@ -98,6 +103,7 @@ input[type="text"],input[type="password"]  {
    outline: none;
    letter-spacing:1px;
    text-align: center;
+      font-size: 1em;
 }
 
 input:-webkit-input-placeholder {
@@ -115,3 +121,11 @@ color:#fff!important;
 input:-ms-input-placeholder {
 color:#fff!important;
 }
+ .selectopt { 
+   font-size: 1em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background:#333;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid #ffffff;
+ }

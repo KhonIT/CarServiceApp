@@ -82,3 +82,7 @@ input.sign-in:hover {
     border:4px solid #ffffff;
     box-shadow: 0 0 10px  #ffffff;
 }
+.alert{
+
+    margin:20px 10px 10px 10px;
+}

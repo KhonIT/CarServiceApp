@@ -55,7 +55,7 @@ app.controller('levelController', function($scope, $http, $timeout) {
         $http.post(backend_url + 'Permission/Get_By_ID', { 'id': id })
             .success(function(data) {
               $scope.l_id = id;
-              $scope.permission  = data  ;
+              $scope.permission  = data  ; 
                 $("#modal_permission").modal();
             }).error(function(err) {
                 console.log(err);
@@ -73,15 +73,12 @@ app.controller('levelController', function($scope, $http, $timeout) {
                   data["menu_id"] = $(this).val();
                   data["is_edit"] = $(this).prop("checked");
                   data["permission_id"] = $("#"+$(this).attr("id")).parent().attr("id");
-
                   jsonObj.push(data);
 
           });
-          var jsonpost = JSON.stringify(jsonObj)
-
+          var jsonpost = JSON.stringify(jsonObj) 
             $http.post(backend_url + 'Permission/Edit', {'jsonObj': jsonpost})
-                .success(function(data) {
-
+                .success(function(data) { 
                   $('#modal_permission').modal('toggle');
                   if (angular.equals(data, "true")  ){
                       $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";

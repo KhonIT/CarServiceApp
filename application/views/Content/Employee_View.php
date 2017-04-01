@@ -11,8 +11,8 @@
           <span class="glyphicon glyphicon-plus  employee-add icon" ng-click="insemp();">เพิ่ม</span>
         </div>
       </div>
-		  <div class="panel-body panel-body table-responsive" align="center">
-                  <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
+		  <div class="panel-body  table-responsive" align="center">
+                  <div align="left"  class="alert  hidden text-center"  id="msgbox" > {{msg}} </div>
 		            <table  class="table table-inverse"  >
 		                <thead>
 		                    <tr >
@@ -48,7 +48,7 @@
 			<h4><span class='glyphicon '></span>ข้อมูลผู้ใช้</h4>
 		</div>
 		<div class='modal-body' align='center'  >
-			<table class="table-modal">
+			<table class="table-modal  table table-inverse">
 				<tr>
 					<td>ชื่อ :</td>
 					<td>
