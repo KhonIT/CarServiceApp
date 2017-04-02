@@ -20,7 +20,7 @@ function Get_All_menu(){
 				$("#tbody_menu").text("");
 				var i = 1;
 				$.each(data, function(idx, obj) {
-					$("#tbody_menu").append('<tr><td class="text-center">'+i+'</td><td>'+obj.menu_name+'</td><td align="center"><span class="glyphicon glyphicon-option-horizontal menu-edit icon " id='+obj.menu_id+'></span></td><td align="center"><span class=" glyphicon glyphicon-remove menu-remove icon " id='+obj.menu_id+'></span></td></tr>');
+					$("#tbody_menu").append('<tr><td class="text-center">'+i+'</td><td>'+obj.menu_name+'</td><td align="center"><span class="glyphicon glyphicon-wrench menu-edit icon " id='+obj.menu_id+'></span></td><td align="center"><span class=" glyphicon glyphicon-remove menu-remove-sign icon " id='+obj.menu_id+'></span></td></tr>');
 						i++;
 					});
 			}
@@ -61,7 +61,7 @@ function Get_Menu_Detail(menu_id){
 							$("#tb_menu_id").val(data.menu_id);
 							$("#tb_menu_name").val(data.menu_name);
 							$("#dd_parent_menu").val(data.parent_menu_id);
-							$('#tb_link_url').val(data.link_url);
+							$('#tb_link_url').val(data.menu_link_url);
 							$("#modal_menu").modal();
 						}
 				});

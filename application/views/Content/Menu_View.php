@@ -26,13 +26,13 @@
 </div>
 
     </div>
-    <div class="col-sm-2 "> </div>
+    <div class="col-sm-1 "> </div>
 
 	<div class='modal fade' id='modal_menu' role='dialog'>
 		<div class='modal-dialog'>
-		<div  class='modal-content'>
+		<div  class='modal-content modal-inverse'>
 			<div class='modal-header'>
-				<button type='button' class='close' data-dismiss='modal'>&times;</button>
+				<button type='button' class='close icon' data-dismiss='modal'>&times;</button>
 				<h4><span class='glyphicon '></span>ข้อมูลเมนู</h4>
 			</div>
 			<div class='modal-body' >
@@ -50,7 +50,7 @@
 					</tr>
 					<tr>
 						<td>เมนูหลัก :</td>
-						<td> <select   id='dd_parent_menu' > </select> 						</td>
+						<td> <select class="selectopt"    id='dd_parent_menu' > </select> 						</td>
 					</tr>
           <tr>
             <td colspan='2' class="text-center">
