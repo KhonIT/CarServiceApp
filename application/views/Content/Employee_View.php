@@ -11,34 +11,34 @@
           <span class="glyphicon glyphicon-plus  employee-add icon" ng-click="insemp();">เพิ่ม</span>
         </div>
       </div>
-		  <div class="panel-body  table-responsive" align="center">
-                  <div align="left"  class="alert  hidden text-center"  id="msgbox" > {{msg}} </div>
-		            <table  class="table table-inverse"  >
-		                <thead>
-		                    <tr >
-													<th  class=" text-center">#</th>
-													<th>ชื่อ - นามสกุล</th>
-													<th>ชื่อเล่น</th>
-													<th>ตำแหน่ง</th>
-													<th class=" text-center">แก้ไข</th>
-													<th class=" text-center">ลบ</th>
-		                    </tr>
-		                </thead>
-		                <tbody id='tbody_data'>
-						<tr class="tbody_list" ng-repeat="emp in employees |orderBy:sortKey:reverse|filter:search"  >
-							<td class="text-center">{{$index + 1}}</td>
-							<td class="text-left"   >{{emp.name}}</td>
-							<td class="text-left"  >{{emp.emp_nickname}}</td>
-							<td class="text-left"   >{{emp.l_name}}</td>
-							<td class=" text-center" ><span class="glyphicon glyphicon-wrench edit-data icon " ng-click="editemp(emp.emp_id);"></span></td>
-							<td class=" text-center"><span class="glyphicon glyphicon-remove-sign remove-data icon " ng-click="delemp(emp.emp_id);"></span></td>
+		<div class="panel-body  table-responsive" align="center">
+			<div align="left"  class="alert  hidden text-center"  id="msgbox" > {{msg}} </div>
+				<table  class="table table-inverse"  >
+					<thead>
+						<tr >
+							<th  class=" text-center">#</th>
+							<th>ชื่อ - นามสกุล</th>
+							<th>ชื่อเล่น</th>
+							<th>ตำแหน่ง</th>
+							<th class=" text-center">แก้ไข</th>
+							<th class=" text-center">ลบ</th>
 						</tr>
-		                </tbody>
-		            </table>
+					</thead>
+					<tbody id='tbody_data'>
+					<tr class="tbody_list" ng-repeat="emp in employees |orderBy:sortKey:reverse|filter:search"  >
+						<td class="text-center">{{$index + 1}}</td>
+						<td class="text-left">{{emp.name}}</td>
+						<td class="text-left">{{emp.emp_nickname}}</td>
+						<td class="text-left">{{emp.l_name}}</td>
+						<td class=" text-center"><span class="glyphicon glyphicon-wrench edit-data icon " ng-click="editemp(emp.emp_id);"></span></td>
+						<td class=" text-center"><span class="glyphicon glyphicon-remove-sign remove-data icon " ng-click="delemp(emp.emp_id);"></span></td>
+					</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
-    <div class="col-sm-1 "> </div>
+	<div class="col-sm-1 "> </div>
 
 <div class='modal fade' id='modal_data' role='dialog'>
 	<div class='modal-dialog'>
