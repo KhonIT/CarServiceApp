@@ -42,9 +42,9 @@
 
 <div class='modal fade' id='modal_data' role='dialog'>
 	<div class='modal-dialog'>
-	<div  class='modal-content'>
+	<div  class='modal-content modal-inverse'>
 		<div class='modal-header'>
-			<button type='button' class='close' data-dismiss='modal'>&times;</button>
+			<button type='button' class='close icon' data-dismiss='modal'>&times;</button>
 			<h4><span class='glyphicon '></span>ข้อมูลผู้ใช้</h4>
 		</div>
 		<div class='modal-body' align='center'  >
@@ -65,7 +65,7 @@
         <tr>
           <td> เงินเดือน:</td>
           <td>
-            <input type="number" name="tb_salary" id="tb_salary"    ng-model="emp_current_salary"/>
+            <input type="number" name="tb_salary" id="tb_salary"  class="inputtxt"   ng-model="emp_current_salary"/>
           </td>
         </tr>
 				<tr>
@@ -83,7 +83,7 @@
 				<tr>
 					<td>ตำแหน่งงาน:</td>
 					<td>
-						<select   id='dd_Level' >
+						<select  class="selectopt"   id='dd_Level' >
 
 						</select>
 					</td>
