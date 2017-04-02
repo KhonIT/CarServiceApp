@@ -132,6 +132,12 @@ app.controller('levelController', function($scope, $http, $timeout) {
         }
     }
 
+
+
+   $scope.chkbox = function(id){ 
+         $('#'+id).prop('checked', function(i, oldVal) { return !oldVal; }); 
+    }    
+
     $scope.displaymsgsuccess = function(){
       $('#msgbox').addClass( "alert-success" ).removeClass( "alert-warning hidden");
       $timeout(function() {
@@ -146,3 +152,5 @@ app.controller('levelController', function($scope, $http, $timeout) {
     }
 
 });
+
+ 

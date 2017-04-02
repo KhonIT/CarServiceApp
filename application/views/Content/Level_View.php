@@ -43,7 +43,7 @@
 		<div class='modal-dialog'>
 		<div  class='modal-content modal-inverse'>
 			<div class='modal-header'>
-				<button type='button' class='close' data-dismiss='modal'>&times;</button>
+				<button type='button' class='close icon ' data-dismiss='modal'>&times;</button>
 				<h4><span class='glyphicon '></span>{{headermsg}}</h4>
 			</div>
 			<div class='modal-body' >
@@ -77,26 +77,27 @@
 		<div class='modal-dialog'>
 		<div  class='modal-content modal-inverse'>
 			<div class='modal-header'>
-				<button type='button' class='close icon' data-dismiss='modal'>&times;</button>
+				<button type='button' class='close icon ' data-dismiss='modal'>&times;</button>
 				<h4><span class='glyphicon '></span>{{headermsg}}</h4>
 			</div>
 			<div class='modal-body  table-responsive ' align="center" >
 				<table class="table-modal table table-inverse">
 					 <thead>
 		                    <tr >
-		                        <th>ลำดับที่</th>
+		                        <th>#</th>
 		                        <th>ชื่อสิทธ์</th>
 		                        <th>ชื่อเมนู</th>
 		                        <th>อนุญาติแก้ไข</th>
 		                    </tr>
 		                </thead>
 		                <tbody id='tbody_permission'>
-                      <tr ng-repeat="obj in permission" >
+			 
+                      <tr ng-repeat="obj in permission" class='pointer'  ng-click="chkbox('menuid_'+obj.menu_id);" >
                         <td class="text-center">{{$index + 1}}</td>
-                        <td class="text-left"> {{obj.l_name}} </td>
-                        <td class="text-left"> {{obj.parent_menu+':'+obj.menu_name}}</td>
-                        <td  ng-if="obj.is_edit == 1" id='{{obj.permission_id}}' align="center" ><input type="checkbox" id="{{'menuid_'+obj.menu_id}}"   checked= "checked " value="{{obj.menu_id}}" /> </td>
-                        <td  ng-if="obj.is_edit != 1" id='{{obj.permission_id}}' align="center" ><input type="checkbox" id="{{'menuid_'+obj.menu_id}}"    value="{{obj.menu_id}}" /> </td>
+                        <td class="text-left">  {{obj.l_name}} </td>
+                        <td class="text-left">  {{obj.parent_menu+':'+obj.menu_name}}  </td>
+                        <td  ng-if="obj.is_edit == 1" id='{{obj.permission_id}}' align="center" ><input class="chkbox" type="checkbox" id="{{'menuid_'+obj.menu_id}}"   checked= "checked " value="{{obj.menu_id}}" /> </td>
+                        <td  ng-if="obj.is_edit != 1" id='{{obj.permission_id}}' align="center" ><input class="chkbox"  type="checkbox" id="{{'menuid_'+obj.menu_id}}"    value="{{obj.menu_id}}" /> </td>
                       </tr>
                       <tr><td align="center" colspan="4"><span class="glyphicon glyphicon-floppy-save icon " ng-click="savepermission();"   ></span></td></tr>
 		                </tbody>

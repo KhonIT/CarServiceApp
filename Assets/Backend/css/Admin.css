@@ -13,6 +13,24 @@ body {
 .navbar-fixed-top {
   border: 0;
 }
+.pointer {
+   cursor:pointer;
+}
+.pointer:hover {
+   color:white;
+    box-shadow: 0 0 15px  #ffffff;
+    border-radius:5px;
+}
+.chkbox {
+    cursor:pointer; 
+  width: 20px; /*Desired width*/
+  height: 20px; /*Desired height*/
+ 
+}
+.chkbox:hover {
+   color:white;
+    box-shadow: 0 0 15px  #ffffff; 
+}
 
 .icon {
    cursor:pointer;
@@ -129,3 +147,21 @@ color:#fff!important;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
     border-bottom: 2px solid #ffffff;
  }
+
+.close {
+    color: #fff; 
+    opacity: 1;
+}
+
+.close {
+    color: #fff; 
+    opacity: 1;
+}
+
+.close:hover {
+    color:#fff; 
+    box-shadow: 0 0 15px  #ffffff;
+    border-radius:5px;
+    opacity: 1;
+    text-decoration: none;
+}
