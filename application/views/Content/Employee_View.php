@@ -49,11 +49,23 @@
 		</div>
 		<div class='modal-body' align='center'  >
 			<table class="table-modal  table table-inverse">
+					<tr>
+					<td> คำนำหน้า:</td>
+					<td>
+						<input type="text" name="tb_st_name" id="tb_st_name"  ng-model="emp_st_name"/>
+						<input type="text" name="tb_e_id" id="tb_e_id" style="display: none;"  ng-model="emp_id"  />
+					</td>
+				</tr>
 				<tr>
 					<td>ชื่อ :</td>
 					<td>
-						<input type="text" name="tb_name" id="tb_name"   ng-model="emp_name" />
-						<input type="text" name="tb_e_id" id="tb_e_id" style="display: none;"  ng-model="emp_id"  />
+				 	<input type="text" name="tb_fname" id="tb_fname"  ng-model="emp_fname"/> 
+					</td>
+				</tr>
+					<tr>
+					<td> นามสกุล:</td>
+					<td>
+						<input type="text" name="tb_lname" id="tb_lname"  ng-model="emp_lname"/>
 					</td>
 				</tr>
 				<tr>
