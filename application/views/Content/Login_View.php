@@ -1,5 +1,5 @@
-<div class="container" ng-app="AppAngular" >
-          <div   align='center' >
+<div class="container " ng-app="AppAngular" >
+          <div class=" text-center banner"  >
             <img src="<?php echo base_url(); ?>Assets/Images/logo&sloganNobg.png" />
           </div>
   <div ng-controller="loginController" >

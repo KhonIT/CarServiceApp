@@ -4,6 +4,12 @@ body {
   background-color: #333;
 }
 
+.banner {
+  padding-top: 40px;
+  padding-bottom: 40px; 
+}
+ 
+
 .form-signin {
   max-width: 330px; 
   margin: 0 auto;
@@ -82,7 +88,6 @@ input.sign-in:hover {
     border:4px solid #ffffff;
     box-shadow: 0 0 10px  #ffffff;
 }
-.alert{
-
+.alert{ 
     margin:20px 10px 10px 10px;
 }
