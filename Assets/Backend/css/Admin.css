@@ -103,10 +103,10 @@ nav ul li.menu-bg a:hover {color: black;  }
 }
 .inputtxt:focus {
  outline: none !important;
-   border:2px solid #ffffff;
+   border:1px solid #ffffff;
    box-shadow: 0 0 10px  #ffffff;
 }
-input[type="text"],input[type="password"],input[type="number"]{
+input[type="text"],input[type="password"],input[type="number"],input[type="tel"]{
    padding: 3px;
    color: #fff;
    background-color: rgba(255, 255, 255, 0);
@@ -114,7 +114,7 @@ input[type="text"],input[type="password"],input[type="number"]{
    border-top-color: transparent;
    border-left-color: transparent;
    border-right-color: transparent;
-   border-bottom: 2px solid #ffffff;
+   border: 1px solid #ffffff;
    font-family: 'Muli', sans-serif;
    outline: none;
    letter-spacing:1px;
@@ -143,8 +143,8 @@ color:#fff!important;
     margin-bottom: 10px;
     background:#333;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-    border-bottom: 2px solid #ffffff;
- }
+    border: 1px solid #ffffff;
+ } 
 
 .close {
     color: #fff; 
@@ -159,7 +159,8 @@ color:#fff!important;
     text-decoration: none;
 }
 
-.table>tbody>tr>td{
-padding: 0px;
+.modal-body>.table>tbody>tr>td{
+padding: 3px;
 vertical-align: middle; 
+    border :0px;
 }

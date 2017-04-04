@@ -12,12 +12,11 @@ app.controller('employeeController', function($scope, $http, $timeout) {
     $scope.emp_tel =  "";
     $scope.emp_passport =  "";
     $scope.emp_address =  "";
-    $scope.emp_startwork =  "";
-    $scope.emp_picture =  "";
+    $scope.emp_startwork =  ""; 
     $scope.emp_oldwork =  "";
     $scope.emp_degree =  "";
     $scope.emp_nationality =  "";
-    $scope.emp_l_id = "";
+    $scope.l_id = "";
     $scope.emp_current_salary = parseFloat("0.00");
     $scope.emp_username =  "";
     $scope.emp_password =  "";
@@ -30,8 +29,7 @@ app.controller('employeeController', function($scope, $http, $timeout) {
     });
 
     $http.get(backend_url + 'Level/Get_All').success(function(response) {
-      angular.forEach(response, function(value, key) {
-        	//console.log( key : value['l_id']+ ':' + value['l_name']);
+      angular.forEach(response, function(value, key) { 
         $("#dd_Level").append('<option value='+value['l_id']+'>'+value['l_name']+'</option>');
       });
     }).error(function(err) {
@@ -80,8 +78,7 @@ app.controller('employeeController', function($scope, $http, $timeout) {
         $scope.emp_tel =  "";
         $scope.emp_passport =  "";
         $scope.emp_address =  "";
-        $scope.emp_startwork =  "";
-        $scope.emp_picture =  "";
+        $scope.emp_startwork =  ""; 
         $scope.emp_oldwork =  "";
         $scope.emp_degree =  "";
         $scope.emp_nationality =  "";
@@ -95,8 +92,7 @@ app.controller('employeeController', function($scope, $http, $timeout) {
 
     $scope.editemp = function(id) { 
         $http.post(backend_url + 'Employee/Get_By_ID', { 'id': id })
-            .success(function (data) {
-                        console.log(data);
+            .success(function (data) { 
                 $scope.emp_id = data.emp_id;
                 $scope.emp_st_name =  data.emp_st_name;
                 $scope.emp_fname = data.emp_fname;
@@ -105,15 +101,14 @@ app.controller('employeeController', function($scope, $http, $timeout) {
                 $scope.emp_tel =  data.emp_tel;
                 $scope.emp_passport =  data.emp_passport;
                 $scope.emp_address =  data.emp_address;
-                $scope.emp_startwork =  data.emp_startwork;
-                $scope.emp_picture =  data.emp_picture;
+                $scope.emp_startwork =  data.emp_startwork; 
                 $scope.emp_oldwork =  data.emp_oldwork;
                 $scope.emp_degree =  data.emp_degree;
                 $scope.emp_nationality =  data.emp_nationality;
                 $scope.emp_current_salary =   parseFloat(data.emp_current_salary);
-                $scope.emp_username =  data.emp_username;
-                $scope.emp_password =  data.emp_password;
-                $("#dd_Level").val(data.emp_l_id);
+                $scope.emp_username = data.emp_username;  
+                $scope.emp_password = "";
+                $("#dd_Level").val(data.l_id);
                 $("#modal_data").modal();
             }).error(function(err) {
                 console.log(err);
@@ -132,15 +127,14 @@ app.controller('employeeController', function($scope, $http, $timeout) {
             emp_tel: $scope.emp_tel,
             emp_passport: $scope.emp_passport,
             emp_address: $scope.emp_address,
-            emp_startwork: $scope.emp_startwork,
-            emp_picture: $scope.emp_picture,
+            emp_startwork: $scope.emp_startwork, 
             emp_oldwork: $scope.emp_oldwork,
             emp_degree: $scope.emp_degree,
             emp_nationality: $scope.emp_nationality,
             emp_current_salary: $scope.emp_current_salary,
-            emp_username: $scope.emp_username,
-            emp_password: $scope.emp_password,
-            emp_l_id:$('#dd_Level :selected').val()
+            emp_username: $scope.emp_username, 
+            emp_password: $scope.emp_password, 
+            l_id:$('#dd_Level :selected').val()
           }).success(function(data) {
 
               $('#modal_data').modal('toggle');

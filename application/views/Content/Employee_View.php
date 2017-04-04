@@ -48,59 +48,66 @@
 			<h4><span class='glyphicon '></span>ข้อมูลผู้ใช้</h4>
 		</div>
 		<div class='modal-body' align='center'  >
-			<table class="table-modal  table table-inverse">
+			<table class="table-modal  table table-inverse ">
 					<tr>
 					<td> คำนำหน้า:</td>
 					<td>
-						<input type="text" name="tb_st_name" id="tb_st_name"  ng-model="emp_st_name"/>
+						<input type="text"  class="inputtxt"  ng-model="emp_st_name"/>
 						<input type="text" name="tb_e_id" id="tb_e_id" style="display: none;"  ng-model="emp_id"  />
 					</td>
 				</tr>
 				<tr>
 					<td>ชื่อ :</td>
 					<td>
-				 	<input type="text" name="tb_fname" id="tb_fname"  ng-model="emp_fname"/> 
+				 	<input type="text"  class="inputtxt"  ng-model="emp_fname"/> 
 					</td>
 				</tr>
 					<tr>
 					<td> นามสกุล:</td>
 					<td>
-						<input type="text" name="tb_lname" id="tb_lname"  ng-model="emp_lname"/>
+						<input type="text" class="inputtxt" ng-model="emp_lname"/>
 					</td>
 				</tr>
 				<tr>
 					<td> ชื่อเล่น:</td>
 					<td>
-						<input type="text" name="tb_e_nickname" id="tb_e_nickname"  ng-model="emp_nickname"/>
+						<input type="text" class="inputtxt" ng-model="emp_nickname"/>
 					</td>
 				</tr>
         <tr>
           <td> เงินเดือน:</td>
           <td>
-            <input type="number" name="tb_salary" id="tb_salary"  class="inputtxt"   ng-model="emp_current_salary"/>
+            <input type="number" class="inputtxt" ng-model="emp_current_salary"/>
+          </td>
+        </tr>
+			 <tr>
+          <td> เบอร์โทร:</td>
+          <td>
+            <input type="tel" class="inputtxt"   ng-model="emp_tel"/>
           </td>
         </tr>
 				<tr>
 					<td> ชื่อผู้ใช้:</td>
 					<td>
-						<input type="text" name="tb_e_username" id="tb_e_username"  ng-model="emp_username"/>
+						<input type="text" class="inputtxt"  ng-model="emp_username"/>
 					</td>
 				</tr>
 				<tr>
 					<td> รหัสผ่าน</td>
 					<td>
-						<input type="text" name="tb_e_password" id="tb_e_password"   ng-model="emp_password"/>
+						<input type="text"  class="inputtxt" ng-model="emp_password"/>
 					</td>
 				</tr>
 				<tr>
 					<td>ตำแหน่งงาน:</td>
 					<td>
-						<select  class="selectopt"   id='dd_Level' >
+						<select  class="selectopt"    id='dd_Level' >
 
 						</select>
 					</td>
 				</tr>
 				<tr>
+					<!--
           <tr>
             <td> รูปภาพ1</td>
             <td>
@@ -110,6 +117,7 @@
               <img ng-show="isImage(fileExt)" ngf-src="picFile[0]" class="thumb">
             </td>
           </tr>
+					-->
 					<td>บันทึก:</td>
 					 <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="saveemp()"></span></td>
 				</tr>

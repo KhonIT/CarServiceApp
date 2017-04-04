@@ -42,24 +42,26 @@ class Employee_Model extends CI_Model{
 
 	 public function Get_By_ID($id){
 		  $sql = 'select
-			e.emp_id as emp_id
-			,e.emp_st_name as emp_st_name
-			,e.emp_fname as emp_fname
-			,e.emp_lname as emp_lname
-			,e.emp_nickname as emp_nickname
-			,e.emp_tel as emp_tel
-			,e.emp_ssn as emp_passport
-			,e.emp_address as emp_address
-			,e.emp_date_start_work as emp_date_start_work
-			,e.emp_picture as emp_picture
-			,e.emp_old_work as emp_old_work
-			,e.emp_degree as emp_degree
-			,e.emp_nationality as emp_nationality
-			,e.emp_status as emp_status
-			,e.emp_contact as emp_contact
-			,e.emp_current_salary as emp_current_salary
-			,l.l_id as emp_l_id
-			,l.l_name from employee e left join level l on l.l_id = e.l_id  where e.is_deleted = 0 and e.emp_id = ?';
+			e.emp_id 
+			,e.emp_st_name 
+			,e.emp_fname 
+			,e.emp_lname 
+			,e.emp_nickname 
+			,e.emp_tel 
+			,e.emp_ssn 
+			,e.emp_address 
+			,e.emp_date_start_work 
+			,e.emp_picture 
+			,e.emp_old_work 
+			,e.emp_degree 
+			,e.emp_nationality 
+			,e.emp_status 
+			,e.emp_contact 
+			,e.emp_current_salary 
+			,e.emp_username
+			,l.l_id 
+			,l.l_name from employee e left join level l on l.l_id = e.l_id  
+			where e.is_deleted = 0 and e.emp_id = ?';
 
 
 		  $query = $this->db->query($sql, array($id));

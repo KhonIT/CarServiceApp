@@ -105,29 +105,32 @@ class Employee extends MY_Controller {
     {
         $this->output->unset_template();
         $data=json_decode(file_get_contents("php://input"));
-        $arr = array(
-			'name'=>$data->emp_name,
-			'nickname'=>$data->emp_nickname,
-			'current_salary'=>$data->emp_current_salary,
-			'e_username'=>$data->emp_username,
-			'e_password'=>$data->emp_password,
-			'l_id'=>$data->emp_l_id,
-          /*
-          'tel'=>$data->emp_tel,
-          'date_start_work'=>$data->emp_startwork,
-          'picture'=>$data->emp_picture,
-          'old_work'=>$data->emp_old_work,
-          'degree'=>$data->emp_degree,
-          'nationality'=>$data->emp_nationality,
-          'status'=>$data->emp_status,
-          'contact'=>$data->emp_contact,
-
-          */
-			'modify_by' => $this->user_profile['emp_id'],
-			'modify_date' => date('Y-m-d H:i:s')
-        );
-        if($data->id=='0'){
-        	//$arr['e_password'] = random_string('alnum', 8);
+         $arr =array();
+        if($data->emp_password !=""){
+ $arr = array(
+			'emp_st_name'=>$data->emp_st_name,
+            'emp_fname'=>$data->emp_fname,
+            'emp_lname'=>$data->emp_lname,
+			'emp_nickname'=>$data->emp_nickname,
+            'emp_tel'=>$data->emp_tel,
+			'emp_current_salary'=>$data->emp_current_salary,
+			'emp_username'=>$data->emp_username,
+			'emp_password'=>$data->emp_password,
+			'l_id'=>$data->l_id
+        ); 
+        }else{ 
+             $arr = array(
+			'emp_st_name'=>$data->emp_st_name,
+            'emp_fname'=>$data->emp_fname,
+            'emp_lname'=>$data->emp_lname,
+			'emp_nickname'=>$data->emp_nickname,
+            'emp_tel'=>$data->emp_tel,
+			'emp_current_salary'=>$data->emp_current_salary,
+			'emp_username'=>$data->emp_username, 
+			'l_id'=>$data->l_id,
+                 ); 
+        } 
+        if($data->id=='0'){ 
         	$result =  $this->Employee_Model->Insert($arr);
         }else{
         	$result =  $this->Employee_Model->Update($arr,$data->id);
