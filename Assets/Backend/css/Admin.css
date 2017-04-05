@@ -4,14 +4,16 @@
   --bg-modal-color: rgba(0,0,0,0.5);
   --bg-color: #333;
   --text-color: #fff;  
+  --text-hover-color: #ddd;  
 }
 
 
 body {
-  margin-top: 70px;
-  font-size: 1.5em;
-  color:var(--text-color);
-  background-color:var(--bg-color);
+    margin-top: 70px;
+    font-size: 1.5em; 
+    font-family: sans-serif;
+    color:var(--text-color);
+    background-color:var(--bg-color);
 }
 
 .modal-inverse { 
@@ -40,10 +42,10 @@ body {
 }
 
 .icon {
-   cursor:pointer;
-   font-size: 2em;
-      padding: 5px;
-      margin: 1px;
+    cursor:pointer;
+    font-size: 2em;
+    padding: 5px;
+    margin: 1px;
 }
 .icon:hover {
    color:var(--text-color);
@@ -66,10 +68,11 @@ body {
 	color:var(--text-color);
 	background:var(--bg-modal-color);
 }
-
+.navbar-inverse .navbar-brand {  color: var(--text-hover-color);}
+.navbar-inverse .navbar-nav > li > a {  color: var(--text-hover-color);}
 a,a:visited ,a:hover ,a:active ,a.icon-home-a:hover,a.icon-home-a:link ,a.icon-home-a:visited  ,a.icon-home-a:active  {
-  font-size:16px;
   color: var(--text-color);
+      text-decoration: none;
 }
 
 .green {
@@ -86,15 +89,7 @@ td,th{
  padding: 5px;
  white-space:nowrap;
 }
-
-
-.u{
-text-decoration: underline;
-}
-
-.tbody_list{
-   font-size: 1.5em;
-}
+ 
 nav ul li.menu-bg a:hover {color: var(--bg-modal-color); } 
 .panel-heading{
     background-image: linear-gradient(to bottom,  var(--bg-modal-color) 0%,  var(--bg-color) 100%);
@@ -102,10 +97,7 @@ nav ul li.menu-bg a:hover {color: var(--bg-modal-color); }
 }
 .panel-body{
   background-color:var(--bg-color);
-}
-.table th {
-     font-size: 1.5em;
-}
+} 
 .inputtxt:focus {
  outline: none !important;
    border:1px solid var(--text-color);
@@ -120,11 +112,10 @@ input[type="text"],input[type="password"],input[type="number"],input[type="tel"]
    border-left-color: transparent;
    border-right-color: transparent;
    border: 1px solid var(--text-color);
-   font-family: 'Muli', sans-serif;
    outline: none;
    letter-spacing:1px;
    text-align: center;
-   font-size: 1em;
+ 
 }
 
 input:-webkit-input-placeholder {
@@ -142,8 +133,7 @@ color:var( --text-color)!important;
 input:-ms-input-placeholder {
 color:var( --text-color)!important;
 }
- .selectopt { 
-   font-size: 1em;
+ .selectopt {  
     margin-top: 10px;
     margin-bottom: 10px;
     background:var(--bg-color);
