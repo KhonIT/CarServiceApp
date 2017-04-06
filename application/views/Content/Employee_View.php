@@ -5,7 +5,7 @@
 		<div class="panel panel-inverse">
 		  <div class="panel-heading" align="center"><h3 class="sub-header">รายชื่อพนักงาน</h3> </div>
 		  <div class="panel-body">
-        <div  class="  darkgray text-right "  id="icon_add_employee"  >
+        <div  class="text-right "  id="icon_add_employee"  >
           <label for="searchtxt" class="sr-only">ค้นหา</label>
           <input type ='text' class="inputtxt" id="searchtxt" placeholder="ค้นหา" ng-model="search" />
           <span class="glyphicon glyphicon-plus  employee-add icon" ng-click="insemp();">เพิ่ม</span>

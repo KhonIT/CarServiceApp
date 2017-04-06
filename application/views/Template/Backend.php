@@ -37,7 +37,7 @@
           <div class="navbar-collapse collapse">
            <ul class="nav navbar-nav " id="menu_nav">
 			         <!-- menu_nav -->
-          </ul> 
+          </ul>
 			<ul class="nav navbar-nav  navbar-right">
 				<li class=" dropdown ">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="User_Profile">  </a>
@@ -48,7 +48,7 @@
 						<li role="separator" class="divider"></li>
 					</ul>
 				</li>
-			</ul> 
+			</ul>
         </div>
 	</nav>
     <div class="container-fluid">

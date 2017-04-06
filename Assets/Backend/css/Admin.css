@@ -1,22 +1,25 @@
 
-:root { 
+:root {
   /* Colors. */
-  --bg-modal-color: rgba(0,0,0,0.5);
-  --bg-color: #333;
-  --text-color: #fff;  
-  --text-hover-color: #ddd;  
+  --bg-color: #2d1304;
+  --bg-modal-color: #843000;
+  --bg-txt-color:#6f320e;
+  --bg-txt-hover-color: #6f320e;  
+  --border-color: #ffc588;
+  --text-color: #ffc588;
+  --text-hover-color: #ffd4a6;
+  --font-size: 1.5em;
+  --font-family: sans-serif;
 }
-
-
 body {
     margin-top: 70px;
-    font-size: 1.5em; 
-    font-family: sans-serif;
+    font-size:var(--font-size);
+    font-family: var(--font-family);
     color:var(--text-color);
     background-color:var(--bg-color);
 }
 
-.modal-inverse { 
+.modal-inverse {
   color:var(--text-color);
   background-color:var(--bg-color);
 }
@@ -32,9 +35,9 @@ body {
     border-radius:5px;
 }
 .chkbox {
-    cursor:pointer; 
+    cursor:pointer;
     width: 20px; /*Desired width*/
-    height: 20px; /*Desired height*/ 
+    height: 20px; /*Desired height*/
 }
 .chkbox:hover {
     color:var(--text-color);
@@ -67,13 +70,52 @@ body {
 .icon-home-div:hover  {
 	color:var(--text-color);
 	background:var(--bg-modal-color);
-}
-.navbar-inverse .navbar-brand {  color: var(--text-hover-color);}
-.navbar-inverse .navbar-nav > li > a {  color: var(--text-hover-color);}
+} 
+/*replace bootstrap class*/
+.navbar-inverse {background-color: var(--bg-color); background-image: var(--bg-color);} 
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {border-color:var(--border-color-color);  background-image: var(--bg-color);} 
+.navbar-inverse .navbar-brand ,
+.navbar-inverse .navbar-toggle ,
+.navbar-inverse .navbar-nav ,
+.navbar-inverse .navbar-nav > li > a ,
+.navbar-inverse .navbar-nav > .active > a ,
+.navbar-inverse .navbar-nav > .open > a, 
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a,
+.navbar-inverse .navbar-toggle 
+{  color: var(--text-color);background-color: var(--bg-color); background-image: var(--bg-color);}        
+
+.navbar-inverse .navbar-nav:hover ,
+.navbar-inverse .navbar-brand:hover ,
+.navbar-inverse .navbar-nav > li > a:hover ,
+.navbar-inverse .navbar-nav > .active > a:hover ,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:hover 
+{  color: var(--text-hover-color);background-color: var(--bg-color); background-image: var(--bg-color);}        
+
+.navbar-inverse .navbar-nav > .active > a:focus ,
+.navbar-inverse .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-toggle:focus 
+{  color: var(--text-color);background-color: var(--bg-color); background-image: var(--bg-color);}   
+
 a,a:visited ,a:hover ,a:active ,a.icon-home-a:hover,a.icon-home-a:link ,a.icon-home-a:visited  ,a.icon-home-a:active  {
   color: var(--text-color);
       text-decoration: none;
 }
+
+.dropdown-menu {  color: var(--text-color);background-color: var(--bg-color); background-image: var(--bg-color);} 
+.dropdown-menu:hover   {  color: var(--text-color);background-color: var(--bg-color); background-image: var(--bg-color);} 
+.dropdown-menu > li > a {  color: var(--text-color);background-color: var(--bg-color); background-image: var(--bg-color);} 
+.dropdown-menu > li > a :hover {  color: var(--text-color);background-color: var(--bg-color); background-image: var(--bg-color);} 
+
+.dropdown-menu .menu-bg:hover   {  color: var(--text-color);background-color: var(--bg-color); background-image: var(--bg-color);} 
+
+
+.dropdown .open >.dropdown-menu > .menu-bg a:hover   {color: var(--text-color);background-color: var(--bg-color); background-image: var(--bg-color);}
+
+
 
 .green {
     color: green;
@@ -89,15 +131,15 @@ td,th{
  padding: 5px;
  white-space:nowrap;
 }
- 
-nav ul li.menu-bg a:hover {color: var(--bg-modal-color); } 
+
+
 .panel-heading{
-    background-image: linear-gradient(to bottom,  var(--bg-modal-color) 0%,  var(--bg-color) 100%);
-    background-color:var(--bg-modal-color) ;
+    color: var(--bg-modal-color);
+  background-color:var(--text-color);
 }
 .panel-body{
   background-color:var(--bg-color);
-} 
+}
 .inputtxt:focus {
  outline: none !important;
    border:1px solid var(--text-color);
@@ -106,16 +148,16 @@ nav ul li.menu-bg a:hover {color: var(--bg-modal-color); }
 input[type="text"],input[type="password"],input[type="number"],input[type="tel"]{
    padding: 3px;
    color: var(--text-color);
-   background-color:  var(--bg-modal-color);
+   background-color:  var(--bg-txt-color);
    font-weight: normal;
    border-top-color: transparent;
    border-left-color: transparent;
    border-right-color: transparent;
-   border: 1px solid var(--text-color);
+   border: 1px solid var(--bor);
    outline: none;
    letter-spacing:1px;
    text-align: center;
- 
+
 }
 
 input:-webkit-input-placeholder {
@@ -133,22 +175,22 @@ color:var( --text-color)!important;
 input:-ms-input-placeholder {
 color:var( --text-color)!important;
 }
- .selectopt {  
+ .selectopt {
     margin-top: 10px;
     margin-bottom: 10px;
     background:var(--bg-color);
     text-shadow: 0 1px 0 var(--bg-modal-color);
     border: 1px solid var( --text-color);
- } 
+ }
 
 .close {
-    color: var( --text-color); 
+    color: var( --text-color);
     opacity: 1;
-} 
+}
 
 .close:hover {
-    color:var( --text-color); 
-    box-shadow: 0 0 15px  var( --text-color);
+    color:var( --text-color);
+    box-shadow: 0 0 15px  var( --border-color);
     border-radius:5px;
     opacity: 1;
     text-decoration: none;
@@ -156,6 +198,6 @@ color:var( --text-color)!important;
 
 .modal-body>.table>tbody>tr>td{
 padding: 3px;
-vertical-align: middle; 
+vertical-align: middle;
     border :0px;
 }
