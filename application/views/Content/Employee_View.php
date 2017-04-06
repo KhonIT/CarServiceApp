@@ -11,7 +11,7 @@
           <span class="glyphicon glyphicon-plus  employee-add icon" ng-click="insemp();">เพิ่ม</span>
         </div>
       </div>
-		<div class="panel-body  table-responsive" align="center">
+		<div class="panel-body  table-responsive text-center">
 			<div align="left"  class="alert  hidden text-center"  id="msgbox" > {{msg}} </div>
 				<table  class="table table-inverse"  >
 					<thead>
@@ -47,7 +47,7 @@
 			<button type='button' class='close icon' data-dismiss='modal'>&times;</button>
 			<h4><span class='glyphicon '></span>ข้อมูลผู้ใช้</h4>
 		</div>
-		<div class='modal-body' align='center'  >
+		<div class='modal-body text-center' >
 			<table class="table-modal  table table-inverse ">
 					<tr>
 					<td> คำนำหน้า:</td>

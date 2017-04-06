@@ -2,24 +2,25 @@
     <div class="col-sm-1 "> </div>
     <div class="col-sm-10 ">
 
-      <div class="panel panel-default">
+      <div class="panel panel-inverse">
         <div class="panel-heading" align="center"><h3 class="sub-header">รายชื่อการบริการ</h3> </div>
         <div class="panel-body">
            <div align="right" class="green "  id="icon_add" >
       		<span class="add-data u icon"  ng-click="ins();">เพิ่ม</span>
       		<span class="glyphicon glyphicon-plus  add-data icon"  ng-click="ins();"></span>
       	 </div>
-                      <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
+     <div class="panel-body table-responsive text-center">
+        <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
         <!-- Table -->
-            <div class="table-responsive" align="center">
-                  <table  class="table_head table-striped"  >
+        
+           		<table  class="table table-inverse"  >
                       <thead>
                           <tr >
-                              <th>ลำดับที่</th>
+                              <th  class=" text-center">#</th>
                               <th>การบริการ</th>
                               <th>ราคา</th>
-                              <th>บันทึก</th>
-                              <th>ลบ</th>
+                              <th class=" text-center">บันทึก</th>
+                              <th class=" text-center">ลบ</th>
                           </tr>
                       </thead>
                       <tbody id='tbody_list'>
@@ -35,7 +36,7 @@
                         <td align="center"><span class=" glyphicon glyphicon-remove remove-data icon " ng-click="del(obj.service_id);"></span></td></tr>
                       </tbody>
                   </table>
-              </div>
+        </div>
       </div>
 
       </div>
@@ -44,13 +45,13 @@
 
 	<div class='modal fade' id='modal_data' role='dialog'>
 		<div class='modal-dialog'>
-		<div  class='modal-content'>
+		<div  class='modal-content  modal-inverse'>
 			<div class='modal-header'>
-				<button type='button' class='close' data-dismiss='modal'>&times;</button>
+				<button type='button' class='close icon' data-dismiss='modal'>&times;</button>
 				<h4><span class='glyphicon '></span>ข้อมูลการบริการ</h4>
 			</div>
-			<div class='modal-body' >
-				<table class="table-modal">
+			<div class='modal-body text-center' >
+			<table class="table-modal  table table-inverse ">
 					<tr>
 						<td>การบริการ :</td>
 						<td>
