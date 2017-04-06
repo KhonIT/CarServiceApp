@@ -43,8 +43,8 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="User_Profile">  </a>
 					<ul class=" dropdown-menu">
 						<li role="separator" class="divider"></li>
-						<li  class="editempform"> <a href="#"  class="editemp">แก้ไขข้อมูล</a></li>
-						<li  class="logoutform"> <a href="#"  class="btnlogout ">ออกจากระบบ</a></li>
+						<li  class="editempform menu-bg"> <a href="#"  class="editemp">แก้ไขข้อมูล</a></li>
+						<li  class="logoutform menu-bg"> <a href="#"  class="btnlogout ">ออกจากระบบ</a></li>
 						<li role="separator" class="divider"></li>
 					</ul>
 				</li>
@@ -205,11 +205,11 @@
 
 								if (obj.parent_menu=="0")
 								{
-									$("#menu_nav").append('<li class="dropdown" ><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'+obj.menu_name+'<span class="caret"></span></a><ul class="dropdown-menu" id="menu'+obj.menu_id+'"></ul></li>');
+									$("#menu_nav").append('<li class="dropdown" ><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'+obj.menu_name+'<span class="caret"></span></a><ul class="dropdown-menu" id="menu'+obj.menu_id+'"><li role="separator" class="divider"></li></ul></li>');
 									count ++;
 								}else{
 									if (obj.is_edit=="1"){
-										$("#menu"+obj.parent_menu_id).append('	<li class="menu-bg" ><a href="'+backend_url+''+obj.menu_link_url+'">'+obj.menu_name+'</a></li> ');
+										$("#menu"+obj.parent_menu_id).append('<li class="menu-bg" ><a href="'+backend_url+''+obj.menu_link_url+'">'+obj.menu_name+'</a></li> ');
 									}
 								}
 						});
@@ -221,6 +221,7 @@
 									 if($("#menu"+obj.menu_id+" li").children().length==0){
 										 $("#menu"+obj.menu_id).parent('li').addClass("hidden");
 									 }
+								$("#menu"+obj.menu_id).append('<li role="separator" class="divider"></li>');
 							}
 						});
 					}
