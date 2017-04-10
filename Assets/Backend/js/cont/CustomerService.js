@@ -132,9 +132,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 
     $scope.car_search = function () {
       $http.post(backend_url + 'Customer/Get_By_CarRegisNumber', { 'car_regis_number': $scope.car_regis_number })
-          .success(function (data) { 
-                console.log(data);   
-
+          .success(function (data) {  
               $scope.cus_id = data.cus_id;
               $scope.cus_name =  data.cus_name;
               $scope.cus_tel = data.cus_tel;

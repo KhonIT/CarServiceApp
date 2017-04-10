@@ -130,22 +130,23 @@
 
   <div class='modal fade' id='modal_data_service_detail' role='dialog'>
     <div class='modal-dialog'>
-      <div  class='modal-content'>
-        <div class='modal-header'  align="center">
-          <button type='button' class='close' data-dismiss='modal'>&times;</button>
+  	<div  class='modal-content modal-inverse'>
+        <div class='modal-header'   >
+			<button type='button' class='close icon' data-dismiss='modal'>&times;</button>
           <h4><span class='glyphicon '></span>ข้อมูลการบริการ</h4>
         </div>
-        <div class='modal-body'  align="center"   >
+		<div class='modal-body text-center' >
 
-          <table class="table-modal " >
+ 			<table class="table-modal  table table-inverse ">
             <tbody id='tbody_list'>
               <tr   ng-repeat="serall in service_all ">
                 <td class="text-center">{{$index + 1}}</td>
 
-                <td class="text-left"> <label class="icon"><input type="checkbox" id="service_detail" value="{{''+serall.service_id}}"  /> {{serall.service_name}}</label></td>
+                <td class="text-left"> 
+                <label class="icon"><input type="checkbox" id="service_detail" value="{{''+serall.service_id}}"  /> {{serall.service_name}}</label></td>
 
-                <td class="text-left"><input type="text"  id="{{'price-'+serall.service_id}}"  value="{{serall.price}}"   />
-                   <input type="text" id="{{'name-'+serall.service_id}}" style="display: none;" value="{{serall.service_name}}"   /></td>
+                <td class="text-left"><input type="text" class="inputtxt"  id="{{'price-'+serall.service_id}}"  value="{{serall.price}}"   />
+                   <input type="text"  id="{{'name-'+serall.service_id}}" style="display: none;" value="{{serall.service_name}}"   /></td>
               </tr>
 
               <tr>
