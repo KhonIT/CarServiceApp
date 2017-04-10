@@ -2,6 +2,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
     $scope.logos = []; //declare an empty array
     $scope.services = []; //declare an empty array
     $scope.service_all = []; //declare an empty array
+    $scope.cars = []; //declare an empty array
   //declare empty
     $scope.cus_id = "";
     $scope.cus_name =  "";
@@ -36,8 +37,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
     }  
 
     $scope.addcar = function() {
-    $scope.cus_id = "0";
-    $scope.cus_id = "";
+    $scope.cus_id = "0"; 
     $scope.cus_name =  "";
     $scope.cus_tel = "";
     $scope.car_id = "0";
@@ -132,16 +132,25 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 
     $scope.car_search = function () {
       $http.post(backend_url + 'Customer/Get_By_CarRegisNumber', { 'car_regis_number': $scope.car_regis_number })
-          .success(function (data) {  
-              $scope.cus_id = data.cus_id;
-              $scope.cus_name =  data.cus_name;
-              $scope.cus_tel = data.cus_tel;
-              $scope.cus_id = data.car_id;
-              $scope.car_regis_number = data.car_regis_number;
-              $scope.car_regis_province =  data.car_regis_province;
-              $scope.car_brand =  data.car_brand;
-              $scope.car_model =  data.car_model;
-              $scope.car_color =  data.car_color; 
+          .success(function (data) {    
+              $scope.cars = data; 
+             
+                       console.log( $scope.cars.length);
+              if ($scope.cars.length == 1) {
+                  $scope.cus_id = data[0].cus_id;
+                  $scope.cus_name = data[0].cus_name;
+                  $scope.cus_tel = data[0].cus_tel;
+                  $scope.car_id = data[0].car_id;
+                  $scope.car_regis_number = data[0].car_regis_number;
+                  $scope.car_regis_province = data[0].car_regis_province;
+                  $scope.car_brand = data[0].car_brand;
+                  $scope.car_model = data[0].car_model;
+                  $scope.car_color = data[0].car_color;
+              } else { 
+
+                    $('#modal_data_car_list').modal(); 
+              }
+
           }).error(function(err) {
               console.log(err);
           })

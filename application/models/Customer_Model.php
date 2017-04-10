@@ -46,11 +46,10 @@ class Customer_Model extends CI_Model{
 	 public function Car_Search($car_regis_number){ 
 		$sql = 'SELECT c.car_id ,car_regis_number, car_regis_province, car_brand,car_model,car_color,car_size,cu.cus_id,cu.cus_name,cu.cus_tel FROM car c ';
 		$sql .= 'left join customer cu on cu.cus_id = c.cus_id where c.is_deleted = 0 ';
-		$sql .= 'and c.car_regis_number like "%'.$car_regis_number.'%"'; 
- 
- 		$query = $this->db->query($sql);
+		$sql .= 'and c.car_regis_number like "%'.$car_regis_number.'%"';  
+ 		$query = $this->db->query($sql); 
 		  log_message('debug', sprintf('Found %b row with car car_regis_number: %s', $query->num_rows(), $car_regis_number));
-		  return $query->row_array();// return one row
+		  return $query->result(); 
 	 }
 
 	 public function Get_All(){

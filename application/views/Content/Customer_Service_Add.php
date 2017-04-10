@@ -162,4 +162,49 @@
     </div>
   </div>
 
+ 
+
+<div class='modal fade' id='modal_data_car_list' role='dialog'>
+    <div class='modal-dialog'>
+  	<div  class='modal-content modal-inverse'>
+        <div class='modal-header'   >
+			<button type='button' class='close icon' data-dismiss='modal'>&times;</button>
+          <h4><span class='glyphicon '></span>ข้อมูลรถ</h4>
+        </div>
+		<div class='modal-body text-center' >
+
+ 			<table class="table-modal  table table-inverse ">
+       					<thead>
+						<tr >
+							<th  class=" text-center">#</th>
+                <th>ทะเบียน</th>
+                <th>จังหวัด</th>
+                <th>ยี่ห้อ</th>
+                <th>รุ่น</th>
+                <th>สี</th>
+                <th>ชื่อ</th>
+                <th>เบอร์โทร</th> 
+							  <th class=" text-center">เลือก</th> 
+						</tr>
+					</thead>
+            <tbody id='tbody_list'>
+              <tr   ng-repeat="car in  cars">
+                <td class="text-center">{{$index + 1}}</td>
+                <td class="text-center">{{car.car_regis_number}}</td>
+                <td class="text-center">{{car.car_regis_province}}</td>
+                <td class="text-center">{{car.car_brand}}</td>
+                <td class="text-center">{{car.car_model}}</td>
+                <td class="text-center">{{car.car_color}}</td>
+                <td class="text-center">{{car.cus_name}}</td>
+                <td class="text-center">{{car.cus_tel}}</td>
+          <td class="text-center">เลือก</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div> 
+  
 </div>
