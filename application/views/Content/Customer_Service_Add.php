@@ -5,11 +5,12 @@
 <div class="panel panel-inverse">
 <div class="panel-heading text-center" ><h3 class="sub-header">รับรถ</h3> </div>
 <div class="panel-body  table-responsive"> 
+      <div class="alert hidden text-center"  id="msgbox" >{{msg}}</div>
 <!-- Table -->
   				<table  class="table table-inverse"  >
         <tr>
           <td colspan="2" class="text-center">
-              <input type="text" name="tb_car_regis_number" id="tb_car_regis_number" ng-model="car_regis_number"   />
+            <input type="text" name="tb_car_regis_number" id="tb_car_regis_number" ng-model="car_regis_number"   />
             <span class='data-search-cus icon glyphicon glyphicon-search'  ng-click="car_search();">ค้นหา</span>
           </td>
         </tr>
@@ -73,14 +74,14 @@
 </div>
 <div class="col-sm-1 "> </div> 
 
-  <div class='modal fade' id='modal_data_add_cus' role='dialog'>
+  <div class='modal fade' id='modal_data_car' role='dialog'>
   	<div class='modal-dialog'>
   		<div  class='modal-content'>
   			<div class='modal-header text-center'  >
   				<button type='button' class='close' data-dismiss='modal'>&times;</button>
   				<h4><span class='glyphicon '></span>ข้อมูลรายละเอียดลูกค้า</h4>
   			</div>
-  			<div class='modal-body  '   >
+  			<div class='modal-body'   >
           <table class="table-modal " >
             <tr>
                 <td>ชื่อ :</td>
@@ -125,58 +126,7 @@
   </div>
 
 
-
-
-  <div class='modal fade' id='modal_data_cus_search' role='dialog'>
-  	<div class='modal-dialog'>
-  		<div  class='modal-content'>
-  			<div class='modal-header'  align="center">
-  				<button type='button' class='close' data-dismiss='modal'>&times;</button>
-  				<h4><span class='glyphicon '></span>ข้อมูลลูกค้า</h4>
-
-          <form class="form-inline">
-            <div class="form-group">
-              <label >ค้นหา</label>
-              <input type ='text' class="form-control" placeholder="ค้นหา" ng-model="search" />
-                <span class='data-add-cus icon glyphicon glyphicon-plus ' ng-click="addcus()">เพิ่ม</span>
-            </div>
-          </form>
-  			</div>
-  			<div class='modal-body'  align="center"   >
-          <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msgcus}}</p>  </div>
-          <table class="table-modal " >
-  					       <thead>
-                     <tr class="text-center">
-                       <th>ลำดับที่</th>
-                       <th ng-click="sort('cus_name')">ชื่อ</th>
-                       <th ng-click="sort('cus_tel')">เบอร์โทร</th>
-                       <th ng-click="sort('cus_car_regis_number')">ทะเบียน</th>
-                       <th ng-click="sort('cus_car_brand')">ยี่ห้อ</th>
-                       <th ng-click="sort('gender')">รุ่น</th>
-                       <th ng-click="sort('cus_car_color')">สี</th>
-                       <th>เลือก</th>
-                     </tr>
-
-                  </thead>
-  					<tbody id='tbody_cus_list'>
-              <tr class="tbody_list" ng-repeat="cus in customers |orderBy:sortKey:reverse|filter:search">
-                <td class="text-center">{{$index + 1}}</td>
-                <td class="text-left">{{cus.cus_name}}</td>
-                <td class="text-left">{{cus.cus_tel}}</td>
-                <td class="text-left">{{cus.cus_car_regis_number}}</td>
-                <td class="text-left">{{cus.cus_car_brand}}</td>
-                <td class="text-left">{{cus.cus_car_model}}</td>
-                <td class="text-left">{{cus.cus_car_color}}</td>
-              <td align="center"><span class="glyphicon glyphicon-share-alt choose-data icon " ng-click="choosecus(cus.id);"id='+obj.id+'></span></td>
-              </tr>
-  					</tbody>
-  				</table>
-
-  			</div>
-  		</div>
-  	</div>
-  </div>
-
+ 
 
   <div class='modal fade' id='modal_data_service_detail' role='dialog'>
     <div class='modal-dialog'>
@@ -194,8 +144,8 @@
 
                 <td class="text-left"> <label class="icon"><input type="checkbox" id="service_detail" value="{{''+serall.service_id}}"  /> {{serall.service_name}}</label></td>
 
-                <td class="text-left"><input type="number"  id="{{'price-'+serall.service_id}}"  value="{{serall.price}}"   />
-                            <input type="text" id="{{'name-'+serall.service_id}}" style="display: none;" value="{{serall.service_name}}"   /></td>
+                <td class="text-left"><input type="text"  id="{{'price-'+serall.service_id}}"  value="{{serall.price}}"   />
+                   <input type="text" id="{{'name-'+serall.service_id}}" style="display: none;" value="{{serall.service_name}}"   /></td>
               </tr>
 
               <tr>

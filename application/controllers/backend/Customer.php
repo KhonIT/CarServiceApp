@@ -55,11 +55,11 @@ class Customer extends MY_Controller {
         }
     } 
 
-   public function Get_By_CarRegusNumber()
+   public function Get_By_CarRegisNumber()
     {
     	$this->output->unset_template();
         $data=json_decode(file_get_contents("php://input"));
-    	$result =  $this->Customer_Model->Get_By_ID($data->CarRegusNumber);
+    	$result =  $this->Customer_Model->Car_Search($data->car_regis_number);
     	if($result)
     	{
     		echo json_encode ($result) ;
