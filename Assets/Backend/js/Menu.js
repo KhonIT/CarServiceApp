@@ -74,7 +74,7 @@ $('#tbody_menu').delegate('span.menu-edit', 'click', function() {
 $('#modal_menu').delegate('span.menu-save', 'click', function() {
 	$.ajax({
 		url:  backend_url+'Menu/Edit',
-		data: {menu_id:$("#tb_menu_id").val(),menu_name:$('#tb_menu_name').val(),link_url:$('#tb_link_url').val(),parent_menu_id:$('#dd_parent_menu :selected').val()},
+		data: {menu_id:$("#tb_menu_id").val(),menu_name:$('#tb_menu_name').val(),menu_link_url:$('#tb_link_url').val(),parent_menu_id:$('#dd_parent_menu :selected').val()},
 		type: "POST",
 		cache:false,
 		success: function (data) {

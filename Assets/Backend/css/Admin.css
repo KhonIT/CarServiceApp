@@ -12,13 +12,13 @@
   --font-size: 1.5em;
   --font-family: sans-serif;
 */
-  --bg-color: #0F4D2A;
-  --bg-modal-color: #003D32;
-  --bg-txt-color:#0F4D2A; 
-  --border-color: #4D5A11;
+  --bg-color: #000000;
+  --bg-modal-color: #333333;
+  --bg-txt-color:#333333; 
+  --border-color: #fff;
   --border-hover-color: #fff;
   --text-color: #fff;
-  --text-hover-color: #FFC726;
+  --text-hover-color: yellow;
   --font-size: 1.5em;
   --font-family: sans-serif;
 }
@@ -144,7 +144,7 @@ td,th{
    box-shadow: 0 0 15px var(--border-hover-color);
 }
 input[type="text"],input[type="password"],input[type="number"],input[type="tel"]{
-    padding: 3px;
+    padding: 2px;
     color: var(--text-color);
     background-color:  var(--bg-txt-color);
     font-weight: normal;
@@ -152,7 +152,8 @@ input[type="text"],input[type="password"],input[type="number"],input[type="tel"]
     box-shadow: 0 0 15px var(--bg-color);
     outline: none;
     letter-spacing:1px;
-    text-align: center; 
+    text-align: left; 
+    width: 180px;
 }
 
 input:-webkit-input-placeholder {
@@ -170,12 +171,16 @@ color:var( --text-color)!important;
 input:-ms-input-placeholder {
 color:var( --text-color)!important;
 }
- .selectopt {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background:var(--bg-color);
-    text-shadow: 0 1px 0 var(--bg-modal-color);
-    border: 1px solid var( --text-color);
+ .selectopt { 
+     width: 180px;
+    padding: 2px;
+    font-weight: normal;
+    border:1px solid var(--border-color); 
+    box-shadow: 0 0 15px var(--bg-color); 
+    background:var(--bg-txt-color);
+    text-shadow: 0 1px 0 var(--bg-modal-color); 
+     outline: none;
+    letter-spacing:1px; 
  }
 
 .close {

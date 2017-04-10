@@ -1,9 +1,9 @@
 app.controller('serviceController', function($scope, $http, $timeout,$location,$anchorScroll) {
 
     $scope.services = []; //declare an empty array
-    $scope.service_id = "";
     $scope.service_name =  "";
     $scope.price =  "";
+    $scope.car_size =  "";
     $scope.msg="";
 
     $http.get(backend_url + 'Services/Get_All').success(function(response) {
@@ -21,30 +21,24 @@ app.controller('serviceController', function($scope, $http, $timeout,$location,$
     }
 
     $scope.ins = function() {
-      $scope.service_id = "0";
       $scope.service_name =  "";
       $scope.price =  "";
+      $scope.car_size =  "";
       $("#modal_data").modal();
-    }
-
-    $scope.edit = function(id) {
-        $http.post(backend_url + 'Services/Get_By_ID', { 'id': id })
-            .success(function(data) {
-                $scope.service_id = data.service_id;
-                $scope.service_name =  data.service_name;
-                $scope.price =  data.price;
-                $("#modal_data").modal();
-            }).error(function(err) {
-                console.log(err);
-            })
-    }
+    } 
 
     $scope.save = function(id) {
-       //for-debug
-       //console.log($scope.emp_id+':'+$scope.emp_name);
+    $("#modal_data").modal('hide');
+//for-debug
+  // console.log($("#tb_name_"+id).val()+':'+$("#tb_name_"+id).val()+':'+$("#tb_car_size_"+id+" :selected").val());
     var param  ={};
-    if (id == "0"){param = {id: id,service_name: $scope.service_name, price: $scope.price};}else{param = {id: id,service_name: 	$("#tb_name_"+id).val(), price: 	$("#tb_price_"+id).val()};} 
+    if (id == "0"){
+        param = {id: id,service_name: $scope.service_name, price: $scope.price,car_size: $scope.car_size};
+    }else{
+        param = {id: id,service_name:$("#tb_name_"+id).val(), price:$("#tb_price_"+id).val(),car_size:$("#tb_car_size_"+id+" :selected").val()};
+    } 
         $http.post(backend_url + 'Services/Edit',param).success(function(data) {
+
               if (angular.equals(data, "true")  ){
                   $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
                   $scope.displaymsgsuccess();
@@ -57,9 +51,7 @@ app.controller('serviceController', function($scope, $http, $timeout,$location,$
             }).error(function(err) {
                 console.log(err);
             })
-    }
-
-
+    } 
         $scope.del = function(id) {
             var r = confirm("ยืนยันการลบข้อมูล รายการนี้ ?");
             if (r == true) {
