@@ -70,7 +70,7 @@ class Customer extends MY_Controller {
     {
     	$this->output->unset_template();
       $data=json_decode(file_get_contents("php://input"));
-    	$result =  $this->Customer_Model->Get_By_ID($data->id);
+    	$result =  $this->Customer_Model->Car_Search($data->id);
     	if($result)
     	{
     		echo json_encode ($result) ;
