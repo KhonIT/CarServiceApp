@@ -23,8 +23,6 @@ class Customer_Model extends CI_Model{
 		   	log_message('error', 'Update => customer service Data is null.');
 		   	throw new Exception('customer service Data is null.');
 		  }
-
-
 		  if ($data == null || $id == 0) {
 		   	log_message('error', 'Required ID for update customer service Data.');
 		   	throw new Exception('Required ID for update customer service Data.');
@@ -37,34 +35,26 @@ class Customer_Model extends CI_Model{
 		   	throw new Exception($e->getMessage());
 		  }
 	 }
-	 public function Get_By_ID($id){
-		  $sql = 'select  cus_id as id ,cus_tel,cus_name,cus_car_regis_number,cus_car_brand,cus_car_model,cus_car_color  from customers where is_deleted = 0 and cus_id = ?';
+	 public function Get_By_ID($id){ 
+		$sql = 'SELECT c.car_id ,cus_name,cus_tel,car_regis_number, car_regis_province, car_brand,car_model,car_color,car_size FROM car c ';
+		$sql .= 'left join customer cu on cu.cus_id = c.cus_id where c.is_deleted = 0   and c.cus_id = ?';
+
 		  $query = $this->db->query($sql, array($id));
 		  log_message('debug', sprintf('Found %b row with service ID %s', $query->num_rows(), $id));
 		  return $query->row_array();// return one row
-	 }
+	 } 
+	 public function Cus_Search($car_regis_number){
 
-
-	 public function Cus_Search($cus_tel,$cus_car_regis_number){
-
-		  $sql = 'select  cus_id as id ,cus_tel,cus_name,cus_car_regis_number,cus_car_brand,cus_car_model,cus_car_color  from customers where is_deleted = 0 ' ;
-
-
-if($cus_tel!= ""){
-  $sql .=  'and  cus_tel like "%'.$cus_tel.'%"  ';
-
-}if($cus_car_regis_number!= ""){
-  $sql .=  'and cus_car_regis_number like "%'.$cus_car_regis_number.'%"';
-}
-  $sql .= 'order by cus_id desc limit 100 offset 0';
- 
-			$query = $this->db->query($sql);
+		$sql = 'SELECT c.car_id ,cus_name,cus_tel,car_regis_number, car_regis_province, car_brand,car_model,car_color,car_size FROM car c ';
+		$sql .= 'left join customer cu on cu.cus_id = c.cus_id where c.is_deleted = 0 ';
+		$sql .= 'and c.car_regis_number like "%'.$car_regis_number.'%"'; $query = $this->db->query($sql);
 		   return $query->result();
 	 }
 
 	 public function Get_All(){
-		  $sql = 'select  cus_id as id ,cus_tel,cus_name,cus_car_regis_number,cus_car_brand,cus_car_model,cus_car_color  from customers where is_deleted = 0 order by cus_id desc limit 100 offset 0 ';
-		  $query = $this->db->query($sql);
+		$sql = 'SELECT c.car_id ,cus_name,cus_tel,car_regis_number, car_regis_province, car_brand,car_model,car_color,car_size FROM car c ';
+		$sql .= 'left join customer cu on cu.cus_id = c.cus_id where c.is_deleted = 0 ';
+		 $query = $this->db->query($sql);
 		  return $query->result();
 	 }
 
