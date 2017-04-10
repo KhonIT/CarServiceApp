@@ -53,17 +53,17 @@
         </tr>
 
         <tr>
-          <td> ราคารวม</td>
+          <td class="text-right"> ราคารวม</td>
           <td> {{total_price | currency:""}} บาท</td>
         </tr>
         <tr>
-          <td>หมายเหตุ :</td>
+          <td class="text-right">หมายเหตุ :</td>
           <td>
             <input type="text" name="tb_comment" id="tb_comment" ng-model="comment"   />
           </td>
         </tr>
         <tr>
-          <td>บันทึก:</td>
+          <td class="text-right">บันทึก:</td>
            <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="savecusservice();"> </span></td>
         </tr>
       </table>
