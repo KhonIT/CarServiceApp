@@ -10,7 +10,7 @@
       		<span class="glyphicon glyphicon-plus  add-data icon"  ng-click="ins();"></span>
       	 </div>
      <div class="panel-body table-responsive text-center">
-        <div    class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
+       <div class="alert hidden text-center"  id="msgbox" >{{msg}}</div>
         <!-- Table -->
         
            		<table  class="table table-inverse"  >

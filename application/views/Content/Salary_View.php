@@ -20,7 +20,7 @@
 
 		  <!-- Table -->
 		      <div class="table-responsive" align="center">
-                  <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
+                  <div class="alert hidden text-center"  id="msgbox" >{{msg}}</div>
 		            <table  class="table-striped"  >
 		                <thead>
 		                    <tr >

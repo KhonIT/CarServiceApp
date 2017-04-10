@@ -2,44 +2,46 @@
   <div class="col-sm-1 "> </div>
   <div class="col-sm-10 ">
 
-<div class="panel panel-default" >
+<div class="panel panel-inverse">
 <div class="panel-heading text-center" ><h3 class="sub-header">รับรถ</h3> </div>
-<div class="panel-body">
-
+<div class="panel-body  table-responsive"> 
 <!-- Table -->
-      <table  class="table  table-responsive   table-strip table-hover">
+  				<table  class="table table-inverse"  >
         <tr>
-          <td colspan="2">
-            <span class='data-search-cus icon glyphicon glyphicon-search'  ng-click="cuslist();">ค้นหาข้อมูลลูกค้า</span>
+          <td colspan="2" class="text-center">
+              <input type="text" name="tb_car_regis_number" id="tb_car_regis_number" ng-model="car_regis_number"   />
+            <span class='data-search-cus icon glyphicon glyphicon-search'  ng-click="car_search();">ค้นหา</span>
           </td>
         </tr>
         <tr>
-          <td>ชื่อ :</td>
+          <td class="text-right">ชื่อ :</td>
           <td>{{cus_name}}</td>
         </tr>
         <tr>
-          <td>เบอร์โทร</td>
+          <td class="text-right">เบอร์โทร</td>
           <td>{{cus_tel}}</td>
         </tr>
         <tr>
-          <td> ทะเบียนรถ:</td>
-          <td>{{cus_car_regis_number}}</td>
+          <td class="text-right"> ทะเบียนรถ:</td>
+          <td>{{car_regis_number}}</td>
         </tr>
         <tr>
-          <td>ยี่ห้อ:</td>
-          <td>{{cus_car_brand}}</td>
+          <td class="text-right">ยี่ห้อ:</td>
+          <td>{{car_brand}}</td>
         </tr>
         <tr>
-          <td>รุ่น:</td>
-          <td>{{cus_car_model}}</td>
+          <td class="text-right">รุ่น:</td>
+          <td>{{car_model}}</td>
         </tr>
         <tr>
-          <td>สี</td>
-          <td>{{cus_car_color}}</td>
+          <td class="text-right">สี</td>
+          <td>{{car_color}}</td>
+        </tr>
+       <tr>  
+         <td colspan="2" class="text-center"> <span class=' icon glyphicon glyphicon-wrench'  ng-click="servicelist();">การบริการ</span> </td>
         </tr>
         <tr>
-          <td>รายละเอียดการบริการ  <span class=' icon glyphicon glyphicon-list'  ng-click="servicelist();">เพิ่มคลิก</span> </td>
-          <td>
+          <td colspan="2">
             <table  >
               <tr  ng-repeat="service in services ">
                 <td class="text-center">{{$index + 1}}</td>
@@ -65,12 +67,11 @@
            <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="savecusservice();"> </span></td>
         </tr>
       </table>
-                <div  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
+      <div class="alert hidden text-center"  id="msgbox" >{{msg}}</div>
     </div>
 </div>
 </div>
-<div class="col-sm-1 "> </div>
-
+<div class="col-sm-1 "> </div> 
 
   <div class='modal fade' id='modal_data_add_cus' role='dialog'>
   	<div class='modal-dialog'>

@@ -12,7 +12,7 @@
         </div>
       </div>
 		<div class="panel-body  table-responsive text-center">
-			<div align="left"  class="alert  hidden text-center"  id="msgbox" > {{msg}} </div>
+			<div class="alert hidden text-center"  id="msgbox" >{{msg}}</div>
 				<table  class="table table-inverse"  >
 					<thead>
 						<tr >

@@ -10,17 +10,11 @@
              						<label >Search</label>
                         <input type ='text' class="form-control" placeholder="ค้นหา" ng-model="search" />
              					</div>
-             				</form>
-                  <!-- For Debug  <div align="left"  class="alert alert-info">
-                     <p>Sort key: {{sortKey}}</p>
-                     <p>Reverse: {{reverse}}</p>
-                     <p>Search String : {{search}}</p>
-                    </div>
-                    -->
+             				</form> 
    <span class="add-data u icon" ng-click="inscus();">เพิ่ม</span>
    <span class="add-data glyphicon glyphicon-plus icon" ng-click="inscus();"></span>
 	 </div>
-         <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
+         <div class="alert hidden text-center"  id="msgbox" >{{msg}}</div>
   <!-- Table -->
         <table  class="table  table-responsive   table-strip table-hover">
           <tr class="text-center">

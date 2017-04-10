@@ -9,7 +9,7 @@
       <label for="inputPassword" class="sr-only">รหัสผ่าน</label>
       <input type="password" id="inputPassword"  ng-keypress="checkIfEnterKey($event)" ng-model="password"   placeholder="Password" > 
       <input class="sign-in" ng-click="check_auth()" type="Submit" value="Submit"/> 
-      <div   class="alert  hidden text-center"  id="msgbox" > {{msg}}  </div>
+      <div class="alert hidden text-center"  id="msgbox" >{{msg}}</div>
   </div>
     </form> 
   </div>
