@@ -53,9 +53,7 @@ class Level extends MY_Controller {
       $data=json_decode(file_get_contents("php://input"));
         $data_arr = array(
           'l_name'=>$data->l_name,
-          'l_parent_id'=>$data->l_parent_id,
-          'modify_by' => $this->user_profile['emp_id'],
-          'modify_date' => date('Y-m-d H:i:s')
+          'l_parent_id'=>$data->l_parent_id
         );
 
         if($data->id=="0"){

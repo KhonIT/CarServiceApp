@@ -100,7 +100,7 @@
 				</tr>
 				<tr>
 					<td>ตำแหน่งงาน:</td>
-					<td>
+					<td   >
 						<select  class="selectopt"    id='dd_Level' >
 
 						</select>

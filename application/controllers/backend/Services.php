@@ -23,41 +23,26 @@ class Services extends MY_Controller {
     public function Get_All()
     {
         $this->output->unset_template();
-
-        $Menu =  $this->Service_Model->Get_All();
-
-        if($Menu)
+        $result =  $this->Service_Model->Get_All();
+        if($result)
         {
-           echo json_encode ($Menu) ;
+           echo json_encode ($result) ;
         }
-    }
-    public function Get_By_ID()
-    {
-      $this->output->unset_template();
-      $data=json_decode(file_get_contents("php://input"));
-
-    	$result =  $this->Service_Model->Get_By_ID($data->id);
-
-    	if($result)
-    	{
-    		echo json_encode ($result) ;
-    	}
     }
 
     public function Edit()
     {
       $this->output->unset_template();
       $data=json_decode(file_get_contents("php://input"));
-        $Menu_arr = array(
+        $data_arr = array(
           'service_name'=>$data->service_name,
-          'price'=>$data->price,
-          'modify_by' =>  $this->user_profile['emp_id'],
-          'modify_date' => date('Y-m-d H:i:s')
+          'car_size'=>$data->car_size,
+          'price'=>$data->price
         );
         if($data->id=="0"){
-      		$result =  $this->Service_Model->Insert($Menu_arr);
+      		$result =  $this->Service_Model->Insert($data_arr);
       	}else{
-      		$result =  $this->Service_Model->Update($Menu_arr,$data->id);
+      		$result =  $this->Service_Model->Update($data_arr,$data->id);
       	}
         if($result)
         {
@@ -73,12 +58,12 @@ class Services extends MY_Controller {
       $this->output->unset_template();
       $data=json_decode(file_get_contents("php://input"));
 
-        $Menu_arr = array(
+        $data_arr = array(
             'is_deleted'=>1
         );
-        $Menu =  $this->Service_Model->Update($Menu_arr,$data->id);
+        $result =  $this->Service_Model->Update($data_arr,$data->id);
 
-        if($Menu)
+        if($result)
         {
                echo "true";
         }

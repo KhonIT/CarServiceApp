@@ -14,8 +14,8 @@ class Employee extends MY_Controller {
 
      public function index()
     {
-    		$this->output->set_template('Backend');
-    		$this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
+        $this->output->set_template('Backend');
+        $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
         $this->load->js('Assets/Backend/js/cont/Employee.js');
         $this->load->view('Content/Employee_View');
     }
@@ -210,9 +210,7 @@ class Employee extends MY_Controller {
         $this->output->unset_template();
         $data=json_decode(file_get_contents("php://input"));
         $arr = array(
-          'e_password'=>$data->emp_password,
-          'modify_by' => $this->user_profile['emp_id'],
-          'modify_date' => date('Y-m-d H:i:s')
+          'e_password'=>$data->emp_password
         );
           $result =  $this->Employee_Model->Update($arr,$this->user_profile['emp_id']);
     if($result){

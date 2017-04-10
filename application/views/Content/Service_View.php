@@ -10,7 +10,7 @@
       		<span class="glyphicon glyphicon-plus  add-data icon"  ng-click="ins();"></span>
       	 </div>
      <div class="panel-body table-responsive text-center">
-        <div align="left"  class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
+        <div    class="alert  hidden text-center"  id="msgbox" > <p>{{msg}}</p>  </div>
         <!-- Table -->
         
            		<table  class="table table-inverse"  >
@@ -19,6 +19,7 @@
                               <th  class=" text-center">#</th>
                               <th>การบริการ</th>
                               <th>ราคา</th>
+                              <th>ขนาดของรถ</th> 
                               <th class=" text-center">บันทึก</th>
                               <th class=" text-center">ลบ</th>
                           </tr>
@@ -27,11 +28,20 @@
                       <tr  ng-repeat="obj in services" >
                         <td class="text-center">{{$index + 1}}</td>
                         <td class="text-left">
-	                           <input type="text" name="tb_name_{{''+obj.service_id}}" id="tb_name_{{''+obj.service_id}}"  ng-model="obj.service_name"  />
+	                           <input type="text"  id="tb_name_{{''+obj.service_id}}"  ng-model="obj.service_name"  />
                         </td>
                         <td class="text-left">
-                             <input type="text" name="tb_price_{{''+obj.service_id}}" id="tb_price_{{''+obj.service_id}}"  ng-model="obj.price"  />
+                             <input type="text" id="tb_price_{{''+obj.service_id}}"  ng-model="obj.price"  />
                         </td>
+                        <td class="text-left"> 
+                        <select class="selectopt" id="tb_car_size_{{''+obj.service_id}}" ng-model="obj.car_size">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option> 
+                        </select>  
+                        </td> 
                         <td align="center"><span class="glyphicon glyphicon-floppy-save icon " ng-click="save(obj.service_id);"></span></td>
                         <td align="center"><span class=" glyphicon glyphicon-remove remove-data icon " ng-click="del(obj.service_id);"></span></td></tr>
                       </tbody>
@@ -55,15 +65,30 @@
 					<tr>
 						<td>การบริการ :</td>
 						<td>
-							<input type="text" name="tb_name" id="tb_name"  ng-model="service_name"  />
-							<input type="text" name="tb_id" id="tb_id" style="display:none;"  ng-model="service_id"  />
+							<input type="text" name="tb_name" id="tb_name"  ng-model="service_name"  /> 
 						</td>
-						<td rowspan='2'><span  class="glyphicon glyphicon-floppy-save save-data icon"  ng-click="save()"></span> </td>
 					</tr>
 					<tr>
 						<td>ราคา :</td>
 						<td><input type="text" name="tb_price" id="tb_price"  ng-model="price"  /> </td>
 					</tr>
+					<tr>
+						<td>	ขนาดของรถ :</td>
+						<td>                
+                            <select class="selectopt" id="tb_car_size" ng-model="car_size">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option> 
+                        </select>  
+                         </td>
+					</tr> 
+                    <tr>
+                        <td colspan='2' class="text-center">
+                            <span  class="glyphicon glyphicon-floppy-save save-data icon"  ng-click="save('0')"></span> 
+                        </td>
+                    </tr>
 				</table>
 			</div>
 			</div>

@@ -38,8 +38,7 @@ class Menu_Model extends CI_Model{
 		   	throw new Exception($e->getMessage());
 		  }
 	 }
-	 public function Get_By_ID($menu_id){
-		 
+	 public function Get_By_ID($menu_id){ 
 		  $sql = 'SELECT menu_id, menu_name, menu_link_url, parent_menu_id, is_deleted, menu_css, is_shortcut FROM menu WHERE is_deleted = 0 AND menu_id = ?';
 		  $query = $this->db->query($sql, array($menu_id));
 		  log_message('debug', sprintf('Found %b row with menu ID %s', $query->num_rows(), $menu_id));

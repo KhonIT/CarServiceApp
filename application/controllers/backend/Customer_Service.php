@@ -92,9 +92,7 @@ class Customer_Service extends MY_Controller {
     	{
     		echo json_encode ($result) ;
     	}
-    }
-
-
+    } 
     public function Edit()
     {
         $this->output->unset_template();
@@ -106,9 +104,7 @@ class Customer_Service extends MY_Controller {
               'cus_id'=>$this->input->post('cus_id'),
               'pay_status'=>$this->input->post('pay_status'),
               'total'=>$this->input->post('total'),
-              'emp_id'=>$this->user_profile['emp_id'],
-              'modify_by' =>  $this->user_profile['emp_id'],
-              'modify_date' => date('Y-m-d H:i:s')
+              'emp_id'=>$this->user_profile['emp_id']
           );
     			$result =  $this->Customer_Service_Model->Insert($data_arr);
     		}else{
@@ -117,9 +113,7 @@ class Customer_Service extends MY_Controller {
               'number'=>$this->input->post('number'),
               'comment'=>$this->input->post('comment'),
               'total'=>$this->input->post('total'),
-              'pay_status'=>$this->input->post('pay_status'),
-              'modify_by' =>  $this->user_profile['emp_id'],
-              'modify_date' => date('Y-m-d H:i:s')
+              'pay_status'=>$this->input->post('pay_status')
           );
     			$result =  $this->Customer_Service_Model->Update($data_arr,$this->input->post('id'));
     		}
@@ -129,10 +123,7 @@ class Customer_Service extends MY_Controller {
         } else{
 		 echo "false";
 		}
-    }
-
-
-
+    } 
     public function AddService()
     {
         $this->output->unset_template();
@@ -142,9 +133,7 @@ class Customer_Service extends MY_Controller {
             'cus_id'=>$data->cus_id,
             'total'=>$data->total_price,
             'comment'=>$data->comment,
-            'pay_status'=>'0',
-            'modify_by' =>  $this->user_profile['emp_id'],
-            'modify_date' => date('Y-m-d H:i:s')
+            'pay_status'=>'0'
           );
           $order_id =  $this->Customer_Service_Model->Insert($data_arr);
 
@@ -157,9 +146,7 @@ class Customer_Service extends MY_Controller {
                  'order_id'=>$order_id,
                  'service_id'=>$val['service_id'],
                  'price'=>$val['price'],
-                 'is_show'=>'1',
-                 'modify_by' => $this->user_profile['emp_id'],
-                 'modify_date' => date('Y-m-d H:i:s')
+                 'is_show'=>'1'
              );
               $result =  $this->Customer_Service_Model->Insert_Order_Detail($Data_arr);
               if($result)
@@ -174,10 +161,8 @@ class Customer_Service extends MY_Controller {
     }
 
     public function Delete()
-    {
-
-        $this->output->unset_template();
-
+    { 
+        $this->output->unset_template(); 
         $data_arr = array(
             'is_deleted'=>1
         );
@@ -185,10 +170,9 @@ class Customer_Service extends MY_Controller {
 
         if($result)
         {
-               echo "true";
+             echo "true";
         }
-    }
-
+    } 
 
     public function OrderDetailEdit()
     {
@@ -202,21 +186,15 @@ class Customer_Service extends MY_Controller {
              'order_id'=>$val['order_id'],
              'service_id'=>$val['service_id'],
              'price'=>$val['price'],
-             'is_show'=>$isshow,
-             'modify_by' => $this->user_profile['emp_id'],
-             'modify_date' => date('Y-m-d H:i:s')
+             'is_show'=>$isshow
          );
 
          if( $val['order_detail_id']=='0' && $val['is_show'] == "true"  ){
            $this->Customer_Service_Model->Insert_Order_Detail($Data_arr);
           }else    if( $val['order_detail_id']!='0'  ){
             $this->Customer_Service_Model->Update_Order_Detail($Data_arr,$val['order_detail_id']);
-        }
-
+        } 
       }
           echo "true";
-    }
-
-
-
+    } 
 }

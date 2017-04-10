@@ -40,13 +40,13 @@ class Service_Model extends CI_Model{
 	 }
 
 	 public function Get_By_ID($id){
-		  $sql = 'select service_id,service_name,price  from service where is_deleted = 0 and service_id = ?';
+		  $sql = 'select service_id,service_name,price,car_size  from service where is_deleted = 0 and service_id = ?';
 		  $query = $this->db->query($sql, array($id));
 		  log_message('debug', sprintf('Found %b row with service ID %s', $query->num_rows(), $id));
 		  return $query->row_array();// return one row
 	 } 
 	 public function Get_All(){
-		  $sql = 'select service_id,service_name,price  from service where is_deleted = 0';
+		  $sql = 'select service_id,service_name,price,car_size  from service where is_deleted = 0';
 		  $query = $this->db->query($sql);
 		  return $query->result();
 	 }  

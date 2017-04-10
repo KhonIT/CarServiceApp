@@ -43,9 +43,7 @@ class Print_Service extends MY_Controller {
           $this->output->unset_template();
           $data=json_decode(file_get_contents("php://input"));
           $data_arr = array(
-              'pay_status'=>1,
-              'modify_by' =>  $this->user_profile['emp_id'],
-              'modify_date' => date('Y-m-d H:i:s')
+              'pay_status'=>1
           );
     			$result =  $this->Customer_Service_Model->Update($data_arr,$data->id);
           if($result)
