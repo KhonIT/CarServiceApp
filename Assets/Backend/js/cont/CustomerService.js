@@ -3,20 +3,25 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
     $scope.services = []; //declare an empty array
     $scope.service_all = []; //declare an empty array
     $scope.cars = []; //declare an empty array
-  //declare empty
-    $scope.cus_id = "";
-    $scope.cus_name =  "";
-    $scope.cus_tel = "";
+    //declare empty
     $scope.car_id = "";
-    $scope.car_regis_number =  "";
+    $scope.car_regis_number = "";
+    $scope.car_regis_province =  "";
     $scope.car_brand =  "";
     $scope.car_model =  "";
     $scope.car_color = "";
+    $scope.car_size = "";
     $scope.total_price = ""; 
+
+    $scope.cus_id = "";
+    $scope.cus_name =  "";
+    $scope.cus_tel = "";
 
     $scope.comment  = ""; 
     $scope.msg = ""; 
     
+    $("#choose_service").addClass("hidden");
+
     $http.get(backend_url + 'Customer/Get_Logo').success(function(response) {
         $scope.logos = response; //ajax request to fetch data into $scope.data
     }).error(function(err) {
@@ -36,25 +41,27 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
       $scope.cuscar_brand =  iconname;
     }  
 
-    $scope.addcar = function() {
-    $scope.cus_id = "0"; 
-    $scope.cus_name =  "";
-    $scope.cus_tel = "";
-    $scope.car_id = "0";
-    $scope.car_regis_number =  "";
-    $scope.car_brand =  "";
-    $scope.car_model =  "";
-    $scope.car_color = "";
-    $scope.total_price = ""; 
-      $('#modal_data_car').modal();
-    }
+    $scope.addcar = function () {
+        $scope.car_id = "0"; 
+        $scope.car_regis_number = "";
+        $scope.car_regis_province =  "";
+        $scope.car_brand =  "";
+        $scope.car_model =  "";
+        $scope.car_color = "";
+        $scope.car_size = "";
+        $scope.total_price = ""; 
 
+        $scope.cus_id = "0"; 
+        $scope.cus_name =  "";
+        $scope.cus_tel = "";
+        $('#modal_data_car').modal();
+    } 
 
     $scope.savecar = function() {
        //for-debug
        //console.log($scope.cus_id+':'+$scope.cus_name);
         $('#modal_data_car').modal('hide');   
-        $http.post(backend_url + 'Customer/Edit', { id: $scope.cus_id, cus_name: $scope.cus_name, cus_tel: $scope.cus_tel, car_regis_number: $scope.car_regis_number, car_brand: $scope.car_brand, car_model: $scope.car_model, car_color:$scope.car_color })
+        $http.post(backend_url + 'Customer/Edit', {car_id:$scope.car_id,car_regis_number: $scope.car_regis_number, car_brand: $scope.car_brand, car_model: $scope.car_model, car_color:$scope.car_color,cus_id: $scope.cus_id, cus_name: $scope.cus_name, cus_tel: $scope.cus_tel })
             .success(function(data) { 
               if (angular.equals(data, "true")  ){ 
                   $scope.displaymsgsuccess();
@@ -79,18 +86,18 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
                     $scope.services.push(obj);
                 }
       });
-         $scope.total_price = parseFloat(sum) ;
-          //console.log($scope.services);
+         $scope.total_price = parseFloat(sum) ; 
+          $('#service_detail').removeClass("hidden"); 
           $('#modal_data_service_detail').modal('hide');
     }
 
  
 
-    $scope.savecusservice = function() {
+    $scope.saveservice = function() {
        //for-debug
         //console.log($scope.cus_id+':'+$scope.total_price);
-  if (angular.equals($scope.cus_id , "")  ){
-    $scope.msg ="กรุณากรอกข้อมูล";
+  if (angular.equals($scope.car_id , "")  ){
+    $scope.msg ="กรุณากรอกข้อมูลทะเบียนรถ";
     $scope.displaymsgwarning();
   }else{
         $http.post(backend_url + 'Customer_Service/AddService', {
@@ -100,10 +107,8 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
             services: JSON.stringify($scope.services),
           }).success(function(data) {
               $('#modal_data').modal('hide');
-              if (angular.equals(data, "true")  ){
-                  $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
-
-                  $scope.displaymsgsuccess();
+              if (angular.equals(data, "true")) {
+                  
                    //clear 
                   $scope.services = [];
                   $scope.service_all = [];
@@ -111,14 +116,20 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
                   $scope.cus_id = "";
                   $scope.cus_name =  "";
                   $scope.cus_tel = "";
-                  $scope.car_regis_number =  "";
+                  $scope.car_id = "";
+                  $scope.car_regis_number = "";
+                  $scope.car_regis_province =  "";
                   $scope.car_brand =  "";
                   $scope.car_model =  "";
                   $scope.car_color = "";
-                  $scope.total_price = "";
+                  $scope.car_size = "";
 
-                  $scope.total_price  = "";
+                  $scope.total_price = ""; 
                   $scope.comment  = "";
+
+                  $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย"; 
+                  $scope.displaymsgsuccess();
+                  
 
               }else{
                 $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
@@ -129,13 +140,12 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
             })
               }
     }
+ 
 
     $scope.car_search = function () {
       $http.post(backend_url + 'Customer/Get_By_CarRegisNumber', { 'car_regis_number': $scope.car_regis_number })
           .success(function (data) {    
-              $scope.cars = data; 
-             
-                       console.log( $scope.cars.length);
+              $scope.cars = data;  
               if ($scope.cars.length == 1) {
                   $scope.cus_id = data[0].cus_id;
                   $scope.cus_name = data[0].cus_name;
@@ -146,8 +156,8 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
                   $scope.car_brand = data[0].car_brand;
                   $scope.car_model = data[0].car_model;
                   $scope.car_color = data[0].car_color;
-              } else { 
-
+                  $scope.car_size = data[0].car_size;
+              } else {  
                     $('#modal_data_car_list').modal(); 
               }
 
