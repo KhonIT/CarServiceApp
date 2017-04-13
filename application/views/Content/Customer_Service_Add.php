@@ -4,7 +4,7 @@
 
 <div class="panel panel-inverse">
 <div class="panel-heading text-center" ><h3 class="sub-header">รับรถ</h3> </div>
-<div class="panel-body  table-responsive"> 
+<div class="panel-body  table-responsive">
       <div class="alert hidden text-center"  id="msgbox" >{{msg}}</div>
 <!-- Table -->
   				<table  class="table table-inverse"  >
@@ -38,20 +38,18 @@
           <td class="text-right">สี</td>
           <td>{{car_color}}</td>
         </tr>
-       <tr>  
-         <td colspan="2" class="text-center"> <span class=' icon glyphicon glyphicon-wrench'  ng-click="servicelist();">การบริการ</span> </td>
-        </tr>
         <tr>
-          <td colspan="2">
-            <table  >
-              <tr  ng-repeat="service in services ">
-                <td class="text-center">{{$index + 1}}</td>
-                <td class="text-left">{{service.name}}</td>
-                <td class="text-left">{{service.price}}</td>
-              </tr>
-            </table>
-          </td>
+          <td class="text-right">ขนาดของรถ</td>
+          <td>{{car_size}}</td>
         </tr>
+       <tr>
+         <td colspan="2" class="text-center"  id="choose_service">
+          <span  class=' icon glyphicon glyphicon-wrench'  ng-click="servicelist();">การบริการ</span> 
+             <div  ng-repeat="service in services " class="text-left">
+                <span class="text-left">{{$index + 1}} : {{service.name}} ราคา {{service.price}}</span>
+              </div>  
+          </td>
+        </tr> 
 
         <tr>
           <td class="text-right"> ราคารวม</td>
@@ -65,14 +63,14 @@
         </tr>
         <tr>
           <td class="text-right">บันทึก:</td>
-           <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="savecusservice();"> </span></td>
+           <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="saveservice();"> </span></td>
         </tr>
       </table>
       <div class="alert hidden text-center"  id="msgbox" >{{msg}}</div>
     </div>
 </div>
 </div>
-<div class="col-sm-1 "> </div> 
+<div class="col-sm-1 "> </div>
 
   <div class='modal fade' id='modal_data_car' role='dialog'>
   	<div class='modal-dialog'>
@@ -123,10 +121,7 @@
   			</div>
   		</div>
   	</div>
-  </div>
-
-
- 
+  </div> 
 
   <div class='modal fade' id='modal_data_service_detail' role='dialog'>
     <div class='modal-dialog'>
@@ -142,7 +137,7 @@
               <tr   ng-repeat="serall in service_all ">
                 <td class="text-center">{{$index + 1}}</td>
 
-                <td class="text-left"> 
+                <td class="text-left">
                 <label class="icon"><input type="checkbox" id="service_detail" value="{{''+serall.service_id}}"  /> {{serall.service_name}}</label></td>
 
                 <td class="text-left"><input type="text" class="inputtxt"  id="{{'price-'+serall.service_id}}"  value="{{serall.price}}"   />
@@ -161,8 +156,6 @@
       </div>
     </div>
   </div>
-
- 
 
 <div class='modal fade' id='modal_data_car_list' role='dialog'>
     <div class='modal-dialog'>
@@ -183,8 +176,8 @@
                 <th>รุ่น</th>
                 <th>สี</th>
                 <th>ชื่อ</th>
-                <th>เบอร์โทร</th> 
-							  <th class=" text-center">เลือก</th> 
+                <th>เบอร์โทร</th>
+							  <th class=" text-center">เลือก</th>
 						</tr>
 					</thead>
             <tbody id='tbody_list'>
@@ -205,6 +198,6 @@
         </div>
       </div>
     </div>
-  </div> 
-  
+  </div>
+
 </div>
