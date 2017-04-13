@@ -208,16 +208,18 @@
 					</thead>
             <tbody id='tbody_list'>
               <tr  class="row-hover"  ng-repeat="car in  cars" ng-click="car_choose(car.car_id);">
-                <td class="text-center">{{$index + 1}}</td>
-                <td class="text-center" id="{{'car_regis_number_'+car.car_id}}">{{car.car_regis_number}}</td>
-                <td class="text-center" id="{{'car_regis_province_'+car.car_id}}">{{car.car_regis_province}}</td>
-                <td class="text-center" id="{{'car_brand_'+car.car_id}}">{{car.car_brand}}</td>
-                <td class="text-center" id="{{'car_model_'+car.car_id}}">{{car.car_model}}</td>
-                <td class="text-center" id="{{'car_color_'+car.car_id}}">{{car.car_color}}</td>
-                <td class="text-center" id="{{'cus_name_'+car.car_id}}">{{car.cus_name}}</td>
-                <td class="text-center" id="{{'cus_tel_'+car.car_id}}">{{car.cus_tel}}</td>
-                <td class="text-center hidden" id="{{'car_size'+car.car_id}}">{{car.car_size}}</td>
-                <td class="text-center hidden" id="{{'cus_id'+car.car_id}}">{{car.cus_id}}</td>
+                <td class="text-center">{{$index + 1}}
+                  <div class=" hidden" id="{{'car_size_'+car.car_id}}">{{car.car_size}}</div>
+                  <div class=" hidden" id="{{'cus_id_'+car.car_id}}">{{car.cus_id}}</div>
+                </td>
+                <td class="text-left" id="{{'car_regis_number_'+car.car_id}}">{{car.car_regis_number}}</td>
+                <td class="text-left" id="{{'car_regis_province_'+car.car_id}}">{{car.car_regis_province}}</td>
+                <td class="text-left" id="{{'car_brand_'+car.car_id}}">{{car.car_brand}}</td>
+                <td class="text-left" id="{{'car_model_'+car.car_id}}">{{car.car_model}}</td>
+                <td class="text-left" id="{{'car_color_'+car.car_id}}">{{car.car_color}}</td>
+                <td class="text-left" id="{{'cus_name_'+car.car_id}}">{{car.cus_name}}</td>
+                <td class="text-left" id="{{'cus_tel_'+car.car_id}}">{{car.cus_tel}}</td>
+
               </tr>
               <tr>
                 <td colspan='11' class="text-center">

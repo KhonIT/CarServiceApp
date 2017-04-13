@@ -222,6 +222,6 @@ vertical-align: middle;
     text-align: left;
 }
 .row-hover:hover{
-    border:1px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
     cursor:   pointer;
 }
