@@ -92,7 +92,7 @@ class Customer_Service extends MY_Controller {
     	{
     		echo json_encode ($result) ;
     	}
-    } 
+    }
     public function Edit()
     {
         $this->output->unset_template();
@@ -123,32 +123,31 @@ class Customer_Service extends MY_Controller {
         } else{
 		 echo "false";
 		}
-    } 
+    }
     public function AddService()
     {
         $this->output->unset_template();
         $data=json_decode(file_get_contents("php://input"));
 
           $data_arr = array(
-            'cus_id'=>$data->cus_id,
+            'car_id'=>$data->car_id,
             'total'=>$data->total_price,
-            'comment'=>$data->comment,
-            'pay_status'=>'0'
+            'comment'=>$data->comment
           );
-          $order_id =  $this->Customer_Service_Model->Insert($data_arr);
+          $receipt_id =  $this->Customer_Service_Model->Insert($data_arr);
 
-        if($order_id)
+        if($receipt_id)
         {
           $json_array = json_decode($data->services, true);
            foreach($json_array  as $key=>$val){
             $is_show =$val['is_show']  == 'true' ? 1 : 0;
              $Data_arr = array(
-                 'order_id'=>$order_id,
+                 'receipt_id'=>$receipt_id,
                  'service_id'=>$val['service_id'],
                  'price'=>$val['price'],
-                 'is_show'=>'1'
+                 'is_deleted'=>'0'
              );
-              $result =  $this->Customer_Service_Model->Insert_Order_Detail($Data_arr);
+              $result =  $this->Customer_Service_Model->Insert_Receipt_Detail($Data_arr);
               if($result)
               {
                  echo json_encode (true) ;
@@ -161,8 +160,8 @@ class Customer_Service extends MY_Controller {
     }
 
     public function Delete()
-    { 
-        $this->output->unset_template(); 
+    {
+        $this->output->unset_template();
         $data_arr = array(
             'is_deleted'=>1
         );
@@ -172,7 +171,7 @@ class Customer_Service extends MY_Controller {
         {
              echo "true";
         }
-    } 
+    }
 
     public function OrderDetailEdit()
     {
@@ -193,8 +192,8 @@ class Customer_Service extends MY_Controller {
            $this->Customer_Service_Model->Insert_Order_Detail($Data_arr);
           }else    if( $val['order_detail_id']!='0'  ){
             $this->Customer_Service_Model->Update_Order_Detail($Data_arr,$val['order_detail_id']);
-        } 
+        }
       }
           echo "true";
-    } 
+    }
 }

@@ -29,6 +29,16 @@ class Services extends MY_Controller {
            echo json_encode ($result) ;
         }
     }
+    public function Get_By_Car_Size()
+    {
+      $this->output->unset_template();
+      $data=json_decode(file_get_contents("php://input"));
+        $result =  $this->Service_Model->Get_By_Car_Size($data->car_size);
+        if($result)
+        {
+           echo json_encode ($result) ;
+        }
+    }
 
     public function Edit()
     {

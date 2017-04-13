@@ -28,11 +28,18 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
         console.log(err);
     });
 
-    $http.get(backend_url + 'Services/Get_All').success(function(response) {
-        $scope.service_all = response; //ajax request to fetch data into $scope.data
-    }).error(function(err) {
-        console.log(err);
-    });
+    $scope.GetService = function() {
+      $http.post(backend_url + 'Services/Get_By_Car_Size', { 'car_size': $scope.car_size }).success(function(response) {
+      $scope.service_all = response; //ajax request to fetch data into $scope.data
+      $("#choose_service").removeClass("hidden");
+      $('#modal_data_service_detail').modal();
+
+      }).error(function(err) {
+          console.log(err);
+      });
+    }
+
+
     $scope.servicelist = function() {
       $('#modal_data_service_detail').modal();
     }
@@ -60,22 +67,21 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
        //for-debug
        //console.log($scope.cus_id+':'+$scope.cus_name);
         $('#modal_data_car').modal('hide');
-        $http.post(backend_url + 'Customer/Edit', {car_id:$scope.car_id,car_regis_number: $scope.car_regis_number, car_brand: $scope.car_brand, car_model: $scope.car_model, car_color:$scope.car_color,cus_id: $scope.cus_id, cus_name: $scope.cus_name, cus_tel: $scope.cus_tel })
+        $http.post(backend_url + 'Customer/Edit', {car_id:$scope.car_id,car_regis_number: $scope.car_regis_number,car_regis_province: $scope.car_regis_province, car_brand: $scope.car_brand, car_model: $scope.car_model, car_color:$scope.car_color, car_size:$scope.car_size,cus_id: $scope.cus_id, cus_name: $scope.cus_name, cus_tel: $scope.cus_tel })
             .success(function(data) {
               if (angular.equals(data, "true")  ){
+                  $scope.msg ="เพิ่มข้อมูลสำเร็จ";
                   $scope.displaymsgsuccess();
-                  $scope.getData();
               }else{
-                $scope.msgcus ="บันทึ่กขึ้อมูลไม่สำเร็จ";
+                $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
                 $scope.displaymsgwarning();
               }
-
             }).error(function(err) {
                 console.log(err);
             })
     }
 
-    $scope.saveservice = function() {
+    $scope.cal_service = function() {
       $scope.services = [];
       var sum =parseFloat(0.00);
       $('input:checkbox[id^="service_detail"]').each(function(){
@@ -95,19 +101,24 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
     $scope.saveservice = function() {
        //for-debug
         //console.log($scope.cus_id+':'+$scope.total_price);
+        console.log( $scope.services.length);
+
   if (angular.equals($scope.car_id , "")  ){
     $scope.msg ="กรุณากรอกข้อมูลทะเบียนรถ";
     $scope.displaymsgwarning();
+  }else  if ($scope.services.length < 1 ){
+    $scope.msg ="กรุณาเลือกบริการ";
+    $scope.displaymsgwarning();
+    $('#modal_data_service_detail').modal();
   }else{
         $http.post(backend_url + 'Customer_Service/AddService', {
-            cus_id: $scope.cus_id,
+            car_id: $scope.car_id,
             total_price: $scope.total_price,
             comment: $scope.comment,
             services: JSON.stringify($scope.services),
           }).success(function(data) {
               $('#modal_data').modal('hide');
               if (angular.equals(data, "true")) {
-
                    //clear
                   $scope.services = [];
                   $scope.service_all = [];
@@ -128,7 +139,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 
                   $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
                   $scope.displaymsgsuccess();
-
+                  $("#choose_service").addClass("hidden");
 
               }else{
                 $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
@@ -151,7 +162,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
                 $scope.cars = data;
                 if ($scope.cars.length == 0) {
                    $scope.addcar();
-                }else if ($scope.cars.length == 1) {
+              /*  }else if ($scope.cars.length == 1) {
                     $scope.cus_id = data[0].cus_id;
                     $scope.cus_name = data[0].cus_name;
                     $scope.cus_tel = data[0].cus_tel;
@@ -162,6 +173,8 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
                     $scope.car_model = data[0].car_model;
                     $scope.car_color = data[0].car_color;
                     $scope.car_size = data[0].car_size;
+                    $scope.GetService();
+                    */
                 } else {
                       $('#modal_data_car_list').modal();
                 }
@@ -173,7 +186,6 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 
     }
     $scope.car_choose= function(id){
-      console.log( $('#car_regis_number_'+id).text());
       $scope.cus_name = $('#cus_name_'+id).text();
       $scope.cus_tel = $('#cus_tel_'+id).text();
       $scope.car_id = id;
@@ -184,7 +196,8 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
       $scope.car_model = $('#car_model_'+id).text();
       $scope.car_color = $('#car_color_'+id).text();
       $scope.car_size = $('#car_size'+id).text();
-            $('#modal_data_car_list').modal('hide');
+      $('#modal_data_car_list').modal('hide');
+      $scope.GetService();
     }
 
 
@@ -196,15 +209,15 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
         }
     }
     $scope.displaymsgsuccess = function(){
-      $('#msgbox').addClass( "alert-success" ).removeClass( "alert-warning hidden");
+      $('.msgbox').addClass( "alert-success" ).removeClass( "alert-warning hidden");
       $timeout(function() {
-           $('#msgbox').addClass( "hidden" )
+           $('.msgbox').addClass( "hidden" )
         }, 2000); // delay 1500 ms
     }
     $scope.displaymsgwarning = function(){
-      $('#msgbox').addClass( "alert-warning" ).removeClass( "alert-success hidden" );
+      $('.msgbox').addClass( "alert-warning" ).removeClass( "alert-success hidden" );
       $timeout(function() {
-           $('#msgbox').addClass( "hidden" )
+           $('.msgbox').addClass( "hidden" )
         }, 2000); // delay 1500 ms
     }
 });

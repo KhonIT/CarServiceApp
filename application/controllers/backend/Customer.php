@@ -18,7 +18,7 @@ class Customer extends MY_Controller {
       $this->output->set_template('Backend');
       $this->load->js('Assets/Backend/js/cont/Customer.js');
       $this->load->view('Content/Customer_View');
-    } 
+    }
     public function Get_Logo()
     {
         $this->output->unset_template();
@@ -48,12 +48,12 @@ class Customer extends MY_Controller {
     public function Get_All()
     {
         $this->output->unset_template();
-        $result =  $this->Customer_Model->Get_All(); 
+        $result =  $this->Customer_Model->Get_All();
         if($result)
         {
            echo json_encode ($result) ;
         }
-    } 
+    }
 
    public function Get_By_CarRegisNumber()
     {
@@ -64,7 +64,7 @@ class Customer extends MY_Controller {
     	{
     		echo json_encode ($result) ;
     	}
-    } 
+    }
 
     public function Get_By_ID()
     {
@@ -75,32 +75,50 @@ class Customer extends MY_Controller {
     	{
     		echo json_encode ($result) ;
     	}
-    } 
+    }
 
     public function Edit()
     {
         $this->output->unset_template();
         $data=json_decode(file_get_contents("php://input"));
-        $data_arr = array(
-          'cus_name'=>$data->cus_name,
-          'cus_tel'=>$data->cus_tel,
-          'cus_car_regis_number'=>$data->cus_car_regis_number,
-          'cus_car_brand'=>$data->cus_car_brand,
-          'cus_car_model'=>$data->cus_car_model,
-          'cus_car_color'=>$data->cus_car_color
-        );
-        if($data->id=="0"){
-            $result =  $this->Customer_Model->Insert($data_arr);
-        }else{
-            $result =  $this->Customer_Model->Update($data_arr,$data->id);
+        $cus_id="";
+        if($data->cus_name !="" &&  $data->cus_tel !=""){
+
+          $data_cus_arr = array(
+            'cus_name'=>$data->cus_name,
+            'cus_tel'=>$data->cus_tel,
+          );
+          if($data->cus_id=="0"){
+              $cus_id =  $this->Customer_Model->Customer_Insert($data_cus_arr);
+          }else{
+              $result =  $this->Customer_Model->Update($data_cus_arr,$data->cus_id);
+              $cus_id = $data->cus_id;
+          }
         }
+
+        $data_car_arr = array(
+          'car_regis_number'=>$data->car_regis_number,
+          'car_regis_province'=>$data->car_regis_province,
+          'car_brand'=>$data->car_brand,
+          'car_model'=>$data->car_model,
+          'car_color'=>$data->car_color,
+          'car_size'=>$data->car_size,
+          'cus_id'=>$cus_id
+        );
+
+        if($data->car_id=="0"){
+            $result =  $this->Customer_Model->Car_Insert($data_car_arr);
+        }else{
+            $result =  $this->Customer_Model->Update($data_car_arr,$data->car_id);
+        }
+
         if($result)
         {
            echo json_encode (true) ;
         }else{
            echo json_encode (false) ;
         }
-    }
+    } 
     public function Delete()
     {
         $this->output->unset_template();
