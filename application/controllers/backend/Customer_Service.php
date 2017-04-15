@@ -16,7 +16,7 @@ class Customer_Service extends MY_Controller {
     {
         $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
         $this->output->set_template('Backend');
-        $this->load->js('Assets/Backend/js/Customer_Service.js');
+        $this->load->js('Assets/js/Customer_Service.js');
         $this->load->view('Content/Customer_Service_Unpay_View');
     }
 
@@ -24,7 +24,7 @@ class Customer_Service extends MY_Controller {
    {
        $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
        $this->output->set_template('Backend');
-       $this->load->js('Assets/Backend/js/Customer_Service_Payed.js');
+       $this->load->js('Assets/js/Customer_Service_Payed.js');
        $this->load->view('Content/Customer_Service_View');
    }
 
@@ -32,7 +32,7 @@ class Customer_Service extends MY_Controller {
   {
       $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
       $this->output->set_template('Backend');
-      $this->load->js('Assets/Backend/js/cont/CustomerService.js');
+      $this->load->js('Assets/js/cont/CustomerService.js');
       $this->load->view('Content/Customer_Service_Add');
   }
 
@@ -41,7 +41,7 @@ class Customer_Service extends MY_Controller {
   {
     $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
     $this->output->set_template('Blank');
-    $this->load->js('Assets/Backend/js/cont/PrintService.js');
+    $this->load->js('Assets/js/cont/PrintService.js');
     $this->load->view('Content/Print_Service_View');
   }
 

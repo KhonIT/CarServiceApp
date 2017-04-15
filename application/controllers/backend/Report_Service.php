@@ -16,7 +16,7 @@ class Report_Service extends MY_Controller {
     {
         $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
         $this->output->set_template('Backend');
-        $this->load->js('Assets/Backend/js/Report_Service.js');
+        $this->load->js('Assets/js/Report_Service.js');
           $this->load->js('https://www.gstatic.com/charts/loader.js');
         $this->load->view('Content/Report_Service_View');
     }

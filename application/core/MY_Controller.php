@@ -26,7 +26,7 @@ class  MY_Controller extends CI_Controller {
 				 $this->user_profile = $this->Employee_Model->Get_By_ID($this->session->userdata('emp_id'));
 				 
 			} else{
-				redirect('/Backend/Login');
+				redirect('/backend/Login');
 			}
 	}
 

@@ -18,7 +18,7 @@
 
 <link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/css/bootstrap-theme.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>Assets/Backend/css/Admin.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>Assets/css/Admin.css" rel="stylesheet">
 
 <?php  foreach($css as $file){  ?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php	 }  ?>
 </head>
@@ -32,7 +32,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo base_url();?>Backend/Home">VTCar Service</a>
+            <a class="navbar-brand" href="<?php echo base_url();?>backend/Home">VTCar Service</a>
           </div>
           <div class="navbar-collapse collapse">
            <ul class="nav navbar-nav " id="menu_nav">
@@ -120,11 +120,11 @@
 			<script type="text/javascript">
 
 			var base_url = "<?php echo base_url();?>";
-			var backend_url = "<?php echo base_url();?>Backend/";
+			var backend_url = "<?php echo base_url();?>backend/";
 			var app = angular.module('AppAngular', []);
 
 			</script>
-			<script src="<?php echo base_url(); ?>Assets/Backend/js/Common.js"></script>
+			<script src="<?php echo base_url(); ?>Assets/js/Common.js"></script>
 			<script type="text/javascript">
 			app.controller('empController', function($scope, $http, $timeout) {
 					//declare empty

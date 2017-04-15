@@ -29,31 +29,31 @@
 		   ?>
 <meta name="author" content="www.VTCarService.net">
 			<!-- Bootstrap -->
-			<link href="<?php echo base_url(); ?>Assets/Frontend/css/bootstrap.min.css" rel="stylesheet">
+			<link href="<?php echo base_url(); ?>Assets/css/bootstrap.min.css" rel="stylesheet">
 
 			<!-- Main Style -->
-			<link href="<?php echo base_url(); ?>Assets/Frontend/css/main.css" rel="stylesheet">
+			<link href="<?php echo base_url(); ?>Assets/css/main.css" rel="stylesheet">
 
 			<!-- Supersized -->
-			<link href="<?php echo base_url(); ?>Assets/Frontend/css/supersized.css" rel="stylesheet">
-			<link href="<?php echo base_url(); ?>Assets/Frontend/css/supersized.shutter.css" rel="stylesheet">
+			<link href="<?php echo base_url(); ?>Assets/css/supersized.css" rel="stylesheet">
+			<link href="<?php echo base_url(); ?>Assets/css/supersized.shutter.css" rel="stylesheet">
 
 			<!-- FancyBox -->
-			<link href="<?php echo base_url(); ?>Assets/Frontend/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+			<link href="<?php echo base_url(); ?>Assets/css/fancybox/jquery.fancybox.css" rel="stylesheet">
 
 			<!-- Font Icons -->
-			<link href="<?php echo base_url(); ?>Assets/Frontend/css/fonts.css" rel="stylesheet">
+			<link href="<?php echo base_url(); ?>Assets/css/fonts.css" rel="stylesheet">
 
 			<!-- Shortcodes -->
-			<link href="<?php echo base_url(); ?>Assets/Frontend/css/shortcodes.css" rel="stylesheet">
+			<link href="<?php echo base_url(); ?>Assets/css/shortcodes.css" rel="stylesheet">
 
 			<!-- Responsive -->
-			<link href="<?php echo base_url(); ?>Assets/Frontend/css/bootstrap-responsive.min.css" rel="stylesheet">
-			<link href="<?php echo base_url(); ?>Assets/Frontend/css/responsive.css" rel="stylesheet">
+			<link href="<?php echo base_url(); ?>Assets/css/bootstrap-responsive.min.css" rel="stylesheet">
+			<link href="<?php echo base_url(); ?>Assets/css/responsive.css" rel="stylesheet">
 
 			<!-- Supersized -->
-			<link href="<?php echo base_url(); ?>Assets/Frontend/css/supersized.css" rel="stylesheet">
-			<link href="<?php echo base_url(); ?>Assets/Frontend/css/supersized.shutter.css" rel="stylesheet">
+			<link href="<?php echo base_url(); ?>Assets/css/supersized.css" rel="stylesheet">
+			<link href="<?php echo base_url(); ?>Assets/css/supersized.shutter.css" rel="stylesheet">
 
 			<!-- Google Font -->
 			<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
@@ -108,15 +108,15 @@
 </script>
 
 <!-- Js Frontend -->
-<script src="<?php echo base_url(); ?>Assets/Frontend/js/supersized.3.2.7.min.js"></script> <!-- Slider -->
-<script src="<?php echo base_url(); ?>Assets/Frontend/js/waypoints.js"></script> <!-- WayPoints -->
-<script src="<?php echo base_url(); ?>Assets/Frontend/js/waypoints-sticky.js"></script> <!-- Waypoints for Header -->
-<script src="<?php echo base_url(); ?>Assets/Frontend/js/jquery.isotope.js"></script> <!-- Isotope Filter -->
-<script src="<?php echo base_url(); ?>Assets/Frontend/js/jquery.fancybox.pack.js"></script> <!-- Fancybox -->
-<script src="<?php echo base_url(); ?>Assets/Frontend/js/jquery.fancybox-media.js"></script> <!-- Fancybox for Media -->
-<script src="<?php echo base_url(); ?>Assets/Frontend/js/jquery.tweet.js"></script> <!-- Tweet -->
-<script src="<?php echo base_url(); ?>Assets/Frontend/js/plugins.js"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
-<script src="<?php echo base_url(); ?>Assets/Frontend/js/main.js"></script> <!-- Default JS -->
+<script src="<?php echo base_url(); ?>Assets/js/supersized.3.2.7.min.js"></script> <!-- Slider -->
+<script src="<?php echo base_url(); ?>Assets/js/waypoints.js"></script> <!-- WayPoints -->
+<script src="<?php echo base_url(); ?>Assets/js/waypoints-sticky.js"></script> <!-- Waypoints for Header -->
+<script src="<?php echo base_url(); ?>Assets/js/jquery.isotope.js"></script> <!-- Isotope Filter -->
+<script src="<?php echo base_url(); ?>Assets/js/jquery.fancybox.pack.js"></script> <!-- Fancybox -->
+<script src="<?php echo base_url(); ?>Assets/js/jquery.fancybox-media.js"></script> <!-- Fancybox for Media -->
+<script src="<?php echo base_url(); ?>Assets/js/jquery.tweet.js"></script> <!-- Tweet -->
+<script src="<?php echo base_url(); ?>Assets/js/plugins.js"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
+<script src="<?php echo base_url(); ?>Assets/js/main.js"></script> <!-- Default JS -->
 <?php  foreach($js as $file){ ?><script src="<?php echo $file; ?>"></script><?php } ?>
 </body>
 </html>

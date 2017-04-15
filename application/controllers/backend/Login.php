@@ -25,8 +25,8 @@ class Login extends CI_Controller {
 			$this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
 			$this->output->append_title('ระบบหลังร้าน' );
 			$this->output->set_template('Blank');
-			$this->load->css('Assets/Backend/css/Login.css');
-			$this->load->js('Assets/Backend/js/cont/Login.js');
+			$this->load->css('Assets/css/Login.css');
+			$this->load->js('Assets/js/cont/Login.js');
 			$this->load->view('Content/Login_View');
 		}
 

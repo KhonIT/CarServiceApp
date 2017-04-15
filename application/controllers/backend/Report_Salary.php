@@ -16,7 +16,7 @@ class Report_Salary extends MY_Controller {
     {
       $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
       $this->output->set_template('Backend');
-      $this->load->js('Assets/Backend/js/Report_Salary.js');
+      $this->load->js('Assets/js/Report_Salary.js');
       $this->load->js('https://www.gstatic.com/charts/loader.js');
       $this->load->view('Content/Report_Salary_View');
     }
@@ -25,7 +25,7 @@ class Report_Salary extends MY_Controller {
     {
       $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
       $this->output->set_template('Blank');
-      $this->load->js('Assets/Backend/js/cont/PrintSalary.js');
+      $this->load->js('Assets/js/cont/PrintSalary.js');
       $this->load->view('Content/Print_Slip_View');
     }
 
