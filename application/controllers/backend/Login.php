@@ -18,7 +18,7 @@ class Login extends CI_Controller {
 	{
 		if(strlen($this->session->userdata('emp_id'))> 0)
 		{
-			redirect('/BackEnd/Home');
+			redirect('/backend/Home');
 		}
 		else # If not Log in
 		{
