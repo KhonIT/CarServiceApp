@@ -28,7 +28,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
         console.log(err);
     });
 
-    $scope.GetService = function() {
+    $scope.GetService = function() { 
       $http.post(backend_url + 'Services/Get_By_Car_Size', { 'car_size': $scope.car_size }).success(function(response) {
       $scope.service_all = response; //ajax request to fetch data into $scope.data
       $("#choose_service").removeClass("hidden");
@@ -195,7 +195,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
       $scope.car_brand  = $('#car_brand_'+id).text();
       $scope.car_model = $('#car_model_'+id).text();
       $scope.car_color = $('#car_color_'+id).text();
-      $scope.car_size = $('#car_size'+id).text();
+      $scope.car_size = $('#car_size_'+id).text();
       $('#modal_data_car_list').modal('hide');
       $scope.GetService();
     }

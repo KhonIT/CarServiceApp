@@ -218,8 +218,7 @@
                 <td class="text-left" id="{{'car_model_'+car.car_id}}">{{car.car_model}}</td>
                 <td class="text-left" id="{{'car_color_'+car.car_id}}">{{car.car_color}}</td>
                 <td class="text-left" id="{{'cus_name_'+car.car_id}}">{{car.cus_name}}</td>
-                <td class="text-left" id="{{'cus_tel_'+car.car_id}}">{{car.cus_tel}}</td>
-
+                <td class="text-left" id="{{'cus_tel_'+car.car_id}}">{{car.cus_tel}}</td> 
               </tr>
               <tr>
                 <td colspan='11' class="text-center">

@@ -38,10 +38,10 @@
 <script src="<?php echo base_url(); ?>Assets/bootstrap-3.3.5/js/ie10-viewport-bug-workaround.js"></script>
 <script type="text/javascript">
 	var base_url = "<?php echo base_url();?>";
-	var backend_url = "<?php echo base_url();?>Backend/";
+	var backend_url = "<?php echo base_url();?>backend/";
 	var app = angular.module('AppAngular', []);
 </script>
-<script src="<?php echo base_url(); ?>Assets/Backend/js/Common.js"></script>
+<script src="<?php echo base_url(); ?>Assets/js/Common.js"></script>
   <?php  foreach($js as $file){ ?><script src="<?php echo $file; ?>"></script><?php } ?>
 </body>
 </html>
