@@ -68,7 +68,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
         $http.post(backend_url + 'Customer/Edit', {car_id:$scope.car_id,car_regis_number: $scope.car_regis_number,car_regis_province: $scope.car_regis_province, car_brand: $scope.car_brand, car_model: $scope.car_model, car_color:$scope.car_color, car_size:$scope.car_size,cus_id: $scope.cus_id, cus_name: $scope.cus_name, cus_tel: $scope.cus_tel })
             .success(function(data) {
               if (angular.equals(data, "true")  ){
-                  $scope.msg ="เพิ่มข้อมูลสำเร็จ";
+                  $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
                   $scope.displaymsgsuccess();
               }else{
                 $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
@@ -97,10 +97,9 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 
 
 	$scope.saveservice = function() {
-				//for-debug
-				//console.log($scope.cus_id+':'+$scope.total_price);
-				//console.log( $scope.services.length);
-
+        //for-debug
+        //console.log($scope.cus_id+':'+$scope.total_price);
+        //console.log( $scope.services.length); 
 		if (angular.equals($scope.car_id , "")  ){
 			$scope.msg ="กรุณากรอกข้อมูลทะเบียนรถ";
 			$scope.displaymsgwarning();
@@ -109,7 +108,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 			$scope.displaymsgwarning();
 			$('#modal_data_service_detail').modal();
 		}else{
-			$http.post(backend_url + 'Customer_Service/AddService', {
+            $http.post(backend_url + 'Customer_Service/AddService', {
 				car_id: $scope.car_id,
 				total_price: $scope.total_price,
 				comment: $scope.comment,
@@ -137,8 +136,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 
 					  $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
 					  $scope.displaymsgsuccess();
-					  $("#choose_service").addClass("hidden");
-
+					  $("#choose_service").addClass("hidden"); 
 				  }else{
 					$scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
 					$scope.displaymsgwarning();
@@ -158,19 +156,6 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
                 $scope.cars = data;
                 if ($scope.cars.length == 0) {
                    $scope.addcar();
-              /*  }else if ($scope.cars.length == 1) {
-                    $scope.cus_id = data[0].cus_id;
-                    $scope.cus_name = data[0].cus_name;
-                    $scope.cus_tel = data[0].cus_tel;
-                    $scope.car_id = data[0].car_id;
-                    $scope.car_regis_number = data[0].car_regis_number;
-                    $scope.car_regis_province = data[0].car_regis_province;
-                    $scope.car_brand = data[0].car_brand;
-                    $scope.car_model = data[0].car_model;
-                    $scope.car_color = data[0].car_color;
-                    $scope.car_size = data[0].car_size;
-                    $scope.GetService();
-                    */
                 } else {
                       $('#modal_data_car_list').modal();
                 }

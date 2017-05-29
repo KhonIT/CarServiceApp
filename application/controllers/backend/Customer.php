@@ -91,7 +91,7 @@ class Customer extends MY_Controller {
           if($data->cus_id=="0"){
               $cus_id =  $this->Customer_Model->Customer_Insert($data_cus_arr);
           }else{
-              $result =  $this->Customer_Model->Update($data_cus_arr,$data->cus_id);
+              $result =  $this->Customer_Model->Customer_Update($data_cus_arr,$data->cus_id);
               $cus_id = $data->cus_id;
           }
         }
@@ -109,7 +109,7 @@ class Customer extends MY_Controller {
         if($data->car_id=="0"){
             $result =  $this->Customer_Model->Car_Insert($data_car_arr);
         }else{
-            $result =  $this->Customer_Model->Update($data_car_arr,$data->car_id);
+            $result =  $this->Customer_Model->Car_Update($data_car_arr,$data->car_id);
         }
 
         if($result)

@@ -17,36 +17,47 @@
         </tr>
         <tr>
           <td class="text-right">ชื่อ :</td>
-          <td>{{cus_name}}</td>
+          <td><input type="text"  ng-model="cus_name" /> </td>
         </tr>
         <tr>
           <td class="text-right">เบอร์โทร</td>
-          <td>{{cus_tel}}</td>
+          <td><input type="text"  ng-model="cus_tel" /></td>
         </tr>
         <tr>
           <td class="text-right"> ทะเบียนรถ:</td>
-          <td>{{car_regis_number}}</td>
+          <td><input type="text"  ng-model="car_regis_number" /></td>
         </tr>
         <tr>
           <td class="text-right"> ทะเบียนรถจังหวัด:</td>
-          <td>{{car_regis_province}}</td>
+          <td><input type="text"  ng-model="car_regis_province" /></td>
         </tr>
         <tr>
           <td class="text-right">ยี่ห้อ:</td>
-          <td>{{car_brand}}</td>
+          <td><input type="text"  ng-model="car_brand" /></td>
         </tr>
         <tr>
           <td class="text-right">รุ่น:</td>
-          <td>{{car_model}}</td>
+          <td><input type="text"  ng-model="car_model" /></td>
         </tr>
         <tr>
           <td class="text-right">สี</td>
-          <td>{{car_color}}</td>
+          <td><input type="text"  ng-model="car_color" /></td>
         </tr>
         <tr>
           <td class="text-right">ขนาดของรถ</td>
-          <td>{{car_size}}</td>
+          <td>                  
+            <select class="selectopt"   ng-model="car_size">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+            </select>
+            </td>
         </tr>
+      <tr>
+        <td colspan="2" class="text-center" > <span  class="glyphicon glyphicon-floppy-save save-data icon" ng-click="savecar();">บันทักการเปลี่ยนแปลงข้อมูลลูกค้า</span> </td>
+      </tr>
        <tr>
          <td colspan="2" class="text-center"  id="choose_service">
           <span  class=' icon glyphicon glyphicon-wrench'  ng-click="servicelist();">การบริการ</span>
