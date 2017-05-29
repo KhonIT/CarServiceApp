@@ -31,9 +31,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
     $scope.GetService = function() { 
       $http.post(backend_url + 'Services/Get_By_Car_Size', { 'car_size': $scope.car_size }).success(function(response) {
       $scope.service_all = response; //ajax request to fetch data into $scope.data
-      $("#choose_service").removeClass("hidden");
-      $('#modal_data_service_detail').modal();
-
+      $("#choose_service").removeClass("hidden"); 
       }).error(function(err) {
           console.log(err);
       });
@@ -98,60 +96,58 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 
 
 
-    $scope.saveservice = function() {
-       //for-debug
-        //console.log($scope.cus_id+':'+$scope.total_price);
-        console.log( $scope.services.length);
+	$scope.saveservice = function() {
+				//for-debug
+				//console.log($scope.cus_id+':'+$scope.total_price);
+				//console.log( $scope.services.length);
 
-  if (angular.equals($scope.car_id , "")  ){
-    $scope.msg ="กรุณากรอกข้อมูลทะเบียนรถ";
-    $scope.displaymsgwarning();
-  }else  if ($scope.services.length < 1 ){
-    $scope.msg ="กรุณาเลือกบริการ";
-    $scope.displaymsgwarning();
-    $('#modal_data_service_detail').modal();
-  }else{
-        $http.post(backend_url + 'Customer_Service/AddService', {
-            car_id: $scope.car_id,
-            total_price: $scope.total_price,
-            comment: $scope.comment,
-            services: JSON.stringify($scope.services),
-          }).success(function(data) {
-              $('#modal_data').modal('hide');
-              if (angular.equals(data, "true")) {
-                   //clear
-                  $scope.services = [];
-                  $scope.service_all = [];
+		if (angular.equals($scope.car_id , "")  ){
+			$scope.msg ="กรุณากรอกข้อมูลทะเบียนรถ";
+			$scope.displaymsgwarning();
+		}else  if ($scope.services.length < 1 ){
+			$scope.msg ="กรุณาเลือกบริการ";
+			$scope.displaymsgwarning();
+			$('#modal_data_service_detail').modal();
+		}else{
+			$http.post(backend_url + 'Customer_Service/AddService', {
+				car_id: $scope.car_id,
+				total_price: $scope.total_price,
+				comment: $scope.comment,
+				services: JSON.stringify($scope.services),
+			  }).success(function(data) {
+				  $('#modal_data').modal('hide');
+				  if (angular.equals(data, "true")) {
+					   //clear
+					  $scope.services = [];
+					  $scope.service_all = [];
 
-                  $scope.cus_id = "";
-                  $scope.cus_name =  "";
-                  $scope.cus_tel = "";
-                  $scope.car_id = "";
-                  $scope.car_regis_number = "";
-                  $scope.car_regis_province =  "";
-                  $scope.car_brand =  "";
-                  $scope.car_model =  "";
-                  $scope.car_color = "";
-                  $scope.car_size = "";
+					  $scope.cus_id = "";
+					  $scope.cus_name =  "";
+					  $scope.cus_tel = "";
+					  $scope.car_id = "";
+					  $scope.car_regis_number = "";
+					  $scope.car_regis_province =  "";
+					  $scope.car_brand =  "";
+					  $scope.car_model =  "";
+					  $scope.car_color = "";
+					  $scope.car_size = "";
 
-                  $scope.total_price = "";
-                  $scope.comment  = "";
+					  $scope.total_price = "";
+					  $scope.comment  = "";
 
-                  $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
-                  $scope.displaymsgsuccess();
-                  $("#choose_service").addClass("hidden");
+					  $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
+					  $scope.displaymsgsuccess();
+					  $("#choose_service").addClass("hidden");
 
-              }else{
-                $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
-                $scope.displaymsgwarning();
-              }
-            }).error(function(err) {
-                console.log(err);
-            })
-              }
-    }
-
-
+				  }else{
+					$scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
+					$scope.displaymsgwarning();
+				  }
+				}).error(function(err) {
+					console.log(err);
+				})
+		}
+	} 
     $scope.car_search = function () {
       if ( $scope.car_regis_number.length<4  ){
         $scope.msg ="กรุณากรอกข้อมูลทะเบียนรถอย่างน้อย 4 ตัวอักษร";
