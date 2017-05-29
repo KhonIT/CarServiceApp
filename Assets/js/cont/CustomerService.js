@@ -67,12 +67,11 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
         $('#modal_data_car').modal('hide');
         $http.post(backend_url + 'Customer/Edit', {car_id:$scope.car_id,car_regis_number: $scope.car_regis_number,car_regis_province: $scope.car_regis_province, car_brand: $scope.car_brand, car_model: $scope.car_model, car_color:$scope.car_color, car_size:$scope.car_size,cus_id: $scope.cus_id, cus_name: $scope.cus_name, cus_tel: $scope.cus_tel })
             .success(function(data) {
-              if (angular.equals(data, "true")  ){
-                  $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
-                  $scope.displaymsgsuccess();
+              if (angular.equals(data, "true")  ){ 
+                  $scope.displaymsgsuccess("");
               }else{
-                $scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
-                $scope.displaymsgwarning();
+
+                $scope.displaymsgwarning("");
               }
             }).error(function(err) {
                 console.log(err);
@@ -100,12 +99,10 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
         //for-debug
         //console.log($scope.cus_id+':'+$scope.total_price);
         //console.log( $scope.services.length); 
-		if (angular.equals($scope.car_id , "")  ){
-			$scope.msg ="กรุณากรอกข้อมูลทะเบียนรถ";
-			$scope.displaymsgwarning();
-		}else  if ($scope.services.length < 1 ){
-			$scope.msg ="กรุณาเลือกบริการ";
-			$scope.displaymsgwarning();
+		if (angular.equals($scope.car_id , "")  ){ 
+			$scope.displaymsgwarning("กรุณากรอกข้อมูลทะเบียนรถ");
+		}else  if ($scope.services.length < 1 ){ 
+			$scope.displaymsgwarning("กรุณาเลือกบริการ");
 			$('#modal_data_service_detail').modal();
 		}else{
             $http.post(backend_url + 'Customer_Service/AddService', {
@@ -133,13 +130,11 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 
 					  $scope.total_price = "";
 					  $scope.comment  = "";
-
-					  $scope.msg ="บันทึ่กขึ้อมูลเรียบร้อย";
-					  $scope.displaymsgsuccess();
+ 
+					  $scope.displaymsgsuccess("");
 					  $("#choose_service").addClass("hidden"); 
-				  }else{
-					$scope.msg ="บันทึ่กขึ้อมูลไม่สำเร็จ";
-					$scope.displaymsgwarning();
+				  }else{ 
+					$scope.displaymsgwarning("");
 				  }
 				}).error(function(err) {
 					console.log(err);
@@ -147,9 +142,8 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 		}
 	} 
     $scope.car_search = function () {
-      if ( $scope.car_regis_number.length<4  ){
-        $scope.msg ="กรุณากรอกข้อมูลทะเบียนรถอย่างน้อย 4 ตัวอักษร";
-        $scope.displaymsgwarning();
+      if ( $scope.car_regis_number.length<4  ){ 
+        $scope.displaymsgwarning("กรุณากรอกข้อมูลทะเบียนรถอย่างน้อย 4 ตัวอักษร");
       }else{
         $http.post(backend_url + 'Customer/Get_By_CarRegisNumber', { 'car_regis_number': $scope.car_regis_number })
             .success(function (data) {
@@ -189,16 +183,22 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
                     $scope.car_search();
         }
     }
-    $scope.displaymsgsuccess = function(){
-      $('.msgbox').addClass( "alert-success" ).removeClass( "alert-warning hidden");
-      $timeout(function() {
-           $('.msgbox').addClass( "hidden" )
-        }, 2000); // delay 1500 ms
+    $scope.displaymsgsuccess = function(msg){
+        if (msg.length == 0) {
+            $scope.msg ="บันทึ่กข้อมูลสำเร็จ";
+        }else{
+            $scope.msg =msg;
+        }
+        $('.msgbox').addClass( "alert-success" ).removeClass( "alert-warning hidden"); 
+        $timeout(function() { $('.msgbox').addClass( "hidden" ) }, 2000); // delay 1500 ms
     }
-    $scope.displaymsgwarning = function(){
-      $('.msgbox').addClass( "alert-warning" ).removeClass( "alert-success hidden" );
-      $timeout(function() {
-           $('.msgbox').addClass( "hidden" )
-        }, 2000); // delay 1500 ms
-    }
+    $scope.displaymsgwarning = function(msg){
+        if (msg.length == 0) {
+            $scope.msg ="บันทึ่กข้อมูลไม่สำเร็จ";
+        }else{
+            $scope.msg =msg;
+        }
+            $('.msgbox').addClass( "alert-warning" ).removeClass( "alert-success hidden" );
+            $timeout(function() { $('.msgbox').addClass( "hidden" ) }, 2000); // delay 1500 ms
+        }
 });

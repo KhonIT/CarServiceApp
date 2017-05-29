@@ -56,7 +56,7 @@
             </td>
         </tr>
       <tr>
-        <td colspan="2" class="text-center" > <span  class="glyphicon glyphicon-floppy-save save-data icon" ng-click="savecar();">บันทักการเปลี่ยนแปลงข้อมูลลูกค้า</span> </td>
+        <td colspan="2" class="text-center" > <span  class="glyphicon glyphicon-floppy-save save-data icon" ng-click="savecar();">บันทึกการเปลี่ยนแปลงข้อมูลลูกค้า</span> </td>
       </tr>
        <tr>
          <td colspan="2" class="text-center"  id="choose_service">
