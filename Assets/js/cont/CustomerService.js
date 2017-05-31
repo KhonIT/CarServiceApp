@@ -47,6 +47,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
     }
 
     $scope.addcar = function () {
+
         $scope.car_id = "0";
         $scope.car_regis_province =  "";
         $scope.car_brand =  "";
@@ -58,6 +59,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
         $scope.cus_id = "0";
         $scope.cus_name =  "";
         $scope.cus_tel = "";
+        $('#modal_data_car_list').modal('hide');
         $('#modal_data_car').modal();
     }
 
@@ -69,9 +71,13 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
             .success(function(data) {
               if (angular.equals(data, "true")  ){ 
                   $scope.displaymsgsuccess("");
-              }else{
-
-                $scope.displaymsgwarning("");
+              }
+               if (angular.equals(data, "false")  ){ 
+                     $scope.displaymsgwarning("");
+              }else{ 
+                    $scope.displaymsgsuccess("");
+                    $scope.car_id = data;
+                     $scope.GetService();
               }
             }).error(function(err) {
                 console.log(err);
@@ -105,6 +111,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 			$scope.displaymsgwarning("กรุณาเลือกบริการ");
 			$('#modal_data_service_detail').modal();
 		}else{
+            $scope.savecar();
             $http.post(backend_url + 'Customer_Service/AddService', {
 				car_id: $scope.car_id,
 				total_price: $scope.total_price,
@@ -180,7 +187,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
       var keyCode = $event.which || $event.keyCode;
       //Debug console.log(keyCode);
         if (keyCode === 13) {
-                    $scope.car_search();
+           $scope.car_search();     
         }
     }
     $scope.displaymsgsuccess = function(msg){

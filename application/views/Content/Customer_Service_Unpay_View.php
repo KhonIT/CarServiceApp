@@ -1,14 +1,14 @@
     <div class="col-sm-1 "> </div>
     <div class="col-sm-10 ">
 
-<div class="panel panel-default">
+<div class="panel panel-inverse">
   <div class="panel-heading" align="center"><h3 class="sub-header">การใช้บริการ</h3> </div>
   <div class="panel-body">
 
 
 
       <div class="table-responsive" align="center">
-            <table  class="table_head table-striped"  >
+            <table  class="table table-inverse"  >
                 <thead>
                     <tr >
                       <th>ลำดับที่</th>
@@ -34,13 +34,13 @@
 
 <div class='modal fade' id='modal_popup_detail_order' role='dialog'>
 	<div class='modal-dialog'>
-		<div  class='modal-content'>
+		<div  class='modal-content  modal-inverse'>
 			<div class='modal-header'  align="center">
 				<button type='button' class='close' data-dismiss='modal'>&times;</button>
 				<h4><span class='glyphicon '></span>ข้อมูลรายละเอียดการบริการ</h4>
 			</div>
 			<div class='modal-body'  align="center"   >
-				<table class="table-modal " >
+				<table class="table-modal table table-inverse ">
 					       <thead>
                     <tr >
                         <th>ลำดับที่</th>
@@ -60,13 +60,13 @@
 
 <div class='modal fade' id='modal_data' role='dialog'>
 	<div class='modal-dialog'>
-	<div  class='modal-content'>
+	<div  class='modal-content modal-inverse'>
 		<div class='modal-header'>
 			<button type='button' class='close' data-dismiss='modal'>&times;</button>
 			<h4><span class='glyphicon '></span>ข้อมูลผู้ใช้</h4>
 		</div>
 		<div class='modal-body' align='center'  >
-			<table class="table-modal">
+			<table class="table-modal table table-inverse ">
         <tr>
           <td> ข้อมูล ลูกค้า </td>
           <td>
@@ -118,13 +118,13 @@
 
 <div class='modal fade' id='modal_data_cus' role='dialog'>
 	<div class='modal-dialog'>
-		<div  class='modal-content'>
+		<div  class='modal-content modal-inverse'>
 			<div class='modal-header'  align="center">
 				<button type='button' class='close' data-dismiss='modal'>&times;</button>
 				<h4><span class='glyphicon '></span>ข้อมูลลูกค้า</h4>
 			</div>
 			<div class='modal-body'  align="center"   >
-        <table class="table-modal " >
+        <table class="table-modal table table-inverse ">
           <tr>
               <td>ชื่อ :</td>
               <td>
@@ -168,13 +168,13 @@
 
 <div class='modal fade' id='modal_data_cus_search' role='dialog'>
 	<div class='modal-dialog'>
-		<div  class='modal-content'>
+		<div  class='modal-content modal-inverse'>
 			<div class='modal-header'  align="center">
 				<button type='button' class='close' data-dismiss='modal'>&times;</button>
 				<h4><span class='glyphicon '></span>ข้อมูลรายละเอียดการบริการ</h4>
 			</div>
 			<div class='modal-body'  align="center"   >
-        <table class="table-modal " >
+        <table class="table-modal   table table-inverse ">
           <tr>
             <td> เบอร์โทร:</td>
             <td><input type="tel" name="tb_cus_tel_search" id="tb_cus_tel_search"  /></td>

@@ -9,9 +9,8 @@
   				<table  class="table table-inverse"  >
         <tr>
           <td colspan="2" class="text-center">
-            <input type="text"    ng-keypress="checkIfEnterKey($event)" ng-model="car_regis_number"   />
-
-              <button type="button" class="btn btn-inverse data-search-cus   glyphicon glyphicon-search"  ng-click="car_search();">ค้นหาทะเบียนรถ</button>
+              <input type="text"    ng-keypress="checkIfEnterKey($event)" ng-model="car_regis_number"  placeholder="ทะเบียนรถ"   /> 
+              <button type="button" class="btn btn-inverse data-search-cus   glyphicon glyphicon-search"  ng-click="car_search();">ค้นหา</button>
 
           </td>
         </tr>
@@ -54,10 +53,7 @@
                 <option value="XXL">XXL</option>
             </select>
             </td>
-        </tr>
-      <tr>
-        <td colspan="2" class="text-center" > <span  class="glyphicon glyphicon-floppy-save save-data icon" ng-click="savecar();">บันทึกการเปลี่ยนแปลงข้อมูลลูกค้า</span> </td>
-      </tr>
+        </tr> 
        <tr>
          <td colspan="2" class="text-center"  id="choose_service">
           <span  class=' icon glyphicon glyphicon-wrench'  ng-click="servicelist();">การบริการ</span>

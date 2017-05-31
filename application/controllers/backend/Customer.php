@@ -114,7 +114,11 @@ class Customer extends MY_Controller {
 
         if($result)
         {
-           echo json_encode (true) ;
+            if($data->car_id=="0"){
+                echo json_encode ($result) ;
+            }else{
+                echo json_encode (true) ;
+            }
         }else{
            echo json_encode (false) ;
         }
