@@ -1,7 +1,6 @@
 <div ng-controller="cusServiceController" >
   <div class="col-sm-1 "> </div>
-  <div class="col-sm-10 ">
-
+  <div class="col-sm-10 "> 
 <div class="panel panel-inverse">
 <div class="panel-heading text-center" ><h3 class="sub-header">รับรถ</h3> </div>
 <div class="panel-body  table-responsive">
@@ -109,14 +108,14 @@
             </tr>
             <tr>
                 <td rowspan="2"> ยี่ห้อ:</td>
-                <td  style="width:500px;"  class="text-left">
-  <div class="col-sm-2 " ng-repeat="logo in logos" >
-                     <img  ng-src="<?php echo base_url(); ?>Assets/Images/iconlogo/{{logo.img}}" style="margin:5px;" class="icon" alt="{{logo.name}}" ng-click="iconlogo_click(logo.name)" />
-</div>
-
+                <td   class="text-left">  
+                <div ng-repeat="logo in logos"    >
+                    <img    ng-src="<?php echo base_url(); ?>Assets/Images/iconlogo/{{logo.img}}" style="margin:5px;" class="icon" alt="{{logo.name}}" ng-click="iconlogo_click(logo.name)" />
+                </div>
+ </td>
             </tr>
             <tr>
-                <td  style="width:500px;"  class="text-left">
+                <td   class="text-left">
   <input type="text"   ng-model="car_brand"  />
 </td>
             </tr>

@@ -22,8 +22,9 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 
     $("#choose_service").addClass("hidden");
 
-    $http.get(backend_url + 'Customer/Get_Logo').success(function(response) {
+    $http.get(backend_url + 'Customer/Get_Logo').success(function(response) { 
         $scope.logos = response; //ajax request to fetch data into $scope.data
+
     }).error(function(err) {
         console.log(err);
     });
