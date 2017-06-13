@@ -23,8 +23,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
     $("#choose_service").addClass("hidden");
 
     $http.get(backend_url + 'Customer/Get_Logo').success(function(response) { 
-        $scope.logos = response; //ajax request to fetch data into $scope.data
-
+        $scope.logos = response; //ajax request to fetch data into $scope.data 
     }).error(function(err) {
         console.log(err);
     });
@@ -78,7 +77,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
               }else{ 
                     $scope.displaymsgsuccess("");
                     $scope.car_id = data;
-                     $scope.GetService();
+                    $scope.GetService();
               }
             }).error(function(err) {
                 console.log(err);
@@ -98,6 +97,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
          $scope.total_price = parseFloat(sum) ;
           $('#service_detail').removeClass("hidden");
           $('#modal_data_service_detail').modal('hide');
+         $('.service_detail').removeClass( "hidden"); 
     }
 
 
@@ -140,7 +140,11 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 					  $scope.comment  = "";
  
 					  $scope.displaymsgsuccess("");
-					  $("#choose_service").addClass("hidden"); 
+                        $("#choose_service").addClass("hidden"); 
+                        $('.cus_txt').addClass( "hidden");
+                        $('.cus_lb').addClass( "hidden");
+                        $('.cus_detail').addClass( "hidden");  
+                        $('.service_detail').addClass( "hidden"); 
 				  }else{ 
 					$scope.displaymsgwarning("");
 				  }
@@ -150,22 +154,24 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 		}
 	} 
     $scope.car_search = function () {
-      if ( $scope.car_regis_number.length<4  ){ 
-        $scope.displaymsgwarning("กรุณากรอกข้อมูลทะเบียนรถอย่างน้อย 4 ตัวอักษร");
-      }else{
-        $http.post(backend_url + 'Customer/Get_By_CarRegisNumber', { 'car_regis_number': $scope.car_regis_number })
+        $('.cus_detail').addClass( "hidden");  
+        $('.service_detail').addClass( "hidden"); 
+        if ( $scope.car_regis_number.length<4  ){ 
+            $scope.displaymsgwarning("กรุณากรอกข้อมูลทะเบียนรถอย่างน้อย 4 ตัวอักษร");
+        }else{  
+            $http.post(backend_url + 'Customer/Get_By_CarRegisNumber', { 'car_regis_number': $scope.car_regis_number })
             .success(function (data) {
                 $scope.cars = data;
                 if ($scope.cars.length == 0) {
-                   $scope.addcar();
+                    $scope.addcar();
                 } else {
-                      $('#modal_data_car_list').modal();
+                    $('#modal_data_car_list').modal(); 
                 }
 
             }).error(function(err) {
                 console.log(err);
             })
-      }
+        }
 
     }
     $scope.car_choose= function(id){
@@ -179,10 +185,19 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
       $scope.car_model = $('#car_model_'+id).text();
       $scope.car_color = $('#car_color_'+id).text();
       $scope.car_size = $('#car_size_'+id).text();
-      $('#modal_data_car_list').modal('hide');
+      $('#modal_data_car_list').modal('hide'); 
+        $('.cus_txt').addClass( "hidden");
+        $('.cus_lb').removeClass( "hidden");
+        $('.cus_detail').removeClass( "hidden");  
       $scope.GetService();
     }
 
+ 
+    $scope.EditCus = function(){
+        $('.cus_txt').removeClass( "hidden");
+        $('.cus_lb').addClass( "hidden"); 
+        $('.cus_edit').addClass( "hidden"); 
+    }
 
     $scope.checkIfEnterKey = function($event){
       var keyCode = $event.which || $event.keyCode;

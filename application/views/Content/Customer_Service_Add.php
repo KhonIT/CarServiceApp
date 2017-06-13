@@ -6,57 +6,84 @@
 <div class="panel-body  table-responsive">
       <div class="alert hidden text-center msgbox"   >{{msg}}</div>
   				<table  class="table table-inverse"  >
-        <tr>
-          <td colspan="2" class="text-center">
-              <input type="text"    ng-keypress="checkIfEnterKey($event)" ng-model="car_regis_number"  placeholder="ทะเบียนรถ"   /> 
-              <button type="button" class="btn btn-inverse data-search-cus   glyphicon glyphicon-search"  ng-click="car_search();">ค้นหา</button>
-
+        <tr> 
+           <td class="text-right" style="width:50%">  <input type="text"    ng-keypress="checkIfEnterKey($event)" ng-model="car_regis_number"  placeholder="ทะเบียนรถ"   /> </td> 
+           <td class="text-left" style="width:50%"><button type="button" class="btn btn-inverse data-search-cus   glyphicon glyphicon-search"  ng-click="car_search();">ค้นหา</button>  </td> 
+        </tr>
+        <tr  class="cus_detail hidden">
+          <td class="text-right">ชื่อ : </td>
+          <td>
+            <span class="cus_lb hidden">{{cus_name}}</span>
+            <input type="text" class="cus_txt"  ng-model="cus_name" /> 
           </td>
         </tr>
-        <tr>
-          <td class="text-right">ชื่อ :</td>
-          <td><input type="text"  ng-model="cus_name" /> </td>
+        <tr class="cus_detail hidden">
+          <td class="text-right">เบอร์โทร : </td>
+          <td>
+            <span class="cus_lb hidden">{{cus_tel}}</span>
+            <input type="text" class="cus_txt"  ng-model="cus_tel" />
+          </td>
         </tr>
-        <tr>
-          <td class="text-right">เบอร์โทร</td>
-          <td><input type="text"  ng-model="cus_tel" /></td>
+        <tr class="cus_detail hidden">
+          <td class="text-right"> ทะเบียนรถ : </td>
+          <td>
+            <span class="cus_lb hidden">{{car_regis_number}}</span>
+            <input type="text" class="cus_txt"  ng-model="car_regis_number" />
+          </td>
         </tr>
-        <tr>
-          <td class="text-right"> ทะเบียนรถ:</td>
-          <td><input type="text"  ng-model="car_regis_number" /></td>
+        <tr class="cus_detail hidden">
+          <td class="text-right"> ทะเบียนรถจังหวัด : </td>
+          <td>
+            <span class="cus_lb hidden">{{car_regis_province}}</span> 
+            <input type="text" class="cus_txt"  ng-model="car_regis_province" />
+          </td>
         </tr>
-        <tr>
-          <td class="text-right"> ทะเบียนรถจังหวัด:</td>
-          <td><input type="text"  ng-model="car_regis_province" /></td>
+        <tr class="cus_detail hidden">
+          <td class="text-right">ยี่ห้อ : </td>
+          <td>
+            <span class="cus_lb hidden">{{car_brand}}</span>
+            <input type="text" class="cus_txt"  ng-model="car_brand" />
+          </td>
         </tr>
-        <tr>
-          <td class="text-right">ยี่ห้อ:</td>
-          <td><input type="text"  ng-model="car_brand" /></td>
+        <tr class="cus_detail hidden">
+          <td class="text-right">รุ่น : </td>
+          <td>
+            <span class="cus_lb hidden">{{car_model}}</span> 
+            <input type="text" class="cus_txt"  ng-model="car_model" />
+          </td>
         </tr>
-        <tr>
-          <td class="text-right">รุ่น:</td>
-          <td><input type="text"  ng-model="car_model" /></td>
+        <tr class="cus_detail hidden">
+          <td class="text-right">สี : </td>
+          <td> 
+            <span class="cus_lb hidden">{{car_color}}</span>
+            <input type="text" class="cus_txt"  ng-model="car_color" />
+          </td>
         </tr>
-        <tr>
-          <td class="text-right">สี</td>
-          <td><input type="text"  ng-model="car_color" /></td>
-        </tr>
-        <tr>
-          <td class="text-right">ขนาดของรถ</td>
-          <td>                  
-            <select class="selectopt"   ng-model="car_size">
+        <tr class="cus_detail hidden">
+          <td class="text-right">ขนาดของรถ : </td>
+          <td>    
+            <span class="cus_lb hidden">{{car_size}}</span>              
+            <select class="selectopt cus_txt hidden"  ng-model="car_size">
                 <option value="S">S</option>
                 <option value="M">M</option>
                 <option value="L">L</option>
                 <option value="XL">XL</option>
                 <option value="XXL">XXL</option>
-            </select>
+            </select> 
             </td>
+        </tr>  
+       <tr class="cus_detail cus_edit hidden">
+          <td colspan="2" class="text-center"  >
+            <span  class=' icon glyphicon glyphicon-list-alt'  ng-click="EditCus();">แก้ไขข้อมูลลูกค้า</span>
+          </td> 
         </tr> 
        <tr>
-         <td colspan="2" class="text-center"  id="choose_service">
-          <span  class=' icon glyphicon glyphicon-wrench'  ng-click="servicelist();">การบริการ</span>
-
+         <td colspan="2" class="text-center service_detail hidden"  id="choose_service">
+          <span  class=' icon glyphicon glyphicon-wrench'  ng-click="servicelist();">เลือกการบริการ</span>
+          </td>
+        </tr> 
+        <tr> 
+         <td colspan="2" class="text-center service_detail hidden"   >
           <div class="col-sm-1 "> </div>
           <div class="col-sm-10 ">
             <div  ng-repeat="service in services " class="text-left">
@@ -65,20 +92,20 @@
           </div>
           <div class="col-sm-1 "> </div>
           </td>
-        </tr>
+        </tr> 
 
-        <tr>
+        <tr  class="service_detail hidden">
           <td class="text-right"> ราคารวม</td>
           <td> {{total_price | currency:""}} บาท</td>
         </tr>
-        <tr>
+        <tr class="service_detail hidden">
           <td class="text-right">หมายเหตุ :</td>
           <td>
             <input type="text" name="tb_comment" id="tb_comment" ng-model="comment"   />
           </td>
         </tr>
-        <tr>
-          <td class="text-right">บันทึก:</td>
+        <tr class="service_detail hidden">
+          <td class="text-right ">บันทึก:</td>
            <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="saveservice();"> </span></td>
         </tr>
       </table>
