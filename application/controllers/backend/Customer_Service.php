@@ -50,7 +50,7 @@ class Customer_Service extends MY_Controller {
    {
        $this->output->unset_template();
 
-       $result =  $this->Customer_Service_Model->Get_All('1');
+       $result =  $this->Customer_Service_Model->Get_All('payed');
 
        if($result)
        {
@@ -62,7 +62,7 @@ class Customer_Service extends MY_Controller {
     {
         $this->output->unset_template();
 
-        $result =  $this->Customer_Service_Model->Get_All('0');
+        $result =  $this->Customer_Service_Model->Get_All('pending');
 
         if($result)
         {

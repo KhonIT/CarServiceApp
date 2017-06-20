@@ -51,7 +51,7 @@ function Get_All_service(){
 				$("#tbody_list").text("");
 				var i = 1;
 				$.each(data, function(idx, obj) {
-					$("#tbody_list").append('<tr><td>'+i+'</td><td>'+obj.cus_name+'</td><td>'+obj.cus_tel+'</td><td>'+obj.cus_car_regis_number+'-'+obj.cus_car_brand+'-'+obj.cus_car_model+'-'+obj.cus_car_color+'</td><td>'+obj.created_date+'</td><td align="center"><span class="glyphicon glyphicon-option-horizontal edit-data icon " id='+obj.id+'></span></td><td align="center"><span class="glyphicon glyphicon-print  icon " target="_blank" onclick="return confirm_print('+obj.id+')"  ></span></td><td align="center"><span class=" glyphicon glyphicon-remove remove-data icon " id='+obj.id+'></span></td></tr>');
+					$("#tbody_list").append('<tr><td>'+i+'</td><td>'+obj.cus_name+'</td><td>'+obj.cus_tel+'</td><td>'+obj.car_regis_number+'-'+obj.car_brand+'-'+obj.car_model+'-'+obj.car_color+'</td><td>'+obj.receipt_date +'</td><td align="center"><span class="glyphicon glyphicon-option-horizontal edit-data icon " id='+obj.id+'></span></td><td align="center"><span class="glyphicon glyphicon-print  icon " target="_blank" onclick="return confirm_print('+obj.id+')"  ></span></td><td align="center"><span class=" glyphicon glyphicon-remove remove-data icon " id='+obj.id+'></span></td></tr>');
 						i++;
 					});
 			}

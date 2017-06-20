@@ -92,7 +92,7 @@ class Customer_Service_Model extends CI_Model{
 	 }
 
 	 public function Get_All($pay_status){
-		  $sql = 'select  r.receipt_id as id,r.receipt_number,cu.cus_tel,cu.cus_name,c.car_regis_number,c.car_brand,c.car_model,c.car_color,c.cus_id,comment,total,payment_status,emp_id,receipt_date from receipt r left join car c on c.car_id = r.car_id left join customer cu on cu.cus_id = c.cus_id where r.is_deleted = 0 and r.receipt_status = '.$pay_status.' order by receipt_date desc  limit 100 offset 0 ';
+		  $sql = 'select  r.receipt_id as id,r.receipt_number,cu.cus_tel,cu.cus_name,c.car_regis_number,c.car_brand,c.car_model,c.car_color,c.cus_id,comment,total,payment_status,emp_id,receipt_date from receipt r left join car c on c.car_id = r.car_id left join customer cu on cu.cus_id = c.cus_id where r.is_deleted = 0 and r.receipt_status = "'.$pay_status.'" order by receipt_date desc  limit 100 offset 0 ';
 		  $query = $this->db->query($sql);
 		  return $query->result();
 	 }

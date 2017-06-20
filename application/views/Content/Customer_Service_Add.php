@@ -7,8 +7,8 @@
       <div class="alert hidden text-center msgbox"   >{{msg}}</div>
   				<table  class="table table-inverse"  >
         <tr> 
-           <td class="text-right" style="width:30%">ค้นหา : </td> 
-           <td class="text-left" style="width:70%">  <input type="text"    ng-keypress="checkIfEnterKey($event)" ng-model="car_regis_number"  placeholder="ทะเบียนรถ"   /> <button type="button" class="btn btn-inverse data-search-cus   glyphicon glyphicon-search"  ng-click="car_search();">ค้นหา</button>  </td> 
+           <td class="text-right" style="width:30%; vertical-align:middle;">ค้นหา : </td> 
+           <td class="text-left" style="width:70%;  vertical-align:middle;">  <input type="text"    ng-keypress="checkIfEnterKey($event)" ng-model="car_regis_number"  placeholder="ทะเบียนรถ"   /> <button type="button" class="btn btn-inverse data-search-cus   glyphicon glyphicon-search"  ng-click="car_search();">ค้นหา</button>  </td> 
         </tr>
         <tr  class="cus_detail hidden">
           <td class="text-right">ชื่อ : </td>
