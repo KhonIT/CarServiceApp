@@ -25,14 +25,14 @@
           </td>
         </tr>
         <tr class="cus_detail hidden">
-          <td class="text-right"> ทะเบียนรถ : </td>
+          <td class="text-right">ทะเบียน : </td>
           <td>
             <span class="cus_lb hidden">{{car_regis_number}}</span>
             <input type="text" class="cus_txt"  ng-model="car_regis_number" />
           </td>
         </tr>
         <tr class="cus_detail hidden">
-          <td class="text-right"> ทะเบียนรถจังหวัด : </td>
+          <td class="text-right">จังหวัด : </td>
           <td>
             <span class="cus_lb hidden">{{car_regis_province}}</span> 
             <input type="text" class="cus_txt"  ng-model="car_regis_province" />
@@ -60,7 +60,7 @@
           </td>
         </tr>
         <tr class="cus_detail hidden">
-          <td class="text-right">ขนาดของรถ : </td>
+          <td class="text-right">ขนาด : </td>
           <td>    
             <span class="cus_lb hidden">{{car_size}}</span>              
             <select class="selectopt cus_txt hidden"  ng-model="car_size">
@@ -197,7 +197,7 @@
  			<table class="table-modal  table table-inverse ">
             <tbody id='tbody_list'>
               <tr   ng-repeat="serall in service_all ">
-                <td class="text-center">{{$index + 1}}</td>
+               <!-- <td class="text-center">{{$index + 1}}</td>-->
 
                 <td class="text-left">
                 <label class="icon"><input type="checkbox" id="service_detail" value="{{''+serall.service_id}}"  /> {{serall.service_name}}</label></td>

@@ -144,7 +144,7 @@ input[type="text"],input[type="password"],input[type="number"],input[type="tel"]
     outline: none;
     letter-spacing:1px;
     text-align: left;
-    width: 180px;
+    width: 130px;
 }
 
 input:-webkit-input-placeholder {
@@ -163,7 +163,7 @@ input:-ms-input-placeholder {
 color:var( --text-color)!important;
 }
  .selectopt {
-     width: 180px;
+     width: 130px;
     padding: 2px;
     font-weight: normal;
     border:1px solid var(--border-color);
