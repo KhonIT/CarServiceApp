@@ -130,21 +130,21 @@
             </tr>
 
             <tr>
-              <td class="text-right"> ทะเบียนรถจังหวัด:</td>
+              <td > ทะเบียนรถจังหวัด:</td>
                             <td ><input type="text"  ng-model="car_regis_province"   /></td>
             </tr>
             <tr>
                 <td rowspan="2"> ยี่ห้อ:</td>
-                <td   class="text-left">  
-                <div ng-repeat="logo in logos"    >
-                    <img    ng-src="<?php echo base_url(); ?>Assets/Images/iconlogo/{{logo.img}}" style="margin:5px;" class="icon" alt="{{logo.name}}" ng-click="iconlogo_click(logo.name)" />
-                </div>
- </td>
+                <td   class="text-center">   
+                <span class='glyphicon glyphicon-step-backward icon_nav' ng-click="logo_backward()" ></span>  
+                <img  ng-repeat="logo in logos | limitTo:5:limit"     ng-src="<?php echo base_url(); ?>Assets/Images/iconlogo/{{logo.img}}" style="margin:5px;" class="icon" alt="{{logo.name}}" ng-click="iconlogo_click(logo.name)" />
+                <span class='glyphicon glyphicon-step-forward icon_nav' ng-click="logo_forward()" ></span> 
+                </td>
             </tr>
             <tr>
-                <td   class="text-left">
-  <input type="text"   ng-model="car_brand"  />
-</td>
+            <td   class="text-left">
+              <input type="text"   ng-model="car_brand"  />
+            </td>
             </tr>
             <tr>
                 <td> รุ่น:</td>
@@ -164,6 +164,7 @@
                       <option value="XL">XL</option>
                       <option value="XXL">XXL</option>
                   </select>
+                  </td>
             </tr>
             <tr>
                 <td>ชื่อ :</td>
