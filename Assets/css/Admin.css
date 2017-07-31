@@ -237,3 +237,18 @@ vertical-align: middle;
     border-bottom: 2px solid var(--border-color);
     cursor:   pointer;
 }
+ 
+.dropdown-menu-img{
+    min-width:50px;
+    background-color: transparent;
+}
+.logo { 
+    background-color: white;
+}
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    min-width:50px;
+    overflow-x: hidden;
+    background-color: white;
+}

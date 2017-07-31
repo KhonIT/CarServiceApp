@@ -43,7 +43,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
     }
 
     $scope.iconlogo_click = function(iconname) {
-      $scope.car_brand =  iconname;
+      $scope.car_brand =  iconname; 
     }
 
     $scope.addcar = function () {
@@ -206,25 +206,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
            $scope.car_search();     
         }
     }
-
-        var limitStep =5 ; 
-        $scope.limit = 0; 
-    $scope.logo_backward = function() {  
-
-        if($scope.limit>0)
-        {
-            $scope.limit  -= limitStep; 
-        }
-        console.log($scope.limit); 
-    };
-    $scope.logo_forward = function() {  
  
-        if($scope.limit<$scope.logos.length-limitStep)
-        {
-            $scope.limit  += limitStep; 
-        }
-        console.log($scope.limit);
-    };
 
     $scope.displaymsgsuccess = function(msg){
         if (msg.length == 0) {

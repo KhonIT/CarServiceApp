@@ -135,10 +135,27 @@
             </tr>
             <tr>
                 <td rowspan="2"> ยี่ห้อ:</td>
-                <td   class="text-center">   
-                <span class='glyphicon glyphicon-step-backward icon_nav' ng-click="logo_backward()" ></span>  
-                <img  ng-repeat="logo in logos | limitTo:5:limit"     ng-src="<?php echo base_url(); ?>Assets/Images/iconlogo/{{logo.img}}" style="margin:5px;" class="icon" alt="{{logo.name}}" ng-click="iconlogo_click(logo.name)" />
-                <span class='glyphicon glyphicon-step-forward icon_nav' ng-click="logo_forward()" ></span> 
+                <td >   
+               
+
+                <div class="btn-group">
+
+  <div   class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >เลือกยี่ห้อ <span class="caret"></span></div>
+
+  <ul class="dropdown-menu scrollable-menu ">
+  <li  ng-repeat="logo in logos ">
+                  <img  ng-src="<?php echo base_url(); ?>Assets/Images/iconlogo/{{logo.img}}" style="margin:5px;" class="icon logo" alt="{{logo.name}}" ng-click="iconlogo_click(logo.name)">
+                </li> 
+  </ul>
+</div>
+                <!--
+                    <span class='glyphicon glyphicon-step-backward icon_nav' ng-click="logo_backward()" ></span>  
+                  <img  ng-repeat="logo in logos | limitTo:5:limit"     ng-src="<?php echo base_url(); ?>Assets/Images/iconlogo/{{logo.img}}" style="margin:5px;" class="icon" alt="{{logo.name}}" ng-click="iconlogo_click(logo.name)" />
+                    <span class='glyphicon glyphicon-step-forward icon_nav' ng-click="logo_forward()" ></span> 
+                  
+                  -->
+              
+              
                 </td>
             </tr>
             <tr>
