@@ -69,15 +69,20 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
         $('#modal_data_car').modal('hide');
         $http.post(backend_url + 'Customer/Edit', {car_id:$scope.car_id,car_regis_number: $scope.car_regis_number,car_regis_province: $scope.car_regis_province, car_brand: $scope.car_brand, car_model: $scope.car_model, car_color:$scope.car_color, car_size:$scope.car_size,cus_id: $scope.cus_id, cus_name: $scope.cus_name, cus_tel: $scope.cus_tel })
             .success(function(data) {
+                          console.log(data);
               if (angular.equals(data, "true")  ){ 
                   $scope.displaymsgsuccess("");
               }
-               if (angular.equals(data, "false")  ){ 
+              else if (angular.equals(data, "false")  ){ 
                      $scope.displaymsgwarning("");
               }else{ 
-                    $scope.displaymsgsuccess("");
-                    $scope.car_id = data;
-                    $scope.GetService();
+                    $scope.displaymsgsuccess("");    
+                    $scope.car_id = data.car_id;
+                    $scope.cus_id =  data.cus_id; 
+                    $('.cus_txt').addClass( "hidden");
+                    $('.cus_lb').removeClass( "hidden");
+                    $('.cus_detail').removeClass( "hidden");  
+                    $scope.GetService(); 
               }
             }).error(function(err) {
                 console.log(err);

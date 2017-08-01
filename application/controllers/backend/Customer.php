@@ -115,7 +115,11 @@ class Customer extends MY_Controller {
         if($result)
         {
             if($data->car_id=="0"){
-                echo json_encode ($result) ;
+                $data_arr = array(
+                'car_id'=>$result,
+                'cus_id'=>$cus_id
+                );
+                echo json_encode ($data_arr) ;
             }else{
                 echo json_encode (true) ;
             }
