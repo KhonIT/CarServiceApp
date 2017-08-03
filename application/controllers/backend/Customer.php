@@ -76,6 +76,16 @@ class Customer extends MY_Controller {
     		echo json_encode ($result) ;
     	}
     }
+    public function Get_Province()
+    {
+    	$this->output->unset_template();
+    	$result =  $this->Customer_Model->Get_Province();
+    	if($result)
+    	{
+    		echo json_encode ($result) ;
+    	}
+    }
+    
 
     public function Edit()
     {
@@ -87,7 +97,7 @@ class Customer extends MY_Controller {
           $data_cus_arr = array(
             'cus_name'=>$data->cus_name,
             'cus_tel'=>$data->cus_tel,
-          );
+          ); 
           if($data->cus_id=="0"){
               $cus_id =  $this->Customer_Model->Customer_Insert($data_cus_arr);
           }else{
@@ -109,10 +119,10 @@ class Customer extends MY_Controller {
         if($data->car_id=="0"){
             $result =  $this->Customer_Model->Car_Insert($data_car_arr);
         }else{
-            $result =  $this->Customer_Model->Car_Update($data_car_arr,$data->car_id);
+           $result =  $this->Customer_Model->Car_Update($data_car_arr,$data->car_id);
         }
 
-        if($result)
+       if($result)
         {
             if($data->car_id=="0"){
                 $data_arr = array(
@@ -125,7 +135,7 @@ class Customer extends MY_Controller {
             }
         }else{
            echo json_encode (false) ;
-        }
+        } 
     } 
     public function Delete()
     {

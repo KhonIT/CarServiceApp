@@ -3,6 +3,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
     $scope.services = []; //declare an empty array
     $scope.service_all = []; //declare an empty array
     $scope.cars = []; //declare an empty array
+    $scope.provinces = []; //declare an empty array
     //declare empty
     $scope.car_id = "";
     $scope.car_regis_number = "";
@@ -27,7 +28,14 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
     }).error(function(err) {
         console.log(err);
     });
+    $http.get(backend_url + 'Customer/Get_Province').success(function(response) { 
+        $scope.provinces = response; //ajax request to fetch data into $scope.data 
+    }).error(function(err) {
+        console.log(err);
+    });
 
+
+    
     $scope.GetService = function() { 
       $http.post(backend_url + 'Services/Get_By_Car_Size', { 'car_size': $scope.car_size }).success(function(response) {
       $scope.service_all = response; //ajax request to fetch data into $scope.data
@@ -65,7 +73,7 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 
     $scope.savecar = function() {
        //for-debug
-       //console.log($scope.cus_id+':'+$scope.cus_name);
+       console.log($scope.cus_id+':'+$scope.car_id);
         $('#modal_data_car').modal('hide');
         $http.post(backend_url + 'Customer/Edit', {car_id:$scope.car_id,car_regis_number: $scope.car_regis_number,car_regis_province: $scope.car_regis_province, car_brand: $scope.car_brand, car_model: $scope.car_model, car_color:$scope.car_color, car_size:$scope.car_size,cus_id: $scope.cus_id, cus_name: $scope.cus_name, cus_tel: $scope.cus_tel })
             .success(function(data) {
@@ -157,7 +165,9 @@ app.controller('cusServiceController', function($scope, $http, $timeout) {
 					console.log(err);
 				})
 		}
-	} 
+    } 
+    
+
     $scope.car_search = function () {
         $('.cus_detail').addClass( "hidden");  
         $('.service_detail').addClass( "hidden"); 

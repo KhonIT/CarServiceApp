@@ -56,7 +56,7 @@ class Customer_Model extends CI_Model{
 		   	throw new Exception('Required ID for update Car Data.');
 		  }
 		  try { 
-		   	return $this->db->update('car', $data, array('cus_id' => $id));
+		   	return $this->db->update('car', $data, array('car_id' => $id));
 
 		  } catch (Exception $e) {
 		   	throw new Exception($e->getMessage());
@@ -70,6 +70,13 @@ class Customer_Model extends CI_Model{
 		log_message('debug', sprintf('Found %b row with cus ID %s', $query->num_rows(), $id));
 		return $query->row_array();// return one row
 	 }
+
+	 public function Get_Province(){
+		$sql = 'SELECT  car_regis_province as province FROM car c group by car_regis_province order by car_regis_province';
+ 		$query = $this->db->query($sql); 
+		return $query->result();
+	 }
+
 	 public function Car_Search($car_regis_number){
 		$sql = 'SELECT c.car_id ,car_regis_number, car_regis_province, car_brand,car_model,car_color,car_size,cu.cus_id,cu.cus_name,cu.cus_tel FROM car c ';
 		$sql .= 'left join customer cu on cu.cus_id = c.cus_id where c.is_deleted = 0 ';
