@@ -252,3 +252,6 @@ vertical-align: middle;
     overflow-x: hidden;
     background-color: white;
 }
+.table > thead > tr > th { 
+    text-align: center;
+}

@@ -62,7 +62,8 @@ function Get_All_service(){
 function confirm_print(id){ 
 	var r = confirm("ยืนยันการชำระเงิน รายการนี้ ?");
 	if (r=== true){
-			window.location.replace(backend_url+'Customer_Service/PrintReceived?order_id='+id);
+			Get_All_service();
+			window.open(backend_url+'Customer_Service/PrintReceived?order_id='+id,'_blank');
 	}
 	return r;
 }
