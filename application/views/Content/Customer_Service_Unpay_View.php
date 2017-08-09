@@ -1,4 +1,5 @@
-    <div class="col-sm-1 "> </div>
+<div ng-controller="cusServicesController" >
+  <div class="col-sm-1 "> </div>
     <div class="col-sm-10 ">
 
 <div class="panel panel-inverse">
@@ -22,7 +23,15 @@
                     </tr>
                 </thead>
                 <tbody id='tbody_list'>
-
+                  <tr ng-repeat="cs in customer_service">
+                  <td>{{i}}</td>
+                  <td>{{cs.cus_name}}</td>
+                  <td>{{cs.cus_tel}}</td>
+                  <td>{{cs.car_regis_number}}-{{cs.car_brand}}-{{cs.car_model}}-{{cs.car_color}}</td>
+                  <td>{{cs.receipt_date }}</td>
+                  <td align="center"><span class="glyphicon glyphicon-option-horizontal edit-data icon"  ng-click="EditCusService(cs.id)"></span></td>
+                  <td align="center"><span class="glyphicon glyphicon-print  icon " target="_blank" ng-click="confirm_print(cs.id)"  ></span></td>
+                  <td align="center"><span class="glyphicon glyphicon-remove remove-data icon "  ng-click="removeCusService(cs.id)" ></span></td></tr>
                 </tbody>
             </table>
         </div>
@@ -210,4 +219,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
