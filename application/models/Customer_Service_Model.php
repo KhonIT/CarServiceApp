@@ -68,6 +68,25 @@ class Customer_Service_Model extends CI_Model{
 			}
 	 }
 
+	 public function Delete_Order($data = null, $id){
+		if ($data == null){
+			log_message('error', 'Update => customer service Data is null.');
+			throw new Exception('customer service Data is null.');
+		}
+		if ($data == null || $id == 0) {
+			log_message('error', 'Required ID for update customer service Data.');
+			throw new Exception('Required ID for update customer service Data.');
+		}
+		try {
+
+			$this->db->update('receipt_details', $data, array('receipt_id' => $id));
+			return $this->db->update('receipt', $data, array('receipt_id' => $id));
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+	}	
+
 
 	 public function Get_OrdersDetails_By_ID($id){
 		  $sql = ' select   '.$id.'  as order_id,s.service_id,s.service_name,s.price as service_price , ifnull((select r.receipt_detail_id FROM receipt_details r where s.service_id = r.service_id and r.is_deleted = 0 and order_id = '.$id.'  ), 0 ) order_detail_id, ifnull((select r.price FROM receipt_details r where s.service_id = r.service_id and r.is_deleted = 0 and order_id = '.$id.'  ), 0 ) price from  service s  where s.is_deleted = 0';

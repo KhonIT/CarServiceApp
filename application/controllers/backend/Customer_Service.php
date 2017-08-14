@@ -15,7 +15,7 @@ class Customer_Service extends MY_Controller {
      public function index()
     {
         $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
-        $this->output->set_template('Backend');
+        $this->output->set_template('Backend'); 
         $this->load->js('Assets/js/cont/CustomerServices.js');
         $this->load->view('Content/Customer_Service_Unpay_View');
     }
@@ -162,11 +162,12 @@ class Customer_Service extends MY_Controller {
     public function Delete()
     {
         $this->output->unset_template();
+        $data=json_decode(file_get_contents("php://input"));
+
         $data_arr = array(
             'is_deleted'=>1
         );
-        $result =  $this->Customer_Service_Model->Update($data_arr,$this->input->post('id'));
-
+        $result =  $this->Customer_Service_Model->Delete_Order($data_arr,$data->id);  
         if($result)
         {
              echo "true";
@@ -175,22 +176,22 @@ class Customer_Service extends MY_Controller {
 
     public function OrderDetailEdit()
     {
-            $this->output->unset_template();
+      $this->output->unset_template();
       $json_array = json_decode($this->input->post('jsonObj'), true);
 
        foreach($json_array  as $key=>$val){
           $isshow = 0;
         if ($val['is_show'] == "true" ){$isshow =1;}
          $Data_arr = array(
-             'order_id'=>$val['order_id'],
+             'receipt_detail_id'=>$val['order_id'],
              'service_id'=>$val['service_id'],
              'price'=>$val['price'],
-             'is_show'=>$isshow
+             'is_deleted'=>$isshow
          );
 
-         if( $val['order_detail_id']=='0' && $val['is_show'] == "true"  ){
-           $this->Customer_Service_Model->Insert_Order_Detail($Data_arr);
-          }else    if( $val['order_detail_id']!='0'  ){
+         if( $val['receipt_detail_id']=='0' && $val['is_show'] == "true"  ){
+            $this->Customer_Service_Model->Insert_Order_Detail($Data_arr);
+          }else    if( $val['receipt_detail_id']!='0'  ){
             $this->Customer_Service_Model->Update_Order_Detail($Data_arr,$val['order_detail_id']);
         }
       }

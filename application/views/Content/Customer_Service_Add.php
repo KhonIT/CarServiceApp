@@ -35,8 +35,7 @@
                 <td class="text-right">จังหวัด : </td>
                 <td>
                   <span class="cus_lb hidden">{{car_regis_province}}</span> 
-                  <input type="text" class="cus_txt"  ng-model="car_regis_province" list="province_list"/>
-                  
+                  <input type="text" class="cus_txt"  ng-model="car_regis_province" list="province_list"/> 
                 </td>
               </tr>
               <tr class="cus_detail hidden">
@@ -114,7 +113,7 @@
               <div class="alert hidden text-center  msgbox"   >{{msg}}</div>
           </div>
       </div>
-    </div>
+</div>
 <div class="col-sm-1 "> </div>
 
   <div class='modal fade' id='modal_data_car' role='dialog'>
@@ -194,37 +193,37 @@
   	</div>
   </div>
 
-  <div class='modal fade' id='modal_data_service_detail' role='dialog'>
-    <div class='modal-dialog'>
-  	<div  class='modal-content modal-inverse'>
-        <div class='modal-header'   >
-			<button type='button' class='close icon' data-dismiss='modal'>&times;</button>
-          <h4><span class='glyphicon '></span>ข้อมูลการบริการ</h4>
-        </div>
-		<div class='modal-body text-center table-responsive' >
- 			<table class="table-modal  table table-inverse ">
-            <tbody id='tbody_list'>
-              <tr   ng-repeat="serall in service_all ">
-               <!-- <td class="text-center">{{$index + 1}}</td>-->
+<div class='modal fade' id='modal_data_service_detail' role='dialog'>
+  <div class='modal-dialog'>
+  <div  class='modal-content modal-inverse'>
+      <div class='modal-header'   >
+    <button type='button' class='close icon' data-dismiss='modal'>&times;</button>
+        <h4><span class='glyphicon '></span>ข้อมูลการบริการ</h4>
+      </div>
+  <div class='modal-body text-center table-responsive' >
+    <table class="table-modal  table table-inverse ">
+          <tbody id='tbody_list'>
+            <tr   ng-repeat="serall in service_all ">
+              <!-- <td class="text-center">{{$index + 1}}</td>-->
 
-                <td class="text-left">
-                <label class="icon"><input type="checkbox" id="service_detail" value="{{''+serall.service_id}}"  /> {{serall.service_name}}</label></td>
+              <td class="text-left">
+              <label class="icon"><input type="checkbox" id="service_detail" value="{{''+serall.service_id}}"  /> {{serall.service_name}}</label></td>
 
-                <td class="text-left"><input type="text" class="inputtxt"  id="{{'price-'+serall.service_id}}"  value="{{serall.price}}"   />
-                   <input type="text"  id="{{'name-'+serall.service_id}}" style="display: none;" value="{{serall.service_name}}"   /></td>
-              </tr>
-              <tr>
-                <td colspan='3' class="text-center">
-                  <span  class="glyphicon glyphicon-floppy-save save-data icon" style="font-size:50px;" ng-click="cal_service();"></span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-                <div class="alert hidden text-center msgbox"   >{{msg}}</div>
-        </div>
+              <td class="text-left"><input type="text" class="inputtxt"  id="{{'price-'+serall.service_id}}"  value="{{serall.price}}"   />
+                  <input type="text"  id="{{'name-'+serall.service_id}}" style="display: none;" value="{{serall.service_name}}"   /></td>
+            </tr>
+            <tr>
+              <td colspan='3' class="text-center">
+                <span  class="glyphicon glyphicon-floppy-save save-data icon" style="font-size:50px;" ng-click="cal_service();"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+              <div class="alert hidden text-center msgbox"   >{{msg}}</div>
       </div>
     </div>
   </div>
+</div>
 
 <div class='modal fade' id='modal_data_car_list' role='dialog'>
     <div class='modal-dialog'>

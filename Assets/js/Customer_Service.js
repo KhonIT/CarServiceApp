@@ -262,7 +262,7 @@ $('#modal_data_cus').delegate('span.save-data', 'click', function() {
 		dataType: "json",
 		success: function (data)
 		{
-			 $("#tbody_cus_list").text("");
+			$("#tbody_cus_list").text("");
 			$.each(data, function(idx, obj) {
 				var html = '<tr> <td>'+obj.cus_name+'</td>';
 				 html += '<td>'+obj.cus_tel+'</td>';
@@ -280,8 +280,7 @@ $('#modal_data_cus').delegate('span.save-data', 'click', function() {
 
 
 
- $('#modal_data_cus_search').delegate('span.choose-data', 'click', function() {
-
+ $('#modal_data_cus_search').delegate('span.choose-data', 'click', function() { 
 	 $.ajax({
  			url: backend_url+'Customer/Get_By_ID',
  			data: {id:$.trim(event.target.id)},
@@ -289,15 +288,15 @@ $('#modal_data_cus').delegate('span.save-data', 'click', function() {
  			type: "POST",
  			dataType: "json",
  			success: function (data)
- 				{
-						$("span.data-cus").text("");
-						$("#tb_id").val("0");
- 				 		$('span.data-edit-cus').attr(data.id);
-						$("#tb_cus_id").val(data.id);
-						$("span.data-cus").append('ชื่อ:'+data.cus_name+' <br>โทร:'+data.cus_tel+' <br>ทะเบียน:'+data.cus_car_regis_number+'<br>ยี่ห้อ:'+data.cus_car_brand+'<br>รุ่น:'+data.cus_car_model+'<br>สี:'+data.cus_car_color+'<br>');
-						$('span.data-edit-cus').show();
-						$('span.data-add-cus').hide();
-						$("#modal_data_cus_search").modal('toggle');
- 				}
+			{
+					$("span.data-cus").text("");
+					$("#tb_id").val("0");
+					$('span.data-edit-cus').attr(data.id);
+					$("#tb_cus_id").val(data.id);
+					$("span.data-cus").append('ชื่อ:'+data.cus_name+' <br>โทร:'+data.cus_tel+' <br>ทะเบียน:'+data.cus_car_regis_number+'<br>ยี่ห้อ:'+data.cus_car_brand+'<br>รุ่น:'+data.cus_car_model+'<br>สี:'+data.cus_car_color+'<br>');
+					$('span.data-edit-cus').show();
+					$('span.data-add-cus').hide();
+					$("#modal_data_cus_search").modal('toggle');
+			}
  		});
 });

@@ -1,11 +1,9 @@
 app.controller('cusServicesController', function($scope, $http, $timeout) {
   
-    $scope.customer_service = []; //declare an empty array
-   
-    $scope.msg = "";
-
- 
- 
+    $scope.customer_service = []; //declare an empty array 
+    $scope.msg = "";  
+    $scope.id = "";   
+    $scope.payment_status = ""; 
 
     $http.get(backend_url + 'Customer_Service/Get_All_UnPay').success(function(response) { 
         $scope.customer_service = response; //ajax request to fetch data into $scope.data 
@@ -14,20 +12,46 @@ app.controller('cusServicesController', function($scope, $http, $timeout) {
     });
  
     $scope.EditCusService= function(id){
-
-          console.log(id)
+        //คงค้างแก้ไข
+        console.log(id);
     }
-    $scope.confirm_print= function(id){
+    $scope.payment= function(id){ 
+        $('#modal_data_payment').modal();
+        $scope.payment_status = "cash"; 
+        $scope.id = id;   
+    } 
 
-          console.log(id)
-    }
+    $scope.confirm_print= function(){ 
+            window.open(backend_url+'Customer_Service/PrintReceived?order_id='+$scope.id,'_blank');
+            $timeout(function() { $scope.Get_All_service(); }, 2000);  
+    } 
 
      $scope.removeCusService= function(id){
-
-          console.log(id)
+        var r = confirm("ยืนยันการลบข้อมูล รายการนี้ ?");
+        if (r === true) {
+           
+            $http.post(backend_url + 'Customer_Service/Delete', { 'id': id })
+            .success(function (data) { 
+                if (data== "true")  {
+                    $scope.Get_All_service();
+                }   
+            }).error(function(err) {
+                console.log(err);
+            })
+            
+        }
+      
+    } 
+    $scope.Get_All_service= function(id){
+        $http.get(backend_url + 'Customer_Service/Get_All_UnPay').success(function(response) { 
+            $scope.customer_service = response; //ajax request to fetch data into $scope.data  
+        }).error(function(err) {
+            console.log(err);
+        });  
     }
 
 
+  
     $scope.displaymsgsuccess = function(msg){
         if (msg.length == 0) {
             $scope.msg ="บันทึ่กข้อมูลสำเร็จ";

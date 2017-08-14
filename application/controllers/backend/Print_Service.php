@@ -43,7 +43,7 @@ class Print_Service extends MY_Controller {
           $this->output->unset_template();
           $data=json_decode(file_get_contents("php://input"));
           $data_arr = array(
-              'pay_status'=>1
+             'receipt_status'=>'payed'
           );
     			$result =  $this->Customer_Service_Model->Update($data_arr,$data->id);
           if($result)
