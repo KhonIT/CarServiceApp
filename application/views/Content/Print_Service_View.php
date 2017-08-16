@@ -5,11 +5,11 @@
        <img src="<?php echo base_url(); ?>Assets/Images/logo&sloganNobg.png" />
      </div>
 
-    <table  class="table  table-responsive   table-strip table-hover">
+    <table  class="table  table-responsive   table-strip table-hover h3 ">
 
       <tr>
-        <td   class='text-left'> เลขที่ใบเสร็จ :{{'' + book_no +'/' +number}}</td>
-        <td  class='text-right'>วันที่ :{{date | date:'dd-MM-yyyy hh:mm'}}</td>
+        <td class='text-left' style="width:30%;"> เลขที่ใบเสร็จ :{{book_no }}</td>
+        <td class='text-right'style="width:70%;">วันที่ :{{date | date:'dd-MM-yyyy hh:mm'}}</td>
       </tr>
 
 
@@ -38,16 +38,17 @@
         <td>{{cus_car_color}}</td>
       </tr>
       <tr>
-        <td> รายละเอียดการบริการ</td>
+        <td  > รายละเอียดการบริการ</td>
         <td>
-          <table  >
+          <table >
+      
             <tr  ng-repeat="service in services ">
-              <td class="text-center">{{$index + 1}}</td>
-              <td class="text-left">{{service.service_name}}</td>
+              <td class="text-center">{{$index + 1}}.</td>
+              <td class="text-left">{{service.service_name}}:</td>
               <td class="text-left">{{service.service_price}}</td>
             </tr>
             <tr>
-              <td colspan="2"> ราคารวม</td>
+              <td colspan="2" class="text-center   "> ราคารวม </td>
               <td> {{total_price | currency:""}} บาท</td>
             </tr>
           </table>

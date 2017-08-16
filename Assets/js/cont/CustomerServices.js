@@ -3,27 +3,53 @@ app.controller('cusServicesController', function($scope, $http, $timeout) {
     $scope.customer_service = []; //declare an empty array 
     $scope.msg = "";  
     $scope.id = "";   
-    $scope.payment_status = ""; 
+    $scope.book_no = "";   
+    $scope.number = ""; 
+    $scope.payment_status = "";  
+    $scope.total_price = "";
+    $scope.comment  = "";
 
     $http.get(backend_url + 'Customer_Service/Get_All_UnPay').success(function(response) { 
         $scope.customer_service = response; //ajax request to fetch data into $scope.data 
     }).error(function(err) {
         console.log(err);
-    });
- 
-    $scope.EditCusService= function(id){
-        //คงค้างแก้ไข
-        console.log(id);
-    }
+    }); 
     $scope.payment= function(id){ 
-        $('#modal_data_payment').modal();
-        $scope.payment_status = "cash"; 
-        $scope.id = id;   
+        $('#modal_data_payment').modal(); 
+        $http.post(backend_url + 'Customer_Service/Get_By_ID', { 'id': id })
+        .success(function (data) {   
+            $scope.id   = data.id; 
+            $scope.book_no =data.book_no; 
+            $scope.payment_status = data.payment_status;
+            $scope.total_price =  data.total_price;
+            $scope.comment =  data.comment
+            console.log(    $scope.id);
+        }).error(function(err) {
+            console.log(err);
+        });  
     } 
 
-    $scope.confirm_print= function(){ 
-            window.open(backend_url+'Customer_Service/PrintReceived?order_id='+$scope.id,'_blank');
-            $timeout(function() { $scope.Get_All_service(); }, 2000);  
+    $scope.confirm_print= function(){  
+        console.log($scope.id);
+        $http.post(backend_url + 'Customer_Service/Payment', { id: $scope.id,book_no: $scope.book_no,payment_status: $scope.payment_status,total_price: $scope.total_price,comment: $scope.comment })
+        .success(function (data) { 
+            if (data== "true")  {
+                $scope.Get_All_service(); 
+                window.open(backend_url+'Customer_Service/PrintReceived?order_id='+$scope.id,'_blank'); 
+                $('#modal_data_payment').modal('hide');
+                $scope.id = "";   
+                $scope.book_no = "";   
+                $scope.number = ""; 
+                $scope.payment_status = "";  
+                $scope.total_price = "";
+                $scope.comment  = "";
+         
+            }   
+        }).error(function(err) {
+            console.log(err);
+        })
+
+
     } 
 
      $scope.removeCusService= function(id){
@@ -48,26 +74,6 @@ app.controller('cusServicesController', function($scope, $http, $timeout) {
         }).error(function(err) {
             console.log(err);
         });  
-    }
-
-
-  
-    $scope.displaymsgsuccess = function(msg){
-        if (msg.length == 0) {
-            $scope.msg ="บันทึ่กข้อมูลสำเร็จ";
-        }else{
-            $scope.msg =msg;
-        }
-        $('.msgbox').addClass( "alert-success" ).removeClass( "alert-warning hidden"); 
-        $timeout(function() { $('.msgbox').addClass( "hidden" ) }, 2000); // delay 1500 ms
-    }
-    $scope.displaymsgwarning = function(msg){
-        if (msg.length == 0) {
-            $scope.msg ="บันทึ่กข้อมูลไม่สำเร็จ";
-        }else{
-            $scope.msg =msg;
-        }
-            $('.msgbox').addClass( "alert-warning" ).removeClass( "alert-success hidden" );
-            $timeout(function() { $('.msgbox').addClass( "hidden" ) }, 2000); // delay 1500 ms
-        }
+    } 
+         
 });

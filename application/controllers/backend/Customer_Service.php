@@ -69,60 +69,35 @@ class Customer_Service extends MY_Controller {
            echo json_encode ($result) ;
         }
     }
-
-
-
+ 
     public function Get_By_ID()
     {
     	$this->output->unset_template();
-
-    	$result =  $this->Customer_Service_Model->Get_By_ID($this->input->post('id'));
-
+        $data=json_decode(file_get_contents("php://input"));
+    	$result =  $this->Customer_Service_Model->Get_By_ID($data->id); 
     	if($result)
     	{
     		echo json_encode ($result) ;
     	}
-    }
-	public function Get_OrdersDetails_By_ID()
-    {
-    	$this->output->unset_template();
-    	$result =  $this->Customer_Service_Model->Get_OrdersDetails_By_ID($this->input->post('id'));
-
-    	if($result)
-    	{
-    		echo json_encode ($result) ;
-    	}
-    }
-    public function Edit()
+    } 
+    public function Payment()
     {
         $this->output->unset_template();
-        if($this->input->post('id') =="0"){
-          $data_arr = array(
-              'book_no'=>$this->input->post('book_no'),
-              'number'=>$this->input->post('number'),
-              'comment'=>$this->input->post('comment'),
-              'cus_id'=>$this->input->post('cus_id'),
-              'pay_status'=>$this->input->post('pay_status'),
-              'total'=>$this->input->post('total'),
-              'emp_id'=>$this->user_profile['emp_id']
-          );
-    			$result =  $this->Customer_Service_Model->Insert($data_arr);
-    		}else{
-          $data_arr = array(
-              'book_no'=>$this->input->post('book_no'),
-              'number'=>$this->input->post('number'),
-              'comment'=>$this->input->post('comment'),
-              'total'=>$this->input->post('total'),
-              'pay_status'=>$this->input->post('pay_status')
-          );
-    			$result =  $this->Customer_Service_Model->Update($data_arr,$this->input->post('id'));
-    		}
-        if($result)
-        {
-            echo "true";
-        } else{
-		 echo "false";
-		}
+        $data=json_decode(file_get_contents("php://input"));
+ 
+            $data_arr = array( 
+                'receipt_number'=>$data->book_no,
+                'payment_status'=>$data->payment_status,
+                'total'=>$data->total_price,
+                'comment'=>$data->comment,
+                'receipt_status'=>'payed'
+              );
+    			$result =  $this->Customer_Service_Model->Update($data_arr,$data->id);
+                if($result)
+                {
+                    echo json_encode ($result) ;
+                }
+       
     }
     public function AddService()
     {
@@ -173,28 +148,5 @@ class Customer_Service extends MY_Controller {
              echo "true";
         }
     }
-
-    public function OrderDetailEdit()
-    {
-      $this->output->unset_template();
-      $json_array = json_decode($this->input->post('jsonObj'), true);
-
-       foreach($json_array  as $key=>$val){
-          $isshow = 0;
-        if ($val['is_show'] == "true" ){$isshow =1;}
-         $Data_arr = array(
-             'receipt_detail_id'=>$val['order_id'],
-             'service_id'=>$val['service_id'],
-             'price'=>$val['price'],
-             'is_deleted'=>$isshow
-         );
-
-         if( $val['receipt_detail_id']=='0' && $val['is_show'] == "true"  ){
-            $this->Customer_Service_Model->Insert_Order_Detail($Data_arr);
-          }else    if( $val['receipt_detail_id']!='0'  ){
-            $this->Customer_Service_Model->Update_Order_Detail($Data_arr,$val['order_detail_id']);
-        }
-      }
-          echo "true";
-    }
+ 
 }
