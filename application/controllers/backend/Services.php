@@ -12,12 +12,12 @@ class Services extends MY_Controller {
         $this->load->model('Service_Model');
     }
 
-     public function index()
+    public function index()
     {
-      $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
-      $this->output->set_template('Backend');
-      $this->load->js('Assets/js/cont/Service.js');
-      $this->load->view('Content/Service_View');
+        $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
+        $this->output->set_template('Backend');
+        $this->load->js('Assets/js/cont/Service.js');
+        $this->load->view('Content/Service_View');
     }
 
     public function Get_All()
@@ -26,47 +26,47 @@ class Services extends MY_Controller {
         $result =  $this->Service_Model->Get_All();
         if($result)
         {
-           echo json_encode ($result) ;
+            echo json_encode ($result) ;
         }
     }
     public function Get_By_Car_Size()
     {
-      $this->output->unset_template();
-      $data=json_decode(file_get_contents("php://input"));
+        $this->output->unset_template();
+        $data=json_decode(file_get_contents("php://input"));
         $result =  $this->Service_Model->Get_By_Car_Size($data->car_size);
         if($result)
         {
-           echo json_encode ($result) ;
+            echo json_encode ($result) ;
         }
     }
 
     public function Edit()
     {
-      $this->output->unset_template();
-      $data=json_decode(file_get_contents("php://input"));
+        $this->output->unset_template();
+        $data=json_decode(file_get_contents("php://input"));
         $data_arr = array(
-          'service_name'=>$data->service_name,
-          'car_size'=>$data->car_size,
-          'price'=>$data->price
+            'service_name'=>$data->service_name,
+            'car_size'=>$data->car_size,
+            'price'=>$data->price
         );
         if($data->id=="0"){
-      		$result =  $this->Service_Model->Insert($data_arr);
-      	}else{
-      		$result =  $this->Service_Model->Update($data_arr,$data->id);
-      	}
+            $result =  $this->Service_Model->Insert($data_arr);
+        }else{
+            $result =  $this->Service_Model->Update($data_arr,$data->id);
+        }
         if($result)
         {
             echo "true";
         } else{
-		 echo "false";
-		}
+            echo "false";
+        }
     }
 
 
     public function Delete()
     {
-      $this->output->unset_template();
-      $data=json_decode(file_get_contents("php://input"));
+        $this->output->unset_template();
+        $data=json_decode(file_get_contents("php://input"));
 
         $data_arr = array(
             'is_deleted'=>1
@@ -75,7 +75,7 @@ class Services extends MY_Controller {
 
         if($result)
         {
-               echo "true";
+            echo "true";
         }
     }
 

@@ -133,7 +133,16 @@ a,a:visited ,a:hover ,a:active ,a.icon-home-a:hover,a.icon-home-a:link ,a.icon-h
 td,th{
  padding: 5px;
  white-space:nowrap;
+
 }
+.table > tbody > tr > td{
+    vertical-align: middle;
+
+}
+th { 
+    text-align: center;
+} 
+
 .panel-heading{
     color: var(--bg-color);
     background-color:var(--text-color);
@@ -252,6 +261,4 @@ vertical-align: middle;
     overflow-x: hidden;
     background-color: white;
 }
-.table > thead > tr > th { 
-    text-align: center;
-}
+

@@ -12,12 +12,12 @@ class Customer extends MY_Controller {
         $this->load->model('Customer_Model');
     }
 
-     public function index()
+    public function index()
     {
-      $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
-      $this->output->set_template('Backend');
-      $this->load->js('Assets/js/cont/Customer.js');
-      $this->load->view('Content/Customer_View');
+        $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
+        $this->output->set_template('Backend');
+        $this->load->js('Assets/js/cont/Customer.js');
+        $this->load->view('Content/Customer_View');
     }
     public function Get_Logo()
     {
@@ -31,17 +31,17 @@ class Customer extends MY_Controller {
         $data= array();
         foreach ($map as $key => $value) {
 
-          $name = explode('.', $value);
-           $data_arr = array(
-               'name'=>$name[1],
-               'img'=>$value
-           );
-               $data[] = $data_arr;
+            $name = explode('.', $value);
+            $data_arr = array(
+                'name'=>$name[1],
+                'img'=>$value
+            );
+            $data[] = $data_arr;
         }
 
         if($map)
         {
-          echo json_encode ($data) ;
+            echo json_encode ($data) ;
         }
     }
 
@@ -51,41 +51,41 @@ class Customer extends MY_Controller {
         $result =  $this->Customer_Model->Get_All();
         if($result)
         {
-           echo json_encode ($result) ;
+            echo json_encode ($result) ;
         }
     }
 
-   public function Get_By_CarRegisNumber()
+    public function Get_By_CarRegisNumber()
     {
-    	$this->output->unset_template();
+        $this->output->unset_template();
         $data=json_decode(file_get_contents("php://input"));
-    	$result =  $this->Customer_Model->Car_Search($data->car_regis_number);
-    	if($result)
-    	{
-    		echo json_encode ($result) ;
-    	}
+        $result =  $this->Customer_Model->Car_Search($data->car_regis_number);
+        if($result)
+        {
+            echo json_encode ($result) ;
+        }
     }
 
     public function Get_By_ID()
     {
-    	$this->output->unset_template();
+        $this->output->unset_template();
         $data=json_decode(file_get_contents("php://input"));
-    	$result =  $this->Customer_Model->Car_Search($data->id);
-    	if($result)
-    	{
-    		echo json_encode ($result) ;
-    	}
+        $result =  $this->Customer_Model->Car_Search($data->id);
+        if($result)
+        {
+            echo json_encode ($result) ;
+        }
     }
     public function Get_Province()
     {
-    	$this->output->unset_template();
-    	$result =  $this->Customer_Model->Get_Province();
-    	if($result)
-    	{
-    		echo json_encode ($result) ;
-    	}
+        $this->output->unset_template();
+        $result =  $this->Customer_Model->Get_Province();
+        if($result)
+        {
+            echo json_encode ($result) ;
+        }
     }
-    
+
 
     public function Edit()
     {
@@ -94,47 +94,47 @@ class Customer extends MY_Controller {
         $cus_id="";
         if($data->cus_name !="" &&  $data->cus_tel !=""){
 
-          $data_cus_arr = array(
-            'cus_name'=>$data->cus_name,
-            'cus_tel'=>$data->cus_tel,
-          ); 
-          if($data->cus_id=="0"){
-              $cus_id =  $this->Customer_Model->Customer_Insert($data_cus_arr);
-          }else{
-              $result =  $this->Customer_Model->Customer_Update($data_cus_arr,$data->cus_id);
-              $cus_id = $data->cus_id;
-          }
+            $data_cus_arr = array(
+                'cus_name'=>$data->cus_name,
+                'cus_tel'=>$data->cus_tel,
+            ); 
+            if($data->cus_id=="0"){
+                $cus_id =  $this->Customer_Model->Customer_Insert($data_cus_arr);
+            }else{
+                $result =  $this->Customer_Model->Customer_Update($data_cus_arr,$data->cus_id);
+                $cus_id = $data->cus_id;
+            }
         }
 
         $data_car_arr = array(
-          'car_regis_number'=>$data->car_regis_number,
-          'car_regis_province'=>$data->car_regis_province,
-          'car_brand'=>$data->car_brand,
-          'car_model'=>$data->car_model,
-          'car_color'=>$data->car_color,
-          'car_size'=>$data->car_size,
-          'cus_id'=>$cus_id
+            'car_regis_number'=>$data->car_regis_number,
+            'car_regis_province'=>$data->car_regis_province,
+            'car_brand'=>$data->car_brand,
+            'car_model'=>$data->car_model,
+            'car_color'=>$data->car_color,
+            'car_size'=>$data->car_size,
+            'cus_id'=>$cus_id
         );
 
         if($data->car_id=="0"){
             $result =  $this->Customer_Model->Car_Insert($data_car_arr);
         }else{
-           $result =  $this->Customer_Model->Car_Update($data_car_arr,$data->car_id);
+            $result =  $this->Customer_Model->Car_Update($data_car_arr,$data->car_id);
         }
 
-       if($result)
+        if($result)
         {
             if($data->car_id=="0"){
                 $data_arr = array(
-                'car_id'=>$result,
-                'cus_id'=>$cus_id
+                    'car_id'=>$result,
+                    'cus_id'=>$cus_id
                 );
                 echo json_encode ($data_arr) ;
             }else{
                 echo json_encode (true) ;
             }
         }else{
-           echo json_encode (false) ;
+            echo json_encode (false) ;
         } 
     } 
     public function Delete()
@@ -149,9 +149,9 @@ class Customer extends MY_Controller {
 
         if($result)
         {
-           echo json_encode (true) ;
+            echo json_encode (true) ;
         }else{
-           echo json_encode (false) ;
+            echo json_encode (false) ;
         }
     }
 }

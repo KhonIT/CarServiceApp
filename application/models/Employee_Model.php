@@ -62,8 +62,6 @@ class Employee_Model extends CI_Model{
 			,l.l_id 
 			,l.l_name from employee e left join level l on l.l_id = e.l_id  
 			where e.is_deleted = 0 and e.emp_id = ?';
-
-
 		  $query = $this->db->query($sql, array($id));
 		  log_message('debug', sprintf('Found %b row with employee ID %s', $query->num_rows(), $id));
 		  return $query->row_array();// return one row

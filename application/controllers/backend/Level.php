@@ -13,13 +13,13 @@ class Level extends MY_Controller {
 
     }
 
-     public function index()
-     {
-       $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
-       $this->output->set_template('Backend');
-       $this->load->js('Assets/js/cont/Level.js');
-       $this->load->view('Content/Level_View');
-     }
+    public function index()
+    {
+        $this->output->set_common_meta('VTCar Service' ,'www.VTCarService.net','www.VTCarService.net');
+        $this->output->set_template('Backend');
+        $this->load->js('Assets/js/cont/Level.js');
+        $this->load->view('Content/Level_View');
+    }
 
     public function Get_All()
     {
@@ -29,44 +29,44 @@ class Level extends MY_Controller {
 
         if($result)
         {
-           echo json_encode ($result) ;
+            echo json_encode ($result) ;
         }
     }
 
     public function Get_By_ID()
     {
-      $this->output->unset_template();
-      $data=json_decode(file_get_contents("php://input"));
+        $this->output->unset_template();
+        $data=json_decode(file_get_contents("php://input"));
 
-    	$result =  $this->Level_Model->Get_By_ID($data->id);
+        $result =  $this->Level_Model->Get_By_ID($data->id);
 
-    	if($result)
-    	{
-    		echo json_encode ($result) ;
-    	}
+        if($result)
+        {
+            echo json_encode ($result) ;
+        }
     }
 
 
     public function Edit()
     {
-      $this->output->unset_template();
-      $data=json_decode(file_get_contents("php://input"));
+        $this->output->unset_template();
+        $data=json_decode(file_get_contents("php://input"));
         $data_arr = array(
-          'l_name'=>$data->l_name,
-          'l_parent_id'=>$data->l_parent_id
+            'l_name'=>$data->l_name,
+            'l_parent_id'=>$data->l_parent_id
         );
 
         if($data->id=="0"){
-          $result =  $this->Level_Model->Insert($Level_arr);
+            $result =  $this->Level_Model->Insert($Level_arr);
         }else{
-          $result =  $this->Level_Model->Update($data_arr,$data->id);
+            $result =  $this->Level_Model->Update($data_arr,$data->id);
         }
 
         if($result)
         {
-           echo json_encode (true) ;
+            echo json_encode (true) ;
         }else{
-           echo json_encode (false) ;
+            echo json_encode (false) ;
         }
     }
 
@@ -81,9 +81,9 @@ class Level extends MY_Controller {
 
         if($result)
         {
-           echo json_encode (true) ;
+            echo json_encode (true) ;
         }else{
-           echo json_encode (false) ;
+            echo json_encode (false) ;
         }
     }
 

@@ -11,8 +11,8 @@
 						foreach($meta as $name=>$content){
 								echo "\n\t\t";
 								?><meta name="<?php echo $name; ?>" content="<?php echo is_array($content) ? implode(", ", $content) : $content; ?>" /><?php
-				 }
-		   ?>
+					}
+			?>
 
 <link rel="shortcut icon" href="<?php echo base_url(); ?>Assets/Images/fav-icon-vtcar.png">
 
@@ -24,20 +24,20 @@
 </head>
 <body ng-app="AppAngular">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<?php echo base_url();?>backend/Home">VTCar Service</a>
-          </div>
-          <div class="navbar-collapse collapse">
-           <ul class="nav navbar-nav " id="menu_nav">
-			         <!-- menu_nav -->
-          </ul>
+								<div class="container">
+										<div class="navbar-header">
+												<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+													<span class="sr-only">Toggle navigation</span>
+													<span class="icon-bar"></span>
+													<span class="icon-bar"></span>
+													<span class="icon-bar"></span>
+												</button>
+												<a class="navbar-brand" href="<?php echo base_url();?>backend/Home">VTCar Service</a>
+										</div>
+										<div class="navbar-collapse collapse">
+											<ul class="nav navbar-nav " id="menu_nav">
+												<!-- menu_nav -->
+										</ul>
 			<ul class="nav navbar-nav  navbar-right">
 				<li class=" dropdown ">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="User_Profile">  </a>
@@ -49,18 +49,18 @@
 					</ul>
 				</li>
 			</ul>
-        </div>
+								</div>
 	</nav>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12  main">
+				<div class="container-fluid">
+						<div class="row">
+								<div class="col-sm-12  main">
 						<div   align='center' > <span id="result_content" ></span></div>
 						<!-- content -->
 						<?php echo $output;?>
 						<!--/.content-->
-        </div>
-      </div>
-    </div>
+								</div>
+						</div>
+				</div>
 		<div class='modal fade' id='modal_data_editemp' role='dialog'    >
 			<div class='modal-dialog' >
 			<div  class='modal-content'>
@@ -94,7 +94,7 @@
 						</tr>
 						<tr>
 							<td>บันทึก:</td>
-							 <td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="saveemp()"></span></td>
+								<td><span  class="glyphicon glyphicon-floppy-save data-save icon" ng-click="saveemp()"></span></td>
 						</tr>
 					</table>
 				</div>
@@ -142,35 +142,35 @@
 							console.log(err);
 					});
 
-					    $scope.getDataEmp = function() {
-					        $http.get(backend_url + 'Employee/Get_Emp').success(function(data) {
+									$scope.getDataEmp = function() {
+													$http.get(backend_url + 'Employee/Get_Emp').success(function(data) {
 										$scope.empname =  data.emp_fname+' '+data.emp_lname;
 										$scope.empnickname = data.emp_nickname;
 										$scope.empusername =  data.emp_username;
 										$scope.emppassword =  data.emp_password;
-					        }).error(function(err) {
-					            console.log(err);
-					        })
-					    }
+													}).error(function(err) {
+																	console.log(err);
+													})
+									}
 					$scope.saveemp = function() {
-			       //for-debug
-			       //console.log($scope.emp_id+':'+$scope.emp_name);
-			        $http.post(backend_url + 'Employee/Edit_Emp', {
-			            emp_password: $scope.emppassword
-			          }).success(function(data) {
+										//for-debug
+										//console.log($scope.emp_id+':'+$scope.emp_name);
+											$http.post(backend_url + 'Employee/Edit_Emp', {
+															emp_password: $scope.emppassword
+													}).success(function(data) {
 
-			              $('#modal_data_editemp').modal('toggle');
-			              if (angular.equals(data, "true")  ){
-			                alert("บันทึ่กขึ้อมูลเรียบร้อย");
-			                 $scope.getDataEmp();
-			              }else{
+																	$('#modal_data_editemp').modal('toggle');
+																	if (angular.equals(data, "true")  ){
+																			alert("บันทึ่กขึ้อมูลเรียบร้อย");
+																				$scope.getDataEmp();
+																	}else{
 											alert("บันทึ่กขึ้อมูลไม่สำเร็จ");
-			              }
+																	}
 
-			            }).error(function(err) {
-			                console.log(err);
-			            })
-			    }
+															}).error(function(err) {
+																			console.log(err);
+															})
+							}
 			});
 
 
@@ -218,9 +218,9 @@
 							{
 								//degug console.log(obj.menu_id+':#menu'+obj.menu_id+' li');
 								//degug console.log($("#menu"+obj.menu_id+" li").children().length==0);
-									 if($("#menu"+obj.menu_id+" li").children().length==0){
-										 $("#menu"+obj.menu_id).parent('li').addClass("hidden");
-									 }
+										if($("#menu"+obj.menu_id+" li").children().length==0){
+											$("#menu"+obj.menu_id).parent('li').addClass("hidden");
+										}
 								$("#menu"+obj.menu_id).append('<li role="separator" class="divider"></li>');
 							}
 						});
@@ -250,10 +250,10 @@
 				$('#modal_data_editemp').delegate('#upload_image', 'click', function() {
 
 					var fd = new FormData();
-	     var file_data = $('#file_image')[0].files; // for multiple files
-	     for(var i = 0;i<file_data.length;i++){
-	         fd.append("file_image", file_data[i]);
-	     }
+						var file_data = $('#file_image')[0].files; // for multiple files
+						for(var i = 0;i<file_data.length;i++){
+										fd.append("file_image", file_data[i]);
+						}
 					$.ajax({
 							url: 	backend_url + 'Employee/Upload_Image',
 							type: 'POST',
@@ -276,6 +276,6 @@
 			});
 
 			</script>
-			  <?php  foreach($js as $file){ ?><script src="<?php echo $file; ?>"></script><?php } ?>
+					<?php  foreach($js as $file){ ?><script src="<?php echo $file; ?>"></script><?php } ?>
 </body>
 </html>
