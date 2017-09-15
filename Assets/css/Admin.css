@@ -1,17 +1,17 @@
 
 :root {
-  /* Colors. */
+    /* Colors. */
 
-  --bg-color: #000000;
-  --bg-modal-color: #333333;
-  --bg-txt-color:#333333;
-  --border-color: #fff;
-  --border-hover-color: #fff;
-  --text-color: #fff;
+    --bg-color: #000000;
+    --bg-modal-color: #333333;
+    --bg-txt-color:#333333;
+    --border-color: #fff;
+    --border-hover-color: #fff;
+    --text-color: #fff;
 
 
-  --font-size: 1.5em;
-  --font-family: sans-serif;
+    --font-size: 1.5em;
+    --font-family: sans-serif;
 }
 body {
     margin-top: 70px;
@@ -22,14 +22,14 @@ body {
 }
 
 .modal-inverse {
-  color:var(--text-color);
-  background-color:var(--bg-modal-color);
+    color:var(--text-color);
+    background-color:var(--bg-modal-color);
 }
 .navbar-fixed-top {
-  border: 0;
+    border: 0;
 }
 .pointer {
-   cursor:pointer;
+    cursor:pointer;
 }
 .pointer:hover {
     color:var(--text-color);
@@ -70,8 +70,8 @@ body {
     border-radius:15px;
 }
 .icon-home  {
-   cursor:pointer;
-   font-size: 4em;
+    cursor:pointer;
+    font-size: 4em;
 }
 .icon-home-div  {
     padding:10px;
@@ -82,8 +82,8 @@ body {
 }
 
 .icon-home-div:hover  {
-	color:var(--text-color);
-	background:var(--bg-modal-color);
+    color:var(--text-color);
+    background:var(--bg-modal-color);
     border:2px solid var(--border-hover-color);
     box-shadow: 0 0 10px  var(--border-hover-color);
 }
@@ -107,7 +107,7 @@ body {
 
 .navbar-inverse .navbar-toggle .icon-bar
 {  background-color: var(--text-color); }
- .navbar-inverse .navbar-toggle .icon-bar:focus
+.navbar-inverse .navbar-toggle .icon-bar:focus
 {  background-color: var(--text-hover-color); }
 
 .navbar-inverse .navbar-nav > .open > a:focus,
@@ -115,8 +115,8 @@ body {
 {  color: var(--text-hover-color);background-color: var(--bg-modal-color); background-image: var(--bg-modal-color);}
 
 a,a:visited ,a:hover ,a:active ,a.icon-home-a:hover,a.icon-home-a:link ,a.icon-home-a:visited  ,a.icon-home-a:active  {
-  color: var(--text-color);
-      text-decoration: none;
+    color: var(--text-color);
+    text-decoration: none;
 }
 
 
@@ -131,8 +131,8 @@ a,a:visited ,a:hover ,a:active ,a.icon-home-a:hover,a.icon-home-a:link ,a.icon-h
 }
 
 td,th{
- padding: 5px;
- white-space:nowrap;
+    padding: 5px;
+    white-space:nowrap;
 
 }
 .table > tbody > tr > td{
@@ -148,12 +148,12 @@ th {
     background-color:var(--text-color);
 }
 .panel-body{
-  background-color:var(--bg-modal-color);
+    background-color:var(--bg-modal-color);
 }
 .inputtxt:focus {
- outline: none !important;
-   border:1px solid var(--border-hover-color);
-   box-shadow: 0 0 15px var(--border-hover-color);
+    outline: none !important;
+    border:1px solid var(--border-hover-color);
+    box-shadow: 0 0 15px var(--border-hover-color);
 }
 input[type="text"],input[type="password"],input[type="number"],input[type="tel"]{
     padding: 2px;
@@ -169,31 +169,31 @@ input[type="text"],input[type="password"],input[type="number"],input[type="tel"]
 }
 
 input:-webkit-input-placeholder {
-color:var(--text-color)!important;
+    color:var(--text-color)!important;
 }
 
 input:-moz-placeholder { /* Firefox 18- */
-color:var( --text-color)!important;
+    color:var( --text-color)!important;
 }
 
 input::-moz-placeholder {  /* Firefox 19+ */
-color:var( --text-color)!important;
+    color:var( --text-color)!important;
 }
 
 input:-ms-input-placeholder {
-color:var( --text-color)!important;
+    color:var( --text-color)!important;
 }
- .selectopt {
-     width: 130px;
+.selectopt {
+    width: 130px;
     padding: 2px;
     font-weight: normal;
     border:1px solid var(--border-color);
     box-shadow: 0 0 15px var(--bg-color);
     background:var(--bg-txt-color);
     text-shadow: 0 1px 0 var(--bg-modal-color);
-     outline: none;
+    outline: none;
     letter-spacing:1px;
- }
+}
 
 .close {
     color: var( --text-color);
@@ -209,25 +209,25 @@ color:var( --text-color)!important;
 }
 
 .modal-body>.table>tbody>tr>td{
-padding: 3px;
-vertical-align: middle;
+    padding: 3px;
+    vertical-align: middle;
     border :0px;
 }
 
 .btn-inverse:hover {
     outline: none !important;
-   border:1px solid var(--border-hover-color);
-   box-shadow: 0 0 15px var(--border-hover-color);
-   color: var(--text-color);
-   background-color:  var(--bg-txt-color);
+    border:1px solid var(--border-hover-color);
+    box-shadow: 0 0 15px var(--border-hover-color);
+    color: var(--text-color);
+    background-color:  var(--bg-txt-color);
 }
 
 .btn-inverse:focus {
     outline: none !important;
-   border:1px solid var(--border-hover-color);
-   box-shadow: 0 0 15px var(--border-hover-color);
-   color: var(--text-color);
-   background-color:  var(--bg-txt-color);
+    border:1px solid var(--border-hover-color);
+    box-shadow: 0 0 15px var(--border-hover-color);
+    color: var(--text-color);
+    background-color:  var(--bg-txt-color);
 }
 
 .btn-inverse {
@@ -246,7 +246,7 @@ vertical-align: middle;
     border-bottom: 2px solid var(--border-color);
     cursor:   pointer;
 }
- 
+
 .dropdown-menu-img{
     min-width:50px;
     background-color: transparent;
